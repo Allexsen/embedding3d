@@ -505,24 +505,6 @@ button.secondary {
   accent-color: var(--accent-2);
 }
 
-.jumper-center-toggle {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  cursor: pointer;
-  user-select: none;
-}
-
-.jumper-center-toggle input {
-  width: 12px;
-  height: 12px;
-  accent-color: var(--accent-2);
-  cursor: pointer;
-}
-
 .status-bar {
   position: absolute;
   bottom: 12px;

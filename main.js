@@ -65,7 +65,6 @@
     labelsToggle: document.getElementById('labelsToggle'),
     rotateToggle: document.getElementById('rotateToggle'),
     animToggle: document.getElementById('animToggle'),
-    markCenterToggle: document.getElementById('markCenterToggle'),
   };
 
   const octx = dom.overlay.getContext('2d');
@@ -90,7 +89,6 @@
     renderLimit: 0,       // words rendered/searched (frequency-ordered prefix)
     dimming: 0.8,         // unselected points: 0 = fully shown, 1 = hidden
     animEnabled: true,
-    markClickCenter: true, // single-click an equation stop to center camera
     animT: 1.75,          // selection animation clock (ANIM_TOTAL = idle/complete)
     animDir: 0,           // 1 = playing in, -1 = fading out, 0 = idle
     prevMix: 0,           // outgoing selection cross-fade (1 → 0, unsequenced)
@@ -2644,13 +2642,8 @@
       if (pointerState.moved < 5 && pointerState.mode === 'orbit' && event.type === 'pointerup') {
         camera.velYaw = 0;
         camera.velPitch = 0;
-        const mark = pickMarkerAt(event.offsetX, event.offsetY);
-        if (mark) {
-          // equation stops: single-click centers (default) without touching
-          // the selection; when toggled off, double-click centers instead
-          if (state.markClickCenter) centerOnMark(mark);
-          return;
-        }
+        // equation stop markers: click is inert (double-click centers)
+        if (pickMarkerAt(event.offsetX, event.offsetY)) return;
         const picked = pickPointAt(event.offsetX, event.offsetY);
         if (picked >= 0) {
           focusWord(state.words[picked]);
@@ -2792,10 +2785,6 @@
 
     dom.datasetSelect.addEventListener('change', () => {
       loadSizedDataset(Number(dom.datasetSelect.value));
-    });
-
-    dom.markCenterToggle.addEventListener('change', () => {
-      state.markClickCenter = dom.markCenterToggle.checked;
     });
 
     dom.dimInput.addEventListener('input', () => {
