@@ -182,3 +182,11 @@ cython_debug/
 
 # Documentation
 engdoc.md
+# precompute artifacts (large sources; keep generated runtime assets tracked)
+precompute/glove.6B.zip
+precompute/glove.6B.*.txt
+
+# precompute intermediates (data/ holds the served tiers)
+/embeddings.bin
+/projected.bin
+/manifest.json

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embedding3D</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪐</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="demoData.js" defer></script>
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <h1>Embedding3D</h1>
+        <p class="tagline">3D word embedding explorer</p>
+      </div>
+      <div class="topbar-right">
+        <select id="datasetSelect" class="dataset-select" hidden aria-label="Dataset size"></select>
+        <span id="modeChip" class="chip">Loading…</span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel controls-panel">
+        <div class="panel-head">
+          <h2>Explore</h2>
+          <p>Search a word or write vector math.</p>
+        </div>
+
+        <div class="group">
+          <label for="queryInput">Query</label>
+          <div class="query-wrap">
+            <input id="queryInput" type="text" placeholder="king - man + woman" autocomplete="off" spellcheck="false" autocapitalize="off">
+            <button id="runButton" type="button">Run</button>
+            <ul id="suggestions" class="suggestions" hidden></ul>
+          </div>
+          <p class="field-hint">Words with <span>+</span> <span>−</span> <span>*</span> and parentheses. Quote odd tokens: <span>"1990"</span>, <span>"u.s."</span>. <span>Enter</span> runs, <span>Tab</span> completes, <span>/</span> focuses.</p>
+          <div class="chip-row" id="exampleChips">
+            <button type="button" class="chip-btn" data-q="king - man + woman">king − man + woman</button>
+            <button type="button" class="chip-btn" data-q="paris - france + italy">paris − france + italy</button>
+            <button type="button" class="chip-btn" data-q="dog">dog</button>
+            <button type="button" class="chip-btn" data-q="(coffee + tea) * 0.5">(coffee + tea) * 0.5</button>
+          </div>
+        </div>
+
+        <div class="group">
+          <div class="slider-row">
+            <label for="topNInput">Neighbors</label>
+            <output id="topNValue">10</output>
+          </div>
+          <input id="topNInput" type="range" min="1" max="25" value="10">
+          <div class="slider-row">
+            <label for="sizeInput">Point size</label>
+            <output id="sizeValue">0.3×</output>
+          </div>
+          <input id="sizeInput" type="range" min="20" max="1000" value="30">
+          <div class="slider-row">
+            <label for="fadeInput">Depth fade</label>
+            <output id="fadeValue">80%</output>
+          </div>
+          <input id="fadeInput" type="range" min="0" max="100" value="80">
+          <div class="slider-row">
+            <label for="limitInput">Words shown</label>
+            <input id="limitNumber" type="number" class="mini-number" min="100" step="100">
+          </div>
+          <input id="limitInput" type="range" min="100" max="50000" step="100" value="50000">
+        </div>
+
+        <div class="group">
+          <div class="slider-row">
+            <label for="dimInput">Dim other points</label>
+            <output id="dimValue">80%</output>
+          </div>
+          <input id="dimInput" type="range" min="0" max="100" value="80">
+          <label>Highlight display</label>
+          <div class="segmented" id="displayMode" role="group" aria-label="Show highlighted words as points or vectors">
+            <button type="button" data-mode="points" class="active">Points</button>
+            <button type="button" data-mode="vectors">Vectors</button>
+          </div>
+          <label class="toggle-row">
+            <input id="pathToggle" type="checkbox" checked>
+            <span>Traversal path (expressions)</span>
+          </label>
+          <div class="slider-row">
+            <label for="wpInput">Waypoint words</label>
+            <output id="wpValue">2</output>
+          </div>
+          <input id="wpInput" type="range" min="0" max="3" value="2">
+          <label class="toggle-row">
+            <input id="linesToggle" type="checkbox" checked>
+            <span>Lines to neighbors</span>
+          </label>
+          <label class="toggle-row">
+            <input id="labelsToggle" type="checkbox" checked>
+            <span>Labels on highlighted words</span>
+          </label>
+          <label class="toggle-row">
+            <input id="rotateToggle" type="checkbox">
+            <span>Auto-rotate</span>
+          </label>
+          <label class="toggle-row">
+            <input id="animToggle" type="checkbox" checked>
+            <span>Selection animations</span>
+          </label>
+        </div>
+
+        <div class="inline-row bottom-row">
+          <button id="resetButton" type="button" class="secondary">Reset view</button>
+          <button id="clearButton" type="button" class="secondary">Clear</button>
+        </div>
+      </section>
+
+      <section id="stage" class="panel stage-panel" aria-label="3D word embedding visualization">
+        <canvas id="glCanvas"></canvas>
+        <canvas id="overlayCanvas"></canvas>
+        <p class="stage-hint">drag orbit · right-drag pan · scroll zoom · click a point · double-click to center</p>
+        <div id="jumper" class="jumper" hidden>
+          <div id="jumpChips" class="jump-chips"></div>
+          <input id="jumpSlider" type="range" min="0" max="1" step="1" value="1" aria-label="Traversal step">
+          <label class="jumper-center-toggle" title="When off, double-click a stop marker to center">
+            <input id="markCenterToggle" type="checkbox" checked>
+            <span>click stop marker to center</span>
+          </label>
+        </div>
+        <p id="statusBar" class="status-bar">Loading data…</p>
+      </section>
+
+      <aside class="panel results-panel">
+        <div class="panel-head">
+          <h2>Results</h2>
+          <p id="resultSummary">Nearest neighbors appear here.</p>
+        </div>
+
+        <div class="result-block">
+          <h3 id="resultTitle">Nothing selected</h3>
+          <p id="resultSubtitle">Search a word, write vector math, or click any point in the cloud.</p>
+          <div id="queryChips" class="chip-row"></div>
+        </div>
+
+        <ol id="resultList" class="result-list"></ol>
+      </aside>
+    </main>
+  </div>
+</body>
+</html>
