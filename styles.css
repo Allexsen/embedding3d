@@ -676,3 +676,15 @@ button.secondary {
     grid-template-rows: minmax(340px, 55vh) auto auto;
   }
 }
+
+.nav-link {
+  padding: 8px 12px;
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  background: rgba(8, 15, 26, 0.5);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  text-decoration: none;
+}
+.nav-link:hover { color: var(--accent); border-color: rgba(120, 224, 255, 0.4); }

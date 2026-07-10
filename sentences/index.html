@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embedding3D · Sentences</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💬</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="main.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <h1>Embedding3D</h1>
+        <p class="tagline">sentences · how wording moves search space</p>
+      </div>
+      <div class="topbar-right">
+        <a class="nav-link" href="../" title="Word-level explorer">← words</a>
+        <a class="github-link" href="https://github.com/Allexsen/embedding3d" target="_blank" rel="noopener" aria-label="Star Embedding3D on GitHub">
+          <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          <span>Repo</span>
+          <span id="starCount" class="star-count" hidden></span>
+        </a>
+        <select id="modelSelect" class="dataset-select" hidden aria-label="Embedding model"></select>
+        <select id="datasetSelect" class="dataset-select" hidden aria-label="Corpus size"></select>
+        <select id="precisionSelect" class="dataset-select" hidden aria-label="Precision"></select>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel controls-panel">
+        <div class="panel-head">
+          <h2>Compare phrasings</h2>
+          <p>Type the same idea two ways. Watch where each lands.</p>
+        </div>
+
+        <div id="slots" class="slots"></div>
+        <div class="inline-row">
+          <button id="addSlot" type="button" class="secondary">+ phrasing</button>
+          <button id="runButton" type="button">Run</button>
+        </div>
+
+        <div class="group">
+          <p class="field-hint">Try a pair (bro vs academic):</p>
+          <div class="chip-row">
+            <button type="button" class="chip-btn" data-example="gpt">chatgpt</button>
+            <button type="button" class="chip-btn" data-example="results">results</button>
+            <button type="button" class="chip-btn" data-example="quantum">quantum</button>
+            <button type="button" class="chip-btn" data-example="dopamine">dopamine</button>
+          </div>
+        </div>
+
+        <div class="group">
+          <div class="slider-row">
+            <label for="topNInput">Neighbors</label>
+            <output id="topNValue">15</output>
+          </div>
+          <input id="topNInput" type="range" min="3" max="40" value="15">
+          <div class="slider-row">
+            <label for="sizeInput">Point size</label>
+            <output id="sizeValue">0.4×</output>
+          </div>
+          <input id="sizeInput" type="range" min="20" max="1000" value="40">
+          <div class="slider-row">
+            <label for="fadeInput">Depth fade</label>
+            <output id="fadeValue">80%</output>
+          </div>
+          <input id="fadeInput" type="range" min="0" max="100" value="80">
+          <div class="slider-row">
+            <label for="dimInput">Dim other points</label>
+            <output id="dimValue">40%</output>
+          </div>
+          <input id="dimInput" type="range" min="0" max="100" value="40">
+          <label class="toggle-row">
+            <input id="colorModeToggle" type="checkbox" checked>
+            <span>Color neighbors by source</span>
+          </label>
+        </div>
+
+        <div class="group">
+          <label>Sources</label>
+          <div id="legend" class="legend"></div>
+        </div>
+
+        <div class="inline-row bottom-row">
+          <button id="resetButton" type="button" class="secondary">Reset view</button>
+          <button id="clearButton" type="button" class="secondary">Clear</button>
+        </div>
+      </section>
+
+      <section id="stage" class="panel stage-panel" aria-label="3D sentence embedding visualization">
+        <canvas id="glCanvas"></canvas>
+        <canvas id="overlayCanvas"></canvas>
+        <p class="stage-hint">drag orbit · right-drag pan · scroll zoom · hover a point to read it</p>
+        <div id="morph" class="jumper morph-panel" hidden>
+          <div id="morphLabel" class="morph-label"></div>
+          <input id="morphSlider" type="range" min="0" max="100" value="0" aria-label="Morph between phrasings">
+          <div class="morph-opts">
+            <button id="playButton" type="button" class="morph-play" hidden aria-label="Play morph">▶ play</button>
+            <label class="morph-opt"><input id="followToggle" type="checkbox"><span>follow result</span></label>
+            <label class="morph-opt"><input id="precomputeToggle" type="checkbox"><span>precise animation</span></label>
+          </div>
+        </div>
+        <div id="loadingPanel" class="loading-panel">
+          <h3>Loading Embedding3D</h3>
+          <ul id="loadingItems"></ul>
+        </div>
+        <p id="statusBar" class="status-bar">Loading…</p>
+      </section>
+
+      <aside class="panel results-panel">
+        <div class="panel-head">
+          <h2>Neighbors</h2>
+          <p id="resultSummary">Run two phrasings to compare their neighborhoods.</p>
+        </div>
+        <div id="metrics" class="metrics"></div>
+        <ol id="resultList" class="result-list"></ol>
+      </aside>
+    </main>
+  </div>
+</body>
+</html>

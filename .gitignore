@@ -190,3 +190,13 @@ precompute/glove.6B.*.txt
 /embeddings.bin
 /projected.bin
 /manifest.json
+
+# sentence app precompute intermediates (keep only sentences/data/ + code)
+sentences/precompute/node_modules/
+sentences/precompute/__pycache__/
+sentences/precompute/*.log
+sentences/precompute/corpus.jsonl
+sentences/precompute/corpus_report.md
+sentences/precompute/parity_*.json
+sentences/precompute/package-lock.json
+sentences/precompute/glove.6B.*

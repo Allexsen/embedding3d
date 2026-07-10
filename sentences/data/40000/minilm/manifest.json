@@ -1,0 +1,1 @@
+{"count": 40000, "dim": 384, "projectionLength": 3, "sources": [{"name": "arxiv", "color": "#78e0ff"}, {"name": "wikipedia", "color": "#8de28f"}, {"name": "eli5", "color": "#ffc66d"}, {"name": "social", "color": "#ff8db3"}]}
