@@ -43,4 +43,7 @@ Vanilla JS + raw WebGL (points, lines, fog, animations in shaders), a 2D canvas 
 
 ## License
 
-[MIT](LICENSE)
+Code: [MIT](LICENSE)
+
+Word vectors: [GloVe](https://nlp.stanford.edu/projects/glove/) by Stanford NLP,
+released under the Public Domain Dedication and License v1.0 (PDDL).
