@@ -29,6 +29,7 @@
   const dom = {
     stage: document.getElementById('stage'),
     datasetSelect: document.getElementById('datasetSelect'),
+    starCount: document.getElementById('starCount'),
     glCanvas: document.getElementById('glCanvas'),
     overlay: document.getElementById('overlayCanvas'),
     modeChip: document.getElementById('modeChip'),
@@ -2861,6 +2862,30 @@
     }
   }
 
+  // ---------------------------------------------------------------- github stars
+
+  function formatCount(n) {
+    if (n < 1000) return String(n);
+    if (n < 999500) {
+      const v = n / 1000;
+      return `${(v >= 100 ? Math.round(v) : Math.round(v * 10) / 10).toString().replace(/\.0$/, '')}K`;
+    }
+    return `${(Math.round((n / 1e6) * 10) / 10).toString().replace(/\.0$/, '')}M`;
+  }
+
+  async function fetchStarCount() {
+    try {
+      const response = await fetch('https://api.github.com/repos/Allexsen/embedding3d');
+      if (!response.ok) return;
+      const data = await response.json();
+      if (typeof data.stargazers_count !== 'number') return;
+      dom.starCount.textContent = `★ ${formatCount(data.stargazers_count)}`;
+      dom.starCount.hidden = false;
+    } catch (error) {
+      // offline or rate-limited — the link works fine without the count
+    }
+  }
+
   // ---------------------------------------------------------------- boot
 
   function start() {
@@ -2879,6 +2904,7 @@
     loadData().then(() => {
       clearSelection();
     });
+    fetchStarCount();
 
     requestAnimationFrame((now) => {
       lastFrameTime = now;

@@ -89,6 +89,36 @@ input {
   gap: 8px;
 }
 
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 13px;
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  background: rgba(8, 15, 26, 0.5);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  text-decoration: none;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+
+.github-link:hover {
+  color: var(--accent-2);
+  border-color: rgba(255, 198, 109, 0.45);
+}
+
+.star-count {
+  padding-left: 9px;
+  border-left: 1px solid var(--panel-border);
+  color: var(--accent-2);
+}
+
+.star-count[hidden] {
+  display: none;
+}
+
 .dataset-select {
   padding: 8px 12px;
   border: 1px solid var(--panel-border);
