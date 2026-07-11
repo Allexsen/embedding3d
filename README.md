@@ -29,6 +29,7 @@ arithmetic on top.
 - **Search & arithmetic** — one query box for words and vector math: `king - man + woman`, `paris - france + italy`, `(coffee + tea) * 0.5`. Autocomplete, typo suggestions, quoted tokens (`"1990"`, `"u.s."`).
 - **Traversal path** — expressions render as a hop-by-hop path through the space, color-graded from start to result. A jumper bar lets you scrub through the intermediate stops and treat any partial sum as the destination.
 - **Dataset tiers** — 500 to 400,000 words (frequency-ordered slices of one UMAP run), switchable at runtime. Default loads the 20K tier (~4 MB).
+- **Shareable links** — the query lives in the URL hash (`/#q=king - man + woman`; on sentences, `/sentences/#s=first+phrasing&s=second`), so any result is a plain link that replays itself on load.
 - **Tuning** — neighbor count, point size, depth fog, dimming, words-shown limit, points-vs-vectors display, labels, auto-rotate, animations.
 - Nearest-neighbor search runs in a Web Worker on pre-normalized vectors; rendering and selection animations are GPU-side, so the 400K tier stays interactive.
 

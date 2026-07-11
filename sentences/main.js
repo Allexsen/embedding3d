@@ -68,6 +68,8 @@ env.allowLocalModels = false;
     datasetSelect: document.getElementById('datasetSelect'),
     precisionSelect: document.getElementById('precisionSelect'),
     starCount: document.getElementById('starCount'),
+    visitCount: document.getElementById('visitCount'),
+    shareButton: document.getElementById('shareButton'),
     slots: document.getElementById('slots'),
     addSlot: document.getElementById('addSlot'),
     runButton: document.getElementById('runButton'),
@@ -1063,6 +1065,7 @@ env.allowLocalModels = false;
       dom.genButton.textContent = '✦ Generate answers';
     }
     renderGenResults();
+    updateHash(); // dropped answers drop out of the permalink too
     state.needsRender = true;
   }
 
@@ -1140,6 +1143,7 @@ env.allowLocalModels = false;
           state.needsRender = true;
         }
       }
+      updateHash(); // answers ride along in the permalink
       setStatus(`Sampled ${state.gen.outputs.length} answers across ${slots.length} phrasing${slots.length > 1 ? 's' : ''}.`);
     } catch (err) {
       setStatus(state.gen.api.use ? 'API request failed — see console.' : 'Generation failed — see console.');
@@ -1603,6 +1607,7 @@ env.allowLocalModels = false;
       if (wasShowing) swapSelection();
       else showSelection();
       setupMorph(); // always rebuild the morph for the new pair (fresh slider + cache)
+      updateHash();
       setStatus(`Compared ${active.length} phrasing${active.length > 1 ? 's' : ''}.`);
     } catch (err) {
       setStatus('Embedding failed — see console.');
@@ -2145,6 +2150,24 @@ env.allowLocalModels = false;
       runAll();
     });
 
+    let shareTimer = 0;
+    dom.shareButton.addEventListener('click', async () => {
+      await updateHash(); // link reflects what's typed, even before Run
+      const url = window.location.href;
+      let ok = false;
+      try { await navigator.clipboard.writeText(url); ok = true; } catch (_) {}
+      if (!ok) { // clipboard API needs a secure context — fall back
+        const ta = document.createElement('textarea');
+        ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { ok = document.execCommand('copy'); } catch (_) {}
+        ta.remove();
+      }
+      dom.shareButton.textContent = ok ? '✓ copied' : 'copy failed';
+      clearTimeout(shareTimer);
+      shareTimer = setTimeout(() => { dom.shareButton.textContent = '⧉ Share'; }, 1400);
+    });
+
     window.addEventListener('resize', resize);
     if (typeof ResizeObserver !== 'undefined') new ResizeObserver(resize).observe(dom.stage);
   }
@@ -2161,16 +2184,198 @@ env.allowLocalModels = false;
     } catch (_) {}
   }
 
+  // Phrasings live in the hash (#s=first+phrasing&s=second) so any comparison
+  // can be shared as a plain link. Sampled answers ride along as g=<deflated
+  // JSON of the answer texts>: vectors, star positions and the divergence card
+  // are all derived from the text, so the recipient's browser re-embeds the
+  // answers and reproduces the exact picture — no API key or GPU needed on
+  // their end. replaceState only — typing and scrubbing shouldn't pile up
+  // back-button history.
+  let hashStamp = 0; // async serialize — only the latest call may write
+
+  const genModelLabel = () => (state.gen.api.use ? state.gen.api.model : 'Llama-3.2-1B in-browser');
+
+  async function deflateB64(str) {
+    const cs = new CompressionStream('deflate-raw');
+    const buf = await new Response(new Blob([new TextEncoder().encode(str)]).stream().pipeThrough(cs)).arrayBuffer();
+    let bin = '';
+    new Uint8Array(buf).forEach((b) => { bin += String.fromCharCode(b); });
+    return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+
+  async function inflateB64(b64) {
+    const bin = atob(b64.replace(/-/g, '+').replace(/_/g, '/'));
+    const bytes = Uint8Array.from(bin, (c) => c.charCodeAt(0));
+    const ds = new DecompressionStream('deflate-raw');
+    const buf = await new Response(new Blob([bytes]).stream().pipeThrough(ds)).arrayBuffer();
+    return new TextDecoder().decode(buf);
+  }
+
+  async function updateHash() {
+    const clean = window.location.pathname + window.location.search;
+    const params = new URLSearchParams();
+    state.slots.forEach((s) => { if (s.text.trim()) params.append('s', s.text.trim()); });
+    let q = params.toString();
+    const stamp = ++hashStamp;
+    if (q && state.gen.outputs.length && typeof CompressionStream !== 'undefined') {
+      const active = state.slots.filter((s) => s.text.trim());
+      const answers = [];
+      state.gen.outputs.forEach((o) => {
+        const i = active.indexOf(o.slot);
+        if (i >= 0 && o.text) answers.push([i, o.text]);
+      });
+      if (answers.length) {
+        try {
+          const g = await deflateB64(JSON.stringify({ m: genModelLabel(), a: answers }));
+          if (stamp !== hashStamp) return; // a newer call owns the hash now
+          if (g.length < 20000) q += `&g=${g}`;
+        } catch (_) { /* very old browser — share phrasings only */ }
+      }
+    }
+    if (stamp !== hashStamp) return;
+    history.replaceState(null, '', q ? `${clean}#${q}` : clean);
+  }
+
+  function readHashSlots() {
+    return new URLSearchParams(window.location.hash.slice(1))
+      .getAll('s').map((t) => t.trim()).filter(Boolean);
+  }
+
+  // Shared-link replay progress rides in the same loading panel as the data
+  // downloads — one visual language, and it sits next to the embedder bar
+  // that ensureExtractor adds on its own.
+  function replayLoadingItem() {
+    dom.loadingPanel.classList.add('active');
+    const li = document.createElement('li');
+    li.innerHTML = '<span class="li-label"></span><span class="li-bar"><i></i></span><span class="li-num"></span>';
+    dom.loadingItems.appendChild(li);
+    const label = li.querySelector('.li-label'), bar = li.querySelector('i'), num = li.querySelector('.li-num');
+    return {
+      step(text, frac, count = '') {
+        label.textContent = text;
+        bar.style.width = `${Math.round(clamp(frac, 0, 1) * 100)}%`;
+        num.textContent = count;
+      },
+      done() { bar.style.width = '100%'; num.textContent = 'done'; li.classList.add('li-done'); maybeHidePanel(); },
+    };
+  }
+
+  // The search worker signals readiness after loadTier resolves — anything
+  // that wants to auto-run a query has to wait for it explicitly.
+  async function waitForSearchReady(timeoutMs = 90000) {
+    const t0 = performance.now();
+    while (!search.ready && performance.now() - t0 < timeoutMs) {
+      await new Promise((r) => setTimeout(r, 100));
+    }
+    return search.ready;
+  }
+
+  async function replayShared(item, genB64) {
+    try {
+      item.step('shared comparison — corpus', 0.1);
+      if (!(await waitForSearchReady())) return;
+      item.step('shared comparison — embedding model', 0.2);
+      await ensureExtractor();
+      item.step('shared comparison — phrasings', 0.4);
+      await runAll();
+      if (genB64) {
+        await importSharedGen(genB64, (done, total) =>
+          item.step('shared comparison — answers', 0.45 + 0.55 * (done / total), `${done}/${total}`));
+      }
+    } catch (err) {
+      console.error('Shared link replay failed', err);
+    } finally {
+      item.done();
+    }
+  }
+
+  // Rebuild shared answers from their texts: embed → neighbors → star, the
+  // same pipeline generateAll uses, minus the LLM. Capped so a hostile URL
+  // can't queue an absurd embed loop.
+  async function importSharedGen(b64, onProgress) {
+    if (typeof DecompressionStream === 'undefined') return;
+    try {
+      const data = JSON.parse(await inflateB64(b64));
+      const active = state.slots.filter((s) => s.text.trim());
+      const items = (Array.isArray(data.a) ? data.a : [])
+        .filter((it) => Array.isArray(it) && active[it[0]] && typeof it[1] === 'string' && it[1].trim())
+        .slice(0, 64);
+      if (!items.length) return;
+      setStatus('Placing shared answers…');
+      if (onProgress) onProgress(0, items.length);
+      const token = state.gen.token;
+      let placed = 0;
+      for (const [idx, text] of items) {
+        const slot = active[idx];
+        const vec = await embedText(text.slice(0, 8000));
+        if (token !== state.gen.token) return; // user moved on mid-import
+        const neighbors = await searchNeighbors(vec, 10, new Set());
+        if (token !== state.gen.token) return;
+        state.gen.outputs.push({
+          slot,
+          color: slot.color,
+          text, vec,
+          pos: ghostPosition(neighbors),
+          origin: slot.ghost ? slot.ghost.slice() : null,
+        });
+        renderGenResults();
+        state.needsRender = true;
+        placed++;
+        if (onProgress) onProgress(placed, items.length);
+      }
+      updateHash(); // runAll stripped g while importing — put it back
+      setStatus(`Loaded ${items.length} shared answer${items.length > 1 ? 's' : ''}${data.m ? ` (sampled from ${data.m})` : ''}.`);
+    } catch (err) {
+      console.error('Could not restore shared answers', err);
+    }
+  }
+
+  // GoatCounter (goatcounter.com) — privacy-friendly page counts, no backend.
+  // The code below must be registered at goatcounter.com (with "allow using
+  // the visitor counter" enabled in its settings) for counting and the topbar
+  // counter to work; set to '' to disable both.
+  const GOATCOUNTER_CODE = 'embedding3d';
+
+  function initVisitCount() {
+    if (!GOATCOUNTER_CODE) return;
+    const base = `https://${GOATCOUNTER_CODE}.goatcounter.com`;
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://gc.zgo.at/count.js';
+    script.dataset.goatcounter = `${base}/count`;
+    document.head.appendChild(script);
+    fetch(`${base}/counter/TOTAL.json`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (!d || !d.count) return;
+        const n = Number(String(d.count).replace(/\D/g, ''));
+        if (!n) return;
+        const fmt = n < 1000 ? String(n) : n < 999500 ? `${(Math.round(n / 100) / 10).toString().replace(/\.0$/, '')}K` : `${(Math.round(n / 1e5) / 10).toString().replace(/\.0$/, '')}M`;
+        dom.visitCount.textContent = `${fmt} visits`;
+        dom.visitCount.hidden = false;
+      })
+      .catch(() => {}); // unregistered code, offline, adblock — page works without it
+  }
+
   async function start() {
     renderer.init();
     resize();
     bindStage();
     bindUi();
-    addSlot();
-    addSlot();
+    const shared = readHashSlots();
+    // grab g now — the auto-runAll below rewrites the hash before the import
+    const sharedGen = new URLSearchParams(window.location.hash.slice(1)).get('g');
+    shared.forEach((t) => addSlot(t));
+    while (state.slots.length < 2) addSlot();
+    // announce the replay before the corpus even starts downloading — a cold
+    // first visit is ~150 MB of corpus + embedder, and without this row the
+    // wait reads as "the link is broken"
+    const replay = shared.length ? replayLoadingItem() : null;
+    if (replay) replay.step('shared comparison — corpus', 0.05);
     loadApiConfig();
     updateGenHint();
     fetchStars();
+    initVisitCount();
 
     try {
       index = await (await fetch('data/index.json')).json();
@@ -2181,7 +2386,10 @@ env.allowLocalModels = false;
       state.browserId = m ? m.browserId : state.browserId;
       populateSelectors();
       await loadTier(index.default, index.defaultModel, index.defaultPrecision);
+      // fire-and-forget: the render loop below must never wait on the replay
+      if (replay) replayShared(replay, sharedGen);
     } catch (err) {
+      if (replay) replay.done();
       setStatus('Could not load corpus index. Serve over HTTP.');
       console.error(err);
     }

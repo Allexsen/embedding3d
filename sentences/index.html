@@ -25,6 +25,7 @@
           <span>Repo</span>
           <span id="starCount" class="star-count" hidden></span>
         </a>
+        <span id="visitCount" class="visit-count" hidden title="Total visits across the site"></span>
         <select id="modelSelect" class="dataset-select" hidden aria-label="Embedding model"></select>
         <select id="datasetSelect" class="dataset-select" hidden aria-label="Corpus size"></select>
         <select id="precisionSelect" class="dataset-select" hidden aria-label="Precision"></select>
@@ -126,6 +127,7 @@
         </details>
 
         <div class="inline-row bottom-row">
+          <button id="shareButton" type="button" class="secondary" title="Copy a link that replays this comparison — sampled answers included">⧉ Share</button>
           <button id="resetButton" type="button" class="secondary">Reset view</button>
           <button id="clearButton" type="button" class="secondary">Clear</button>
         </div>
