@@ -16,7 +16,7 @@
     <header class="topbar">
       <div class="brand">
         <h1>Embedding3D</h1>
-        <p class="tagline">sentences · how wording moves search space</p>
+        <p class="tagline">sentences · how wording moves search — and what a model says</p>
       </div>
       <div class="topbar-right">
         <a class="nav-link" href="../" title="Word-level explorer">← words</a>
@@ -54,37 +54,76 @@
           </div>
         </div>
 
-        <div class="group">
-          <div class="slider-row">
-            <label for="topNInput">Neighbors</label>
-            <output id="topNValue">15</output>
+        <details class="params-panel">
+          <summary>Parameters</summary>
+          <div class="params-body">
+            <div class="slider-row">
+              <label for="topNInput">Neighbors</label>
+              <output id="topNValue">15</output>
+            </div>
+            <input id="topNInput" type="range" min="3" max="40" value="15">
+            <div class="slider-row">
+              <label for="sizeInput">Point size</label>
+              <output id="sizeValue">0.4×</output>
+            </div>
+            <input id="sizeInput" type="range" min="20" max="1000" value="40">
+            <div class="slider-row">
+              <label for="fadeInput">Depth fade</label>
+              <output id="fadeValue">80%</output>
+            </div>
+            <input id="fadeInput" type="range" min="0" max="100" value="80">
+            <div class="slider-row">
+              <label for="dimInput">Dim other points</label>
+              <output id="dimValue">40%</output>
+            </div>
+            <input id="dimInput" type="range" min="0" max="100" value="40">
+            <label class="toggle-row">
+              <input id="colorModeToggle" type="checkbox" checked>
+              <span>Color neighbors by source</span>
+            </label>
           </div>
-          <input id="topNInput" type="range" min="3" max="40" value="15">
-          <div class="slider-row">
-            <label for="sizeInput">Point size</label>
-            <output id="sizeValue">0.4×</output>
-          </div>
-          <input id="sizeInput" type="range" min="20" max="1000" value="40">
-          <div class="slider-row">
-            <label for="fadeInput">Depth fade</label>
-            <output id="fadeValue">80%</output>
-          </div>
-          <input id="fadeInput" type="range" min="0" max="100" value="80">
-          <div class="slider-row">
-            <label for="dimInput">Dim other points</label>
-            <output id="dimValue">40%</output>
-          </div>
-          <input id="dimInput" type="range" min="0" max="100" value="40">
-          <label class="toggle-row">
-            <input id="colorModeToggle" type="checkbox" checked>
-            <span>Color neighbors by source</span>
-          </label>
-        </div>
+        </details>
 
         <div class="group">
           <label>Sources</label>
           <div id="legend" class="legend"></div>
         </div>
+
+        <details id="genPanel" class="gen-panel">
+          <summary>✦ Generate answers</summary>
+          <div class="gen-panel-body">
+            <div class="segmented gen-mode">
+              <button id="genModeLocal" type="button" class="active">local model</button>
+              <button id="genModeApi" type="button">API mode</button>
+            </div>
+            <p id="genHint" class="field-hint"></p>
+            <div id="apiFields" class="api-fields" hidden>
+              <select id="apiProviderSelect" aria-label="API provider">
+                <option value="openai">OpenAI</option>
+                <option value="anthropic">Anthropic (Claude)</option>
+                <option value="gemini">Google Gemini</option>
+                <option value="openrouter">OpenRouter</option>
+                <option value="groq">Groq</option>
+                <option value="custom">custom (OpenAI-compatible)</option>
+              </select>
+              <input id="apiBaseInput" type="text" placeholder="base URL" autocomplete="off" spellcheck="false">
+              <input id="apiModelInput" type="text" placeholder="model id" autocomplete="off" spellcheck="false">
+              <input id="apiKeyInput" type="password" placeholder="API key" autocomplete="off">
+              <p class="field-hint">Pick a provider (prefills URL + model) or point at any OpenAI-compatible endpoint, including a local server. The key is stored only in this browser; requests go straight from your browser to the provider.</p>
+            </div>
+            <div class="slider-row">
+              <label for="genSamplesInput">Samples per phrasing</label>
+              <output id="genSamplesValue">5</output>
+            </div>
+            <input id="genSamplesInput" type="range" min="2" max="10" value="5">
+            <div class="slider-row">
+              <label for="genTempInput">Temperature</label>
+              <output id="genTempValue">0.9</output>
+            </div>
+            <input id="genTempInput" type="range" min="20" max="150" value="90">
+            <button id="genButton" type="button" class="gen-button">✦ Generate</button>
+          </div>
+        </details>
 
         <div class="inline-row bottom-row">
           <button id="resetButton" type="button" class="secondary">Reset view</button>
@@ -96,6 +135,10 @@
         <canvas id="glCanvas"></canvas>
         <canvas id="overlayCanvas"></canvas>
         <p class="stage-hint">drag orbit · right-drag pan · scroll zoom · hover a point to read it</p>
+        <div class="stage-corner">
+          <button id="aboutButton" type="button" class="corner-btn about-btn" title="What is this and what does it download?">ⓘ about</button>
+          <button id="helpButton" type="button" class="corner-btn help-btn" title="Quick guide" aria-label="Quick guide">?</button>
+        </div>
         <div id="morph" class="jumper morph-panel" hidden>
           <div id="morphLabel" class="morph-label"></div>
           <input id="morphSlider" type="range" min="0" max="100" value="0" aria-label="Morph between phrasings">
@@ -109,15 +152,84 @@
           <h3>Loading Embedding3D</h3>
           <ul id="loadingItems"></ul>
         </div>
+        <div id="genConsent" class="stage-modal warn-modal" hidden>
+          <h3>⚠ Before you generate</h3>
+          <p>Generation isn't free compute — it uses <b>your hardware</b>
+          (local mode: ~0.8 GB one-time download, then your GPU does the work)
+          or <b>your API credits</b> (API mode).</p>
+          <div class="modal-actions">
+            <button id="genConsentCancel" type="button" class="secondary">Go back</button>
+            <button id="genConsentOk" type="button" class="btn-warn">I know what I'm doing</button>
+          </div>
+        </div>
+        <div id="answerPanel" class="stage-modal" hidden>
+          <button type="button" class="modal-close" aria-label="Close">×</button>
+          <h3 id="answerTitle">Sampled answer</h3>
+          <p id="answerText" class="answer-text"></p>
+        </div>
+        <div id="aboutPanel" class="stage-modal about-modal" hidden>
+          <button type="button" class="modal-close" aria-label="Close">×</button>
+          <h3>What is this?</h3>
+          <p><b>The cloud</b> is passages from four sources (arXiv, Wikipedia,
+          ELI5, social media), embedded with a sentence encoder and projected
+          to 3D with UMAP. Tiers of 10K / 40K / 100K passages — default 40K,
+          switchable top-right, along with the encoder (MiniLM/MPNet) and the
+          embedding precision. Colors are sources — registers of English
+          visibly cluster.</p>
+          <p><b>Compare phrasings</b>: your sentences are embedded in this
+          browser and their nearest corpus passages light up. Same idea in
+          different wording lands in different regions — that's the point.
+          The 3D picture is illustrative; the metric cards (cosine, overlap,
+          source mix) are computed in the full embedding space.</p>
+          <p><b>Generate answers</b>: each phrasing is sent to a small LLM
+          several times; every sampled answer is embedded and placed as a
+          ✦ star in its phrasing's color (corpus passages stay round dots,
+          your phrasings are ◆ diamonds). Separated answer clouds mean the
+          wording changed what the model says, not just what search
+          retrieves.</p>
+          <h3>What gets downloaded</h3>
+          <p>· corpus tier: ~15–70 MB (on page load, per tier/precision)<br>
+          · embedding model: ~25–110 MB (auto, cached)<br>
+          · generation model: ~0.8 GB (<b>only</b> after you confirm on first
+          Generate, cached)<br>
+          Everything runs client-side; API mode is the only thing that sends
+          your prompts anywhere.</p>
+          <h3>Controls</h3>
+          <p>drag = orbit · right-drag = pan · scroll = zoom · hover = read ·
+          click dot/ghost = fly to it · click empty space = clear ·
+          morph slider = interpolate between two phrasings</p>
+        </div>
+        <div id="helpPanel" class="stage-modal" hidden>
+          <button type="button" class="modal-close" aria-label="Close">×</button>
+          <h3>Camera</h3>
+          <p class="help-keys"><b>drag</b> orbit · <b>right-drag</b> (or ctrl-drag) pan ·
+          <b>scroll / pinch</b> zoom<br>
+          <b>hover</b> a point to read it · <b>click</b> a dot or marker to fly
+          to it · <b>click empty space</b> to clear · <b>Reset view</b> brings
+          the camera home</p>
+          <h3>Markers</h3>
+          <p><b>●</b> corpus passages (colored by source) ·
+          <b>◆</b> your phrasings ·
+          <b>✦</b> sampled answers (click to read in full)</p>
+          <h3>30-second tour</h3>
+          <p>1 · type the same idea two ways — or hit an example chip<br>
+          2 · <b>Run</b>: each phrasing lights up its nearest passages; the
+          bars show which sources it attracts<br>
+          3 · scrub the <b>morph slider</b> to glide between the two
+          neighborhoods<br>
+          4 · <b>✦ Generate</b>: sample an LLM with each phrasing and watch
+          where the answers land</p>
+        </div>
         <p id="statusBar" class="status-bar">Loading…</p>
       </section>
 
       <aside class="panel results-panel">
         <div class="panel-head">
-          <h2>Neighbors</h2>
+          <h2>Results</h2>
           <p id="resultSummary">Run two phrasings to compare their neighborhoods.</p>
         </div>
         <div id="metrics" class="metrics"></div>
+        <div id="genResults" class="gen-results"></div>
         <ol id="resultList" class="result-list"></ol>
       </aside>
     </main>

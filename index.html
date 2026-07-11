@@ -125,6 +125,42 @@
         <canvas id="glCanvas"></canvas>
         <canvas id="overlayCanvas"></canvas>
         <p class="stage-hint">drag orbit · right-drag pan · scroll zoom · click a point · double-click to center</p>
+        <div class="stage-corner">
+          <button id="aboutButton" type="button" class="corner-btn about-btn" title="What is this and what does it download?">ⓘ about</button>
+          <button id="helpButton" type="button" class="corner-btn help-btn" title="Quick guide" aria-label="Quick guide">?</button>
+        </div>
+        <div id="aboutPanel" class="stage-modal" hidden>
+          <button type="button" class="modal-close" aria-label="Close">×</button>
+          <h3>What is this?</h3>
+          <p><b>The cloud</b> is English words from GloVe (50-dimensional
+          vectors), projected to 3D with UMAP. Tiers from 500 to 400,000 words
+          — default 20K, switchable top-right. Position is meaning: related
+          words cluster.</p>
+          <p><b>Search &amp; arithmetic</b>: type a word to light up its
+          nearest neighbors, or do vector math — <b>king − man + woman</b>,
+          <b>paris − france + italy</b>. Expressions draw a hop-by-hop path you
+          can scrub with the jumper bar.</p>
+          <h3>What gets downloaded</h3>
+          <p>Only the word tier you pick: the default 20K tier is ~4 MB,
+          bigger tiers more (progress is shown while loading). Everything runs
+          in your browser; nothing you type is sent anywhere.</p>
+          <h3>More</h3>
+          <p>The <b>sentences →</b> page does the same for whole phrasings —
+          plus sampling an LLM to show wording changes what a model says.</p>
+        </div>
+        <div id="helpPanel" class="stage-modal" hidden>
+          <button type="button" class="modal-close" aria-label="Close">×</button>
+          <h3>Camera</h3>
+          <p><b>drag</b> orbit · <b>right-drag</b> (or ctrl-drag) pan ·
+          <b>scroll / pinch</b> zoom<br>
+          <b>click</b> a point to select it · <b>double-click</b> to center ·
+          <b>Reset view</b> brings the camera home</p>
+          <h3>30-second tour</h3>
+          <p>1 · type a word — neighbors light up<br>
+          2 · try arithmetic: <b>king − man + woman</b><br>
+          3 · scrub the jumper bar to walk the expression's path<br>
+          4 · crank the dataset size top-right when you want the full cloud</p>
+        </div>
         <div id="jumper" class="jumper" hidden>
           <div id="jumpChips" class="jump-chips"></div>
           <input id="jumpSlider" type="range" min="0" max="1" step="1" value="1" aria-label="Traversal step">
@@ -148,5 +184,21 @@
       </aside>
     </main>
   </div>
+  <script>
+    // about + help modals (self-contained; mutually exclusive, help stops pulsing once seen)
+    (function () {
+      var about = document.getElementById('aboutPanel');
+      var help = document.getElementById('helpPanel');
+      document.getElementById('aboutButton').addEventListener('click', function () {
+        help.hidden = true; about.hidden = !about.hidden;
+      });
+      document.getElementById('helpButton').addEventListener('click', function () {
+        about.hidden = true; help.hidden = !help.hidden;
+        this.classList.add('seen');
+      });
+      about.querySelector('.modal-close').addEventListener('click', function () { about.hidden = true; });
+      help.querySelector('.modal-close').addEventListener('click', function () { help.hidden = true; });
+    }());
+  </script>
 </body>
 </html>

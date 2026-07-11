@@ -1,4 +1,6 @@
-import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.2';
+// 3.8.1: needed for clean WebGPU text-generation (3.0.x degenerates); embedder
+// output is unchanged across the bump (same ONNX weights + pooling).
+import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1';
 
 // transformers.js: allow remote model download, cache in browser
 env.allowLocalModels = false;
@@ -10,7 +12,34 @@ env.allowLocalModels = false;
   const GRID_EXTENT = 6;
   const BASE_POINT_SIZE = 2.7;
   const CAMERA_DEFAULTS = { yaw: -0.65, pitch: 0.3, distance: 15, target: [0, 0.4, 0] };
-  const SLOT_COLORS = ['#78e0ff', '#ffc66d', '#ff8db3', '#8de28f', '#c9a4ff', '#ff9d7e'];
+  // default pair: slot 1 warm coral (casual phrasing), slot 2 blue — blue keeps
+  // the "academic ≈ arXiv" intuition since example pairs put the academic
+  // phrasing second, but is offset from the arxiv corpus cyan (#78e0ff) so a
+  // phrasing's color never blends with the source dots. Slots 3+ reuse the old
+  // palette; users can recolor via the swatch anyway.
+  const SLOT_COLORS = ['#ff9d7e', '#6ea8ff', '#c9a4ff', '#78e0ff', '#ffc66d', '#8de28f'];
+
+  // generation demo: small instruct model sampled in-browser over WebGPU.
+  // Llama-3.2-1B q4f16 samples cleanly on the GPU path; Qwen2.5-0.5B q4f16 was
+  // smaller but degenerates into token loops on WebGPU (fine on WASM) —
+  // verified across both before settling here.
+  const GEN_MODEL_ID = 'onnx-community/Llama-3.2-1B-Instruct';
+  const GEN_DTYPE = 'q4f16';
+  const GEN_SYSTEM = 'Answer the user\'s question directly and completely. A short paragraph at most.';
+  const GEN_MAX_TOKENS = 256; // local-path budget; answers finish on EOS well before this
+  const GEN_CONSENT_KEY = 'e3d_gen_consent';
+  const API_STORE_KEY = 'e3d_gen_api';
+
+  // provider presets for API mode. Anthropic speaks its own /v1/messages shape
+  // (no OpenAI-compatible endpoint), the rest are OpenAI-compatible.
+  const API_PRESETS = {
+    openai: { base: 'https://api.openai.com/v1', model: 'gpt-4o-mini' },
+    anthropic: { base: 'https://api.anthropic.com/v1', model: 'claude-haiku-4-5' },
+    gemini: { base: 'https://generativelanguage.googleapis.com/v1beta/openai', model: 'gemini-2.5-flash' },
+    openrouter: { base: 'https://openrouter.ai/api/v1', model: 'meta-llama/llama-3.3-70b-instruct' },
+    groq: { base: 'https://api.groq.com/openai/v1', model: 'llama-3.3-70b-versatile' },
+    custom: null,
+  };
 
   const EXAMPLES = {
     gpt: [
@@ -53,6 +82,29 @@ env.allowLocalModels = false;
     dimInput: document.getElementById('dimInput'),
     dimValue: document.getElementById('dimValue'),
     colorModeToggle: document.getElementById('colorModeToggle'),
+    genButton: document.getElementById('genButton'),
+    genHint: document.getElementById('genHint'),
+    genSamplesInput: document.getElementById('genSamplesInput'),
+    genSamplesValue: document.getElementById('genSamplesValue'),
+    genTempInput: document.getElementById('genTempInput'),
+    genTempValue: document.getElementById('genTempValue'),
+    genPanel: document.getElementById('genPanel'),
+    genModeLocal: document.getElementById('genModeLocal'),
+    genModeApi: document.getElementById('genModeApi'),
+    apiFields: document.getElementById('apiFields'),
+    apiProviderSelect: document.getElementById('apiProviderSelect'),
+    apiBaseInput: document.getElementById('apiBaseInput'),
+    apiModelInput: document.getElementById('apiModelInput'),
+    apiKeyInput: document.getElementById('apiKeyInput'),
+    genResults: document.getElementById('genResults'),
+    genConsent: document.getElementById('genConsent'),
+    answerPanel: document.getElementById('answerPanel'),
+    answerTitle: document.getElementById('answerTitle'),
+    answerText: document.getElementById('answerText'),
+    aboutButton: document.getElementById('aboutButton'),
+    aboutPanel: document.getElementById('aboutPanel'),
+    helpButton: document.getElementById('helpButton'),
+    helpPanel: document.getElementById('helpPanel'),
     legend: document.getElementById('legend'),
     morph: document.getElementById('morph'),
     morphSlider: document.getElementById('morphSlider'),
@@ -96,6 +148,15 @@ env.allowLocalModels = false;
                            //   a single interpolated group — kept separate so morph
                            //   never mutates the user's phrasing slots
     hoverIndex: -1,
+    hoverGen: -1,          // generated-answer dot under cursor
+    gen: {
+      samples: 5,
+      temp: 0.9,
+      running: false,
+      token: 0,            // bumped to abort an in-flight sampling loop
+      outputs: [],         // [{slot, color, text, vec, pos, origin}]
+      api: { use: false, provider: 'openai', base: 'https://api.openai.com/v1', model: 'gpt-4o-mini', key: '' },
+    },
     model: 'mpnet',        // active embedding model key
     browserId: 'Xenova/all-mpnet-base-v2',
     precision: 'int8',
@@ -524,6 +585,7 @@ env.allowLocalModels = false;
   }
 
   function resetSelectionNow() {
+    clearGenerations();
     state.slots.forEach((s) => { s.ghost = null; s.neighbors = null; s.vec = null; });
     state.display = [];
     dom.morph.hidden = true; state.morph = null;
@@ -640,7 +702,8 @@ env.allowLocalModels = false;
       stepBlend(hi, dt);
       rebuildLines(ease(hi.value)); // lines grow with the neighbor highlight
       if (dimA.value === 0 && dimA.target === 0 && hi.value === 0 && hi.target === 0) {
-        // fully dismissed: drop the selection, settle at rest
+        // fully dismissed: drop the selection (and sampled answers), settle at rest
+        clearGenerations();
         state.slots.forEach((s) => { s.ghost = null; s.neighbors = null; s.vec = null; });
         state.display = [];
         dom.morph.hidden = true; state.morph = null;
@@ -678,9 +741,72 @@ env.allowLocalModels = false;
       if (!projectToScreen(slot.ghost[0], slot.ghost[1], slot.ghost[2], scratchPoint)) continue;
       drawGhost(scratchPoint.x, scratchPoint.y, slot.color);
     }
+    drawGenerations();
     octx.globalAlpha = 1;
 
-    if (state.hoverIndex >= 0) drawHover(state.hoverIndex);
+    if (state.hoverGen >= 0) drawGenHover(state.hoverGen);
+    else if (state.hoverIndex >= 0) drawHover(state.hoverIndex);
+  }
+
+  function genScreenRadius(w) {
+    return clamp(6 * (15 / Math.max(w, 0.1)) * 0.5 * (0.6 + state.pointScale), 3.5, 16);
+  }
+
+  // sampled answers: line from the prompt's ghost to each answer dot, then the
+  // dot itself in the slot color with a bright core — visually "sprayed" output
+  function drawGenerations() {
+    if (!state.gen.outputs.length) return;
+    for (const g of state.gen.outputs) {
+      if (!g.pos) continue;
+      if (!projectToScreen(g.pos[0], g.pos[1], g.pos[2], scratchPoint)) { g._sx = -1; continue; }
+      const x = scratchPoint.x, y = scratchPoint.y, w = scratchPoint.w;
+      g._sx = x; g._sy = y; g._sw = w;
+      if (g.origin) {
+        const o = { x: 0, y: 0, w: 0 };
+        if (projectToScreen(g.origin[0], g.origin[1], g.origin[2], o)) {
+          octx.beginPath(); octx.moveTo(o.x, o.y); octx.lineTo(x, y);
+          octx.strokeStyle = hexToCss(g.color, 0.16); octx.lineWidth = 1;
+          octx.stroke();
+        }
+      }
+    }
+    const t = performance.now() / 1000;
+    state.gen.outputs.forEach((g, i) => {
+      if (!g.pos || g._sx < 0) return;
+      // per-star phase offset → asynchronous twinkle, never static
+      const tw = 0.72 + 0.28 * Math.sin(t * 2.1 + i * 1.7);
+      const r = genScreenRadius(g._sw) * 2;
+      const glow = octx.createRadialGradient(g._sx, g._sy, 0, g._sx, g._sy, r * 2.1);
+      glow.addColorStop(0, hexToCss(g.color, 0.4 * tw));
+      glow.addColorStop(1, hexToCss(g.color, 0));
+      octx.fillStyle = glow;
+      octx.beginPath(); octx.arc(g._sx, g._sy, r * 2.1, 0, Math.PI * 2); octx.fill();
+      drawStar(g._sx, g._sy, r * (0.9 + 0.1 * tw), g.color);
+    });
+  }
+
+  // ✦ four-pointed star — the marker shape for sampled answers (matches the
+  // Generate button glyph; corpus points are round, prompt ghosts are ◆)
+  function drawStar(x, y, r, color) {
+    octx.beginPath();
+    for (let i = 0; i < 8; i++) {
+      const ang = (Math.PI / 4) * i - Math.PI / 2;
+      const rad = i % 2 === 0 ? r : r * 0.42;
+      const px = x + Math.cos(ang) * rad, py = y + Math.sin(ang) * rad;
+      if (i === 0) octx.moveTo(px, py); else octx.lineTo(px, py);
+    }
+    octx.closePath();
+    octx.fillStyle = hexToCss(color, 0.95); octx.fill();
+    octx.lineWidth = 1.4; octx.strokeStyle = 'rgba(6,12,21,0.85)'; octx.stroke();
+  }
+
+  function drawGenHover(gi) {
+    const g = state.gen.outputs[gi];
+    if (!g || !g.pos || g._sx == null || g._sx < 0) return;
+    const r = genScreenRadius(g._sw) + 4;
+    octx.beginPath(); octx.arc(g._sx, g._sy, r, 0, Math.PI * 2);
+    octx.strokeStyle = 'rgba(255,255,255,0.85)'; octx.lineWidth = 1.6; octx.stroke();
+    drawTooltip(g._sx + r + 8, g._sy, g.text, { name: 'sampled answer', color: g.color }, r);
   }
 
   function drawGhost(x, y, color) {
@@ -704,10 +830,10 @@ env.allowLocalModels = false;
 
     const src = state.sources[state.sourceIdx[index]];
     const text = passageText(index);
-    drawTooltip(x + r + 8, y, text, src);
+    drawTooltip(x + r + 8, y, text, src, r);
   }
 
-  function drawTooltip(x, y, text, src) {
+  function drawTooltip(x, y, text, src, flipRadius = 10) {
     octx.font = '12px "IBM Plex Mono", monospace';
     const maxW = 320;
     const words = text.split(' ');
@@ -717,15 +843,15 @@ env.allowLocalModels = false;
       const test = line ? line + ' ' + word : word;
       if (octx.measureText(test).width > maxW && line) { lines.push(line); line = word; }
       else line = test;
-      if (lines.length >= 4) break;
+      if (lines.length >= 6) break;
     }
-    if (line && lines.length < 4) lines.push(line);
+    if (line && lines.length < 6) lines.push(line);
     const badge = src ? src.name : '';
     const lh = 17, pad = 9;
     const boxW = maxW + pad * 2;
     const boxH = lines.length * lh + 20 + pad * 2;
     let bx = x, by = y - boxH / 2;
-    if (bx + boxW > state.cssWidth - 6) bx = x - boxW - (pointScreenRadius(state.hoverIndex) + 16);
+    if (bx + boxW > state.cssWidth - 6) bx = x - boxW - (flipRadius + 16);
     bx = Math.max(6, bx);
     by = clamp(by, 6, state.cssHeight - boxH - 6);
 
@@ -770,6 +896,17 @@ env.allowLocalModels = false;
     return best;
   }
 
+  // answer dots are picked before corpus points (they sit on top visually)
+  function pickGenAt(x, y) {
+    let best = -1, bestW = Infinity;
+    state.gen.outputs.forEach((g, i) => {
+      if (!g.pos || g._sx == null || g._sx < 0) return;
+      const r = Math.max(8, genScreenRadius(g._sw) + 3);
+      if (Math.hypot(g._sx - x, g._sy - y) < r && g._sw < bestW) { bestW = g._sw; best = i; }
+    });
+    return best;
+  }
+
   // ghost markers (query/morph result) are bigger click targets than points
   function pickGhostAt(x, y) {
     for (const slot of state.display) {
@@ -807,6 +944,346 @@ env.allowLocalModels = false;
     const ex = await ensureExtractor();
     const out = await ex(text, { pooling: 'mean', normalize: true });
     return new Float32Array(out.data);
+  }
+
+  // ---------------------------------------------------------------- generation (LLM sampling)
+
+  let generator = null;
+  let generatorLoading = null;
+
+  const hasWebGPU = () => typeof navigator !== 'undefined' && 'gpu' in navigator;
+
+  async function ensureGenerator() {
+    if (generator) return generator;
+    if (generatorLoading) return generatorLoading;
+    const item = addLoadingItem('generation model (Llama-3.2-1B)', 0);
+    generatorLoading = pipeline('text-generation', GEN_MODEL_ID, {
+      dtype: GEN_DTYPE,
+      device: 'webgpu',
+      progress_callback: (p) => {
+        if (p.status === 'progress' && p.total) item.update(p.loaded / p.total, p.loaded / 1e6, p.total / 1e6);
+      },
+    }).then((g) => { generator = g; item.done(); return g; })
+      .catch((err) => { generatorLoading = null; item.done(); throw err; });
+    return generatorLoading;
+  }
+
+  async function generateLocal(promptText) {
+    const gen = await ensureGenerator();
+    const messages = [
+      { role: 'system', content: GEN_SYSTEM },
+      { role: 'user', content: promptText },
+    ];
+    const out = await gen(messages, {
+      max_new_tokens: GEN_MAX_TOKENS,
+      do_sample: true,
+      temperature: state.gen.temp,
+      top_p: 0.95,
+      top_k: 40,
+      // small models at high temp degenerate into token loops without these
+      repetition_penalty: 1.3,
+      no_repeat_ngram_size: 3,
+    });
+    const g = out[0].generated_text;
+    const text = typeof g === 'string' ? g : (Array.isArray(g) ? g[g.length - 1].content : String(g));
+    return text.trim();
+  }
+
+  async function generateApi(promptText) {
+    const { base, model, key, provider } = state.gen.api;
+    const root = base.replace(/\/+$/, '');
+
+    // Anthropic has no OpenAI-compatible endpoint — dedicated /v1/messages path
+    if (provider === 'anthropic' || /api\.anthropic\.com/.test(root)) {
+      // Opus 4.7+/Sonnet 5/Fable reject sampling params; older models cap temp at 1
+      const noTemp = /opus-4-[78]|sonnet-5|fable|mythos/.test(model);
+      const resp = await fetch(`${root}/messages`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': key,
+          'anthropic-version': '2023-06-01',
+          // opt-in CORS: the key is the user's own, entered by them, stored locally
+          'anthropic-dangerous-direct-browser-access': 'true',
+        },
+        body: JSON.stringify({
+          model,
+          max_tokens: 400, // required by the API; generous so answers never truncate
+          system: GEN_SYSTEM,
+          messages: [{ role: 'user', content: promptText }],
+          ...(noTemp ? {} : { temperature: Math.min(state.gen.temp, 1) }),
+        }),
+      });
+      if (!resp.ok) {
+        const body = await resp.text().catch(() => '');
+        throw new Error(`API ${resp.status}: ${body.slice(0, 200)}`);
+      }
+      const data = await resp.json();
+      const block = (data.content || []).find((b) => b.type === 'text');
+      return (block ? block.text : '').trim();
+    }
+
+    // everything else: OpenAI-compatible chat completions.
+    // No token cap: thinking models (Gemini 2.5, o-series, …) burn the
+    // completion budget on hidden reasoning tokens first, so a small
+    // max_tokens truncates the visible answer to a few words. The system
+    // prompt bounds the length instead.
+    const resp = await fetch(`${root}/chat/completions`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
+      body: JSON.stringify({
+        model,
+        temperature: state.gen.temp,
+        messages: [
+          { role: 'system', content: GEN_SYSTEM },
+          { role: 'user', content: promptText },
+        ],
+      }),
+    });
+    if (!resp.ok) {
+      const body = await resp.text().catch(() => '');
+      throw new Error(`API ${resp.status}: ${body.slice(0, 200)}`);
+    }
+    const data = await resp.json();
+    return data.choices[0].message.content.trim();
+  }
+
+  const generateOnce = (promptText) =>
+    state.gen.api.use ? generateApi(promptText) : generateLocal(promptText);
+
+  function clearGenerations() {
+    state.gen.token++;
+    state.gen.outputs = [];
+    state.hoverGen = -1;
+    if (state.gen.running) {
+      state.gen.running = false;
+      dom.genButton.textContent = '✦ Generate answers';
+    }
+    renderGenResults();
+    state.needsRender = true;
+  }
+
+  function updateGenHint() {
+    if (state.gen.api.use) {
+      const ok = state.gen.api.key && state.gen.api.model && state.gen.api.base;
+      dom.genHint.textContent = ok
+        ? `API mode: sampling ${state.gen.api.model}.`
+        : 'API mode: fill in base URL, model and key below.';
+      dom.genButton.disabled = false;
+    } else if (hasWebGPU()) {
+      dom.genHint.textContent = generator
+        ? 'Local model ready — sampling runs on your GPU, nothing leaves your browser.'
+        : 'Runs a small LLM in your browser via WebGPU — ~0.8 GB one-time download, cached for future visits.';
+      dom.genButton.disabled = false;
+    } else {
+      dom.genHint.textContent = 'This browser has no WebGPU — switch to API mode above to sample via your own provider instead.';
+      dom.genButton.disabled = true;
+    }
+  }
+
+  async function generateAll() {
+    if (state.gen.running) { // second click = cancel
+      clearGenerations();
+      setStatus('Generation cancelled.');
+      return;
+    }
+    const active = state.slots.filter((s) => s.text.trim());
+    if (!active.length) { setStatus('Type at least one phrasing.'); return; }
+    if (state.gen.api.use && !(state.gen.api.key && state.gen.api.model && state.gen.api.base)) {
+      setStatus('API mode needs base URL, model and key.'); return;
+    }
+    if (!state.gen.api.use && !hasWebGPU()) { updateGenHint(); return; }
+    // first Generate ever (either mode): warn that this spends the user's
+    // hardware or API credits — shown once per browser
+    if (!localStorage.getItem(GEN_CONSENT_KEY)) {
+      dom.genConsent.hidden = false;
+      return;
+    }
+
+    await runAll(); // (re)place the prompts; also clears stale answers
+    const slots = state.slots.filter((s) => s.text.trim() && s.vec && s.neighbors && s.neighbors.length);
+    if (!slots.length) return;
+
+    const token = state.gen.token; // post-runAll; any reset/cancel bumps it
+    state.gen.running = true;
+    try {
+      if (!state.gen.api.use) await ensureGenerator();
+      if (token !== state.gen.token) return;
+
+      const total = slots.length * state.gen.samples;
+      let done = 0;
+      updateGenProgress(done, total);
+
+      for (const slot of slots) {
+        const prompt = slot.text.trim();
+        for (let k = 0; k < state.gen.samples; k++) {
+          const text = await generateOnce(prompt);
+          if (token !== state.gen.token) return;
+          if (!text) { done++; updateGenProgress(done, total); continue; }
+          const vec = await embedText(text);
+          if (token !== state.gen.token) return;
+          const neighbors = await searchNeighbors(vec, 10, new Set());
+          if (token !== state.gen.token) return;
+          state.gen.outputs.push({
+            slot,
+            color: slot.color,
+            text, vec,
+            pos: ghostPosition(neighbors),
+            origin: slot.ghost ? slot.ghost.slice() : null,
+          });
+          done++;
+          updateGenProgress(done, total);
+          renderGenResults();
+          state.needsRender = true;
+        }
+      }
+      setStatus(`Sampled ${state.gen.outputs.length} answers across ${slots.length} phrasing${slots.length > 1 ? 's' : ''}.`);
+    } catch (err) {
+      setStatus(state.gen.api.use ? 'API request failed — see console.' : 'Generation failed — see console.');
+      console.error(err);
+    } finally {
+      if (token === state.gen.token) {
+        state.gen.running = false;
+        dom.genButton.textContent = '✦ Generate answers';
+        updateGenHint();
+        renderGenResults();
+      }
+    }
+  }
+
+  function updateGenProgress(done, total) {
+    dom.genButton.textContent = `✕ cancel (${done}/${total})`;
+    setStatus(`Sampling the model… ${done}/${total} answers.`);
+  }
+
+  function meanPairwiseCos(A, B) {
+    let sum = 0, n = 0;
+    if (A === B) {
+      for (let i = 0; i < A.length; i++) for (let j = i + 1; j < A.length; j++) { sum += cosineVecs(A[i].vec, A[j].vec); n++; }
+    } else {
+      for (const a of A) for (const b of B) { sum += cosineVecs(a.vec, b.vec); n++; }
+    }
+    return n ? sum / n : NaN;
+  }
+
+  const swatch = (color) =>
+    `<i style="background:${color};display:inline-block;width:8px;height:8px;border-radius:2px"></i>`;
+
+  // full sampled answer in a modal — dots and rows only have room for a preview
+  function showAnswer(gi) {
+    const g = state.gen.outputs[gi];
+    if (!g) return;
+    dom.aboutPanel.hidden = true;
+    dom.helpPanel.hidden = true;
+    const label = g.slot && g.slot.text ? g.slot.text : 'phrasing';
+    dom.answerTitle.innerHTML = `${swatch(g.color)} ${escapeHtml(label.slice(0, 70))}${label.length > 70 ? '…' : ''}`;
+    dom.answerText.textContent = g.text;
+    dom.answerPanel.hidden = false;
+  }
+
+  // sampled-answer panel: divergence card + answers grouped per phrasing.
+  // Kept out of updateResults so morph scrubbing never re-renders it.
+  function renderGenResults() {
+    const outputs = state.gen.outputs;
+    dom.genResults.innerHTML = '';
+    if (!outputs.length) return;
+
+    const groups = [];
+    for (const slot of state.slots) {
+      const outs = outputs.filter((g) => g.slot === slot);
+      if (outs.length) groups.push({ slot, outs });
+    }
+
+    const head = document.createElement('div');
+    head.className = 'gen-results-head';
+    head.textContent = `✦ sampled answers · ${outputs.length} — AI-generated`;
+    dom.genResults.appendChild(head);
+
+    // answer clouds should be tighter within a phrasing than across phrasings
+    // if wording actually moved the output distribution
+    const withCos = groups.map((g) => meanPairwiseCos(g.outs, g.outs));
+    const canJudge = groups.length >= 2 && groups.every((g) => g.outs.length >= 2);
+    if (groups.some((g) => g.outs.length >= 2)) {
+      const card = document.createElement('div');
+      card.className = 'metric-card';
+      let html = '<div class="metric-title">Answer similarity (mean cosine)</div>';
+      const bar = (labelHtml, val, color) => {
+        if (!isFinite(val)) return '';
+        const pct = Math.round(clamp(val, 0, 1) * 100);
+        return `<div class="mix-row"><span>${labelHtml}</span><span class="mix-bar"><i style="width:${pct}%;background:${color}"></i></span><b>${val.toFixed(2)}</b></div>`;
+      };
+      groups.forEach((g, i) => {
+        html += bar(`${swatch(g.slot.color)} within`, withCos[i], g.slot.color);
+      });
+      let minBetween = Infinity;
+      for (let i = 0; i < groups.length; i++) {
+        for (let j = i + 1; j < groups.length; j++) {
+          const between = meanPairwiseCos(groups[i].outs, groups[j].outs);
+          minBetween = Math.min(minBetween, between);
+          html += bar(`${swatch(groups[i].slot.color)} ↔ ${swatch(groups[j].slot.color)}`, between, '#9db8d9');
+        }
+      }
+      if (canJudge && isFinite(minBetween)) {
+        const minWithin = Math.min(...withCos.filter(isFinite));
+        const verdict = minWithin - minBetween >= 0.03
+          ? 'Different wording, measurably different answers.'
+          : 'Answer distributions overlap — wording barely moved the model here.';
+        html += `<p class="gen-verdict">${verdict}</p>`;
+      }
+      card.innerHTML = html;
+      dom.genResults.appendChild(card);
+    }
+
+    const list = document.createElement('ol');
+    list.className = 'result-list gen-list';
+    groups.forEach((g) => {
+      const head = document.createElement('li');
+      head.className = 'gen-group-head';
+      head.style.color = g.slot.color;
+      head.innerHTML = `${swatch(g.slot.color)} ${escapeHtml(g.slot.text.slice(0, 60))}${g.slot.text.length > 60 ? '…' : ''}`;
+      list.appendChild(head);
+      g.outs.forEach((out) => {
+        const gi = outputs.indexOf(out);
+        const li = document.createElement('li');
+        li.className = 'result-row gen-row';
+        li.style.borderLeft = `3px solid ${g.slot.color}`;
+        li.innerHTML = `<span class="rr-star" style="color:${g.slot.color}">✦</span><span class="rr-text gen-text">${escapeHtml(out.text)}</span>`;
+        li.addEventListener('mouseenter', () => { state.hoverGen = gi; state.needsRender = true; });
+        li.addEventListener('mouseleave', () => { if (state.hoverGen === gi) { state.hoverGen = -1; state.needsRender = true; } });
+        li.addEventListener('click', () => {
+          li.classList.toggle('expanded'); // full answer inline
+          if (out.pos) centerCameraOn(out.pos);
+        });
+        list.appendChild(li);
+      });
+    });
+    dom.genResults.appendChild(list);
+  }
+
+  function loadApiConfig() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(API_STORE_KEY) || 'null');
+      if (saved) Object.assign(state.gen.api, saved);
+    } catch (_) {}
+    dom.apiProviderSelect.value = API_PRESETS[state.gen.api.provider] !== undefined ? state.gen.api.provider : 'custom';
+    dom.apiBaseInput.value = state.gen.api.base;
+    dom.apiModelInput.value = state.gen.api.model;
+    dom.apiKeyInput.value = state.gen.api.key;
+    setGenMode(state.gen.api.use);
+    if (state.gen.api.use) dom.genPanel.open = true;
+  }
+
+  function setGenMode(useApi) {
+    state.gen.api.use = useApi;
+    dom.genModeLocal.classList.toggle('active', !useApi);
+    dom.genModeApi.classList.toggle('active', useApi);
+    dom.apiFields.hidden = !useApi;
+    saveApiConfig();
+    updateGenHint();
+  }
+
+  function saveApiConfig() {
+    try { localStorage.setItem(API_STORE_KEY, JSON.stringify(state.gen.api)); } catch (_) {}
   }
 
   // ---------------------------------------------------------------- search worker
@@ -1028,21 +1505,31 @@ env.allowLocalModels = false;
     state.slots.forEach((slot, i) => {
       const row = document.createElement('div');
       row.className = 'slot-row';
+      // prompt text is set via .value, never interpolated into markup — immune
+      // to quotes/entities/anything (the words app got bitten by exactly this)
       row.innerHTML = `
         <input type="color" value="${slot.color}" aria-label="Slot color">
-        <input type="text" class="slot-input" placeholder="phrasing ${i + 1}" value="${slot.text.replace(/"/g, '&quot;')}">
+        <textarea class="slot-input" rows="1" placeholder="phrasing ${i + 1}" spellcheck="false"></textarea>
         ${state.slots.length > 1 ? '<button type="button" class="slot-del" aria-label="Remove">×</button>' : ''}
       `;
-      const [colorInput, textInput] = row.querySelectorAll('input');
+      const colorInput = row.querySelector('input[type="color"]');
+      const textInput = row.querySelector('textarea');
+      textInput.value = slot.text;
+      // auto-grow: the whole prompt stays visible while typing
+      const grow = () => { textInput.style.height = 'auto'; textInput.style.height = `${textInput.scrollHeight}px`; };
       colorInput.addEventListener('input', () => {
         slot.color = colorInput.value;
         // reflect the recolor in the live display (unless a morph group is up)
         const d = state.display.find((g) => g.text === slot.text);
         if (d) d.color = slot.color;
-        applyStyles(); rebuildLines(); updateResults(); state.needsRender = true;
+        state.gen.outputs.forEach((g) => { if (g.slot === slot) g.color = slot.color; });
+        applyStyles(); rebuildLines(); updateResults(); renderGenResults(); state.needsRender = true;
       });
-      textInput.addEventListener('input', () => { slot.text = textInput.value; });
-      textInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') runAll(); });
+      textInput.addEventListener('input', () => { slot.text = textInput.value; grow(); });
+      textInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); runAll(); }
+      });
+      requestAnimationFrame(grow); // size to content once laid out
       const del = row.querySelector('.slot-del');
       if (del) del.addEventListener('click', () => { state.slots.splice(i, 1); renderSlots(); runAll(); });
       dom.slots.appendChild(row);
@@ -1054,6 +1541,7 @@ env.allowLocalModels = false;
     if (!active.length) { setStatus('Type at least one phrasing.'); return; }
     if (!search.ready) { setStatus('Corpus still loading…'); return; }
     if (state.playing) stopAutoplay();
+    clearGenerations(); // prompts change → stale sampled answers drop (and any in-flight run aborts)
 
     // already dimmed on screen? swap (keep bg dimmed, re-animate neighbors);
     // else play the full dim-in. Keys off the actual blend, so it survives
@@ -1283,11 +1771,27 @@ env.allowLocalModels = false;
       dom.resultSummary.textContent = 'Run two phrasings to compare their neighborhoods.';
       return;
     }
-    dom.resultSummary.textContent = `${active.length} phrasing${active.length > 1 ? 's' : ''} · ${state.topN} neighbors each.`;
+
+    // during a morph scrub, keep the endpoints' cards on screen and append the
+    // morph card after them — the shift stays readable against the originals
+    const m = state.morph;
+    const isMorphView = m && active.length === 1
+      && typeof active[0].text === 'string' && active[0].text.startsWith('morph');
+    let mixGroups = active, overlapGroups = active, listGroups = active;
+    if (isMorphView && m.a.neighbors && m.b.neighbors) {
+      const endA = { color: m.a.color, neighbors: m.a.neighbors, text: m.a.text };
+      const endB = { color: m.b.color, neighbors: m.b.neighbors, text: m.b.text };
+      mixGroups = [endA, endB, active[0]];
+      overlapGroups = [endA, endB]; // overlap between the real phrasings, not the interpolant
+    }
+
+    dom.resultSummary.textContent = isMorphView
+      ? `${active[0].text} between 2 phrasings · ${state.topN} neighbors.`
+      : `${active.length} phrasing${active.length > 1 ? 's' : ''} · ${state.topN} neighbors each.`;
 
     // rank-weighted source-mix per slot: nearer neighbors count more, so the
     // register signal (strongest in the top matches) drives the bars
-    active.forEach((slot) => {
+    mixGroups.forEach((slot) => {
       const weight = new Array(state.sources.length).fill(0);
       let wsum = 0;
       for (const n of slot.neighbors) {
@@ -1308,25 +1812,31 @@ env.allowLocalModels = false;
     });
 
     // pairwise similarity (via neighbor overlap — proxy for query cosine)
-    if (active.length >= 2) {
+    if (overlapGroups.length >= 2) {
       const pairWrap = document.createElement('div');
       pairWrap.className = 'metric-card pairs';
       let html = '<div class="metric-title">Neighbor overlap</div>';
-      for (let i = 0; i < active.length; i++) {
-        for (let j = i + 1; j < active.length; j++) {
-          const a = new Set(active[i].neighbors.map((n) => n.index));
-          const b = new Set(active[j].neighbors.map((n) => n.index));
+      for (let i = 0; i < overlapGroups.length; i++) {
+        for (let j = i + 1; j < overlapGroups.length; j++) {
+          const a = new Set(overlapGroups[i].neighbors.map((n) => n.index));
+          const b = new Set(overlapGroups[j].neighbors.map((n) => n.index));
           let inter = 0; for (const x of a) if (b.has(x)) inter++;
           const jac = Math.round((inter / (a.size + b.size - inter)) * 100);
-          html += `<div class="mix-row"><span><i style="background:${active[i].color};display:inline-block;width:8px;height:8px;border-radius:2px"></i> ∩ <i style="background:${active[j].color};display:inline-block;width:8px;height:8px;border-radius:2px"></i></span><span class="mix-bar"><i style="width:${jac}%;background:#9db8d9"></i></span><b>${jac}%</b></div>`;
+          html += `<div class="mix-row"><span><i style="background:${overlapGroups[i].color};display:inline-block;width:8px;height:8px;border-radius:2px"></i> ∩ <i style="background:${overlapGroups[j].color};display:inline-block;width:8px;height:8px;border-radius:2px"></i></span><span class="mix-bar"><i style="width:${jac}%;background:#9db8d9"></i></span><b>${jac}%</b></div>`;
         }
       }
       pairWrap.innerHTML = html;
       dom.metrics.appendChild(pairWrap);
     }
 
-    // neighbor list (per slot, color-tagged)
-    active.forEach((slot) => {
+    // neighbor list (per slot, color-tagged; morph view lists the live interpolant)
+    if (listGroups.some((s) => s.neighbors && s.neighbors.length)) {
+      const head = document.createElement('li');
+      head.className = 'list-section-head';
+      head.textContent = '● corpus neighbors — existing passages';
+      dom.resultList.appendChild(head);
+    }
+    listGroups.forEach((slot) => {
       slot.neighbors.slice(0, 12).forEach((n) => {
         const li = document.createElement('li');
         li.className = 'result-row';
@@ -1346,7 +1856,7 @@ env.allowLocalModels = false;
   }
 
   function escapeHtml(s) {
-    return s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    return s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
   // ---------------------------------------------------------------- events
@@ -1397,10 +1907,11 @@ env.allowLocalModels = false;
         pointerState.pinchDist = dist; return;
       }
       if (!pointerState.dragging) {
-        if (!overCanvas(e)) { state.hoverIndex = -1; stage.classList.remove('point-hover'); return; }
-        const picked = pickPointAt(e.offsetX, e.offsetY);
-        state.hoverIndex = picked;
-        stage.classList.toggle('point-hover', picked >= 0);
+        if (!overCanvas(e)) { state.hoverIndex = -1; state.hoverGen = -1; stage.classList.remove('point-hover'); return; }
+        const gen = pickGenAt(e.offsetX, e.offsetY);
+        state.hoverGen = gen;
+        state.hoverIndex = gen >= 0 ? -1 : pickPointAt(e.offsetX, e.offsetY);
+        stage.classList.toggle('point-hover', gen >= 0 || state.hoverIndex >= 0);
         return;
       }
       const now = performance.now();
@@ -1435,6 +1946,12 @@ env.allowLocalModels = false;
       // click behavior: a ghost marker or highlighted neighbor centers the
       // camera (keeps the selection); empty space dismisses the comparison.
       if (pointerState.moved < 5 && pointerState.mode === 'orbit' && e.type === 'pointerup') {
+        const gen = pickGenAt(e.offsetX, e.offsetY);
+        if (gen >= 0) {
+          showAnswer(gen); // click a dot → read the full answer
+          if (state.gen.outputs[gen].pos) centerCameraOn(state.gen.outputs[gen].pos);
+          return;
+        }
         const ghost = pickGhostAt(e.offsetX, e.offsetY);
         if (ghost) { centerCameraOn(ghost); return; }
         const picked = pickPointAt(e.offsetX, e.offsetY);
@@ -1450,7 +1967,7 @@ env.allowLocalModels = false;
     };
     stage.addEventListener('pointerup', end);
     stage.addEventListener('pointercancel', end);
-    stage.addEventListener('pointerleave', () => { if (!pointerState.dragging) { state.hoverIndex = -1; stage.classList.remove('point-hover'); } });
+    stage.addEventListener('pointerleave', () => { if (!pointerState.dragging) { state.hoverIndex = -1; state.hoverGen = -1; stage.classList.remove('point-hover'); } });
     stage.addEventListener('wheel', (e) => {
       if (!overCanvas(e)) return;
       e.preventDefault(); camera.tween = null;
@@ -1464,7 +1981,7 @@ env.allowLocalModels = false;
     dom.runButton.addEventListener('click', runAll);
     dom.addSlot.addEventListener('click', () => addSlot());
     dom.resetButton.addEventListener('click', resetCamera);
-    dom.clearButton.addEventListener('click', () => { state.slots.forEach((s) => { s.text = ''; }); renderSlots(); dismissSelection(); });
+    dom.clearButton.addEventListener('click', () => { clearGenerations(); state.slots.forEach((s) => { s.text = ''; }); renderSlots(); dismissSelection(); });
 
     dom.topNInput.addEventListener('input', () => {
       state.topN = Number(dom.topNInput.value); dom.topNValue.textContent = String(state.topN);
@@ -1484,6 +2001,62 @@ env.allowLocalModels = false;
     dom.colorModeToggle.addEventListener('change', () => {
       state.sourceColorNodes = dom.colorModeToggle.checked; state.needsRender = true;
     });
+
+    // generation controls
+    dom.genButton.addEventListener('click', generateAll);
+    dom.genSamplesInput.addEventListener('input', () => {
+      state.gen.samples = Number(dom.genSamplesInput.value);
+      dom.genSamplesValue.textContent = String(state.gen.samples);
+    });
+    dom.genTempInput.addEventListener('input', () => {
+      state.gen.temp = Number(dom.genTempInput.value) / 100;
+      dom.genTempValue.textContent = state.gen.temp.toFixed(1);
+    });
+    dom.genModeLocal.addEventListener('click', () => setGenMode(false));
+    dom.genModeApi.addEventListener('click', () => setGenMode(true));
+    dom.apiProviderSelect.addEventListener('change', () => {
+      const p = dom.apiProviderSelect.value;
+      state.gen.api.provider = p;
+      const preset = API_PRESETS[p];
+      if (preset) {
+        state.gen.api.base = preset.base; dom.apiBaseInput.value = preset.base;
+        state.gen.api.model = preset.model; dom.apiModelInput.value = preset.model;
+      }
+      saveApiConfig(); updateGenHint();
+    });
+    const bindApiField = (input, key) => {
+      input.addEventListener('input', () => {
+        state.gen.api[key] = input.value.trim();
+        saveApiConfig(); updateGenHint();
+      });
+    };
+    bindApiField(dom.apiBaseInput, 'base');
+    bindApiField(dom.apiModelInput, 'model');
+    bindApiField(dom.apiKeyInput, 'key');
+
+    // one-time warning before the first Generate (hardware / API credits)
+    dom.genConsent.querySelector('#genConsentOk').addEventListener('click', () => {
+      try { localStorage.setItem(GEN_CONSENT_KEY, '1'); } catch (_) {}
+      dom.genConsent.hidden = true;
+      generateAll();
+    });
+    dom.genConsent.querySelector('#genConsentCancel').addEventListener('click', () => {
+      dom.genConsent.hidden = true;
+    });
+    dom.answerPanel.querySelector('.modal-close').addEventListener('click', () => { dom.answerPanel.hidden = true; });
+
+    // about + help panels (mutually exclusive; help stops pulsing once seen)
+    dom.aboutButton.addEventListener('click', () => {
+      dom.helpPanel.hidden = true;
+      dom.aboutPanel.hidden = !dom.aboutPanel.hidden;
+    });
+    dom.helpButton.addEventListener('click', () => {
+      dom.aboutPanel.hidden = true;
+      dom.helpPanel.hidden = !dom.helpPanel.hidden;
+      dom.helpButton.classList.add('seen');
+    });
+    dom.aboutPanel.querySelector('.modal-close').addEventListener('click', () => { dom.aboutPanel.hidden = true; });
+    dom.helpPanel.querySelector('.modal-close').addEventListener('click', () => { dom.helpPanel.hidden = true; });
     dom.morphSlider.addEventListener('input', () => {
       if (state.playing) stopAutoplay(); // manual drag takes over
       morphTo(Number(dom.morphSlider.value) / 100);
@@ -1546,6 +2119,8 @@ env.allowLocalModels = false;
     bindUi();
     addSlot();
     addSlot();
+    loadApiConfig();
+    updateGenHint();
     fetchStars();
 
     try {
