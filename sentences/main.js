@@ -28,7 +28,11 @@ env.allowLocalModels = false;
   const GEN_SYSTEM = 'Answer the user\'s question directly and completely. A short paragraph at most.';
   const GEN_MAX_TOKENS = 256; // local-path budget; answers finish on EOS well before this
   const GEN_CONSENT_KEY = 'e3d_gen_consent';
-  const API_STORE_KEY = 'e3d_gen_api';
+  const API_STORE_KEY = 'e3d_gen_api';   // non-secret config (localStorage)
+  const API_KEY_STORE = 'e3d_gen_keys';  // per-provider key map (sessionStorage, per-tab)
+  // opt-in persistent copy ("remember my key"); app-namespaced so no other
+  // project sharing the GitHub Pages origin accidentally reads or rewrites it
+  const API_KEY_PERSIST = 'embedding3d.sentences.apiKeys';
 
   // provider presets for API mode. Anthropic speaks its own /v1/messages shape
   // (no OpenAI-compatible endpoint), the rest are OpenAI-compatible.
@@ -92,6 +96,7 @@ env.allowLocalModels = false;
     apiBaseInput: document.getElementById('apiBaseInput'),
     apiModelInput: document.getElementById('apiModelInput'),
     apiKeyInput: document.getElementById('apiKeyInput'),
+    apiRememberToggle: document.getElementById('apiRememberToggle'),
     genResults: document.getElementById('genResults'),
     genConsent: document.getElementById('genConsent'),
     answerPanel: document.getElementById('answerPanel'),
@@ -151,7 +156,9 @@ env.allowLocalModels = false;
       running: false,
       token: 0,            // bumped to abort an in-flight sampling loop
       outputs: [],         // [{slot, color, text, vec, pos, origin}]
-      api: { use: false, provider: 'openai', base: 'https://api.openai.com/v1', model: 'gpt-4o-mini', key: '' },
+      // key = the active provider's key; keys = per-provider backing map, so
+      // switching provider never leaks one service's key into another's slot
+      api: { use: false, provider: 'openai', base: 'https://api.openai.com/v1', model: 'gpt-4o-mini', key: '', keys: {}, remember: false },
     },
     model: 'mpnet',        // active embedding model key
     browserId: 'Xenova/all-mpnet-base-v2',
@@ -1261,6 +1268,29 @@ env.allowLocalModels = false;
       const saved = JSON.parse(localStorage.getItem(API_STORE_KEY) || 'null');
       if (saved) Object.assign(state.gen.api, saved);
     } catch (_) {}
+    if (!state.gen.api.keys || typeof state.gen.api.keys !== 'object') state.gen.api.keys = {};
+    try {
+      // per-provider key maps: this tab's sessionStorage wins over the
+      // opt-in remembered copy
+      const sess = JSON.parse(sessionStorage.getItem(API_KEY_STORE) || 'null');
+      const per = JSON.parse(localStorage.getItem(API_KEY_PERSIST) || 'null');
+      state.gen.api.keys = Object.assign({}, per || {}, sess || {});
+    } catch (_) {}
+    try {
+      // migrate single-key entries from earlier versions into the active
+      // provider's slot, then drop them
+      const legacy = sessionStorage.getItem('e3d_gen_key')
+        || localStorage.getItem('embedding3d.sentences.apiKey')
+        || state.gen.api.key || '';
+      if (legacy && !state.gen.api.keys[state.gen.api.provider]) {
+        state.gen.api.keys[state.gen.api.provider] = legacy;
+      }
+      sessionStorage.removeItem('e3d_gen_key');
+      localStorage.removeItem('embedding3d.sentences.apiKey');
+    } catch (_) {}
+    state.gen.api.key = state.gen.api.keys[state.gen.api.provider] || '';
+    saveApiConfig(); // rewrite storage in the current format, sans legacy leftovers
+    dom.apiRememberToggle.checked = !!state.gen.api.remember;
     dom.apiProviderSelect.value = API_PRESETS[state.gen.api.provider] !== undefined ? state.gen.api.provider : 'custom';
     dom.apiBaseInput.value = state.gen.api.base;
     dom.apiModelInput.value = state.gen.api.model;
@@ -1279,7 +1309,19 @@ env.allowLocalModels = false;
   }
 
   function saveApiConfig() {
-    try { localStorage.setItem(API_STORE_KEY, JSON.stringify(state.gen.api)); } catch (_) {}
+    // never write the key to persistent storage — localStorage is shared
+    // across the whole origin (on GitHub Pages: every project page)
+    try {
+      const { key, keys, ...rest } = state.gen.api; // secrets never enter the config blob
+      localStorage.setItem(API_STORE_KEY, JSON.stringify(rest));
+    } catch (_) {}
+    try { sessionStorage.setItem(API_KEY_STORE, JSON.stringify(state.gen.api.keys)); } catch (_) {}
+    try {
+      // persistent copy only with explicit opt-in; removed the moment it's off
+      const hasAny = Object.values(state.gen.api.keys).some((k) => k);
+      if (state.gen.api.remember && hasAny) localStorage.setItem(API_KEY_PERSIST, JSON.stringify(state.gen.api.keys));
+      else localStorage.removeItem(API_KEY_PERSIST);
+    } catch (_) {}
   }
 
   // ---------------------------------------------------------------- search worker
@@ -2018,6 +2060,9 @@ env.allowLocalModels = false;
         state.gen.api.base = preset.base; dom.apiBaseInput.value = preset.base;
         state.gen.api.model = preset.model; dom.apiModelInput.value = preset.model;
       }
+      // each provider keeps its own key — no Gemini keys in the OpenAI slot
+      state.gen.api.key = state.gen.api.keys[p] || '';
+      dom.apiKeyInput.value = state.gen.api.key;
       saveApiConfig(); updateGenHint();
     });
     const bindApiField = (input, key) => {
@@ -2028,7 +2073,15 @@ env.allowLocalModels = false;
     };
     bindApiField(dom.apiBaseInput, 'base');
     bindApiField(dom.apiModelInput, 'model');
-    bindApiField(dom.apiKeyInput, 'key');
+    dom.apiKeyInput.addEventListener('input', () => {
+      state.gen.api.key = dom.apiKeyInput.value.trim();
+      state.gen.api.keys[state.gen.api.provider] = state.gen.api.key;
+      saveApiConfig(); updateGenHint();
+    });
+    dom.apiRememberToggle.addEventListener('change', () => {
+      state.gen.api.remember = dom.apiRememberToggle.checked;
+      saveApiConfig();
+    });
 
     // one-time warning before the first Generate (hardware / API credits)
     dom.genConsent.querySelector('#genConsentOk').addEventListener('click', () => {

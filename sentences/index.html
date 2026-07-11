@@ -108,7 +108,8 @@
               <input id="apiBaseInput" type="text" placeholder="base URL" autocomplete="off" spellcheck="false">
               <input id="apiModelInput" type="text" placeholder="model id" autocomplete="off" spellcheck="false">
               <input id="apiKeyInput" type="password" placeholder="API key" autocomplete="off">
-              <p class="field-hint">Pick a provider (prefills URL + model) or point at any OpenAI-compatible endpoint, including a local server. The key is stored only in this browser; requests go straight from your browser to the provider.</p>
+              <label class="toggle-row"><input id="apiRememberToggle" type="checkbox"><span>remember my key on this device</span></label>
+              <p class="field-hint">Pick a provider (prefills URL + model) or point at any OpenAI-compatible endpoint, including a local server. Requests go straight from your browser to the provider. Each provider keeps its own key. By default keys live only in this tab and are forgotten when it closes — tick remember to keep them in this browser (stored under this app's own name); provider, URL and model are always remembered.</p>
             </div>
             <div class="slider-row">
               <label for="genSamplesInput">Samples per phrasing</label>
