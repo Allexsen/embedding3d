@@ -22,7 +22,7 @@ Engineering details: [sentences/engdoc.md](sentences/engdoc.md).
 ## Words — the root app
 
 Interactive 3D word embedding explorer — GloVe vectors projected to 3D with
-UMAP, rendered as a WebGL point cloud. Inspired by the
+UMAP, rendered as a WebGL point cloud. Inspired by the [3b1b content]([url](https://www.youtube.com/@3blue1brown)) and the
 [TensorFlow Embedding Projector](https://projector.tensorflow.org), with word
 arithmetic on top.
 
