@@ -30,6 +30,8 @@
     stage: document.getElementById('stage'),
     datasetSelect: document.getElementById('datasetSelect'),
     starCount: document.getElementById('starCount'),
+    visitCount: document.getElementById('visitCount'),
+    shareButton: document.getElementById('shareButton'),
     glCanvas: document.getElementById('glCanvas'),
     overlay: document.getElementById('overlayCanvas'),
     modeChip: document.getElementById('modeChip'),
@@ -2137,6 +2139,7 @@
         });
       }
       state.lastQueryText = text;
+      updateHash(text);
     } catch (error) {
       failQuery(error.message);
     }
@@ -2695,6 +2698,23 @@
     dom.clearButton.addEventListener('click', () => {
       dom.queryInput.value = '';
       clearSelection();
+      updateHash('');
+    });
+    let shareTimer = 0;
+    dom.shareButton.addEventListener('click', async () => {
+      const url = window.location.href;
+      let ok = false;
+      try { await navigator.clipboard.writeText(url); ok = true; } catch (_) {}
+      if (!ok) { // clipboard API needs a secure context — fall back
+        const ta = document.createElement('textarea');
+        ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { ok = document.execCommand('copy'); } catch (_) {}
+        ta.remove();
+      }
+      dom.shareButton.textContent = ok ? '✓ copied' : 'copy failed';
+      clearTimeout(shareTimer);
+      shareTimer = setTimeout(() => { dom.shareButton.textContent = '⧉ Share'; }, 1400);
     });
     dom.resetButton.addEventListener('click', resetCamera);
 
@@ -2886,6 +2906,51 @@
     }
   }
 
+  // ---------------------------------------------------------------- permalink
+
+  // The query lives in the hash (#q=king-man+woman) so any result can be
+  // shared as a plain link — replaceState keeps scrubbing/typing out of the
+  // back-button history.
+  function updateHash(query) {
+    const clean = window.location.pathname + window.location.search;
+    history.replaceState(null, '', query ? `${clean}#q=${encodeURIComponent(query)}` : clean);
+  }
+
+  function readHashQuery() {
+    const q = new URLSearchParams(window.location.hash.slice(1)).get('q');
+    return q ? q.trim() : '';
+  }
+
+  // ---------------------------------------------------------------- visits
+
+  // GoatCounter (goatcounter.com) — privacy-friendly page counts, no backend.
+  // The code below must be registered at goatcounter.com (with "allow using
+  // the visitor counter" enabled in its settings) for counting and the topbar
+  // counter to work; set to '' to disable both.
+  const GOATCOUNTER_CODE = 'embedding3d';
+
+  function initVisitCount() {
+    if (!GOATCOUNTER_CODE) return;
+    const base = `https://${GOATCOUNTER_CODE}.goatcounter.com`;
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://gc.zgo.at/count.js';
+    script.dataset.goatcounter = `${base}/count`;
+    document.head.appendChild(script);
+    fetch(`${base}/counter/TOTAL.json`)
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        if (!data || !data.count) return;
+        const n = Number(String(data.count).replace(/\D/g, ''));
+        if (!n) return;
+        dom.visitCount.textContent = `${formatCount(n)} visits`;
+        dom.visitCount.hidden = false;
+      })
+      .catch(() => {
+        // unregistered code, offline, adblock — the page works fine without it
+      });
+  }
+
   // ---------------------------------------------------------------- boot
 
   function start() {
@@ -2903,8 +2968,14 @@
 
     loadData().then(() => {
       clearSelection();
+      const shared = readHashQuery();
+      if (shared) {
+        dom.queryInput.value = shared;
+        runQuery(shared);
+      }
     });
     fetchStarCount();
+    initVisitCount();
 
     requestAnimationFrame((now) => {
       lastFrameTime = now;
