@@ -46,10 +46,6 @@ env.allowLocalModels = false;
       'is chatgpt actually thinking or just autocomplete on steroids',
       'Do large language models actually understand meaning or are they just predicting tokens?',
     ],
-    results: [
-      'yeah it worked way better than the old way lol',
-      'method achieved statistically significant improvements',
-    ],
     quantum: [
       'can you use quantum stuff to text faster than light or nah?',
       'Does quantum entanglement actually enable faster-than-light communication?',
