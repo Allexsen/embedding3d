@@ -67,8 +67,3 @@ Everything runs client-side: the corpus and models download into your browser
 (sizes disclosed in-app, the LLM only after explicit confirmation), and the
 optional API mode calls your own provider with your own key. There is no
 server behind this page to send anything to.
-
----
-
-*How it's built — corpus pipeline, embedding parity, quantization tiers, the
-WebGPU generation path and its dead ends: [engdoc.md](engdoc.md).*
