@@ -28,6 +28,7 @@ env.allowLocalModels = false;
   const GEN_SYSTEM = 'Answer the user\'s question directly and completely. A short paragraph at most.';
   const GEN_MAX_TOKENS = 256; // local-path budget; answers finish on EOS well before this
   const GEN_CONSENT_KEY = 'e3d_gen_consent';
+  const SHARE_CONSENT_KEY = 'e3d_share_consent'; // ok'd sending long links to TinyURL
   const API_STORE_KEY = 'e3d_gen_api';   // non-secret config (localStorage)
   const API_KEY_STORE = 'e3d_gen_keys';  // per-provider key map (sessionStorage, per-tab)
   // opt-in persistent copy ("remember my key"); app-namespaced so no other
@@ -101,6 +102,7 @@ env.allowLocalModels = false;
     apiRememberToggle: document.getElementById('apiRememberToggle'),
     genResults: document.getElementById('genResults'),
     genConsent: document.getElementById('genConsent'),
+    shareConsent: document.getElementById('shareConsent'),
     answerPanel: document.getElementById('answerPanel'),
     answerTitle: document.getElementById('answerTitle'),
     answerText: document.getElementById('answerText'),
@@ -2150,10 +2152,31 @@ env.allowLocalModels = false;
       runAll();
     });
 
+    // links past this length go through TinyURL (CORS-friendly, keeps the
+    // hash byte-for-byte) — anything longer is a pain to paste into chats.
+    // The full link is the fallback whenever the API fails or is declined.
+    const SHORT_LINK_MIN = 150;
     let shareTimer = 0;
-    dom.shareButton.addEventListener('click', async () => {
-      await updateHash(); // link reflects what's typed, even before Run
-      const url = window.location.href;
+    async function finishShare(shorten) {
+      let url = window.location.href;
+      let label = '✓ copied';
+      if (shorten) {
+        dom.shareButton.textContent = 'shortening…';
+        try {
+          const ctrl = new AbortController();
+          const t = setTimeout(() => ctrl.abort(), 6000);
+          const r = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`, { signal: ctrl.signal });
+          clearTimeout(t);
+          const short = (await r.text()).trim();
+          if (r.ok && /^https:\/\/tinyurl\.com\/[\w-]+$/.test(short)) {
+            url = short; label = '✓ short link copied';
+          } else {
+            label = '✓ copied (long link)';
+          }
+        } catch (_) { label = '✓ copied (long link)'; }
+      } else if (url.length > SHORT_LINK_MIN) {
+        label = '✓ copied (long link)';
+      }
       let ok = false;
       try { await navigator.clipboard.writeText(url); ok = true; } catch (_) {}
       if (!ok) { // clipboard API needs a secure context — fall back
@@ -2163,9 +2186,29 @@ env.allowLocalModels = false;
         try { ok = document.execCommand('copy'); } catch (_) {}
         ta.remove();
       }
-      dom.shareButton.textContent = ok ? '✓ copied' : 'copy failed';
+      dom.shareButton.textContent = ok ? label : 'copy failed';
       clearTimeout(shareTimer);
-      shareTimer = setTimeout(() => { dom.shareButton.textContent = '⧉ Share'; }, 1400);
+      shareTimer = setTimeout(() => { dom.shareButton.textContent = '⧉ Share'; }, 1800);
+    }
+    dom.shareButton.addEventListener('click', async () => {
+      await updateHash(); // link reflects what's typed, even before Run
+      const long = window.location.href.length > SHORT_LINK_MIN;
+      // one-time heads-up: shortening means the link (prompts + any sampled
+      // answers) travels to TinyURL — the buttons continue the flow
+      if (long && !localStorage.getItem(SHARE_CONSENT_KEY)) {
+        dom.shareConsent.hidden = false;
+        return;
+      }
+      finishShare(long);
+    });
+    dom.shareConsent.querySelector('#shareConsentOk').addEventListener('click', () => {
+      try { localStorage.setItem(SHARE_CONSENT_KEY, '1'); } catch (_) {}
+      dom.shareConsent.hidden = true;
+      finishShare(true);
+    });
+    dom.shareConsent.querySelector('#shareConsentCancel').addEventListener('click', () => {
+      dom.shareConsent.hidden = true;
+      finishShare(false); // full link, nothing leaves the browser; asks again next time
     });
 
     window.addEventListener('resize', resize);
