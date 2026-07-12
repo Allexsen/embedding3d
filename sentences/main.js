@@ -2204,11 +2204,24 @@
       try {
         const ctrl = new AbortController();
         const t = setTimeout(() => ctrl.abort(), 6000);
-        const r = await fetch(`https://da.gd/s?url=${encodeURIComponent(window.location.href)}`, { signal: ctrl.signal });
+        // POST: the URL rides in the body, so no request-line length limit
+        // anywhere along the way (verified fine to 14 KB either way)
+        const r = await fetch('https://da.gd/s', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: `url=${encodeURIComponent(window.location.href)}`,
+          signal: ctrl.signal,
+        });
         clearTimeout(t);
         const short = (await r.text()).trim();
-        if (r.ok && /^https:\/\/da\.gd\/[A-Za-z0-9]+$/.test(short) && await copyText(short)) {
-          flashShare('✓ short link copied');
+        // copy OUR page with just the da.gd id (#r=xxx) — the page resolves
+        // it via da.gd's CORS expand API instead of navigating through the
+        // shortener, which dodges interstitials and the giant-Location-header
+        // redirect that real browsers choke on
+        const id = /^https:\/\/da\.gd\/([A-Za-z0-9]+)$/.exec(short);
+        const tiny = id && `${window.location.origin}${window.location.pathname}#r=${id[1]}`;
+        if (r.ok && tiny && await copyText(tiny)) {
+          flashShare('✓ tiny link copied');
         } else {
           flashShare('✓ long link kept'); // service balked — clipboard still holds the full link
         }
@@ -2425,6 +2438,28 @@
     bindStage();
     bindUi();
     mlWorker(); // spawn early: transformers.js loads off-thread while we boot
+    // #r=<id> — redirect-free short link: resolve the id to the full-state
+    // URL through da.gd's CORS expand endpoint, then boot as if the long
+    // link had been opened directly
+    const rid = new URLSearchParams(window.location.hash.slice(1)).get('r');
+    if (rid && /^[A-Za-z0-9]+$/.test(rid)) {
+      setStatus('Resolving shared link…');
+      try {
+        const ctrl = new AbortController();
+        const t = setTimeout(() => ctrl.abort(), 8000);
+        const resp = await fetch(`https://da.gd/coshorten/${rid}`, { signal: ctrl.signal });
+        clearTimeout(t);
+        const full = (await resp.text()).trim();
+        const cut = full.indexOf('#');
+        if (resp.ok && cut >= 0) {
+          history.replaceState(null, '', window.location.pathname + window.location.search + '#' + full.slice(cut + 1));
+        } else {
+          setStatus('Could not resolve the shared link — ask for the full-length one.');
+        }
+      } catch (_) {
+        setStatus('Could not resolve the shared link — ask for the full-length one.');
+      }
+    }
     const shared = readHashSlots();
     // grab g now — the auto-runAll below rewrites the hash before the import
     const sharedGen = new URLSearchParams(window.location.hash.slice(1)).get('g');
