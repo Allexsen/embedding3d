@@ -2215,6 +2215,13 @@ env.allowLocalModels = false;
     const clean = window.location.pathname + window.location.search;
     const params = new URLSearchParams();
     state.slots.forEach((s) => { if (s.text.trim()) params.append('s', s.text.trim()); });
+    // pin the projection: a different tier/model is a different UMAP run, so
+    // a link opened on the defaults would show a different picture
+    if (index) {
+      if (state.tierSize !== index.default) params.append('d', String(state.tierSize));
+      if (state.model !== index.defaultModel) params.append('m', state.model);
+      if (state.precision !== index.defaultPrecision) params.append('p', state.precision);
+    }
     let q = params.toString();
     const stamp = ++hashStamp;
     if (q && state.gen.outputs.length && typeof CompressionStream !== 'undefined') {
@@ -2385,7 +2392,18 @@ env.allowLocalModels = false;
       const m = index.models.find((x) => x.key === state.model);
       state.browserId = m ? m.browserId : state.browserId;
       populateSelectors();
-      await loadTier(index.default, index.defaultModel, index.defaultPrecision);
+      // honor a shared link's projection (d/m/p) — a different tier or model
+      // is a different UMAP run; fall back per-field when a param is stale
+      const want = new URLSearchParams(window.location.hash.slice(1));
+      let size = Number(want.get('d')) || index.default;
+      if (!tierEntry(size)) size = index.default;
+      let model = want.get('m') || index.defaultModel;
+      if (!precisionsFor(size, model).length) {
+        model = precisionsFor(size, index.defaultModel).length ? index.defaultModel : Object.keys(tierEntry(size).models)[0];
+      }
+      let precision = want.get('p');
+      if (!precisionsFor(size, model).includes(precision)) precision = pickPrecision(size, model);
+      await loadTier(size, model, precision);
       // fire-and-forget: the render loop below must never wait on the replay
       if (replay) replayShared(replay, sharedGen);
     } catch (err) {
