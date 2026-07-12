@@ -46,6 +46,13 @@
       'is chatgpt actually thinking or just autocomplete on steroids',
       'Do large language models actually understand meaning or are they just predicting tokens?',
     ],
+    // the demo demonstrating its own thesis on itself: "AI answers" pulls a
+    // different neighborhood — and a different answer distribution — than
+    // "LLM inference", for the same proposition
+    wording: [
+      'Does wording determine the search space for AI answers?',
+      'Does prompt wording determine the search space for LLM inference?',
+    ],
     quantum: [
       'can you use quantum stuff to text faster than light or nah?',
       'Does quantum entanglement actually enable faster-than-light communication?',
