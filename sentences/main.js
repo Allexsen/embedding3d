@@ -24,7 +24,6 @@
   const GEN_SYSTEM = 'Answer the user\'s question directly and completely. A short paragraph at most.';
   const GEN_MAX_TOKENS = 256; // local-path budget; answers finish on EOS well before this
   const GEN_CONSENT_KEY = 'e3d_gen_consent';
-  const SHARE_CONSENT_KEY = 'e3d_share_consent'; // ok'd sending long links to da.gd
   const API_STORE_KEY = 'e3d_gen_api';   // non-secret config (localStorage)
   const API_KEY_STORE = 'e3d_gen_keys';  // per-provider key map (sessionStorage, per-tab)
   // opt-in persistent copy ("remember my key"); app-namespaced so no other
@@ -2166,64 +2165,62 @@
       runAll();
     });
 
-    // links past this length go through da.gd (the one free shortener that
-    // sends CORS headers, takes 8 KB URLs, redirects instantly with the hash
-    // intact — TinyURL parks browsers on an interstitial page instead).
-    // The full link is the fallback whenever the API fails or is declined.
+    // Share: the full link is copied instantly (nothing leaves the browser),
+    // and for long ones a modal offers to trade it for a da.gd short link —
+    // da.gd being the one free shortener that sends CORS headers, takes 8 KB
+    // URLs, and redirects instantly with the hash intact (TinyURL parks
+    // browsers on an interstitial page instead).
     const SHORT_LINK_MIN = 150;
     let shareTimer = 0;
-    async function finishShare(shorten) {
-      let url = window.location.href;
-      let label = '✓ copied';
-      if (shorten) {
-        dom.shareButton.textContent = 'shortening…';
-        try {
-          const ctrl = new AbortController();
-          const t = setTimeout(() => ctrl.abort(), 6000);
-          const r = await fetch(`https://da.gd/s?url=${encodeURIComponent(url)}`, { signal: ctrl.signal });
-          clearTimeout(t);
-          const short = (await r.text()).trim();
-          if (r.ok && /^https:\/\/da\.gd\/[A-Za-z0-9]+$/.test(short)) {
-            url = short; label = '✓ short link copied';
-          } else {
-            label = '✓ copied (long link)';
-          }
-        } catch (_) { label = '✓ copied (long link)'; }
-      } else if (url.length > SHORT_LINK_MIN) {
-        label = '✓ copied (long link)';
-      }
-      let ok = false;
-      try { await navigator.clipboard.writeText(url); ok = true; } catch (_) {}
-      if (!ok) { // clipboard API needs a secure context — fall back
-        const ta = document.createElement('textarea');
-        ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
-        document.body.appendChild(ta); ta.select();
-        try { ok = document.execCommand('copy'); } catch (_) {}
-        ta.remove();
-      }
-      dom.shareButton.textContent = ok ? label : 'copy failed';
+    function flashShare(label) {
+      dom.shareButton.textContent = label;
       clearTimeout(shareTimer);
       shareTimer = setTimeout(() => { dom.shareButton.textContent = '⧉ Share'; }, 1800);
     }
+    async function copyText(text) {
+      try { await navigator.clipboard.writeText(text); return true; } catch (_) {}
+      // clipboard API needs a secure context — fall back
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      let ok = false;
+      try { ok = document.execCommand('copy'); } catch (_) {}
+      ta.remove();
+      return ok;
+    }
     dom.shareButton.addEventListener('click', async () => {
       await updateHash(); // link reflects what's typed, even before Run
-      const long = window.location.href.length > SHORT_LINK_MIN;
-      // one-time heads-up: shortening means the link (prompts + any sampled
-      // answers) travels to da.gd — the buttons continue the flow
-      if (long && !localStorage.getItem(SHARE_CONSENT_KEY)) {
-        dom.shareConsent.hidden = false;
-        return;
+      const url = window.location.href;
+      if (!(await copyText(url))) { flashShare('copy failed'); return; }
+      flashShare('✓ copied');
+      if (url.length <= SHORT_LINK_MIN) return;
+      // long link: already on the clipboard — offer the external trade
+      dom.shareConsent.querySelector('#shareLinkLen').textContent = url.length.toLocaleString();
+      dom.shareConsent.hidden = false;
+    });
+    dom.shareConsent.querySelector('#shareShorten').addEventListener('click', async () => {
+      const btn = dom.shareConsent.querySelector('#shareShorten');
+      btn.disabled = true; btn.textContent = 'shortening…';
+      try {
+        const ctrl = new AbortController();
+        const t = setTimeout(() => ctrl.abort(), 6000);
+        const r = await fetch(`https://da.gd/s?url=${encodeURIComponent(window.location.href)}`, { signal: ctrl.signal });
+        clearTimeout(t);
+        const short = (await r.text()).trim();
+        if (r.ok && /^https:\/\/da\.gd\/[A-Za-z0-9]+$/.test(short) && await copyText(short)) {
+          flashShare('✓ short link copied');
+        } else {
+          flashShare('✓ long link kept'); // service balked — clipboard still holds the full link
+        }
+      } catch (_) {
+        flashShare('✓ long link kept');
+      } finally {
+        btn.disabled = false; btn.textContent = 'Make it tiny';
+        dom.shareConsent.hidden = true;
       }
-      finishShare(long);
     });
-    dom.shareConsent.querySelector('#shareConsentOk').addEventListener('click', () => {
-      try { localStorage.setItem(SHARE_CONSENT_KEY, '1'); } catch (_) {}
+    dom.shareConsent.querySelector('#shareKeepLong').addEventListener('click', () => {
       dom.shareConsent.hidden = true;
-      finishShare(true);
-    });
-    dom.shareConsent.querySelector('#shareConsentCancel').addEventListener('click', () => {
-      dom.shareConsent.hidden = true;
-      finishShare(false); // full link, nothing leaves the browser; asks again next time
     });
 
     window.addEventListener('resize', resize);
