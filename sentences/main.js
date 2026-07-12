@@ -1,9 +1,5 @@
-// 3.8.1: needed for clean WebGPU text-generation (3.0.x degenerates); embedder
-// output is unchanged across the bump (same ONNX weights + pooling).
-import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1';
-
-// transformers.js: allow remote model download, cache in browser
-env.allowLocalModels = false;
+// transformers.js (embedding + local LLM) lives entirely in ml-worker.js so
+// inference never blocks this thread — see the "ML worker" section below.
 
 (function () {
   'use strict';
@@ -28,7 +24,7 @@ env.allowLocalModels = false;
   const GEN_SYSTEM = 'Answer the user\'s question directly and completely. A short paragraph at most.';
   const GEN_MAX_TOKENS = 256; // local-path budget; answers finish on EOS well before this
   const GEN_CONSENT_KEY = 'e3d_gen_consent';
-  const SHARE_CONSENT_KEY = 'e3d_share_consent'; // ok'd sending long links to TinyURL
+  const SHARE_CONSENT_KEY = 'e3d_share_consent'; // ok'd sending long links to da.gd
   const API_STORE_KEY = 'e3d_gen_api';   // non-secret config (localStorage)
   const API_KEY_STORE = 'e3d_gen_keys';  // per-provider key map (sessionStorage, per-tab)
   // opt-in persistent copy ("remember my key"); app-namespaced so no other
@@ -929,71 +925,89 @@ env.allowLocalModels = false;
     startCameraTween(camera.yaw, camera.pitch, Math.min(camera.distance, 7), worldPos, 0.5);
   }
 
-  // ---------------------------------------------------------------- embedding (transformers.js)
+  // ---------------------------------------------------------------- ML worker (embedding + local generation)
 
-  const extractors = new Map();      // browserId -> extractor
-  const extractorLoading = new Map(); // browserId -> promise
+  // transformers.js lives in a module worker (ml-worker.js): model downloads,
+  // tokenization, embedding and WebGPU sampling all run off the main thread,
+  // so the canvas keeps painting and the UI stays responsive during
+  // inference. Search already has its own worker; the API path is fetch().
+  const ml = { worker: null, nextId: 1, pending: new Map(), items: new Map(), webgpu: null, generatorReady: false };
 
-  async function ensureExtractor(browserId = state.browserId) {
-    if (extractors.has(browserId)) return extractors.get(browserId);
-    if (extractorLoading.has(browserId)) return extractorLoading.get(browserId);
-    const item = addLoadingItem('embedding model', 0);
-    const promise = pipeline('feature-extraction', browserId, {
-      progress_callback: (p) => {
-        if (p.status === 'progress' && p.total) item.update(p.loaded / p.total, p.loaded / 1e6, p.total / 1e6);
-      },
-    }).then((ex) => { extractors.set(browserId, ex); item.done(); return ex; });
-    extractorLoading.set(browserId, promise);
-    return promise;
+  function mlWorker() {
+    if (ml.worker) return ml.worker;
+    ml.worker = new Worker('ml-worker.js', { type: 'module' });
+    ml.worker.onmessage = (e) => {
+      const m = e.data;
+      if (m.type === 'boot') {
+        ml.webgpu = !!m.webgpu;
+        updateGenHint(); // local-path gating depends on what the worker can do
+      } else if (m.type === 'progress') {
+        mlLoadingItem(m.what, m.model).update(m.loaded / m.total, m.loaded / 1e6, m.total / 1e6);
+      } else if (m.type === 'modelReady') {
+        if (m.what === 'generator') { ml.generatorReady = true; updateGenHint(); }
+        const item = ml.items.get(`${m.what}:${m.model}`);
+        if (item) item.done();
+      } else if (m.type === 'result') {
+        const p = ml.pending.get(m.id);
+        if (p) { ml.pending.delete(m.id); if (m.error) p.reject(new Error(m.error)); else p.resolve(m); }
+      }
+    };
+    ml.worker.onerror = (err) => console.error('ml-worker:', err.message || err);
+    return ml.worker;
   }
 
+  function mlLoadingItem(what, model) {
+    const key = `${what}:${model}`;
+    if (!ml.items.has(key)) {
+      ml.items.set(key, addLoadingItem(what === 'generator' ? 'generation model (Llama-3.2-1B)' : 'embedding model', 0));
+    }
+    return ml.items.get(key);
+  }
+
+  function mlCall(msg) {
+    return new Promise((resolve, reject) => {
+      const id = ml.nextId++;
+      ml.pending.set(id, { resolve, reject });
+      mlWorker().postMessage({ ...msg, id });
+    });
+  }
+
+  const ensureExtractor = (browserId = state.browserId) => mlCall({ type: 'warmEmbedder', browserId });
+
   async function embedText(text) {
-    const ex = await ensureExtractor();
-    const out = await ex(text, { pooling: 'mean', normalize: true });
-    return new Float32Array(out.data);
+    const r = await mlCall({ type: 'embed', text, browserId: state.browserId });
+    return new Float32Array(r.vec);
   }
 
   // ---------------------------------------------------------------- generation (LLM sampling)
 
-  let generator = null;
-  let generatorLoading = null;
+  // WebGPU support is decided by the worker (that's where sampling runs);
+  // until its boot message lands, fall back to this thread's best guess
+  const hasWebGPU = () => (ml.webgpu === null ? typeof navigator !== 'undefined' && 'gpu' in navigator : ml.webgpu);
 
-  const hasWebGPU = () => typeof navigator !== 'undefined' && 'gpu' in navigator;
-
-  async function ensureGenerator() {
-    if (generator) return generator;
-    if (generatorLoading) return generatorLoading;
-    const item = addLoadingItem('generation model (Llama-3.2-1B)', 0);
-    generatorLoading = pipeline('text-generation', GEN_MODEL_ID, {
-      dtype: GEN_DTYPE,
-      device: 'webgpu',
-      progress_callback: (p) => {
-        if (p.status === 'progress' && p.total) item.update(p.loaded / p.total, p.loaded / 1e6, p.total / 1e6);
-      },
-    }).then((g) => { generator = g; item.done(); return g; })
-      .catch((err) => { generatorLoading = null; item.done(); throw err; });
-    return generatorLoading;
-  }
+  const ensureGenerator = () => mlCall({ type: 'warmGenerator', modelId: GEN_MODEL_ID, dtype: GEN_DTYPE });
 
   async function generateLocal(promptText) {
-    const gen = await ensureGenerator();
-    const messages = [
-      { role: 'system', content: GEN_SYSTEM },
-      { role: 'user', content: promptText },
-    ];
-    const out = await gen(messages, {
-      max_new_tokens: GEN_MAX_TOKENS,
-      do_sample: true,
-      temperature: state.gen.temp,
-      top_p: 0.95,
-      top_k: 40,
-      // small models at high temp degenerate into token loops without these
-      repetition_penalty: 1.3,
-      no_repeat_ngram_size: 3,
+    const r = await mlCall({
+      type: 'generate',
+      modelId: GEN_MODEL_ID,
+      dtype: GEN_DTYPE,
+      messages: [
+        { role: 'system', content: GEN_SYSTEM },
+        { role: 'user', content: promptText },
+      ],
+      options: {
+        max_new_tokens: GEN_MAX_TOKENS,
+        do_sample: true,
+        temperature: state.gen.temp,
+        top_p: 0.95,
+        top_k: 40,
+        // small models at high temp degenerate into token loops without these
+        repetition_penalty: 1.3,
+        no_repeat_ngram_size: 3,
+      },
     });
-    const g = out[0].generated_text;
-    const text = typeof g === 'string' ? g : (Array.isArray(g) ? g[g.length - 1].content : String(g));
-    return text.trim();
+    return r.text;
   }
 
   async function generateApi(promptText) {
@@ -1079,7 +1093,7 @@ env.allowLocalModels = false;
         : 'API mode: fill in base URL, model and key below.';
       dom.genButton.disabled = false;
     } else if (hasWebGPU()) {
-      dom.genHint.textContent = generator
+      dom.genHint.textContent = ml.generatorReady
         ? 'Local model ready — sampling runs on your GPU, nothing leaves your browser.'
         : 'Runs a small LLM in your browser via WebGPU — ~0.8 GB one-time download, cached for future visits.';
       dom.genButton.disabled = false;
@@ -2152,8 +2166,9 @@ env.allowLocalModels = false;
       runAll();
     });
 
-    // links past this length go through TinyURL (CORS-friendly, keeps the
-    // hash byte-for-byte) — anything longer is a pain to paste into chats.
+    // links past this length go through da.gd (the one free shortener that
+    // sends CORS headers, takes 8 KB URLs, redirects instantly with the hash
+    // intact — TinyURL parks browsers on an interstitial page instead).
     // The full link is the fallback whenever the API fails or is declined.
     const SHORT_LINK_MIN = 150;
     let shareTimer = 0;
@@ -2165,10 +2180,10 @@ env.allowLocalModels = false;
         try {
           const ctrl = new AbortController();
           const t = setTimeout(() => ctrl.abort(), 6000);
-          const r = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`, { signal: ctrl.signal });
+          const r = await fetch(`https://da.gd/s?url=${encodeURIComponent(url)}`, { signal: ctrl.signal });
           clearTimeout(t);
           const short = (await r.text()).trim();
-          if (r.ok && /^https:\/\/tinyurl\.com\/[\w-]+$/.test(short)) {
+          if (r.ok && /^https:\/\/da\.gd\/[A-Za-z0-9]+$/.test(short)) {
             url = short; label = '✓ short link copied';
           } else {
             label = '✓ copied (long link)';
@@ -2194,7 +2209,7 @@ env.allowLocalModels = false;
       await updateHash(); // link reflects what's typed, even before Run
       const long = window.location.href.length > SHORT_LINK_MIN;
       // one-time heads-up: shortening means the link (prompts + any sampled
-      // answers) travels to TinyURL — the buttons continue the flow
+      // answers) travels to da.gd — the buttons continue the flow
       if (long && !localStorage.getItem(SHARE_CONSENT_KEY)) {
         dom.shareConsent.hidden = false;
         return;
@@ -2412,6 +2427,7 @@ env.allowLocalModels = false;
     resize();
     bindStage();
     bindUi();
+    mlWorker(); // spawn early: transformers.js loads off-thread while we boot
     const shared = readHashSlots();
     // grab g now — the auto-runAll below rewrites the hash before the import
     const sharedGen = new URLSearchParams(window.location.hash.slice(1)).get('g');
