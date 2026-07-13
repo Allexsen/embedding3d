@@ -2445,6 +2445,13 @@
     bindStage();
     bindUi();
     mlWorker(); // spawn early: transformers.js loads off-thread while we boot
+    // cache-first for .bin assets (GH Pages only caches them 10 min); the
+    // worker file sits one level up so its scope covers both pages.
+    // Local dev opts in with ?sw so regenerated data never gets pinned.
+    if ('serviceWorker' in navigator &&
+        (window.location.hostname.endsWith('.github.io') || new URLSearchParams(window.location.search).has('sw'))) {
+      navigator.serviceWorker.register('../sw.js').catch(() => {});
+    }
     // #r=<id> — redirect-free short link: resolve the id to the full-state
     // URL through da.gd's CORS expand endpoint, then boot as if the long
     // link had been opened directly

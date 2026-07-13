@@ -119,12 +119,18 @@ input {
   display: none;
 }
 
+/* attribution-style corner counter — present if you look, silent if you don't */
 .visit-count {
+  position: absolute;
+  right: 14px;
+  bottom: 8px;
+  z-index: 15;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
   white-space: nowrap;
-  opacity: 0.85;
+  opacity: 0.55;
 }
 
 .visit-count[hidden] {

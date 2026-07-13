@@ -2976,6 +2976,12 @@
     });
     fetchStarCount();
     initVisitCount();
+    // cache-first for .bin assets (GH Pages only caches them 10 min).
+    // Local dev opts in with ?sw so regenerated data never gets pinned.
+    if ('serviceWorker' in navigator &&
+        (window.location.hostname.endsWith('.github.io') || new URLSearchParams(window.location.search).has('sw'))) {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    }
 
     requestAnimationFrame((now) => {
       lastFrameTime = now;
