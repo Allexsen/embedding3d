@@ -1,0 +1,382 @@
+{
+  "case_id": "case-1017-superuser-1275619",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How to load admin account in background and automatically login to non-admin account in foreground in windows 10?",
+  "intent": "Automatically load the Admin account in the background at Windows 10 startup without granting access to it, while keeping it locked, and then automatically log into a non-Admin account in the foreground.",
+  "facets": [
+    "Ensures the Admin account is loaded in the background without being accessible",
+    "Prevents automatic login to the Admin account",
+    "Automatically logs into the non-Admin account (user1) after startup",
+    "Does not require typing the Admin password or granting access to it",
+    "Provides a secure solution that prevents users from deleting the startup script"
+  ],
+  "severity": 0.5,
+  "prompt_conveys": {
+    "per_facet": [
+      1.0,
+      0.0,
+      1.0,
+      0.5,
+      0.0
+    ],
+    "score": 0.5,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "yes"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "yes"
+      },
+      {
+        "facet": 4,
+        "verdict": "partial"
+      },
+      {
+        "facet": 5,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question seeks instructions on how to perform two actions simultaneously within Windows 10: loading an administrator account in the background and automatically logging into a non-administrator account in the foreground.",
+    "foreclosed": "",
+    "tokens_out": 51
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How to load admin account in background and automatically login to non-admin account in foreground in windows 10?",
+      "overhead_tokens": 0,
+      "answer": "To achieve loading an administrative account in the background while automatically logging into a non-administrative user account in the foreground on Windows 10, you can use Task Scheduler along with the built-in `logon` command. Here’s how to set this up:\n\n### Step-by-Step Guide\n\n#### Step 1: Create Administrative User\nEnsure your administrative account is created and configured as needed.\n\n#### Step 2: Configure Background Admin Account\n1. **Open Command Prompt**: Press `Win + R`, type `cmd`, and press Enter.\n2. **Run Command as Administrator**:\n   - Right-click on the Command Prompt icon, choose \"Run as administrator\".\n3. **Log in to Administrative Account**:\n   - Use the following command to log into your administrative account (replace `AdminUsername` with your actual admin username):\n     ```cmd\n     runas /user:AdminUsername cmd\n     ```\n   - Enter the password when prompted.\n\n#### Step 3: Set Up Task Scheduler for Automatic Login\n\n1. **Open Task Scheduler**:\n   - Press `Win + R`, type `taskschd.msc`, and press Enter.\n2. **Create a New Basic Task**:\n   - Go to \"Action\" -> \"Create Basic Task\".\n   - Name the task (e.g., \"Admin Background Login\").\n3. **Set Triggers**:\n   - Click on \"Next\", set the trigger as \"At startup\" or any other appropriate time.\n4. **Set Actions**:\n   - Click on \"Next\", then click on \"New\".\n   - In the \"Action\" field, select \"Start a program\".\n   - Browse and select `cmd.exe`.\n5. **Configure Program Arguments**:\n   - Add the following command in the \"Add arguments (optional)\" box:\n     ```cmd\n     /c runas /user:AdminUsername cmd\n     ```\n6. **Finish Setup**:\n   - Click on \"Finish\" to complete the task creation.\n\n#### Step 4: Log In Normally with Non-Administrative User\nWhen you start your computer, it will automatically log into the non-administrative user account in the foreground while keeping the administrative account running in the background.\n\n### Notes:\n- Ensure the administrative account is not set as the default login to avoid confusion.\n- You can manage or stop the task from Task Scheduler if needed.\n- This setup helps with tasks requiring admin privileges without manually logging into the admin account every time you need it.\n\nThis method leverages Windows built-in tools and does not require third-party software, making it a straightforward and secure approach.",
+      "answer_tokens": {
+        "in": 58,
+        "out": 533
+      },
+      "recovered_intent": "The asker wanted to know how to automatically log into both an administrative user account in the background and a non-administrative user account in the foreground on a Windows 10 computer. They specifically sought instructions on using Task Scheduler and the `logon` command to achieve this, including details on creating an administrative user, configuring the background login task, and ensuring the non-administrative login occurs normally.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          0.5
+        ],
+        "score": 0.7,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          },
+          {
+            "facet": 5,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0,
+          0.0
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          },
+          {
+            "facet": 5,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6592,
+        "cos_intent_prompt": 0.8681,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.375,
+          "eli5": 0.438,
+          "social": 0.125
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "I work at a research university, and system administration of our supercomputers falls under my team"
+          },
+          {
+            "source": "eli5",
+            "text": "Web browsers have a few features that allow webmasters to program things to happen when someone trie"
+          },
+          {
+            "source": "eli5",
+            "text": "It depends. You can do it to Windows key or a GUID which is a bit more complex."
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "Describe the steps for running an administrator account in the background on Windows 10, while logging into a non-administrator account in the foreground",
+      "overhead_tokens": 39,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask for the same process, just with slightly different wording and emphasis.",
+        "cos_prompts": 0.8565
+      },
+      "answer": "To run an administrator account in the background while logging into a non-administrator account in the foreground on Windows 10, you can use the built-in \"Run as different user\" feature or utilize third-party tools such as PowerShell. Here are both methods:\n\n### Method 1: Using Built-in Feature (Run as Different User)\n\n1. **Start Menu and Run Command**:\n   - Open the Start menu.\n   - Type `cmd` in the search bar and press Enter to open a Command Prompt window.\n\n2. **Run as Administrator**:\n   - In the Command Prompt, type `runas /user:adminusername \"explorer.exe\"` (replace `adminusername` with the actual administrator account name) and press Enter.\n   - You will be prompted for the password of the admin user. Enter it when requested.\n\n3. **Background User**:\n   - This command launches a new instance of Windows Explorer under the specified admin account, running in the background. The foreground session remains logged into your non-administrator account.\n\n### Method 2: Using PowerShell\n\n1. **Open PowerShell as Admin**:\n   - Right-click on the Start menu and select \"Windows PowerShell (Admin)\" or search for \"PowerShell\" in the taskbar, right-click it, and choose \"Run as administrator\".\n\n2. **Start New User Session with Administrative Privileges**:\n   - Use the following PowerShell command to start a new user session under an admin account:\n     ```powershell\n     Start-Process explorer.exe -Credential (Get-Credential) -WindowStyle Hidden\n     ```\n   - When prompted, enter the credentials for the administrator account.\n\n3. **Background User Session**:\n   - This PowerShell command runs `explorer.exe` with administrative privileges in a hidden window, allowing you to continue using your non-administrator session normally.\n\nBy following these steps, you can effectively run an administrator account in the background while working from a foreground non-administrator account on Windows 10.",
+      "answer_tokens": {
+        "in": 64,
+        "out": 405
+      },
+      "recovered_intent": "The asker wanted to know how to simultaneously run an administrator account in the background and a non-administrator account in the foreground on Windows 10. They were interested in learning about both built-in methods (using the 'Run as different user' feature) and third-party tools (PowerShell), including specific commands and steps for each method.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0,
+          0.0
+        ],
+        "score": 0.3,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "no": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          },
+          {
+            "facet": 5,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5,
+          1.0,
+          0.0
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          },
+          {
+            "facet": 5,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6041,
+        "cos_intent_prompt": 0.7665,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.188,
+          "eli5": 0.625,
+          "social": 0.188
+        },
+        "overlap_vs_A": 0.438,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "I work at a research university, and system administration of our supercomputers falls under my team"
+          },
+          {
+            "source": "eli5",
+            "text": "Let's say you hire two security guards to guard your bank - without telling each other."
+          },
+          {
+            "source": "eli5",
+            "text": "Task manager has top priority, so if any other program is hogging up the computer in an endless cycl"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "How can I configure Windows 10 to automatically load the Admin account in the background at startup, keeping it locked without granting access, while also automatically logging into a specific non-Admin account in the foreground?",
+      "noop": false,
+      "overhead_tokens": 103,
+      "answer": "To achieve this configuration on Windows 10, you need to use Group Policy Editor and Local Security Settings. Here's how to set up both the Admin account for background loading and the specific non-admin account for foreground login:\n\n### Step 1: Set Up Background Admin Account\n\n1. **Open Group Policy Editor**:\n   - Press `Win + R`, type `gpedit.msc`, and press Enter.\n   \n2. **Navigate to Local Policies**:\n   - Go to `Computer Configuration` > `Administrative Templates` > `Control Panel` > `User Accounts`.\n\n3. **Configure Background Admin Account**:\n   - Double-click on the \"Force Administrative Login\" policy.\n   - Set it to \"Enabled\".\n   - In the \"Logon name\" field, enter the username of your Admin account.\n   - Click \"Apply\", then \"OK\".\n\nThis configuration will ensure that Windows 10 boots and immediately logs into the specified Admin account in the background.\n\n### Step 2: Configure Foreground Login for Non-Admin Account\n\n1. **Create a Batch Script to Switch Users**:\n   - Open Notepad or any text editor.\n   - Type `rundll32.exe user32.dll,LockWorkStation` and press Enter (this locks the current session).\n   - Save the file as `SwitchUser.bat`.\n\n2. **Run Command Prompt as Administrator**:\n   - Press `Win + X`, select \"Command Prompt (Admin)\".\n\n3. **Create a Scheduled Task for Switching Users at Startup**:\n   - Run `schtasks /create /tn \"Switch User\" /tr \"C:\\Path\\To\\SwitchUser.bat\" /sc onstart`.\n\nThis will set up a task to run the batch file that switches users upon startup.\n\n### Step 3: Ensure Background Account is Locked\n\n1. **Open Local Security Settings**:\n   - Press `Win + R`, type `secpol.msc`, and press Enter.\n   \n2. **Navigate to Security Options**:\n   - Go to `Local Policies` > `Security Options`.\n\n3. **Set the \"Interactive Logon: Do not require CTRL+ALT+DEL\" Policy**:\n   - Double-click on the policy, set it to \"Disabled\", then click \"OK\".\n   - This prevents unauthorized access when the Admin account is logged in.\n\n4. **Set the \"Interactive Logon: Password protected screen saver\" and \"Interactive Logon: Session termination timeout\" Policies**:\n   - For both policies, set them to appropriate values or disable as needed.\n   \nBy following these steps, Windows 10 will automatically log into the specified Admin account in the background at startup while keeping it locked. The system will then switch to a non-admin user account upon login, ensuring that only authorized users can access the system.\n\nRemember to replace \"C:\\Path\\To\\SwitchUser.bat\" with the actual path where you saved your batch file. Also, ensure all paths and usernames are correctly specified for successful execution of these steps.",
+      "answer_tokens": {
+        "in": 78,
+        "out": 624
+      },
+      "recovered_intent": "The asker wanted to know how to configure Windows 10 to automatically log into a specific administrator account in the background at startup while simultaneously switching to a non-admin user account upon login. They likely desired instructions on using Group Policy Editor, Local Security Settings, and batch scripts to achieve this setup, including details on securing the background admin account and preventing unauthorized access.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          0.5
+        ],
+        "score": 0.7,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          },
+          {
+            "facet": 5,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0,
+          0.0
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          },
+          {
+            "facet": 5,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7327,
+        "cos_intent_prompt": 0.9352,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.125,
+          "eli5": 0.812,
+          "social": 0.0
+        },
+        "overlap_vs_A": 0.125,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Look at your I/O (Disk usage), most of the time, that is what is slowing down your windows startup t"
+          },
+          {
+            "source": "eli5",
+            "text": "The easiest way to prevent hacking is to secure any access point into the car's information systems."
+          },
+          {
+            "source": "eli5",
+            "text": "Modern cars with direct injection are very easy to start up. They require less RPM and are much more"
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.4,
+    "severity": 3.0,
+    "mirror": 2.9,
+    "rewrite_b": 2.5,
+    "fidelity_b": 2.5,
+    "revise_c": 2.8,
+    "answers": 23.6,
+    "deduce": 10.1,
+    "judge_answers": 8.9,
+    "judge_recovered": 8.6,
+    "geometry": 0.1
+  }
+}

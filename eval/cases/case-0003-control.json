@@ -1,0 +1,12 @@
+{
+  "id": "case-0003-control",
+  "source": "synthetic-control",
+  "tags": [
+    "control",
+    "well-worded"
+  ],
+  "notes": "Control case: the prompt already conveys the full intent (severity should be ~0), so all three arms should tie. If arm B or C 'wins' here, something in the pipeline is biased.",
+  "prompt": "How does photosynthesis work at the molecular level? Please cover both the light-dependent and light-independent (Calvin cycle) reactions and the key molecules involved.",
+  "evidence": "I want exactly what I asked: the molecular mechanism of photosynthesis, covering the light-dependent reactions (photosystems, electron transport, ATP/NADPH production) and the Calvin cycle (carbon fixation, RuBisCO), naming the key molecules.",
+  "dev": true
+}

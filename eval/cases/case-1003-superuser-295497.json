@@ -1,0 +1,14 @@
+{
+  "id": "case-1003-superuser-295497",
+  "source": "stackexchange-xy",
+  "tags": [
+    "xy-labeled"
+  ],
+  "prompt": "How to recover folders from formatted drive",
+  "evidence": "I had 500GB portable hard drive. it fell from the table and when i joined it was not showing any data and asked me to format it. i did format. Then again it was not functioning properly so i had to quick format it again. Now i had lots of data in it. Is there any software which can recover my files and folders with same structure as original",
+  "attribution": {
+    "url": "https://superuser.com/questions/295497/how-to-recover-folders-from-formatted-drive",
+    "author": "Mirage",
+    "license": "CC BY-SA 4.0"
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "case_id": "case-2042-gardening-158",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How do you identify a plant?",
+  "intent": "Identify and properly care for the various plants on my recently purchased property, including trees and smaller plants, so I can learn their specific needs.",
+  "facets": [
+    "Provides general steps or methods for identifying unknown plants and trees",
+    "Lists online resources (including free options) that aid in plant identification",
+    "Mentions any necessary considerations for proper care of the identified plants",
+    "Names a concrete resource or tool to use for plant identification on my property"
+  ],
+  "severity": 1.0,
+  "prompt_conveys": {
+    "per_facet": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.0,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "no"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "This question asks for information about the methods or steps involved in determining the type or species of a plant.",
+    "foreclosed": "",
+    "tokens_out": 35
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How do you identify a plant?",
+      "overhead_tokens": 0,
+      "answer": "Identifying a plant involves observing several key characteristics, which can be broken down into categories such as morphology (shape), habitat, and growth form. Here’s a structured approach to help you identify plants:\n\n1. **Leaf Characteristics**: Observe the shape, size, texture, color, and arrangement of leaves on the stem or branch. Leaves can provide significant clues about the plant's identity.\n\n2. **Stem and Branch Structure**: Notice the overall structure of the stem, whether it is woody, herbaceous, or climbing. The presence of thorns, spines, or tendrils can also be indicative of certain species.\n\n3. **Flowers and Fruits**: If present, flowers and fruits are crucial for identification as they often have distinct features that differentiate one plant from another. Note the color, shape, size, number of petals, and any other distinctive features.\n\n4. **Habitat and Distribution**: Consider where you found the plant (e.g., forest, desert, garden) and its geographical location. Some plants are native to specific regions or habitats.\n\n5. **Roots and Bark**: The root structure and the appearance of the bark can also provide valuable information for identification, especially in woody species.\n\n6. **Growth Habit**: Determine whether the plant is a tree, shrub, vine, herb, fern, moss, or another growth form. This basic categorization narrows down potential identifications.\n\n7. **Use Identification Tools and Resources**: Consult field guides, online databases like the USDA PLANTS Database, iNaturalist, or specific apps designed for plant identification. These tools often allow you to input observed characteristics to generate a list of possible matches.\n\n8. **Seek Expert Help**: If you are unsure after initial observations, consulting with local botanists, horticulturists, or garden centers can provide accurate identifications and additional insights about the plant's care and significance in its environment.\n\nBy combining these steps and using available resources, you can effectively identify plants based on their observable characteristics.",
+      "answer_tokens": {
+        "in": 43,
+        "out": 412
+      },
+      "recovered_intent": "The questioner likely wanted to know how to identify a plant. They were interested in learning about the specific characteristics of plants that are useful for identification, such as leaf shape, stem structure, flowers, fruits, habitat, and growth form.  They also wanted to know about resources and tools that can be used to help with plant identification, including field guides, online databases, and apps. Finally, they may have been interested in seeking expert help from botanists or horticulturists for accurate identification.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.4902,
+        "cos_intent_prompt": 0.4744,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.625,
+          "eli5": 0.188,
+          "social": 0.125
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I want to show my students a text-cross of purple flowered pea plants and white flowered pea plants."
+          },
+          {
+            "source": "wikipedia",
+            "text": "This is a list of plants found in the wild in Caatinga vegetation of Brazil."
+          },
+          {
+            "source": "wikipedia",
+            "text": "The APG system (Angiosperm Phylogeny Group system) of plant classification is the first version of a"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What are the methods for identifying a plant?",
+      "overhead_tokens": 17,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask for the same information, just phrased slightly differently.",
+        "cos_prompts": 0.9161
+      },
+      "answer": "Identifying plants can be approached through several effective methods, each suited to different levels of expertise and available resources:\n\n1. **Observation**: This is the first step in plant identification. Carefully observe characteristics such as leaf shape, size, arrangement (alternate, opposite, whorled), color, venation patterns, and presence of hairs or other textures. Note flower parts if present, including their number and arrangement.\n\n2. **Field Guides and Apps**: These resources provide detailed descriptions and visual aids to help match your plant with a species. Field guides are physical books that can be carried outdoors for immediate reference. Apps like iNaturalist, PlantNet, and Leafsnap offer databases of images and information directly on mobile devices, making identification easier in the field.\n\n3. **Keying**: This involves using dichotomous keys—series of yes/no questions to systematically narrow down a plant's identity based on its features. Keys can be found in botanical books or online resources. They are particularly useful for species that share similar characteristics but differ in specific traits.\n\n4. **Consultation with Experts**: Botanists, horticulturists, and ecologists can offer expert advice through local universities, botanical gardens, or plant societies. Many organizations also host workshops, lectures, or forums where you can ask questions directly.\n\n5. **DNA Barcoding**: This advanced method uses a short section of DNA from the plant to identify it by comparing sequences to existing databases. While not commonly used for casual identification due to its cost and complexity, it is valuable in scientific research and when trying to identify unknown species with certainty.\n\n6. **Online Forums and Communities**: Websites like Reddit's r/plantidentification or specialized forums allow you to post photos of plants seeking help from a community of enthusiasts and experts.\n\nEach method has its strengths, and often the best approach involves combining several methods for accurate identification.",
+      "answer_tokens": {
+        "in": 45,
+        "out": 381
+      },
+      "recovered_intent": "The text aims to answer the question: 'What are the different ways to identify plants?' It details six specific methods: observation, using field guides and apps, employing dichotomous keys, consulting with experts, DNA barcoding, and utilizing online forums. For each method, it explains its process, advantages, and limitations, ultimately suggesting that a combination of methods often yields the most accurate identification.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.25,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5032,
+        "cos_intent_prompt": 0.4664,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.25,
+          "eli5": 0.562,
+          "social": 0.125
+        },
+        "overlap_vs_A": 0.625,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Let's say you have two pieces of chocolate. You know that one of them has caramel inside and one has"
+          },
+          {
+            "source": "eli5",
+            "text": "Well, you can use a gas chromatograph to measure the different elements and ions in the mystery subs"
+          },
+          {
+            "source": "arxiv",
+            "text": "In this paper, we employ Probabilistic Neural Network (PNN) with image and data processing technique"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "What are the steps to identify and properly care for various plants, including trees and smaller plants, on my recently purchased property?",
+      "noop": false,
+      "overhead_tokens": 71,
+      "answer": "Identifying and caring for plants on your newly purchased property involves several key steps:\n\n1. **Initial Assessment**: Begin by walking around the property, observing different areas such as sunny spots, shady areas, and those with varying levels of moisture. This will give you an initial idea of the environmental conditions that various plant species can thrive in.\n\n2. **Identification**: Use field guides, online resources like plant identification apps (such as iNaturalist or PlantNet), or consult with a local nursery or horticulturist to identify plants. Note down the names and characteristics of each plant you find. Knowing the species helps tailor care practices effectively.\n\n3. **Soil Testing**: Conducting a soil test is crucial as it reveals important information about nutrient levels, pH, and overall health of your soil. You can purchase a kit from a gardening store or send samples to a professional lab for analysis.\n\n4. **Water Management**: Observe the natural drainage patterns on your property. Ensure that you understand how water moves through different areas so you can manage irrigation effectively without overwatering plants that require drier conditions.\n\n5. **Sunlight Requirements**: Determine which parts of your property receive full sun, partial shade, or full shade. This knowledge is vital as it directly impacts plant health and growth; for example, full-sun plants like lavender need more direct sunlight than shade-loving ones such as hostas.\n\n6. **Native vs Non-Native Plants**: Consider whether the existing plants are native to your area. Native species are generally better adapted to local climate and soil conditions, making them easier to care for and promoting biodiversity.\n\n7. **Care Practices**: Based on plant identification and assessment of environmental factors (sunlight, water, soil), develop a care plan that includes appropriate watering schedules, fertilizing needs, pruning, and pest management strategies specific to the plants in your garden.\n\n8. **Documentation**: Keep detailed notes or create a map of your property noting the location, type, and condition of each plant. This documentation can be invaluable for tracking growth, diagnosing issues, and making informed decisions about future care.\n\n9. **Regular Monitoring**: Regularly check on the health of your plants; look for signs of disease, pests, nutrient deficiencies, or other problems. Early detection allows for timely intervention to prevent larger issues from arising.\n\n10. **Consultation with Professionals**: If you encounter specific issues that are difficult to resolve, consider consulting a local arborist or horticulturist who can provide expert advice tailored to your local climate and soil conditions.\n\nBy following these steps, you will be well on your way to understanding the needs of each plant species on your property and providing them with the proper care for healthy growth.",
+      "answer_tokens": {
+        "in": 61,
+        "out": 551
+      },
+      "recovered_intent": "The text's asker apparently wanted to know how to identify and care for plants on a newly purchased property.  This includes steps like assessing environmental conditions (sunlight, moisture), identifying specific plant species using resources like field guides or apps, testing soil quality, understanding water management needs, considering the use of native vs non-native plants, developing tailored care plans (watering, fertilizing, pruning), documenting plant locations and conditions, regularly monitoring plant health, and seeking professional help when needed.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          0.5
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6234,
+        "cos_intent_prompt": 0.7695,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.188,
+          "eli5": 0.125,
+          "social": 0.688
+        },
+        "overlap_vs_A": 0.062,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I have a thriving rosemary bush. I love the smell of it, since it reminds me of home."
+          },
+          {
+            "source": "social",
+            "text": "I moved to a new place, and for the first time in my life I'm responsible for all of the utilities."
+          },
+          {
+            "source": "social",
+            "text": "My apartment has a small, sunny balconey on which I'm growing tomatoes, cilantro, thyme, and oregano"
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.3,
+    "severity": 2.8,
+    "mirror": 2.6,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.5,
+    "revise_c": 2.5,
+    "answers": 19.3,
+    "deduce": 11.1,
+    "judge_answers": 8.4,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

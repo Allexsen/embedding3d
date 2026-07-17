@@ -1,0 +1,346 @@
+{
+  "case_id": "case-2025-cooking-567",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How can I chop onions without crying?",
+  "intent": "Find ways to minimize tearing while chopping onions so that I can enjoy using them in cooking without frustration.",
+  "facets": [
+    "Explains how to prevent or reduce tear production while chopping onions",
+    "Describes a method for chopping onions that minimizes exposure to irritating compounds",
+    "Names a technique for handling onions that reduces the amount of gas released",
+    "Provides a concrete recommendation for a tool or aid that helps with onion chopping"
+  ],
+  "severity": 0.75,
+  "prompt_conveys": {
+    "per_facet": [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.25,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "no"
+      },
+      {
+        "facet": 2,
+        "verdict": "yes"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for methods or techniques that a person can use to prevent themselves from crying while in the process of chopping onions.",
+    "foreclosed": "",
+    "tokens_out": 39
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How can I chop onions without crying?",
+      "overhead_tokens": 0,
+      "answer": "To minimize or eliminate tears when chopping onions, you can follow these tips:\n\n1. **Chill the Onions**: Refrigerate your onions for 30 minutes before chopping them. Cold temperatures reduce the chemical reaction that produces irritants.\n\n2. **Use a Sharp刀刃**: A sharp knife makes cleaner cuts and releases fewer gases into the air, reducing the amount of fumes that can make you cry.\n\n3. **Cut Under Running Water or in Ice**: While less common, cutting onions under running cold water or inside an ice cube tray can help reduce the release of irritants.\n\n4. **Ventilate Your Kitchen**: Open windows and use fans to increase air circulation and disperse the fumes more quickly.\n\n5. **Wear Goggles or Eye Protection**: This is a practical solution that can prevent the irritant gases from coming into contact with your eyes, thus avoiding tears.\n\n6. **Chop Near an Exhaust Fan**: If you have a powerful kitchen exhaust fan, chopping near it can help remove the fumes more quickly.\n\n7. **Use a Food Processor or Blender**: Some food processors and blenders come with tools designed to finely chop onions without making you cry. This method also minimizes exposure to irritants.\n\n8. **Peel the Onions First**: Removing the papery skin first can reduce some of the sulfur compounds that cause tearing, but this is not always sufficient on its own.\n\nBy applying one or more of these methods, you can significantly reduce eye irritation and make your onion chopping experience more comfortable.",
+      "answer_tokens": {
+        "in": 44,
+        "out": 312
+      },
+      "recovered_intent": "The text aims to answer the question of how to minimize or eliminate tears when chopping onions. It provides a list of eight tips, ranging from chilling the onions beforehand to using specialized kitchen appliances like food processors, each with a brief explanation of how it works to reduce eye irritation caused by onion fumes.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7103,
+        "cos_intent_prompt": 0.7288,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.062,
+          "social": 0.938
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I remember eating grilled onions a long time ago... and it was amazing. I searched for some recipes "
+          },
+          {
+            "source": "social",
+            "text": "A lot of people smash their garlic with the side of their knife instead of chopping it."
+          },
+          {
+            "source": "social",
+            "text": "Well, you have to buy them at first, but after that...chop them down to where you leave about 1/4\" o"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What are methods to cut onions without causing tears?",
+      "overhead_tokens": 19,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask for the same solution to the problem of avoiding tear-inducing onion chopping.",
+        "cos_prompts": 0.8345
+      },
+      "answer": "To minimize or avoid tearing up while cutting onions, several techniques can be employed:\n\n1. **Cold Temperatures**: Cutting onions in a cold environment can reduce the formation of sulfur compounds that cause irritation. If possible, prepare onions in a refrigerator.\n\n2. **Sharp Knife**: A sharp knife makes cleaner cuts and releases fewer irritants. Dull knives create more friction and release more gas.\n\n3. **Ventilation**: Ensure good ventilation while cutting onions to allow for easier expulsion of the irritating gases into the air rather than your eyes.\n\n4. **Preparation Methods**:\n   - **Freezing**: Freezing onions can temporarily reduce their pungency, making them less likely to cause tears.\n   - **Microwaving or Boiling**: Briefly microwaving an onion for 30 seconds or boiling it in water for a few minutes before chopping can also help reduce the release of irritants.\n\n5. **Knives Under Water**: Cutting onions under running water or submerging them partially in water while you cut can trap the irritating gases and prevent them from reaching your eyes.\n\n6. **Onion Varieties**: Some varieties are less pungent than others, so choosing a milder type might be an option depending on availability.\n\n7. **Goggles or Eyewear**: Wearing protective eyewear like goggles can effectively shield your eyes during the chopping process.\n\n8. **Chemical Solutions**: Applying a small amount of lemon juice to the onion before cutting it can neutralize some of the irritants.\n\n9. **Blotting with Paper Towel**: After slicing an onion, gently blot each piece with a paper towel or napkin; this can absorb some of the gas released by the cut surface.\n\nEach method has its effectiveness, and combining several techniques often yields the best results in minimizing tears while preparing onions.",
+      "answer_tokens": {
+        "in": 46,
+        "out": 371
+      },
+      "recovered_intent": "The questioner likely wanted to know how to minimize or avoid tearing up when cutting onions. They were interested in various techniques and methods that could be used, including those related to temperature, knife sharpness, ventilation, preparation methods (like freezing, microwaving, or boiling), water usage, onion varieties, protective eyewear, chemical solutions, and even blotting with paper towels. The questioner likely sought a comprehensive understanding of different approaches to this common kitchen challenge.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6844,
+        "cos_intent_prompt": 0.8092,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.25,
+          "social": 0.75
+        },
+        "overlap_vs_A": 0.438,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I remember eating grilled onions a long time ago... and it was amazing. I searched for some recipes "
+          },
+          {
+            "source": "social",
+            "text": "A lot of people smash their garlic with the side of their knife instead of chopping it."
+          },
+          {
+            "source": "social",
+            "text": "For Example: When I peel potatoes I make the cuts a little thicker, fry the parts I cut off to make "
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "What are some effective ways to minimize tearing when chopping onions, so I can cook with them without frustration?",
+      "noop": false,
+      "overhead_tokens": 71,
+      "answer": "Minimizing tears while chopping onions involves several techniques that can significantly reduce the irritation caused by sulfur compounds released when an onion is cut. Here are some effective strategies:\n\n1. **Use a Sharp Knife**: A sharp knife makes cleaner cuts, producing fewer irritants and reducing fumes. Dull knives create more friction during cutting, releasing more of these irritating gases.\n\n2. **Chop Near a Ventilator or Open Window**: Cooking with onions in a well-ventilated area can help dissipate the volatile compounds that cause tearing before they reach your eyes.\n\n3. **Use a Refrigerator**: Cold temperatures reduce the rate at which an onion releases its irritants. Keeping the onion chilled for about 15 minutes before chopping can lessen the amount of gas released, thus reducing eye irritation.\n\n4. **Cut Under Running Water or Over Ice**: Submerging the onion in water while cutting can trap and wash away some of the sulfur compounds. Alternatively, cutting an onion on a bed of ice can have similar effects by cooling the onion quickly.\n\n5. **Use a Gas Mask or Onion-Specific Goggles**: While not practical for everyday cooking, these specialized tools are designed to filter out onion fumes before they reach your eyes.\n\n6. **Chop Onions in a Humid Environment**: Some studies suggest that humid conditions can reduce the release of irritating gases. This might be challenging in a home kitchen but could be beneficial if you can control humidity levels.\n\n7. **Use a Food Processor or Mincer**: Mechanical devices that process onions quickly may produce fewer irritants compared to hand-chopping because they keep the onion cooler and more compact.\n\n8. **Wait Until the Onion Has Been Peeled**: The outer layers of an onion contain most of its irritant compounds, so peeling the onion first can reduce the amount of these chemicals you are exposed to during cutting.\n\nBy employing one or a combination of these techniques, you can significantly minimize your discomfort and frustration when chopping onions.",
+      "answer_tokens": {
+        "in": 57,
+        "out": 401
+      },
+      "recovered_intent": "The questioner likely wanted to know how to prevent or minimize tearing while chopping onions. They were interested in specific techniques and strategies that could be used to reduce the release of sulfur compounds from onions, as well as any tools or environmental factors that might help. The text covers a range of methods, from using a sharp knife and ventilating the area to more specialized options like gas masks and humid environments.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7117,
+        "cos_intent_prompt": 0.944,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.125,
+          "social": 0.875
+        },
+        "overlap_vs_A": 0.5,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I remember eating grilled onions a long time ago... and it was amazing. I searched for some recipes "
+          },
+          {
+            "source": "social",
+            "text": "For Example: When I peel potatoes I make the cuts a little thicker, fry the parts I cut off to make "
+          },
+          {
+            "source": "social",
+            "text": "My current knives are a cheap set a friend gave me. They often have difficulty cutting protein and s"
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.1,
+    "severity": 2.8,
+    "mirror": 2.7,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.5,
+    "revise_c": 2.5,
+    "answers": 16.7,
+    "deduce": 10.4,
+    "judge_answers": 8.6,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

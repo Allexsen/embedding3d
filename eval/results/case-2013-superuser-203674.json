@@ -1,0 +1,346 @@
+{
+  "case_id": "case-2013-superuser-203674",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How to clear/flush the DNS cache in Google Chrome?",
+  "intent": "Find a method to immediately clear the internal DNS cache in Google Chrome, without waiting for the timeout or closing the browser.",
+  "facets": [
+    "Provides steps to manually clear the DNS cache in Google Chrome",
+    "Explains how to configure settings to automatically clear the DNS cache after a certain period of time",
+    "Describes an alternative method to bypass the internal DNS cache and use system-level DNS resolution instead",
+    "Names a specific keyboard shortcut or button press to immediately clear the DNS cache"
+  ],
+  "severity": 0.75,
+  "prompt_conveys": {
+    "per_facet": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.25,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "yes"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for instructions on how to remove or refresh the Domain Name System (DNS) cache within the Google Chrome web browser.",
+    "foreclosed": "",
+    "tokens_out": 40
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How to clear/flush the DNS cache in Google Chrome?",
+      "overhead_tokens": 0,
+      "answer": "To clear or flush the DNS cache in Google Chrome, follow these steps:\n\n1. **Open Google Chrome**: Launch the browser on your computer.\n\n2. **Type URL and Open Settings**:\n   - Type `chrome://net-internals/#dns` into the address bar at the top of the window.\n   - Press Enter to navigate to this page. This is a special network diagnostics tool in Chrome.\n\n3. **Clear DNS Cache**:\n   - Scroll down to find the \"Clear Host Cache\" option.\n   - Click on it, and then confirm by clicking \"Clear host cache\" if prompted with a dialog box asking for confirmation. \n\nThis process will clear out any outdated or incorrect DNS records stored in your Chrome browser's cache, helping resolve issues like slow page loads or accessing incorrect websites.\n\nAlternatively, you can flush the DNS cache using command-line tools on Windows and macOS:\n\n- **Windows**:\n  - Press `Win + R`, type `cmd` into the Run dialog, and press Enter.\n  - In the Command Prompt window that opens, type `ipconfig /flushdns` and press Enter.\n\n- **macOS (including older versions of iOS)**:\n  - Open Terminal from Applications > Utilities or by searching for it in Spotlight.\n  - Type `sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder` and press Enter. You may be prompted to enter your password.\n\nThese methods will flush the DNS cache on macOS, effectively clearing any cached DNS information stored by the system.",
+      "answer_tokens": {
+        "in": 48,
+        "out": 313
+      },
+      "recovered_intent": "The text's author apparently wanted to know how to clear or flush the DNS cache in Google Chrome and on Windows and macOS operating systems.  They specifically asked for instructions on using both the browser's built-in tools and command-line utilities for this purpose. The provided steps detail each method, including navigating to the relevant settings page in Chrome and executing specific commands in the Command Prompt (Windows) and Terminal (macOS). Additionally, the text explains the potential benefits of clearing the DNS cache, such as resolving issues with slow page loads or accessing incorrect websites.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.25,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5537,
+        "cos_intent_prompt": 0.7398,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.75,
+          "social": 0.25
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I have been battling this problem for sometime with no luck and thought I would ask for some help he"
+          },
+          {
+            "source": "eli5",
+            "text": "Not every domain has it. For example, Gmail is hosted on URL 6 and Google Maps is hosted on URL 5 \"w"
+          },
+          {
+            "source": "eli5",
+            "text": "I use the chrome extension Seek n Play ( URL 0), which adds this feature."
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What are the steps to clear or flush the DNS cache in Google Chrome?",
+      "overhead_tokens": 24,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask for the same information, just with slightly different wording and phrasing.",
+        "cos_prompts": 0.9681
+      },
+      "answer": "To clear or flush the DNS cache in Google Chrome, follow these steps:\n\n1. **Open Google Chrome**: Launch the browser on your computer.\n\n2. **Type URL and Open Settings**:\n   - Click on the three vertical dots (More) at the top right corner of the browser window.\n   - From the drop-down menu, select \"Settings\".\n\n3. **Navigate to Privacy and Security Section**:\n   - Scroll down in the settings page until you see the \"Privacy and security\" section.\n\n4. **Clear Browsing Data**:\n   - Click on \"Show advanced settings...\" at the bottom of the settings page.\n   - In the newly expanded section, find and click on \"Clear browsing data\".\n   \n5. **Select Time Range and Clear Items**:\n   - In the \"Clear browsing data\" dialog box that opens, choose a time range from the dropdown menu (e.g., \"All time\").\n   - Check the box next to \"Cached images and files\" if you want to clear cached resources but this does not include DNS cache.\n   - For clearing DNS cache specifically, select \"Cookies and other site data\".\n   - Click on \"Clear data\".\n\n6. **Alternative Method Using Command Line**:\n   - Close all instances of Google Chrome.\n   - Press `Win + R` to open the Run dialog box.\n   - Type `%localappdata%\\Google\\Chrome\\User Data\\Default\\dns_cache.bin` and press Enter.\n   - This will take you directly to the location where the DNS cache is stored. You can delete this file manually, but be cautious as it may affect your browsing experience.\n\nAfter following these steps, your browser should have a fresh DNS cache, which could help resolve issues with websites taking longer than usual to load or not loading at all.",
+      "answer_tokens": {
+        "in": 51,
+        "out": 366
+      },
+      "recovered_intent": "The questioner wanted to know how to clear the DNS cache in Google Chrome. They specifically asked for instructions on both the graphical user interface (GUI) method and an alternative command-line method. The text provides step-by-step instructions for each approach, highlighting that clearing cached images and files does not clear the DNS cache, and emphasizing the potential impact of manually deleting the DNS cache file.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.3821,
+        "cos_intent_prompt": 0.7161,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.75,
+          "social": 0.25
+        },
+        "overlap_vs_A": 0.625,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I have been battling this problem for sometime with no luck and thought I would ask for some help he"
+          },
+          {
+            "source": "eli5",
+            "text": "Not every domain has it. For example, Gmail is hosted on URL 6 and Google Maps is hosted on URL 5 \"w"
+          },
+          {
+            "source": "eli5",
+            "text": "I use the chrome extension Seek n Play ( URL 0), which adds this feature."
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "Is there a method in Google Chrome that allows me to immediately clear its internal DNS cache, without waiting for the timeout or closing the browser?",
+      "noop": false,
+      "overhead_tokens": 79,
+      "answer": "Yes, you can clear the DNS cache in Google Chrome more quickly than waiting for the natural timeout period or restarting the browser. The process involves executing a command through the Task Manager on Windows or using a terminal command on macOS or Linux.\n\n### For Windows:\n1. **Open Task Manager:** Press `Ctrl + Shift + Esc` to open it.\n2. **Find Google Chrome:** Locate \"chrome.exe\" in the list of processes.\n3. **End Task:** Right-click on the chrome process and select \"End task.\"\n4. **Restart Chrome:** After closing, simply restart Chrome.\n\nAlternatively, you can clear the DNS cache without fully restarting Chrome by using a command:\n1. Press `Win + R` to open Run.\n2. Type `cmd`, then press `Ctrl + Shift + Enter` to run Command Prompt as Administrator.\n3. In the Command Prompt window, type the following and hit enter:\n   ```\n   netsh winsock reset\n   ```\n4. Then, restart Chrome.\n\n### For macOS and Linux:\n1. **Open Terminal:** You can find it in Applications > Utilities on macOS or by searching for \"Terminal\" in the Spotlight search.\n2. In the terminal, type the following command and press Enter:\n   ```bash\n   sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder\n   ```\n3. **Enter your password** when prompted (if you're using a password-protected account).\n4. This will flush the DNS cache.\n\nThese methods should help clear out the DNS cache more quickly, improving performance and resolving any issues related to cached DNS data in Google Chrome.",
+      "answer_tokens": {
+        "in": 64,
+        "out": 334
+      },
+      "recovered_intent": "The questioner wanted to know how to quickly clear the DNS cache in Google Chrome, as opposed to waiting for the natural timeout period or restarting the browser. They specifically sought instructions on how to do this on Windows using both Task Manager and command prompt methods, as well as on macOS and Linux using terminal commands. The asker likely aimed to understand the steps involved in each method and the potential benefits of clearing the DNS cache, such as improved performance and resolution of issues related to cached DNS data.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.25,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.4351,
+        "cos_intent_prompt": 0.9339,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.812,
+          "social": 0.188
+        },
+        "overlap_vs_A": 0.562,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "I use the chrome extension Seek n Play ( URL 0), which adds this feature."
+          },
+          {
+            "source": "eli5",
+            "text": "Hitting the 'Back' button in a browser reloads the previous html file. That worked great for a long "
+          },
+          {
+            "source": "eli5",
+            "text": "Chrome is a browser created by Google. Chromium is an open source browser based on Chrome."
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.2,
+    "severity": 2.8,
+    "mirror": 2.7,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.5,
+    "revise_c": 2.6,
+    "answers": 16.2,
+    "deduce": 11.1,
+    "judge_answers": 8.6,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

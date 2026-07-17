@@ -1,0 +1,14 @@
+{
+  "id": "case-2005-ux-11660",
+  "source": "stackexchange-ux",
+  "tags": [
+    "general"
+  ],
+  "prompt": "Why do people clear the screen multiple times when using a calculator?",
+  "evidence": "I've noticed that most people when using a real or a virtual calculator, they hit the Clear button multiple times when clearing the screen (even though hitting it once is enough), so I started wondering: is there a flaw in the calculator's design that compels most people to do that? What makes them trust the button less than the other buttons? Is there some sort of feedback mechanism that's missing? Even if it's just a habit, how does one end up developing it?",
+  "attribution": {
+    "url": "https://ux.stackexchange.com/questions/11660/why-do-people-clear-the-screen-multiple-times-when-using-a-calculator",
+    "author": "Mashhoor",
+    "license": "CC BY-SA 4.0"
+  }
+}

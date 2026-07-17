@@ -1,0 +1,14 @@
+{
+  "id": "case-2027-cooking-56418",
+  "source": "stackexchange-cooking",
+  "tags": [
+    "general"
+  ],
+  "prompt": "How can I tell the difference between a rabbit and a cat?",
+  "evidence": "I received a shipment of prefabricated skinned rabbit last week and the shipment seemed unusual. Rabbits have a very close resemblance to cats once their “hair” and skin have been removed. Is there a telltale sign that I’m working with Bugs Bunny, not Sylvester? I have a suspicion that Elmer Fudd is running out of legitimate product. All jokes aside, how do you tell the difference?",
+  "attribution": {
+    "url": "https://cooking.stackexchange.com/questions/56418/how-can-i-tell-the-difference-between-a-rabbit-and-a-cat",
+    "author": "Chef_Code",
+    "license": "CC BY-SA 4.0"
+  }
+}

@@ -1,0 +1,382 @@
+{
+  "case_id": "case-2029-cooking-2690",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "Do you heat the pan first, then add oil? Or put the oil in and heat up with the pan?",
+  "intent": "Determine whether heating the pan first and then adding oil reduces the risk of burning the oil, particularly on electric stoves.",
+  "facets": [
+    "Addresses how quickly the oil burns when heated simultaneously with the pan",
+    "Considers the impact of stove type (electric vs gas) on oil burning",
+    "Explains the role of modulating heat in preventing oil from burning",
+    "Names a concrete recommendation for heating and adding oil, considering the goal of minimizing oil burning",
+    "Evaluates whether preheating the pan reduces the risk of oil burning compared to heating both simultaneously"
+  ],
+  "severity": 0.5,
+  "prompt_conveys": {
+    "per_facet": [
+      1.0,
+      0.0,
+      0.0,
+      0.5,
+      1.0
+    ],
+    "score": 0.5,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "yes"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "partial"
+      },
+      {
+        "facet": 5,
+        "verdict": "yes"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for the correct order of steps when preparing a pan for cooking: whether to heat the pan first and then add oil, or to add oil to the pan and heat it together.",
+    "foreclosed": "",
+    "tokens_out": 53
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "Do you heat the pan first, then add oil? Or put the oil in and heat up with the pan?",
+      "overhead_tokens": 0,
+      "answer": "It is generally recommended to preheat your pan before adding oil. This method helps ensure that the cooking surface reaches an optimal temperature, which can prevent sticking and promote even cooking.\n\nHere’s a step-by-step guide for heating your pan:\n\n1. **Preheat the Pan:** Place the pan on the stove over medium-high heat. Allow it to heat up until you see wisps of smoke rising from the pan (this is called \"hot smoking point\"). This indicates that the pan is at an appropriate temperature.\n\n2. **Add Oil:** Once the pan is hot, add a thin layer of oil by drizzling it into the pan. Swirl or tilt the pan to distribute the oil evenly across the surface.\n\n3. **Continue Cooking:** Add your ingredients and continue cooking as needed.\n\nUsing this method ensures that the oil does not cool down the pan when added cold, which could lead to uneven heating and potential sticking of food. Additionally, preheating helps in achieving a better sear or crust on foods like meats or vegetables.",
+      "answer_tokens": {
+        "in": 59,
+        "out": 209
+      },
+      "recovered_intent": "The text explains how to properly heat a pan before cooking, emphasizing the importance of preheating for even cooking, preventing sticking, and achieving a good sear. It provides a step-by-step guide that includes heating the pan over medium-high heat until it reaches the 'hot smoking point,' adding a thin layer of oil after preheating, and distributing the oil evenly. The text also mentions the potential downsides of not preheating, such as uneven heating and food sticking.",
+      "answer_coverage": {
+        "per_facet": [
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.5
+        ],
+        "score": 0.3,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          },
+          {
+            "facet": 5,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          0.0,
+          0.5,
+          1.0,
+          1.0
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          },
+          {
+            "facet": 5,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6724,
+        "cos_intent_prompt": 0.7866,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.188,
+          "social": 0.812
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "social",
+            "text": "Bringing water to the boil on an electric stove, or boiling it in an electric kettle first and then "
+          },
+          {
+            "source": "social",
+            "text": "First time using a wok. I used the recommended method to season it. Heat up, spread oil til smoking,"
+          },
+          {
+            "source": "social",
+            "text": "The recent discussion on seasoning cast iron pans prompted me to poll you guys for an answer."
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What is the correct order for heating a pan and adding oil: should the pan be heated first or should oil be added to a cold pan?",
+      "overhead_tokens": 37,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask about the same basic process of heating a pan and adding oil, just with slightly different wording.",
+        "cos_prompts": 0.8657
+      },
+      "answer": "The correct order for heating a pan and adding oil typically involves heating the pan first before adding the oil. Here's why:\n\nHeating the pan first helps in several ways:\n1. **Even Distribution of Heat:** A preheated pan ensures that the heat is evenly distributed across its surface, which promotes even cooking.\n2. **Prevention of Oil Splattering:** Adding oil to a cold pan can cause it to splatter when heated, especially if using liquid oils like olive or vegetable oil. This is less likely to happen with preheating.\n3. **Better Non-Stick Surface:** For non-stick pans, heating the pan first before adding the oil ensures that the coating does not break down from being exposed to high heat immediately upon contact with the oil.\n\nOnce the pan reaches an appropriate temperature (usually about 1-2 minutes for a medium heat setting), you can add a small amount of oil. The oil should be heated until it shimmers but is still clear, which typically takes another minute or two depending on the type and quantity of oil used. This process ensures that the food being cooked will have enough non-stick surface without burning.\n\nHowever, there are exceptions where adding oil to a cold pan can be beneficial, such as in certain stir-fry techniques or when using a very high smoke point oil like ghee, clarified butter, or refined coconut oil. Always adjust your method based on the specific recipe and desired outcome.",
+      "answer_tokens": {
+        "in": 65,
+        "out": 293
+      },
+      "recovered_intent": "The text aims to explain the proper order for heating a pan and adding oil, outlining the reasons why preheating the pan is generally recommended. It delves into the benefits of preheating, including even heat distribution, reduced oil splatter, and protection of non-stick coatings. Additionally, it provides guidance on determining when the pan and oil are adequately heated, mentioning ideal temperatures and visual cues. Finally, it acknowledges exceptions to this general rule, such as specific cooking techniques or high smoke point oils, emphasizing the importance of recipe-specific adjustments.",
+      "answer_coverage": {
+        "per_facet": [
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          0.5
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          },
+          {
+            "facet": 5,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          0.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.3,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          },
+          {
+            "facet": 5,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7644,
+        "cos_intent_prompt": 0.7985,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.25,
+          "social": 0.75
+        },
+        "overlap_vs_A": 0.688,
+        "top3": [
+          {
+            "source": "social",
+            "text": "Bringing water to the boil on an electric stove, or boiling it in an electric kettle first and then "
+          },
+          {
+            "source": "social",
+            "text": "The recent discussion on seasoning cast iron pans prompted me to poll you guys for an answer."
+          },
+          {
+            "source": "eli5",
+            "text": "There is no reason for it to be in the order it is. There is even less reason to change its order."
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "On electric stoves, does heating the pan before adding oil reduce the risk of burning the oil?",
+      "noop": false,
+      "overhead_tokens": 84,
+      "answer": "Yes, heating the pan before adding oil can indeed help reduce the risk of burning the oil on an electric stove. When you preheat the pan, it reaches a uniform temperature that allows for more even cooking once the oil is added. This process helps ensure that the oil starts to heat uniformly from all sides rather than just at its point of contact with the pan.\n\nPreheating also ensures that the oil does not cool down when the ingredients are added, which can lead to uneven heating and increased risk of burning or smoking. When the pan and oil both reach a consistent temperature before adding food, it creates an optimal cooking environment where the heat is distributed more evenly, reducing the likelihood of hot spots that could cause the oil to smoke excessively.\n\nAdditionally, preheating the pan can help prevent sticking, making it easier to manage ingredients as they are added. This practice not only helps with the safety and quality of your food but also contributes to a smoother cooking experience overall.",
+      "answer_tokens": {
+        "in": 56,
+        "out": 195
+      },
+      "recovered_intent": "The questioner wanted to know if heating a pan before adding oil on an electric stove is beneficial, specifically regarding the risk of burning the oil. They likely sought information about how preheating affects oil temperature distribution, cooking consistency, and potential for smoking or sticking.",
+      "answer_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5,
+          1.0,
+          1.0
+        ],
+        "score": 0.7,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          },
+          {
+            "facet": 5,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "score": 0.2,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          },
+          {
+            "facet": 5,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7138,
+        "cos_intent_prompt": 0.7858,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.312,
+          "social": 0.688
+        },
+        "overlap_vs_A": 0.188,
+        "top3": [
+          {
+            "source": "social",
+            "text": "My prewife and I just received a set of really nice pots and pans. She went to cooking school a whil"
+          },
+          {
+            "source": "social",
+            "text": "The recent discussion on seasoning cast iron pans prompted me to poll you guys for an answer."
+          },
+          {
+            "source": "eli5",
+            "text": "IMHO it has nothing to do with the oil in the pan. I have my grandmother's skillet probably 50+ year"
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.3,
+    "severity": 2.9,
+    "mirror": 2.9,
+    "rewrite_b": 2.5,
+    "fidelity_b": 2.5,
+    "revise_c": 2.5,
+    "answers": 13.0,
+    "deduce": 10.6,
+    "judge_answers": 8.7,
+    "judge_recovered": 8.5,
+    "geometry": 0.1
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "case-2016-superuser-61611",
+  "source": "stackexchange-superuser",
+  "tags": [
+    "general"
+  ],
+  "prompt": "How to copy with cp to include hidden files and hidden directories and their contents?",
+  "evidence": "How can I make copy absolutely all of the files and directories in a directory Requirements: Include hidden files and hidden directories. Be one single command with an flag to include the above. Not need to rely on pattern matching at all. My ugly, but working, hack is: How can I do this all in one command without the pattern matching? What flag do I need to use?",
+  "attribution": {
+    "url": "https://superuser.com/questions/61611/how-to-copy-with-cp-to-include-hidden-files-and-hidden-directories-and-their-con",
+    "author": "eleven81",
+    "license": "CC BY-SA 4.0"
+  }
+}

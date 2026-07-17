@@ -1,0 +1,14 @@
+{
+  "id": "case-2037-diy-10482",
+  "source": "stackexchange-diy",
+  "tags": [
+    "general"
+  ],
+  "prompt": "How can I add a \"C\" wire to my thermostat?",
+  "evidence": "So, the spiffy new wi-fi thermostats want power on the C wire from thermostat, but the old thermostat doesn't have a C wire at it. What's the easiest way to add the C wire/24 volt to the thermostat location?",
+  "attribution": {
+    "url": "https://diy.stackexchange.com/questions/10482/how-can-i-add-a-c-wire-to-my-thermostat",
+    "author": "Aaron",
+    "license": "CC BY-SA 4.0"
+  }
+}

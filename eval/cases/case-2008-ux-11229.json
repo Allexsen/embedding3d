@@ -1,0 +1,14 @@
+{
+  "id": "case-2008-ux-11229",
+  "source": "stackexchange-ux",
+  "tags": [
+    "general"
+  ],
+  "prompt": "Is this rotating cube interface user-friendly?",
+  "evidence": "I'm working on a prototype for an innovative form interface, where different parts of the form are shown on different sides of a cube. The cube rotates, and the user can fill it out as the cube spins. Here is a working example : To me, it seems like a pretty robust solution to our problem (i.e., before, our forms took up too much space on the page and were extremely boring), and it feels pretty usable to me, but this approach may have some user-experience problems I don't know about. Does this seem like a user-friendly model? If not, what can I do to improve it?",
+  "attribution": {
+    "url": "https://ux.stackexchange.com/questions/11229/is-this-rotating-cube-interface-user-friendly",
+    "author": "Peter Olson",
+    "license": "CC BY-SA 4.0"
+  }
+}

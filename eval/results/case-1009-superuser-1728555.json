@@ -1,0 +1,346 @@
+{
+  "case_id": "case-1009-superuser-1728555",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How can I change the text cursor speed in Microsoft Windows 10?",
+  "intent": "Adjust the text cursor movement speed in Microsoft Windows 10, particularly when moving beyond the first character of a line.",
+  "facets": [
+    "Addresses how to change the text cursor movement speed",
+    "Specifically addresses the slow initial movement of the cursor beyond the first character",
+    "Mentions any setting that affects the mouse pointer speed but not the text cursor speed",
+    "Provides instructions on how to adjust the text cursor speed correctly"
+  ],
+  "severity": 0.75,
+  "prompt_conveys": {
+    "per_facet": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.25,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "yes"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for instructions on how to adjust the rate at which the text cursor moves within the Microsoft Windows 10 operating system.",
+    "foreclosed": "",
+    "tokens_out": 41
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How can I change the text cursor speed in Microsoft Windows 10?",
+      "overhead_tokens": 0,
+      "answer": "To adjust the text cursor (caret) speed in Microsoft Windows 10, follow these steps:\n\n1. **Open Settings**: Click on the Start button and select \"Settings\" or press `Win + I` to open the Settings app.\n\n2. **Navigate to System**: In the Settings window, click on \"System.\"\n\n3. **Access Mouse Options**: On the left sidebar, find and click on \"Mouse & touchpad.\"\n\n4. **Adjust Cursor Speed**: Scroll down to the \"Cursor\" section. Here you will see options for both \"Primary\" and \"Secondary\" cursor speeds.\n\n5. **Change Speed Using Slider**: Use the slider under \"Primary\" or \"Secondary\" cursor speed to adjust how fast the text caret moves when typing. Drag the slider left to slow it down, right to speed it up.\n\nAlternatively, you can use keyboard shortcuts for quick adjustments:\n\n- Press `Ctrl + >` (greater than symbol) to increase cursor speed.\n- Press `Ctrl + <` (less than symbol) to decrease cursor speed.\n\nThese methods allow you to customize the text cursor speed according to your typing pace and preferences.",
+      "answer_tokens": {
+        "in": 51,
+        "out": 232
+      },
+      "recovered_intent": "The questioner wanted to know how to change the speed of the text cursor in Microsoft Windows 10. They likely wanted to understand both the graphical interface method (using sliders within the Settings app) and any keyboard shortcuts available for adjusting the cursor speed.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6682,
+        "cos_intent_prompt": 0.7875,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.062,
+          "eli5": 0.812,
+          "social": 0.062
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "because its only the very point that's your actual cursor. the rest is just a graphical representati"
+          },
+          {
+            "source": "eli5",
+            "text": "The ONLY way to calculate a speed is by using some sort of reference point."
+          },
+          {
+            "source": "eli5",
+            "text": "The speed is affected by a lot of factors such as age and gender. The impulse has to travel along th"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What are the steps to adjust the text cursor speed in Microsoft Windows 10?",
+      "overhead_tokens": 25,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask for the same information, just with a slight difference in wording and phrasing.",
+        "cos_prompts": 0.9512
+      },
+      "answer": "To adjust the text cursor speed in Microsoft Windows 10, follow these steps:\n\n1. **Open Settings**: Click on the Start button and select \"Settings\" from the menu.\n\n2. **Navigate to Ease of Access**: In the Settings window, click on \"Ease of Access\" or scroll down and find it listed under accessibility options.\n\n3. **Accessibility Options**: On the left-hand side panel, click on \"Keyboard.\"\n\n4. **Adjust Keyboard Repeat Speed**: Under the \"Keyboard repeat speed,\" you will see a slider that allows you to adjust how quickly the text cursor repeats its action (such as when holding down an arrow key). Use your mouse or touchpad to move this slider to the desired setting.\n\n5. **Customize Cursor Blink Rate** (Optional): If you want to customize the blink rate of the text cursor, click on \"Text cursor blink rate\" and use the slider provided to adjust it between \"Always On,\" \"Auto-Hide,\" and \"Never.\"\n\n6. **Apply Changes**: The changes will take effect immediately without needing to restart your computer.\n\nBy following these steps, you can customize the speed at which the text cursor moves in Windows 10, making it easier for you to use the keyboard effectively.",
+      "answer_tokens": {
+        "in": 53,
+        "out": 253
+      },
+      "recovered_intent": "The asker wanted to know how to adjust the speed of the text cursor and the blink rate of the cursor in Microsoft Windows 10. They specifically wanted instructions on how to change the 'keyboard repeat speed' which controls how quickly the cursor repeats its action when an arrow key is held down, and they also wanted to know how to customize the 'text cursor blink rate' between 'Always On,' 'Auto-Hide,' and 'Never.'",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5687,
+        "cos_intent_prompt": 0.7904,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.0,
+          "eli5": 0.875,
+          "social": 0.062
+        },
+        "overlap_vs_A": 0.562,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "because its only the very point that's your actual cursor. the rest is just a graphical representati"
+          },
+          {
+            "source": "eli5",
+            "text": "Depending on the program, it lets you toggle insert mode between \"insert as I type and shift charact"
+          },
+          {
+            "source": "arxiv",
+            "text": "In this paper, we propose an automated evaluation metric for text entry. We also consider possible i"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "How can I adjust the text cursor movement speed in Microsoft Windows 10, especially when moving beyond the first character of a line?",
+      "noop": false,
+      "overhead_tokens": 78,
+      "answer": "In Microsoft Windows 10, adjusting the text cursor movement speed when navigating through lines of text is not directly configurable via the standard system settings. However, you can use some keyboard shortcuts and third-party software to indirectly control how quickly the text cursor moves.\n\n### Using Keyboard Shortcuts:\nFor most applications that support it, you can hold down the `Shift` key while pressing the arrow keys or `Page Up`/`Page Down` keys to move the cursor faster. While holding `Shift`, the movement will be more rapid, allowing you to quickly jump over large sections of text.\n\n### Using Third-Party Software:\nTo directly control the speed at which the cursor moves in various applications, consider using third-party utilities such as **AutoHotkey** or **KeyRemap4MacBook** (for macOS; though there are similar tools for Windows).\n\n#### Example with AutoHotkey (Windows):\n1. Install AutoHotkey from its official website.\n2. Create a new script file and add the following lines:\n   ```autohotkey\n   ; Increase cursor movement speed when Shift is held down\n   +Up::Send {Up 5}\n   +Down::Send {Down 5}\n   +Left::Send {Left 5}\n   +Right::Send {Right 5}\n   ```\n3. Save the script and double-click to run it.\n\nThis script will increase the cursor movement speed by five steps when you hold down `Shift` and press an arrow key or a directional navigation key. Adjust the number (e.g., `10`, `20`) as needed for your preferred speed.\n\n### System-Wide Adjustments:\nFor system-wide adjustments, especially in text editors where such settings are more flexible, consider using applications like **Visual Studio Code** or **Notepad++**, which often have more granular control options. For example, Notepad++ allows setting the cursor movement speed through its \"Edit\" menu under \"Preferences.\"\n\nBy exploring these methods, you can customize your cursor movement experience to better suit your workflow in Windows 10 applications.",
+      "answer_tokens": {
+        "in": 63,
+        "out": 422
+      },
+      "recovered_intent": "The questioner wanted to know how to adjust the text cursor movement speed in Microsoft Windows 10 applications. They were specifically interested in both direct and indirect methods of control, including keyboard shortcuts, third-party software like AutoHotkey or KeyRemap4MacBook, and system-wide adjustments within applications like Visual Studio Code or Notepad++. The asker likely desired a faster cursor movement speed for navigating through lines of text efficiently.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.25,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "no": "no"
+          },
+          {
+            "facet": 3,
+            "yes": "yes"
+          },
+          {
+            "facet": 4,
+            "partial": "partial"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5927,
+        "cos_intent_prompt": 0.9305,
+        "source_mix": {
+          "arxiv": 0.188,
+          "wikipedia": 0.062,
+          "eli5": 0.688,
+          "social": 0.062
+        },
+        "overlap_vs_A": 0.75,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "because its only the very point that's your actual cursor. the rest is just a graphical representati"
+          },
+          {
+            "source": "arxiv",
+            "text": "In this paper, we propose an automated evaluation metric for text entry. We also consider possible i"
+          },
+          {
+            "source": "eli5",
+            "text": "Depending on the program, it lets you toggle insert mode between \"insert as I type and shift charact"
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.0,
+    "severity": 2.7,
+    "mirror": 2.7,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.5,
+    "revise_c": 2.6,
+    "answers": 16.3,
+    "deduce": 10.2,
+    "judge_answers": 8.4,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

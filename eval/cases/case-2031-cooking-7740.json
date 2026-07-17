@@ -1,0 +1,14 @@
+{
+  "id": "case-2031-cooking-7740",
+  "source": "stackexchange-cooking",
+  "tags": [
+    "general"
+  ],
+  "prompt": "Why did my banana catch fire in the microwave?",
+  "evidence": "Wow, that sounds like a silly question, but really! My wife froze bananas in the freezer with the peel still on. You can't peel them frozen. I put it in the microwave for one minute at 50% power. After 30 seconds the thin end of the peel (where a bunch connect to each other) was on fire, with a visible flame (about the size of a lighter). What on earth happened?",
+  "attribution": {
+    "url": "https://cooking.stackexchange.com/questions/7740/why-did-my-banana-catch-fire-in-the-microwave",
+    "author": "yossarian",
+    "license": "CC BY-SA 4.0"
+  }
+}

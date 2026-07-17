@@ -1,0 +1,14 @@
+{
+  "id": "case-2012-superuser-232373",
+  "source": "stackexchange-superuser",
+  "tags": [
+    "general"
+  ],
+  "prompt": "How to tell git which private key to use?",
+  "evidence": "has the option to tell which private key file to use when authenticating: Selects a file from which the identity (private key) for RSA or DSA authentication is read. The default is for protocol version 1, and and for protocol version 2. Identity files may also be specified on a per-host basis in the configuration file. It is possible to have multiple options (and multiple identities specified in configuration files). Is there a similar way to tell which private key file to use on a system with multiple private keys in the directory?",
+  "attribution": {
+    "url": "https://superuser.com/questions/232373/how-to-tell-git-which-private-key-to-use",
+    "author": "jrdioko",
+    "license": "CC BY-SA 4.0"
+  }
+}

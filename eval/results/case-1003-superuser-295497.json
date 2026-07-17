@@ -1,0 +1,346 @@
+{
+  "case_id": "case-1003-superuser-295497",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How to recover folders from formatted drive",
+  "intent": "I need a way to recover the files and folders from my portable hard drive that I accidentally formatted, ideally preserving their original structure.",
+  "facets": [
+    "Names a software capable of recovering data from a formatted drive",
+    "Describes how well the recommended software handles recovery of folder structures",
+    "Explains the process for using the recommended software to recover my specific situation (formatted twice)",
+    "Provides an estimate of the likelihood of successful recovery, considering the multiple formatting attempts"
+  ],
+  "severity": 0.75,
+  "prompt_conveys": {
+    "per_facet": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.25,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "yes"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for instructions on how to retrieve folders that were deleted when a storage drive was formatted.",
+    "foreclosed": "",
+    "tokens_out": 34
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How to recover folders from formatted drive",
+      "overhead_tokens": 0,
+      "answer": "Recovering folders from a formatted drive can be challenging, but several methods can help you retrieve your data. Here are some steps you can follow:\n\n1. **Stop Using the Drive Immediately**: Once you realize that important data is missing, avoid using the drive until recovery attempts are completed. Writing new data to the drive can overwrite the lost files and make recovery impossible.\n\n2. **Use Data Recovery Software**: There are several reputable software solutions available for Windows (such as Recuva, EaseUS Data Recovery Wizard) and Mac (like Disk Drill, Stellar Data Recovery). These programs scan your formatted drive to identify deleted or lost files and help you recover them.\n\n3. **Professional Services**: If the data is critical and cannot be recovered with free tools, consider hiring a professional data recovery service. These services have specialized equipment and expertise that can increase the chances of successful data recovery.\n\n4. **Check for Backup**: Before formatting, many users create backups of their important files. Check any external drives, cloud storage, or other backup methods to see if your data is still available there.\n\n5. **Physical Damage Check**: Ensure that the drive itself hasn't suffered from physical damage during the formatting process. If you notice any signs of damage (like clicking sounds), proceed with caution as further use might cause more harm.\n\n6. **Avoid Formatting Again**: If possible, do not format or overwrite the drive again until after attempting data recovery. Each operation decreases the probability of successful recovery.\n\nBy following these steps, you can increase your chances of successfully recovering folders from a formatted drive.",
+      "answer_tokens": {
+        "in": 43,
+        "out": 316
+      },
+      "recovered_intent": "The questioner wanted to know how to recover folders from a formatted drive. They were interested in various methods, including using data recovery software (both for Windows and Mac), seeking professional data recovery services, checking backups, inspecting the drive for physical damage, and understanding the importance of avoiding further formatting or writing to the drive.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "no verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5218,
+        "cos_intent_prompt": 0.7397,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.0,
+          "eli5": 0.812,
+          "social": 0.125
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Imagine your hard drive as a giant wall, like the Great Wall of China. Now imagine that your files a"
+          },
+          {
+            "source": "eli5",
+            "text": "Reformatting can be as simple as deleting the file system and rewriting it. That won’t delete any of"
+          },
+          {
+            "source": "eli5",
+            "text": "Think of a hard drive as an encyclopedia, and the files as entries in that encyclopedia."
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "Describe steps for data recovery from a formatted hard drive",
+      "overhead_tokens": 19,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask for the same process of recovering data from a formatted drive, just with slightly different wording.",
+        "cos_prompts": 0.76
+      },
+      "answer": "Recovering data from a formatted hard drive can be challenging, but it is possible with the right tools and techniques. Here are the steps you should follow to attempt data recovery:\n\n1. **Stop Using the Drive**: The first crucial step after formatting is to stop using the drive for any new storage or operations. Any additional writing to the drive will overwrite existing data, making recovery more difficult.\n\n2. **Identify the File System and Tools Needed**: Determine the file system that was used on your hard drive (e.g., NTFS, FAT32) as this will guide you in choosing the appropriate data recovery software or tool. Popular free tools include Recuva by Piriform, EaseUS Data Recovery Wizard, and TestDisk.\n\n3. **Download and Install Data Recovery Software**: Choose a reputable data recovery tool compatible with your operating system (Windows, macOS, Linux). Ensure it supports the file system of your hard drive.\n\n4. **Scan the Drive**: Connect the formatted hard drive to your computer and run the data recovery software. The software will scan for deleted files or files that were overwritten during formatting. Be patient as this process can take some time depending on the size of the drive and the amount of data.\n\n5. **Preview and Recover Files**: Once the scanning is complete, preview any recoverable files to ensure they are the ones you need. You can then choose specific files or entire folders to recover to a safe location on another hard drive or external storage device.\n\n6. **Recover Data Safely**: After selecting the data for recovery, initiate the process. Ensure that the data is saved in a secure location away from the original drive to prevent accidental overwrite of deleted files during the recovery process.\n\n7. **Professional Assistance**: If you are unable to recover your files using free tools or if the formatting was very recent and you suspect that critical information could be on the drive, consider seeking professional help from data recovery services. They have specialized tools and expertise for such scenarios.\n\nBy following these steps, you can increase your chances of recovering valuable data from a formatted hard drive. However, it's important to act quickly after formatting as the longer you wait, the lower your chances of successful recovery become.",
+      "answer_tokens": {
+        "in": 46,
+        "out": 446
+      },
+      "recovered_intent": "The questioner wanted to know how to recover data from a formatted hard drive. They specifically sought information on the steps involved in the process, including when to stop using the drive, identifying the file system, choosing appropriate tools, scanning the drive, previewing and recovering files, ensuring safe recovery, and considering professional assistance if needed. The questioner also likely wanted to understand the importance of acting quickly after formatting for successful data recovery.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.4199,
+        "cos_intent_prompt": 0.6131,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.125,
+          "eli5": 0.812,
+          "social": 0.0
+        },
+        "overlap_vs_A": 0.625,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Reformatting can be as simple as deleting the file system and rewriting it. That won’t delete any of"
+          },
+          {
+            "source": "eli5",
+            "text": "Think of a hard drive as an encyclopedia, and the files as entries in that encyclopedia."
+          },
+          {
+            "source": "eli5",
+            "text": "Your hard drive is a round plate, kind of like an old record. It's divided into thousands and thousa"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "How can I recover the files and folders from my portable hard drive, which I accidentally formatted, while preserving their original structure?",
+      "noop": false,
+      "overhead_tokens": 70,
+      "answer": "Recovering files and folders from a formatted portable hard drive involves several steps to ensure that you preserve the original structure of your data. Here’s how you can proceed:\n\n1. **Do Not Write Data to the Drive**: The most crucial step is to avoid writing any new data to the hard drive, as this can overwrite existing data and make recovery more difficult or impossible.\n\n2. **Use a Data Recovery Software**: There are several reliable data recovery software options available that can help you recover files from your formatted portable hard drive without causing further damage. Popular choices include Recuva by Piriform, EaseUS Data Recovery Wizard, and Disk Drill. These tools allow you to scan the drive for lost files and folders.\n\n3. **Scan the Drive**: Launch the data recovery software of your choice and follow the on-screen instructions to initiate a scan of your portable hard drive. The software will search for recoverable files based on their file types and sizes, as well as any deleted or unallocated space on the drive.\n\n4. **Preview Files Before Recovery**: Many data recovery tools offer the ability to preview files before actually recovering them. This can help you identify which files are worth saving and ensure that only necessary files are recovered, preserving the original structure of your folders.\n\n5. **Recover Files to a Safe Location**: Once you’ve identified the files and folders you want to recover, use the software’s interface to select them for recovery. Choose a safe location on another drive (not the portable hard drive) to store these files, ensuring that their original directory structure is maintained as much as possible.\n\n6. **Verify the Recovery**: After recovery, it's wise to verify that all critical data has been successfully saved in its intended locations. This step ensures that no important documents or projects were overlooked during the recovery process.\n\n7. **Consider Professional Help**: If you find the process complex or if your data is particularly valuable and cannot be recovered using software alone, consider seeking help from a professional data recovery service. These services have advanced tools and expertise to handle more severe cases of data loss.\n\nBy following these steps carefully, you can increase the likelihood of successfully recovering your files and folders while preserving their original structure.",
+      "answer_tokens": {
+        "in": 61,
+        "out": 443
+      },
+      "recovered_intent": "The questioner wanted to know how to recover files and folders from a formatted portable hard drive, specifically focusing on the steps involved in the process. They were interested in understanding how to avoid further data loss, which software options are available for recovery, how to scan the drive effectively, preview recovered files, choose a safe location for storing them, verify the recovery process, and when to consider professional help for more complex cases. Essentially, they sought a detailed guide on recovering data from a formatted portable hard drive while preserving its original structure.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          0.0,
+          0.5
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6631,
+        "cos_intent_prompt": 0.9163,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.0,
+          "eli5": 0.688,
+          "social": 0.25
+        },
+        "overlap_vs_A": 0.75,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Reformatting can be as simple as deleting the file system and rewriting it. That won’t delete any of"
+          },
+          {
+            "source": "eli5",
+            "text": "Imagine your hard drive as a giant wall, like the Great Wall of China. Now imagine that your files a"
+          },
+          {
+            "source": "eli5",
+            "text": "Think of a hard drive as an encyclopedia, and the files as entries in that encyclopedia."
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.1,
+    "severity": 2.7,
+    "mirror": 2.7,
+    "rewrite_b": 9.1,
+    "fidelity_b": 2.5,
+    "revise_c": 2.6,
+    "answers": 18.8,
+    "deduce": 10.9,
+    "judge_answers": 8.7,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

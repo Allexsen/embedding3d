@@ -1,0 +1,55 @@
+# Eval report — 65 completed case(s)
+
+cases: case-1001-superuser-1911349, case-1002-superuser-1868855, case-1003-superuser-295497, case-1004-superuser-1807433, case-1005-superuser-1787037, case-1006-superuser-1784011, case-1007-superuser-1676504, case-1008-superuser-1749019, case-1009-superuser-1728555, case-1010-superuser-1517659, case-1011-superuser-1676296, case-1012-superuser-1607967, case-1013-superuser-1571556, case-1014-superuser-1544446, case-1015-superuser-1457335, case-1016-superuser-702490, case-1017-superuser-1275619, case-1018-superuser-1178122, case-1019-superuser-1091209, case-1020-superuser-947255, case-2001-ux-49991, case-2002-ux-52336, case-2003-ux-1318, case-2004-ux-31359, case-2005-ux-11660, case-2006-ux-51346, case-2007-ux-35576, case-2008-ux-11229, case-2009-superuser-792607, case-2010-superuser-545329, case-2011-superuser-272265, case-2012-superuser-232373, case-2013-superuser-203674, case-2014-superuser-231273, case-2015-superuser-1127067, case-2016-superuser-61611, case-2017-workplace-7617, case-2018-workplace-83451, case-2019-workplace-89603, case-2020-workplace-896, case-2021-workplace-65522, case-2022-workplace-138987, case-2023-workplace-11816, case-2024-workplace-96212, case-2025-cooking-567, case-2026-cooking-84310, case-2027-cooking-56418, case-2028-cooking-267, case-2029-cooking-2690, case-2030-cooking-997, case-2031-cooking-7740, case-2032-cooking-1260, case-2033-diy-20873, case-2034-diy-71585, case-2035-diy-7100, case-2036-diy-6226, case-2037-diy-10482, case-2038-diy-126697, case-2039-diy-21457, case-2040-diy-1928, case-2041-gardening-209, case-2042-gardening-158, case-2043-gardening-81, case-2044-gardening-801, case-2045-gardening-20
+
+## Primary: answer facet-coverage (0..1), paired
+
+- arm A: mean 0.55  median 0.625
+- arm B: mean 0.5135  median 0.5
+- arm C: mean 0.6263  median 0.625
+
+## Deltas vs arm A (positive = better than the user's raw prompt)
+
+### B − A  (answer coverage)
+- mean delta: -0.0365
+- 95% CI: [-0.0765, 0.0027]
+- permutation p: 0.0791
+
+### C − A  (answer coverage)
+- mean delta: 0.0763
+- 95% CI: [0.0327, 0.1196]
+- permutation p: 0.001
+
+## By severity tercile (severity = 1 − how much the raw prompt conveyed)
+
+### low severity  (n=22, mean severity 0.538)
+- arm A answer coverage: 0.625
+- arm B answer coverage: 0.5606
+- arm C answer coverage: 0.6349
+- C − A: 0.0098
+- B − A: -0.0644
+
+### mid severity  (n=22, mean severity 0.739)
+- arm A answer coverage: 0.4727
+- arm B answer coverage: 0.4428
+- arm C answer coverage: 0.5917
+- C − A: 0.1189
+- B − A: -0.0299
+
+### high severity  (n=21, mean severity 0.89)
+- arm A answer coverage: 0.5524
+- arm B answer coverage: 0.5381
+- arm C answer coverage: 0.6536
+- C − A: 0.1012
+- B − A: -0.0143
+
+## Secondary channels
+
+- C no-op gate (mirror left the prompt untouched): 0/65
+- B fidelity (rewrite preserved meaning): 65/65
+- recovered-intent coverage, arm A: mean 0.4706
+- recovered-intent coverage, arm B: mean 0.4006
+- recovered-intent coverage, arm C: mean 0.4879
+- tokens: arm A overhead 0 + answer 403 (mean)
+- tokens: arm B overhead 25 + answer 415 (mean)
+- tokens: arm C overhead 82 + answer 508 (mean)

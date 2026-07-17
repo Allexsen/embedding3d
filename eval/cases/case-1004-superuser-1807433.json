@@ -1,0 +1,14 @@
+{
+  "id": "case-1004-superuser-1807433",
+  "source": "stackexchange-xy",
+  "tags": [
+    "xy-labeled"
+  ],
+  "prompt": "How to make USB flash drive immutable/read only forever?",
+  "evidence": "I need to provide some proof for the judge on a pendrive. I bought new 32GB pendrive and would like to upload 8MB file on it and make the pendrive read only forever, so nobody tampers with it. Is it doable?",
+  "attribution": {
+    "url": "https://superuser.com/questions/1807433/how-to-make-usb-flash-drive-immutable-read-only-forever",
+    "author": "Yoda",
+    "license": "CC BY-SA 4.0"
+  }
+}

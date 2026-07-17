@@ -1,0 +1,14 @@
+{
+  "id": "case-1006-superuser-1784011",
+  "source": "stackexchange-xy",
+  "tags": [
+    "xy-labeled"
+  ],
+  "prompt": "How to convert or repackage a folder back into docx",
+  "evidence": "I have uncompressed a docx file (say ) using 7zip to . (or alternatively, changed extension to then extracted it) I modified some images inside and now i want to recompile/rebundle/repackage the folder into a docx file. I am using MS Office 2007. How can i do that? I tried zipping it back, then changing extension to docx, didn't work - msword showed corrupted file error, tried restoring/fixing it, failed, then exited with error. As for the XY problem ; i am trying to edit all the selected images in the docx via some manipulation (like magick and thereafter in gimp) This question is similar in spirit to: How to edit and save .docx file in winrar directly without extracting? Compress folder into MacBinary (.bin) format",
+  "attribution": {
+    "url": "https://superuser.com/questions/1784011/how-to-convert-or-repackage-a-folder-back-into-docx",
+    "author": "user8395964",
+    "license": "CC BY-SA 4.0"
+  }
+}

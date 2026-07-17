@@ -1,0 +1,310 @@
+{
+  "case_id": "case-2033-diy-20873",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "What is the purpose of these holes on my wire stripper?",
+  "intent": "Understanding the design and functionality of my existing wire stripper to use it more effectively",
+  "facets": [
+    "Describes the intended function of the central holes",
+    "Explains the role of the holes above the loop",
+    "Describes how the teeth on the handles contribute to stripping wires"
+  ],
+  "severity": 0.6667,
+  "prompt_conveys": {
+    "per_facet": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.3333,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "yes"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for an explanation of the function or reason behind the presence of holes on a wire stripper tool.",
+    "foreclosed": "",
+    "tokens_out": 36
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "What is the purpose of these holes on my wire stripper?",
+      "overhead_tokens": 0,
+      "answer": "The holes on your wire stripper, often referred to as notches or slits, serve specific purposes depending on their size and location:\n\n1. **Stripping Gouge**: The largest hole typically serves as a gouge for manually stripping insulation from wires where the blade isn't deep enough. It allows you to grip the wire and remove more insulation than the blade can cut.\n\n2. **Wire Size Guide**: Smaller holes may indicate the appropriate size or gauge of wire that the tool is designed to handle. These notches help ensure that you are using the correct stripper for your specific wire size, which is crucial for safety and efficiency.\n\n3. **Cutting Holes**: Some wire strippers have a smaller hole near the blade edge used specifically for cutting through thicker insulation without damaging the underlying wire. This can be particularly useful with insulated terminals or connectors where precise cutting is needed.\n\n4. **Insulation Slitting**: In some designs, these holes are slits that help in scoring and easily splitting the insulation along its length when you rotate the stripped section of the tool, making it easier to remove the outer layer without damaging the wire core.\n\nEach design feature is intended to enhance the functionality and effectiveness of your wire stripper for various tasks. By understanding what each hole does, you can use your tool more effectively in different scenarios involving wire preparation.",
+      "answer_tokens": {
+        "in": 48,
+        "out": 272
+      },
+      "recovered_intent": "The text aims to explain the purpose and function of the various holes or notches found on a wire stripper. It delves into how these holes, differing in size and location, are used for tasks like stripping insulation, guiding wire size selection, cutting thicker insulation, and slitting insulation for easier removal. The user likely wanted to understand the specific uses of each hole on a wire stripper to effectively utilize the tool for different wire preparation tasks.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "no verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.3333,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6897,
+        "cos_intent_prompt": 0.5488,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.062,
+          "eli5": 0.812,
+          "social": 0.125
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Electrical Controls Engineer here. Basically it is to reduce noise and to not induce voltage into th"
+          },
+          {
+            "source": "eli5",
+            "text": "I think the strips being referred to by the asker are those vague, nebulous stripes you get from mow"
+          },
+          {
+            "source": "eli5",
+            "text": "Aesthetics. It allows the salt and pepper grinder to match more closely since they now have similar "
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "Identify the function of the holes present on a wire stripper",
+      "overhead_tokens": 21,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask for the same information about the holes on a wire stripper.",
+        "cos_prompts": 0.9102
+      },
+      "answer": "The holes found on a wire stripper are designed to facilitate the removal of insulation from wires without damaging the underlying conductor. These slots, often referred to as notches or stripping guides, come in different sizes corresponding to various wire gauges. Each hole is precisely sized for specific wire gauge ranges, allowing users to select the appropriate notch based on the diameter of the wire they are working with.\n\nWhen using a wire stripper, the user aligns the wire's insulation with the appropriate hole and then squeezes the stripping tool closed. The notched design ensures that only the insulation is cut while minimizing the risk of nicking or damaging the internal conductor. This precision helps in maintaining the integrity of the wire for proper electrical connections and to avoid potential short circuits or poor conductivity.\n\nThe presence of multiple holes on a single wire stripper accommodates a wide range of wire gauges, from thin gauge wires used in small electronics to thicker ones found in larger electrical installations. This feature makes the tool versatile and useful across various applications in both professional and DIY settings.",
+      "answer_tokens": {
+        "in": 48,
+        "out": 208
+      },
+      "recovered_intent": "The text explains how wire strippers work, focusing on the purpose and function of the holes (notches or stripping guides). It describes how these holes are sized to correspond with different wire gauges, allowing users to select the appropriate hole for their wire diameter. The text also emphasizes the importance of using the correct hole size to avoid damaging the wire conductor while effectively removing insulation. Finally, it mentions that having multiple holes on a single stripper allows for versatility in handling various wire gauges across different applications.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.3333,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.3333,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "no": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7077,
+        "cos_intent_prompt": 0.6566,
+        "source_mix": {
+          "arxiv": 0.125,
+          "wikipedia": 0.062,
+          "eli5": 0.75,
+          "social": 0.062
+        },
+        "overlap_vs_A": 0.5,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "I think the strips being referred to by the asker are those vague, nebulous stripes you get from mow"
+          },
+          {
+            "source": "eli5",
+            "text": "Electrical Controls Engineer here. Basically it is to reduce noise and to not induce voltage into th"
+          },
+          {
+            "source": "eli5",
+            "text": "In car tires, there's a steel wire that's on the edge of the rubber tire."
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "Can you explain how I can use these holes on my existing wire stripper to make it easier and more efficient to strip wires?",
+      "noop": false,
+      "overhead_tokens": 72,
+      "answer": "Certainly! The holes on your wire stripper are designed to accommodate different wire gauges, making the stripping process faster and more efficient. To effectively use these holes:\n\n1. **Identify the Wire Gauge**: Before you start, determine the gauge of the wire you need to strip. Wire gauges range from 28 (thinnest) to 4 (thickest), with numbers in between representing intermediate sizes.\n\n2. **Select the Correct Hole**: Locate the hole that corresponds to your wire's gauge. Each hole is marked or labeled for easy identification. For instance, a standard wire stripper might have holes labeled 16-20, 22-24, and 28-30.\n\n3. **Insert the Wire**: Insert the wire into the appropriate hole. The wire should fit snugly; if it's too loose or too tight, you may need to adjust your grip or choose a different hole size.\n\n4. **Position for Stripping**: Hold the stripper firmly with one hand and grasp the wire at its end with the other hand. Place the blade of the stripper against the insulation, just beyond the point where you want to cut off the insulation.\n\n5. **Stripping the Wire**:\n   - For smaller wires (typically 24 gauge or finer), use a simple pinch: slide the stripped portion of the wire along the edge of the hole until the insulation is sheared.\n   - For larger wires, align the wire with the cutter blade and the incision line on the stripper. Squeeze firmly to cut through both the insulation and the conductor at once.\n\n6. **Remove Insulation**: Gently pull back or peel away the insulation from the stripped wire end. The amount of insulation you need to remove depends on your application, but typically 3-5mm is sufficient for most connections.\n\n7. **Inspect the Stripped Wire**: After stripping, ensure that the conductor inside the insulation is clean and free of nicks or damage. This will help ensure a secure connection when soldering or crimping.\n\nBy using the holes appropriately, you can avoid damaging the wire or stripping too much insulation, which could lead to poor connections or short circuits. This method also helps in maintaining consistent wire gauge lengths for better electrical performance and safety.",
+      "answer_tokens": {
+        "in": 61,
+        "out": 464
+      },
+      "recovered_intent": "The text's asker wanted to know how to properly use a wire stripper, specifically focusing on the purpose of the holes, how to select the correct hole size based on wire gauge, and the step-by-step process of stripping wires using different techniques for various wire sizes. They also likely wanted to understand the importance of proper stripping for electrical connections and safety.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.3333,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.3333,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "no verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6634,
+        "cos_intent_prompt": 0.6583,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.125,
+          "eli5": 0.625,
+          "social": 0.188
+        },
+        "overlap_vs_A": 0.438,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "There's not too much too it. You just drill for it like a fire drill."
+          },
+          {
+            "source": "eli5",
+            "text": "Electrical Controls Engineer here. Basically it is to reduce noise and to not induce voltage into th"
+          },
+          {
+            "source": "eli5",
+            "text": "In the old days, stamps were printed on a big sheet of paper, and they'd use a machine to poke rows "
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 2.8,
+    "severity": 2.6,
+    "mirror": 2.6,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.5,
+    "revise_c": 2.6,
+    "answers": 15.3,
+    "deduce": 10.7,
+    "judge_answers": 7.9,
+    "judge_recovered": 7.9,
+    "geometry": 0.1
+  }
+}

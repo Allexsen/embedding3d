@@ -1,0 +1,14 @@
+{
+  "id": "case-2014-superuser-231273",
+  "source": "stackexchange-superuser",
+  "tags": [
+    "general"
+  ],
+  "prompt": "What are the Windows A: and B: drives used for?",
+  "evidence": "In Windows you have a C-drive. Everything labeled beyond that is with the following letter. So your second drive is D, your DVD is E and if you put in a USB stick it becomes F and the following drive G. And so on and so forth. But then, what and where are A and B-drives?",
+  "attribution": {
+    "url": "https://superuser.com/questions/231273/what-are-the-windows-a-and-b-drives-used-for",
+    "author": "Demian Kasier",
+    "license": "CC BY-SA 4.0"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "case-2006-ux-51346",
+  "source": "stackexchange-ux",
+  "tags": [
+    "general"
+  ],
+  "prompt": "Why do credit card forms ask for Visa, MasterCard, etc.?",
+  "evidence": "You can tell if it's a Visa or MasterCard based on the number it starts with, i.e. 4 for Visa, 5 for MasterCard. Why do most billing forms request the type of card? It's not a barrier for bots (to my knowledge). It's redundant information. It's an additional button to click for someone about to pay for something. Why? If it's for consistency of experience for users: \"Wait, why wasn't I asked what type of card I had? Everyone always asks that! Something's fishy here.\" Why not just show them \"Visa\" (or whatever card symbol that they have) as they start typing?",
+  "attribution": {
+    "url": "https://ux.stackexchange.com/questions/51346/why-do-credit-card-forms-ask-for-visa-mastercard-etc",
+    "author": "Aaron Hall",
+    "license": "CC BY-SA 4.0"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "case-1010-superuser-1517659",
+  "source": "stackexchange-xy",
+  "tags": [
+    "xy-labeled"
+  ],
+  "prompt": "How do you create a hardlink of cmd.exe itself (Windows 10)?",
+  "evidence": "I have a registry addition to allow opening any folder in cmd.exe as admin, but it requires cmd.exe to always run as admin. You can't change cmd.exe itself to do that, because it's protected. But I found instructions somewhere in the past (which I can't find now) which allowed it by changing the security - I assume changing the permissions. After creating the hardlink, you had to change it back or it wouldn't work normally. So I believe the process was: change permissions of cmd.exe create hardlink of cmd.exe (something like cmdAdmin.exe) set cmdAdmin.exe to always run as admin revert permissions of cmd.exe Does anyone know the permissions I need to change (or whatever property it is)?",
+  "attribution": {
+    "url": "https://superuser.com/questions/1517659/how-do-you-create-a-hardlink-of-cmd-exe-itself-windows-10",
+    "author": "richjhart",
+    "license": "CC BY-SA 4.0"
+  }
+}

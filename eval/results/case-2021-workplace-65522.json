@@ -1,0 +1,342 @@
+{
+  "case_id": "case-2021-workplace-65522",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "Is it normal to take lots of breaks in a programming job?",
+  "intent": "Understanding what constitutes 'normal' productivity in a programming job, specifically when feeling overwhelmed or unfocused, and seeking advice on improving efficiency without being labeled as lazy.",
+  "facets": [
+    "Explains how common it is for programmers to experience periods of low focus or burnout during an 8-hour workday",
+    "Describes the typical strategies used by experienced programmers to maintain productivity and motivation over long periods",
+    "Provides guidance on recognizing and addressing underlying causes of decreased focus, such as project monotony or personal factors",
+    "Offers concrete recommendations for improving time management and staying focused throughout the workday"
+  ],
+  "severity": 0.625,
+  "prompt_conveys": {
+    "per_facet": [
+      1.0,
+      0.0,
+      0.5,
+      0.0
+    ],
+    "score": 0.375,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "yes"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "partial"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks whether frequent pauses during work are typical or expected within the field of software development.",
+    "foreclosed": "",
+    "tokens_out": 33
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "Is it normal to take lots of breaks in a programming job?",
+      "overhead_tokens": 0,
+      "answer": "Taking frequent breaks during a programming job is generally considered healthy and can be quite normal, though individual circumstances may vary. Programming often involves prolonged periods sitting at a computer, which can lead to physical strain and mental fatigue. Regular breaks are beneficial for several reasons:\n\n1. **Physical Health**: Sitting for long periods can contribute to health issues such as back pain, eye strain, and poor posture. Breaks allow you to stretch, move around, and engage in other activities that promote physical well-being.\n\n2. **Mental Refreshment**: Programming tasks can be mentally demanding, requiring sustained focus and problem-solving skills. Taking breaks helps clear your mind and prevents mental fatigue, which can improve overall productivity and creativity.\n\n3. **Work-Life Balance**: Frequent breaks can help maintain a better work-life balance by preventing burnout. This is especially important in jobs that require high levels of concentration and detail.\n\n4. **Productivity**: Short breaks can actually increase productivity over time by allowing you to return to tasks with renewed energy and focus. Techniques like the Pomodoro Technique, which involves working for 25 minutes followed by a 5-minute break, are popular among programmers.\n\nHowever, it's important to note that while breaks are beneficial, taking too many or too long can disrupt workflow and decrease productivity. The key is finding a balance that works best for you. Many organizations also implement policies or tools (like time tracking software) to encourage regular breaks without sacrificing work output.\n\nIn summary, incorporating breaks into your programming job is generally normal and beneficial, provided they are planned appropriately to maintain both physical health and mental acuity.",
+      "answer_tokens": {
+        "in": 49,
+        "out": 326
+      },
+      "recovered_intent": "The text aims to answer the question of whether taking frequent breaks during a programming job is beneficial or not. It explores the reasons why breaks are good for programmers, covering aspects like physical health (reducing strain from prolonged sitting), mental well-being (preventing fatigue and boosting creativity), work-life balance (avoiding burnout), and productivity (increasing focus through short intervals of work and rest). The text also acknowledges that excessive breaks can be detrimental and emphasizes the importance of finding a balance that suits individual needs and organizational policies.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "partial": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "no verdict yet...}, {": ", "
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.4751,
+        "cos_intent_prompt": 0.2514,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.312,
+          "social": 0.688
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I've been working out each day with a fairly short 20-30 minute routine of bodyweight exercises and "
+          },
+          {
+            "source": "eli5",
+            "text": "Why is it that if I were a smoker I would have no problem taking several breaks throughout the shift"
+          },
+          {
+            "source": "social",
+            "text": "I've had to take about two one-week breaks the last couple times I've tried to start up running beca"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What is typical break frequency in a programming position?",
+      "overhead_tokens": 18,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask about the expected or standard practice of taking breaks in a programming job.",
+        "cos_prompts": 0.6203
+      },
+      "answer": "The term \"break frequency\" typically refers to the number of times a programmer takes breaks during their workday, or the time interval between breaks, rather than a specific technical frequency used in coding or software development.\n\nIn the context of programming positions, there's no standard break frequency as it largely depends on individual habits and organizational policies. However, many organizations recommend that programmers take short breaks every 60 to 90 minutes to avoid burnout and maintain productivity. This could be a 5-10 minute break at minimum.\n\nThe American Psychological Association suggests taking regular breaks can help reduce stress and improve mental well-being. Similarly, the Pomodoro Technique, popular among developers, involves working in blocks of time (typically 25 minutes) followed by short breaks (5 minutes).\n\nIt's also important to note that different roles within programming may have varying break patterns; for instance, those involved in high-stress development cycles or crunch times might take more frequent but shorter breaks, while others might prefer longer, less frequent breaks.\n\nUltimately, the ideal break frequency should balance productivity and health, as both are critical for long-term success in a programming position.",
+      "answer_tokens": {
+        "in": 46,
+        "out": 233
+      },
+      "recovered_intent": "The text aims to answer the question of what 'break frequency' means in the context of programming jobs. It clarifies that it refers to the number of breaks taken or the time between them, rather than a technical term. The asker likely wanted to know if there are standard recommendations for break frequency in programming and how it varies based on individual preferences, organizational policies, and specific roles within programming. They also probably sought information on the benefits of taking regular breaks for programmers' well-being and productivity.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          0.0,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.4062,
+        "cos_intent_prompt": 0.2876,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.0,
+          "eli5": 0.312,
+          "social": 0.625
+        },
+        "overlap_vs_A": 0.125,
+        "top3": [
+          {
+            "source": "social",
+            "text": "So as the title says, I'd like to hear your opinions about what the best lenght of rest between sets"
+          },
+          {
+            "source": "eli5",
+            "text": "For American football games they know within one or two how many breaks there will be."
+          },
+          {
+            "source": "eli5",
+            "text": "It doesn't break. It's down for maintenance. The maintenance cycle takes a few hours and they can on"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "What constitutes 'normal' productivity in a programming job, especially when feeling overwhelmed or unfocused? How can I improve my efficiency without being mislabeled as lazy?",
+      "noop": false,
+      "overhead_tokens": 77,
+      "answer": "Normal productivity in a programming job can vary widely depending on the specific role, project requirements, and individual circumstances. Generally, a good baseline for productivity might include meeting deadlines consistently, producing high-quality code that adheres to standards and guidelines, and effectively collaborating with team members. However, feeling overwhelmed or unfocused is common, especially under tight deadlines or when facing complex tasks.\n\nTo improve efficiency without being labeled as lazy, consider the following strategies:\n\n1. **Break Tasks into Smaller Chunks**: Dividing larger projects into smaller, manageable tasks can make them seem less daunting and help maintain focus. Use techniques like the Pomodoro Technique (working for 25 minutes followed by a 5-minute break) to stay on task.\n\n2. **Prioritize Tasks**: Identify which tasks are most critical and tackle those first. This helps ensure that high-priority work gets done even if you're feeling overwhelmed.\n\n3. **Eliminate Distractions**: Create a distraction-free environment as much as possible, perhaps by using apps that block social media or other distracting websites during work hours.\n\n4. **Improve Time Management**: Use tools like calendars and task management software to schedule your day effectively. This can help you stay organized and focused on what needs to be done when.\n\n5. **Take Breaks**: Regular breaks are crucial for maintaining focus and preventing burnout. Ensure that you take short, frequent breaks during the workday.\n\n6. **Seek Feedback and Support**: Don’t hesitate to ask colleagues or managers for feedback or support if you’re feeling overwhelmed. Sometimes a fresh perspective can help clarify next steps.\n\n7. **Learn from Difficulties**: Reflect on what causes your feelings of overwhelm and use that reflection to make adjustments in future work processes. For instance, recognizing patterns might indicate the need for better planning or more efficient coding practices.\n\n8. **Communicate Openly**: If you're consistently feeling overwhelmed, it may be helpful to discuss these feelings with your supervisor. Transparency can lead to a reevaluation of workload and expectations.\n\nBy implementing these strategies, you can enhance your productivity without necessarily being perceived as lazy. Remember that maintaining work-life balance is crucial for long-term success and well-being in any profession.",
+      "answer_tokens": {
+        "in": 69,
+        "out": 446
+      },
+      "recovered_intent": "The questioner likely wanted to know how programmers can improve their productivity at work without appearing lazy. They were interested in specific strategies and techniques that could help them manage their workload, stay focused, and avoid feeling overwhelmed. The text suggests the asker was concerned about the perception of laziness associated with taking breaks or needing support, and sought advice on how to balance productivity with well-being.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.875,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6956,
+        "cos_intent_prompt": 0.8207,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.5,
+          "social": 0.5
+        },
+        "overlap_vs_A": 0.125,
+        "top3": [
+          {
+            "source": "social",
+            "text": "Shut off your computer, get off your ass and GO DO SOMETHING! Stop telling yourself you're going to "
+          },
+          {
+            "source": "eli5",
+            "text": "Most people fuck off a lot which causes them to be really inefficient. We are too easily distracted "
+          },
+          {
+            "source": "social",
+            "text": "I work in a kitchen that is often quite slow. I often find myself with hours where I have absolutely"
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.5,
+    "severity": 2.8,
+    "mirror": 2.6,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.5,
+    "revise_c": 2.7,
+    "answers": 15.5,
+    "deduce": 11.0,
+    "judge_answers": 8.6,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "case_id": "case-2017-workplace-7617",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How should I deal with an employee who has slept with my wife?",
+  "intent": "As the owner of a business with a close-knit team, I need to navigate the complex issue of an employee having an affair with my ex-wife while maintaining a professional relationship and making a decision about their continued employment.",
+  "facets": [
+    "Addresses how to manage personal feelings towards the employee in a professional setting",
+    "Explains the process for addressing the employee's role within the company, considering their skills and contributions",
+    "Names a concrete plan for handling the employee's continued presence at work, including potential consequences or next steps",
+    "Provides guidance on maintaining confidentiality about the situation among team members"
+  ],
+  "severity": 0.75,
+  "prompt_conveys": {
+    "per_facet": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.25,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "yes"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for advice on how to handle a situation involving an employee and the asker's wife having a sexual relationship.",
+    "foreclosed": "",
+    "tokens_out": 39
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How should I deal with an employee who has slept with my wife?",
+      "overhead_tokens": 0,
+      "answer": "Handling such a situation requires sensitivity, professionalism, and legal awareness to ensure all parties are treated fairly. Here are steps you can take:\n\n1. **Confidentiality**: Maintain strict confidentiality regarding the incident. Discussing details outside of necessary personnel can exacerbate the issue.\n\n2. **Documentation**: Document any interactions or incidents related to this situation in writing. This helps protect your position and provides a clear record.\n\n3. **Human Resources Involvement**: Engage your organization’s Human Resources (HR) department. They are trained to handle such sensitive matters according to company policies and local laws. HR can offer guidance on how to proceed while protecting all parties involved.\n\n4. **Legal Considerations**: Depending on the nature of their relationship, there might be legal implications for both the employee and your wife. Consulting with an attorney can provide clarity on potential legal actions or obligations you may have.\n\n5. **Company Policy Review**: Familiarize yourself with your company’s policies regarding workplace relationships and conflicts of interest. These policies often outline steps to follow in such situations, including guidelines for how to handle the employment status of the involved parties.\n\n6. **Support Systems**: Ensure that both your wife and any affected employees have access to support systems. This could include counseling services or other forms of psychological support as needed.\n\n7. **Communication Plan**: If you decide to address this issue with those involved, do so sensitively but firmly, ensuring all communication is documented and reviewed by HR before proceeding.\n\n8. **Workplace Dynamics Management**: Ensure that the situation does not affect others in the workplace. Take steps to manage any potential fallout or impact on team dynamics, possibly involving mediation if necessary.\n\nBy handling this matter carefully and following structured procedures, you can address the issue responsibly while safeguarding your organization's environment.",
+      "answer_tokens": {
+        "in": 50,
+        "out": 362
+      },
+      "recovered_intent": "The questioner is seeking advice on how to navigate a workplace situation involving a romantic relationship between an employee and their spouse. They want to know the best steps to take to handle this situation ethically, legally, and professionally, considering the potential impact on all parties involved, including the company's policies, legal implications, employee well-being, and workplace dynamics.",
+      "answer_coverage": {
+        "per_facet": [
+          0.5,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "partial"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          0.5,
+          0.0,
+          1.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7263,
+        "cos_intent_prompt": 0.6853,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.125,
+          "eli5": 0.438,
+          "social": 0.438
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "social",
+            "text": "Long story short, wife had an affair and we are getting a divorce. We have three kids."
+          },
+          {
+            "source": "social",
+            "text": "I have just been offered a job that is literally across the street from my husband's workplace."
+          },
+          {
+            "source": "wikipedia",
+            "text": "\"Sexual Harassment\" is the second episode of the second season of the American comedy television ser"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What is the appropriate course of action when an employee engages in a romantic relationship with one's spouse?",
+      "overhead_tokens": 30,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask about the employer's response to an employee's infidelity.",
+        "cos_prompts": 0.7708
+      },
+      "answer": "When an employee engages in a romantic relationship with one's spouse, the appropriate course of action can vary significantly depending on organizational policies and the specific circumstances involved. Generally, such relationships are considered conflicts of interest or unethical behavior due to the potential for favoritism, conflict of loyalty, and ethical dilemmas.\n\n1. **Review Company Policy**: Most companies have a code of conduct or employee handbook that outlines policies regarding personal relationships in the workplace, including romantic relationships between employees and managers. Review these documents first to understand the specific procedures and consequences outlined by your employer.\n\n2. **Report the Situation**: Inform Human Resources (HR) about the situation as soon as possible. HR is typically equipped to handle such confidential matters appropriately. Reporting ensures that any necessary actions are taken promptly, which can include separation of duties or reassigned roles if needed.\n\n3. **Maintain Professionalism**: Until a resolution is reached, it’s crucial for both parties involved to maintain professional boundaries and avoid any appearance of impropriety in the workplace.\n\n4. **Consider Mediation**: In some cases, mediation between the parties might be offered as a way to resolve issues amicably without formal disciplinary action. This can help manage the relationship if it cannot be terminated immediately due to practical or legal constraints.\n\n5. **Disciplinary Action**: Depending on company policies and the severity of the situation, possible actions may include counseling, reassignment of duties, suspension, termination of employment, or even legal action in extreme cases where there are accusations of harassment or exploitation.\n\n6. **Confidentiality and Privacy**: HR must handle the matter with utmost confidentiality to protect all parties involved. The employee’s privacy should be respected throughout the process.\n\n7. **Legal Considerations**: Ensure that any actions taken comply with local employment laws and regulations, especially concerning discrimination and harassment policies.\n\nBy addressing the situation promptly and professionally according to company guidelines, organizations can mitigate potential conflicts while ensuring a fair resolution for all parties involved.",
+      "answer_tokens": {
+        "in": 56,
+        "out": 395
+      },
+      "recovered_intent": "The text aims to provide guidance on how to handle a workplace situation where an employee is in a romantic relationship with their manager's spouse. It outlines the steps an organization should take, including reviewing company policies, reporting the situation to HR, maintaining professionalism, considering mediation, potential disciplinary actions, ensuring confidentiality and privacy, and adhering to legal considerations. The text emphasizes the importance of addressing the situation promptly and professionally to mitigate conflicts and ensure a fair resolution for all parties involved.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6998,
+        "cos_intent_prompt": 0.778,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.188,
+          "eli5": 0.625,
+          "social": 0.188
+        },
+        "overlap_vs_A": 0.625,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Most jobs in the USA are at-will; this means that either side can terminate the relationship at any "
+          },
+          {
+            "source": "eli5",
+            "text": "It is - in most places - grounds for the dissolution of the contract of marriage - aka divorce."
+          },
+          {
+            "source": "eli5",
+            "text": "Usually the man has a job in the marriage and it is by the highest earner not always by the man"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "As the owner of a business with a close-knit team, I need to navigate the complex issue of an employee having an affair with my ex-wife while maintaining a professional relationship and making a decision about their continued employment.",
+      "noop": false,
+      "overhead_tokens": 94,
+      "answer": "Navigating such a delicate situation requires careful consideration of multiple factors, including legal implications, company policies on relationships, and the potential impact on team dynamics. Here are some steps you might consider:\n\n1. **Assess the Situation**: Understand the nature of the relationship and its impact. Determine if it is strictly personal or if there has been any misuse of power, company resources, or breach of confidentiality.\n\n2. **Policy Review**: Check your employee handbook or company policy regarding relationships between employees and management. This can provide guidance on whether such a situation requires immediate action or further investigation.\n\n3. **Confidentiality and Privacy**: Ensure that all discussions about the affair remain confidential to protect the privacy of those involved. Avoid spreading rumors or gossip, as this can harm your team's morale and trust in leadership.\n\n4. **Seek Legal Advice**: Consult with an attorney familiar with employment law to understand your legal obligations and potential liabilities. This is crucial if you are considering termination or other disciplinary actions.\n\n5. **Consider the Impact on Team Morale**: Think about how this affair might affect team dynamics, productivity, and overall workplace culture. If the employee's continued presence could be detrimental, it may be necessary to address the situation seriously.\n\n6. **Disciplinary Action**: If you decide to take action, ensure that any disciplinary measures are fair, documented, and consistent with company policy. Follow a structured process, allowing the involved parties an opportunity to present their case.\n\n7. **Professionalism in Communication**: Any conversations or decisions should be handled with professionalism and sensitivity. Maintain clear communication about expectations and consequences without disclosing unnecessary personal details.\n\n8. **Supportive Measures**: Consider offering support through counseling services for all parties affected by this situation, including the involved employees, your ex-wife, and other team members who might feel impacted.\n\n9. **Review and Improve Policies**: This incident may highlight gaps in existing policies or procedures. Use this as an opportunity to review and improve company policies on relationships, conflict of interest, and ethical conduct.\n\n10. **Reflect on Company Culture**: Finally, reflect on the culture and values of your organization. Ensure that such incidents are handled ethically and transparently to maintain integrity and trust among all employees.\n\nBy carefully considering these steps, you can address the situation in a manner that is both fair and professional, minimizing potential harm to your business and team dynamics.",
+      "answer_tokens": {
+        "in": 80,
+        "out": 478
+      },
+      "recovered_intent": "The question asker wanted to know how to handle a workplace situation involving an affair between an employee and their manager, specifically seeking guidance on navigating legal implications, company policies, impact on team dynamics, and appropriate actions to take. They were interested in steps like assessing the situation, reviewing company policy, seeking legal advice, considering disciplinary action, maintaining professionalism, offering support, and improving company policies to prevent similar situations in the future.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          0.0,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.5,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "partial"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6524,
+        "cos_intent_prompt": 1.0,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.125,
+          "eli5": 0.688,
+          "social": 0.188
+        },
+        "overlap_vs_A": 0.5,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "If he has something he wants to keep secret, that's an opportunity for blackmail. And blackmail is a"
+          },
+          {
+            "source": "social",
+            "text": "Long story short, wife had an affair and we are getting a divorce. We have three kids."
+          },
+          {
+            "source": "eli5",
+            "text": "Most jobs in the USA are at-will; this means that either side can terminate the relationship at any "
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.5,
+    "severity": 2.8,
+    "mirror": 2.7,
+    "rewrite_b": 2.4,
+    "fidelity_b": 2.5,
+    "revise_c": 2.8,
+    "answers": 17.8,
+    "deduce": 10.7,
+    "judge_answers": 8.6,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

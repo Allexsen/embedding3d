@@ -1,0 +1,14 @@
+{
+  "id": "case-1017-superuser-1275619",
+  "source": "stackexchange-xy",
+  "tags": [
+    "xy-labeled"
+  ],
+  "prompt": "How to load admin account in background and automatically login to non-admin account in foreground in windows 10?",
+  "evidence": "Is there an option to ensure windows 10 automatically starts loading the Admin account without granting the user access to it? Essentially transferring the state of the admin account from not loaded, to loaded, whilst keeping it locked. My XY-Problem: I'm trying to automatically run a program from an admin account right after startup. Without automatically giving access to the admin account at startup. So I would like to run the admin account in the background whilst staying locked. My current solution is to run a .vbs script placed in the startup folder of the admin account that automatically locks the admin account after startup, but that is still a small security risk, people can delete that startup script before it has run, right after automatic sign in of the user account. There are 2 users on the windows 10: user0 (admin) and user1 (non-admin) A lot of similar solutions are provided, however, these all entail the password being typed in, or grant access to the admin account through the automatic sign in.",
+  "attribution": {
+    "url": "https://superuser.com/questions/1275619/how-to-load-admin-account-in-background-and-automatically-login-to-non-admin-acc",
+    "author": "a.t.",
+    "license": "CC BY-SA 4.0"
+  }
+}

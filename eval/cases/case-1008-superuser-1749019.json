@@ -1,0 +1,14 @@
+{
+  "id": "case-1008-superuser-1749019",
+  "source": "stackexchange-xy",
+  "tags": [
+    "xy-labeled"
+  ],
+  "prompt": "How to sync file trees on windows to a local hard drive with complex exclusions",
+  "evidence": "I'm looking for a possibility to one-way sync directory trees on windows from multiple hard drives to a external hard drive for backup. The source trees contain a lot of complex redundant files which i'd like to exclude with as little effort as possible. Wsl is not an option. It's basically this question , but i tried to formulate it according to the rules and not as a xy problem .",
+  "attribution": {
+    "url": "https://superuser.com/questions/1749019/how-to-sync-file-trees-on-windows-to-a-local-hard-drive-with-complex-exclusions",
+    "author": "ridilculous",
+    "license": "CC BY-SA 4.0"
+  }
+}

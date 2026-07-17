@@ -1,0 +1,14 @@
+{
+  "id": "case-1011-superuser-1676296",
+  "source": "stackexchange-xy",
+  "tags": [
+    "xy-labeled"
+  ],
+  "prompt": "Can I let `rm` prompt again if I type the wrong key?",
+  "evidence": "Question Is there any way to let just ask again if I type in anything different than j / J / n / N at its prompt? Reason Consider this small example: This asks me rm: remove regular file 'myFile'? . I am German but using English all the time, so I sometimes 1 translate the question immediately before I even notice that it's in English – so I type in j (for ja , which is yes in German). Typing j to the question, considers it as the answer no , so it doesn't delete the file but also does not give an error message about it, so I do not even notice that there's a problem. 1 Not always, of course.",
+  "attribution": {
+    "url": "https://superuser.com/questions/1676296/can-i-let-rm-prompt-again-if-i-type-the-wrong-key",
+    "author": "Bowi",
+    "license": "CC BY-SA 4.0"
+  }
+}

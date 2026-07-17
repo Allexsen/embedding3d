@@ -1,0 +1,14 @@
+{
+  "id": "case-1001-superuser-1911349",
+  "source": "stackexchange-xy",
+  "tags": [
+    "xy-labeled"
+  ],
+  "prompt": "How to find a CLSID for an application to open it with AHK script?",
+  "evidence": "I'm trying to create an AutoHotkey script, and it says it's able to use a CLSID to open an app. I'm trying to find the CLSID for Discord and I just cannot find it, if someone could tell me somewhere I could go to find it, it would be very helpful.",
+  "attribution": {
+    "url": "https://superuser.com/questions/1911349/how-to-find-a-clsid-for-an-application-to-open-it-with-ahk-script",
+    "author": "JV5T01",
+    "license": "CC BY-SA 4.0"
+  }
+}

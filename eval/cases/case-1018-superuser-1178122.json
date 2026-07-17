@@ -1,0 +1,14 @@
+{
+  "id": "case-1018-superuser-1178122",
+  "source": "stackexchange-xy",
+  "tags": [
+    "xy-labeled"
+  ],
+  "prompt": "How can you get an SD card to work with Android apps on Chromebook?",
+  "evidence": "I just bought the Samsung Chromebook Plus that came out today, along with a 64gb micro sd card. There are several problems getting the Chromebook to play nice with Android, but one problem seems like there should be an easy fix. For some reason, my sd card is only available to the Android side of things, and Android does not have access to format (or see) the SD card, because it's been formatted by Chrome. So, I can't setup things like Spotify to store music on the card. Any advice would be appreciated.",
+  "attribution": {
+    "url": "https://superuser.com/questions/1178122/how-can-you-get-an-sd-card-to-work-with-android-apps-on-chromebook",
+    "author": "RD Ward",
+    "license": "CC BY-SA 4.0"
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "case_id": "case-2012-superuser-232373",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How to tell git which private key to use?",
+  "intent": "I need to know how to specify which private key to use for authentication, especially when there are multiple keys available on the system.",
+  "facets": [
+    "Explains how to select a specific private key file from a list of options",
+    "Describes how to configure git to use a particular private key for a specific host or scenario",
+    "Mentions whether it's possible to set a default private key for authentication when there are multiple keys available",
+    "Names the configuration file(s) where this setting can be specified"
+  ],
+  "severity": 0.625,
+  "prompt_conveys": {
+    "per_facet": [
+      0.0,
+      1.0,
+      0.5,
+      0.0
+    ],
+    "score": 0.375,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "no"
+      },
+      {
+        "facet": 2,
+        "verdict": "yes"
+      },
+      {
+        "facet": 3,
+        "verdict": "partial"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question seeks instructions on how to specify a particular private key for use with the Git version control system.",
+    "foreclosed": "",
+    "tokens_out": 35
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How to tell git which private key to use?",
+      "overhead_tokens": 0,
+      "answer": "To configure Git to use a specific private key, you need to set up your SSH configuration file or use the `id_rsa` (or similar) option in your Git commands. Here are two common methods:\n\n### Method 1: Using `~/.ssh/config`\n\nYou can specify which identity to use by adding an entry to your `~/.ssh/config` file. This method is useful if you have multiple private keys and need to switch between them frequently.\n\n```plaintext\n# ~/.ssh/config\n\nHost my-repository.example.com\n    HostName github.com  # or other host name\n    User git              # or your username\n    IdentityFile ~/.ssh/id_rsa_custom  # Specify the path to your private key file\n```\n\nReplace `my-repository.example.com` with a unique identifier for this configuration, and adjust the `HostName`, `User`, and `IdentityFile` as needed.\n\n### Method 2: Using the `-i` Option in Git Commands\n\nIf you are using Git commands directly, you can specify the private key by adding the `-i` option:\n\n```bash\ngit clone -i ~/.ssh/id_rsa_custom ssh://git@my-repository.example.com/path/to/repo.git\n```\n\nReplace `~/.ssh/id_rsa_custom` with the path to your private key and adjust other parameters as necessary.\n\n### Method 3: Using Environment Variables\n\nYou can also set environment variables in your shell session or script:\n\n```bash\nexport SSH_PRIVATE_KEY_PATH=~/.ssh/id_rsa_custom\ngit config core.sshCommand \"ssh -i $SSH_PRIVATE_KEY_PATH\"\n```\n\nThis method sets the default private key for all Git operations within that shell session.\n\n### Summary\n\nBy setting up one of these configurations, you can instruct Git to use a specific private key when interacting with remote repositories. Choose the method that best fits your workflow and needs.",
+      "answer_tokens": {
+        "in": 46,
+        "out": 382
+      },
+      "recovered_intent": "The text's asker wanted to know how to configure Git to utilize a particular private key for accessing remote repositories. They likely sought information on different methods to achieve this, including modifying the SSH configuration file (`~/.ssh/config`), using the `-i` option within Git commands, and setting environment variables. The asker probably desired specific instructions and examples demonstrating each method, along with guidance on adjusting parameters like host names, usernames, and private key paths.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.3693,
+        "cos_intent_prompt": 0.6129,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.375,
+          "eli5": 0.5,
+          "social": 0.125
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "wikipedia",
+            "text": "Cogito (originally git-pasky) is a revision control system layered on top of Git. It is historically"
+          },
+          {
+            "source": "eli5",
+            "text": "Let me introduce you to git ( URL 0) Git is a version control system that acts as a repository for y"
+          },
+          {
+            "source": "eli5",
+            "text": "I feel like this is specific to the rental company you are using; cars I've rented have always given"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What is the method for specifying a private key in Git?",
+      "overhead_tokens": 21,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask about the process of selecting a private key for Git, just with slightly different wording.",
+        "cos_prompts": 0.9164
+      },
+      "answer": "To specify a private key for Git, you can use several methods depending on your specific needs and environment. The primary approach involves setting up SSH keys or using the `.ssh/config` file to point to a custom key.\n\n1. **Using an SSH Key:**\n   - First, generate an SSH key pair if you don't already have one:\n     ```bash\n     ssh-keygen -t rsa -b 4096 -C \"your_email@example.com\"\n     ```\n   - During the process, you can choose a custom path and filename for your private key. For example:\n     ```bash\n     Created directory '/home/username/.ssh'.\n     Enter passphrase (empty for no passphrase): [optional passphrase]\n     Enter same passphrase again: [repeat passphrase]\n     Your identification has been saved in /home/username/.ssh/id_rsa.\n     Your public key has been saved in /home/username/.ssh/id_rsa.pub.\n     The key fingerprint is:\n     SHA256:[somehash] your_email@example.com\n     The key's randomart image is:\n     +---[RSA 4096]----+\n     |o+.*            |\n     |B=.. .          |\n     |.oo o ..        |\n     |*O= =           |\n     |=o+  . S        |\n     |.+ o   E        |\n     |+ o o B         |\n     | * + .          |\n     |   .             |\n     +----[SHA256]-----+\n     ```\n   - Add the public key to your Git server (GitHub, GitLab, etc.).\n   - To use a specific private key for a particular repository or globally:\n     ```bash\n     git config --global core.sshCommand \"ssh -i /path/to/privatekey\"\n     ```\n\n2. **Using the `.ssh/config` File:**\n   - You can also configure Git to use a custom SSH command in your global `.ssh/config` file:\n     ```bash\n     Host github.com\n       HostName github.com\n       User git\n       IdentityFile /path/to/privatekey\n     ```\n   - Alternatively, you can specify this for individual repositories by adding the above configuration inside the `~/.ssh/config` or `./.git/config` files.\n\n3. **Environment Variable:**\n   - You can set the SSH private key path via an environment variable in your Git command:\n     ```bash\n     GIT_SSH_COMMAND=\"ssh -i /path/to/privatekey\" git clone git@github.com:user/repo.git\n     ```\n\nThese methods allow you to securely specify and use a private key with Git, ensuring that sensitive operations are protected.",
+      "answer_tokens": {
+        "in": 48,
+        "out": 554
+      },
+      "recovered_intent": "The text's author apparently wanted to know how to specify a private key for Git, covering various methods like using SSH keys, the `.ssh/config` file, and environment variables. They detailed each method's steps, including generating SSH key pairs, adding public keys to servers, configuring `~/.ssh/config`, and utilizing environment variables. The text also emphasizes security considerations when working with private keys in Git.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          0.0,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          0.0,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.4372,
+        "cos_intent_prompt": 0.5936,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.438,
+          "eli5": 0.375,
+          "social": 0.125
+        },
+        "overlap_vs_A": 0.688,
+        "top3": [
+          {
+            "source": "wikipedia",
+            "text": "Cogito (originally git-pasky) is a revision control system layered on top of Git. It is historically"
+          },
+          {
+            "source": "eli5",
+            "text": "Let me introduce you to git ( URL 0) Git is a version control system that acts as a repository for y"
+          },
+          {
+            "source": "eli5",
+            "text": "It depends. You can do it to Windows key or a GUID which is a bit more complex."
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "How do I specify which private key to use for authentication in git, especially when there are multiple keys available on my system?",
+      "noop": false,
+      "overhead_tokens": 71,
+      "answer": "To specify which private key to use for authentication with Git, particularly when you have multiple private keys installed on your system, you can follow these steps:\n\n1. **Generate a Key ID or File Path**: First, determine the unique identifier (ID) or file path of the specific private key you want to use. You can view all your SSH keys by running `ls -al ~/.ssh` and identifying the private key files.\n\n2. **Set Up Git with Specific Key**:\n   - To specify a particular SSH key for a specific Git repository, add the following configuration in your `.gitconfig` file or directly in the repository's `.git/config` file:\n     ```ini\n     [core]\n         sshCommand = ssh -i /path/to/your/private/key\n     ```\n     Replace `/path/to/your/private/key` with the actual path to your desired private key.\n\n   - Alternatively, you can use `SSH_CONTROLMASTER` and `ControlPath` in combination with a unique identifier for each key. This method requires setting up an SSH config file (`~/.ssh/config`) as follows:\n     ```ini\n     Host myrepo1\n         HostName git.example.com\n         IdentityFile /path/to/your/private/key\n         User git\n     ```\n     Then, in your Git repository's `.gitconfig`, you can specify which host configuration to use:\n     ```ini\n     [core]\n         sshCommand = ssh -F ~/.ssh/config\n     ```\n\n3. **Using Environment Variables**:\n   - You can also set environment variables for each key to automatically select the correct key during SSH operations.\n     ```bash\n     export GIT_SSH_COMMAND=\"ssh -i /path/to/your/private/key\"\n     ```\n   - This method is useful if you need to switch keys frequently but prefer not to manually modify configuration files every time.\n\n4. **SSH Agent Management**:\n   - If your keys are managed by the SSH agent, you can add a specific key to the SSH agent and use it for authentication.\n     ```bash\n     ssh-add /path/to/your/private/key\n     ```\n   - Ensure that Git is configured to use the SSH agent:\n     ```ini\n     [core]\n         sshCommand = ssh -i ~/.ssh/id_rsa -o ControlMaster=auto -o ControlPath=~/.ssh/%r@%h:%p -o ControlPersist=30m\n     ```\n\nBy following these steps, you can ensure that Git uses the specific private key you need for authentication without interfering with your other SSH keys. This approach is particularly useful in environments where multiple keys are used or when working with different repositories requiring distinct authentication methods.",
+      "answer_tokens": {
+        "in": 61,
+        "out": 546
+      },
+      "recovered_intent": "The text's author apparently wanted to know how to specify which private key Git should use for authentication, especially when dealing with multiple private keys on a system. They likely sought detailed instructions on various methods, including setting up `.gitconfig` and SSH config files, using environment variables, and managing SSH agents. The text aims to provide a comprehensive guide on selecting the correct private key for different scenarios and repositories.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5,
+          0.5
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.546,
+        "cos_intent_prompt": 0.7682,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.125,
+          "eli5": 0.25,
+          "social": 0.562
+        },
+        "overlap_vs_A": 0.5,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "I feel like this is specific to the rental company you are using; cars I've rented have always given"
+          },
+          {
+            "source": "wikipedia",
+            "text": "Cogito (originally git-pasky) is a revision control system layered on top of Git. It is historically"
+          },
+          {
+            "source": "wikipedia",
+            "text": "A skeleton key (also known as a passkey) is a type of master key in which the serrated edge has been"
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.2,
+    "severity": 2.8,
+    "mirror": 2.6,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.5,
+    "revise_c": 2.6,
+    "answers": 20.8,
+    "deduce": 10.9,
+    "judge_answers": 8.7,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

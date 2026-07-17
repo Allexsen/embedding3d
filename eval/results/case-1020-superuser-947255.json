@@ -1,0 +1,306 @@
+{
+  "case_id": "case-1020-superuser-947255",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How do I activate Win+Tab keys with a VBScript in an effort to launch Task View in Windows 10?",
+  "intent": "Set up my mouse's middle button to launch Task View in Windows 10, which is the replacement for Aero Flip 3D, by running an external command when pressed, ideally using Logitech SetPoint software and a VBScript.",
+  "facets": [
+    "Names a concrete method to simulate pressing Win+Tab simultaneously with SendKeys or another approach",
+    "Explains how to configure Logitech SetPoint software to run the chosen command when the middle mouse button is pressed",
+    "Lists the correct command or code to activate Task View in Windows 10, considering alternatives if necessary"
+  ],
+  "severity": 0.3333,
+  "prompt_conveys": {
+    "per_facet": [
+      1.0,
+      0.0,
+      1.0
+    ],
+    "score": 0.6667,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "yes"
+      },
+      {
+        "facet": 3,
+        "verdict": "yes"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for instructions on how to use VBScript code to simulate pressing the Windows key and the Tab key together, with the goal of opening Task View in Windows 10.",
+    "foreclosed": "",
+    "tokens_out": 52
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How do I activate Win+Tab keys with a VBScript in an effort to launch Task View in Windows 10?",
+      "overhead_tokens": 0,
+      "answer": "To use VBScript to simulate the activation of the `Win` + `Tab` key combination, which launches Task View in Windows 10, you can leverage the `WScript.Shell` object and its `SendKeys` method. Below is a simple example script that demonstrates how to achieve this:\n\n```vbscript\n' Initialize WScript Shell Object\nSet objShell = CreateObject(\"WScript.Shell\")\n\n' Send Win + Tab key combination to launch Task View\nobjShell.SendKeys \"^({TAB})\"\n```\n\nHere's a brief explanation of the code:\n- `CreateObject(\"WScript.Shell\")` creates an instance of the WScript Shell object.\n- The `SendKeys` method is used to simulate key presses. In this case, `\"^({TAB})\"` represents the `Win` + `Tab` combination. Here, `^` stands for `Ctrl`, but in the context of task view, `{TAB}` alone works as it directly simulates pressing `Win` followed by `Tab`.\n\nTo run this script:\n1. Open Notepad or any text editor.\n2. Copy and paste the above code into the editor.\n3. Save the file with a `.vbs` extension, for example, `LaunchTaskView.vbs`.\n4. Double-click the saved `.vbs` file to execute it.\n\nThis will simulate pressing the `Win` + `Tab` keys, launching Task View on your Windows 10 system.",
+      "answer_tokens": {
+        "in": 61,
+        "out": 301
+      },
+      "recovered_intent": "The asker wanted to know how to use VBScript to simulate the activation of the `Win` + `Tab` key combination in Windows 10, specifically to launch Task View. They likely desired a code example and an explanation of how it works, including details about the `WScript.Shell` object and its `SendKeys` method, as well as instructions on how to run the script.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.3333,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "no": null
+          },
+          {
+            "facet": 3,
+            "yes": null
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.3769,
+        "cos_intent_prompt": 0.5206,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.125,
+          "eli5": 0.375,
+          "social": 0.438
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "It depends. You can do it to Windows key or a GUID which is a bit more complex."
+          },
+          {
+            "source": "eli5",
+            "text": "This is because the program is stuck in some sort of loop, so sending commands to the program does n"
+          },
+          {
+            "source": "wikipedia",
+            "text": "QuickWin was a library from Microsoft that made it possible to compile command line MS-DOS programs "
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What is the code for activating the Win+Tab keys using VBScript, aiming to open Task View on Windows 10?",
+      "overhead_tokens": 37,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask for the same information, just with slightly different wording and emphasis.",
+        "cos_prompts": 0.9605
+      },
+      "answer": "To activate the Win+Tab key combination using VBScript in order to open Task View on Windows 10, you can use the `SendKeys` method within a script. Below is an example of how this can be done:\n\n```vbscript\n' Create a Scripting Object\nSet objShell = WScript.CreateObject(\"WScript.Shell\")\n\n' Simulate pressing and releasing the Win key followed by the Tab key to open Task View\nobjShell.SendKeys \"^({TAB})\"\n```\n\nThis script creates an instance of `WScript.Shell`, which is necessary for using the `SendKeys` method. The `SendKeys \"^({TAB})\"` line simulates pressing and then releasing both the Windows (Win) key and the Tab key simultaneously, effectively mimicking a user pressing Win+Tab to open Task View.\n\nTo run this script:\n1. Open Notepad or any text editor.\n2. Copy and paste the above code into the editor.\n3. Save the file with a `.vbs` extension, for example, `OpenTaskView.vbs`.\n4. Double-click the saved file to execute it, or you can also run it from the Command Prompt by navigating to its location and typing `C:\\path\\to\\yourscript.vbs`.\n\nPlease note that while this method works in most cases, some users might experience issues due to keyboard layouts or accessibility settings. Additionally, running scripts with administrative privileges may be required depending on your system configuration.",
+      "answer_tokens": {
+        "in": 62,
+        "out": 300
+      },
+      "recovered_intent": "The asker wanted to know how to open Task View on Windows 10 using VBScript. Specifically, they were interested in the code necessary to achieve this, the steps involved in running the script, and potential issues that might arise during execution due to factors like keyboard layouts, accessibility settings, or system configuration.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.3333,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "no": null
+          },
+          {
+            "facet": 3,
+            "yes": null
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "score": 0.3333,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.3491,
+        "cos_intent_prompt": 0.4973,
+        "source_mix": {
+          "arxiv": 0.125,
+          "wikipedia": 0.188,
+          "eli5": 0.625,
+          "social": 0.062
+        },
+        "overlap_vs_A": 0.625,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "It depends. You can do it to Windows key or a GUID which is a bit more complex."
+          },
+          {
+            "source": "eli5",
+            "text": "There is a piece of glass in front of the mirror that is angled away from you when the tab is in its"
+          },
+          {
+            "source": "wikipedia",
+            "text": "QuickWin was a library from Microsoft that made it possible to compile command line MS-DOS programs "
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "How can I configure my Logitech mouse's middle button to launch Task View in Windows 10 using a VBScript that runs an external command when pressed?",
+      "noop": false,
+      "overhead_tokens": 94,
+      "answer": "To configure your Logitech mouse's middle button to launch Task View in Windows 10, you can use a combination of AutoHotkey (AHK), which is more user-friendly for this task than VBScript. However, if you specifically want to use VBScript, here’s how you can achieve it:\n\n### Using VBScript\n\n1. **Create the VBScript:**\n   - Open Notepad or any text editor.\n   - Copy and paste the following code into the editor:\n     ```vbscript\n     Set WshShell = WScript.CreateObject(\"WScript.Shell\")\n     WshShell.Run \"taskview\"\n     ```\n   - Save this file with a `.vbs` extension, for example, `launchTaskView.vbs`.\n\n2. **Assign the VBScript to Your Mouse Button:**\n   - Download and install AutoHotkey from its official website.\n   - Open Notepad or any text editor.\n   - Create an AutoHotkey script by adding the following code:\n     ```ahk\n     ; Define the hotkey for your middle mouse button (assuming the key is \"MButton\")\n     MButton::Run launchTaskView.vbs\n     ```\n   - Save this file with a `.ahk` extension, for example, `middleMouseTaskView.ahk`.\n\n3. **Run the AutoHotkey Script:**\n   - Double-click on your saved `.ahk` script to run it.\n   - Press the middle mouse button; it should now launch Task View.\n\n### Using AutoHotkey (Preferred Method)\n\nIf you prefer a simpler method, you can directly use AutoHotkey without VBScript:\n\n1. **Create an AutoHotkey Script:**\n   - Open Notepad or any text editor.\n   - Copy and paste the following code into the editor:\n     ```ahk\n     ; Define the hotkey for your middle mouse button (assuming the key is \"MButton\")\n     MButton::Run, taskview\n     ```\n   - Save this file with a `.ahk` extension, for example, `middleMouseTaskView.ahk`.\n\n2. **Run the AutoHotkey Script:**\n   - Double-click on your saved `.ahk` script to run it.\n   - Press the middle mouse button; it should now launch Task View.\n\n### Notes\n- Ensure you have administrative privileges if running scripts that interact with system processes.\n- If your Logitech mouse does not recognize MButton as a standard mouse button, you may need to adjust the key mapping or use additional configuration tools provided by Logitech.\n- The above instructions assume that \"MButton\" corresponds to your middle mouse button. Check your specific mouse’s documentation if this is incorrect.\n\nBy following these steps, you can configure your Logitech mouse's middle button to launch Task View in Windows 10 using VBScript (via AutoHotkey) or directly with an AutoHotkey script.",
+      "answer_tokens": {
+        "in": 68,
+        "out": 597
+      },
+      "recovered_intent": "The asker wanted to know how to configure their Logitech mouse's middle button to launch Task View in Windows 10. They were interested in learning about two methods: using VBScript with AutoHotkey and using AutoHotkey directly. The text provides step-by-step instructions for both methods, including code examples, file naming conventions, and troubleshooting tips like adjusting key mapping and ensuring administrative privileges.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0
+        ],
+        "score": 0.6667,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0
+        ],
+        "score": 0.6667,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7365,
+        "cos_intent_prompt": 0.7871,
+        "source_mix": {
+          "arxiv": 0.125,
+          "wikipedia": 0.312,
+          "eli5": 0.5,
+          "social": 0.062
+        },
+        "overlap_vs_A": 0.25,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "I suggest that you read a few button tutorials for embedded systems like arduino or raspberry pi."
+          },
+          {
+            "source": "eli5",
+            "text": "The different buttons prompt the remote to emit a different sequence of 'flashes,' which are interpr"
+          },
+          {
+            "source": "eli5",
+            "text": "It depends. You can do it to Windows key or a GUID which is a bit more complex."
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.3,
+    "severity": 2.5,
+    "mirror": 2.8,
+    "rewrite_b": 2.5,
+    "fidelity_b": 2.5,
+    "revise_c": 2.7,
+    "answers": 19.6,
+    "deduce": 10.0,
+    "judge_answers": 8.2,
+    "judge_recovered": 7.9,
+    "geometry": 0.1
+  }
+}

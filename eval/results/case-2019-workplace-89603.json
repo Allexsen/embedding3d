@@ -1,0 +1,346 @@
+{
+  "case_id": "case-2019-workplace-89603",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How do I deal with the \"30 minutes remaining\" problem?",
+  "intent": "Find ways to productively use the remaining 30 minutes at work, avoiding unnecessary coding or context switching while maintaining professionalism.",
+  "facets": [
+    "Provides strategies for utilizing the last 30 minutes without starting a new task that will require continued focus the next day",
+    "Includes methods for minimizing time lost due to context switching when resuming tasks after a break",
+    "Offers suggestions for staying engaged and focused during the remaining time, avoiding slacking off or unproductive activities",
+    "Names concrete alternatives to coding or other tasks that can be done within the 30-minute timeframe"
+  ],
+  "severity": 0.625,
+  "prompt_conveys": {
+    "per_facet": [
+      1.0,
+      0.0,
+      0.5,
+      0.0
+    ],
+    "score": 0.375,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "yes"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "partial"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The questioner wants to know strategies or solutions for managing a situation where there are 30 minutes left of something.",
+    "foreclosed": "",
+    "tokens_out": 38
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How do I deal with the \"30 minutes remaining\" problem?",
+      "overhead_tokens": 0,
+      "answer": "The \"30 minutes remaining\" problem typically refers to an issue where a task or project is suddenly halted, giving you only 30 minutes left before a deadline, and leaving little time for completion. Here’s how you can manage this situation effectively:\n\n1. **Assess the Task**: Quickly evaluate what needs to be done in the remaining time. Break down the task into smaller, manageable steps.\n\n2. **Prioritize Tasks**: Focus on the most critical or impactful tasks that need to be completed within this timeframe. Prioritization is key to making the best use of your limited time.\n\n3. **Use a Timer**: Set a timer for 15 minutes and work intensively without any distractions during this period. Afterward, reassess where you stand and adjust your priorities if necessary.\n\n4. **Eliminate Distractions**: Find a quiet place away from interruptions. Turn off notifications on your phone or computer to stay focused.\n\n5. **Seek Assistance**: If possible, ask for help or delegate some tasks that can be done by others more efficiently.\n\n6. **Use Templates and Checklists**: Utilize templates or checklists if available. This can save time and ensure you don’t overlook important details.\n\n7. **Communicate with Stakeholders**: Inform your team or stakeholders about the situation, especially if collaboration is needed. Clear communication helps manage expectations and find solutions together.\n\n8. **Stay Calm and Positive**: Maintain a positive mindset to enhance productivity. Anxiety can be counterproductive in such situations.\n\n9. **Post-Task Evaluation**: After completing what you could within 30 minutes, take a moment to reflect on what worked and what didn’t. This can provide valuable insights for future similar situations.\n\nBy following these steps, you can make the most of your remaining time and handle the \"30 minutes remaining\" problem more effectively.",
+      "answer_tokens": {
+        "in": 50,
+        "out": 376
+      },
+      "recovered_intent": "The questioner wanted to know how to effectively manage a situation where they suddenly have only 30 minutes left to complete a task or project before a deadline. They likely sought practical advice and strategies for prioritizing tasks, maximizing productivity within the limited timeframe, minimizing distractions, and communicating with relevant parties about the time constraint.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6257,
+        "cos_intent_prompt": 0.6069,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.375,
+          "social": 0.625
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I think it has some setting that forces a stop after 1 hour (probably for the best, in retrospect)."
+          },
+          {
+            "source": "eli5",
+            "text": "That's because the clock on screen is not the \"official\" clock. There is a timekeeper on-site that i"
+          },
+          {
+            "source": "social",
+            "text": "We only get 1,440 minutes in a day, and once they are gone, that's it."
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What are strategies for addressing the issue of having 30 minutes left in a given context?",
+      "overhead_tokens": 27,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask about dealing with the same specific situation and seek similar solutions.",
+        "cos_prompts": 0.8393
+      },
+      "answer": "When you have only 30 minutes left, effectively managing your time is crucial to make the best use of this limited window. Here are some strategies:\n\n1. **Prioritize Tasks**: Identify which tasks or goals are most important and urgent. Focus on these first while ensuring they align with broader objectives.\n\n2. **Break It Down**: Divide the remaining 30 minutes into smaller, manageable segments. For instance, if you have two tasks to complete, allocate about 15 minutes to each task. This approach can help maintain focus and manage expectations of what can realistically be accomplished in such a short time frame.\n\n3. **Use Time Management Tools**: Employ tools like timers or stopwatches to keep track of how much time is spent on each activity. This not only helps in staying on schedule but also gives you an accurate sense of your productivity during this period.\n\n4. **Avoid Multitasking**: While it might seem tempting to multitask, focusing on one task at a time can enhance concentration and efficiency. Multitasking often leads to decreased quality and increased stress.\n\n5. **Eliminate Distractions**: Minimize interruptions by turning off notifications or finding a quiet space if possible. This allows you to concentrate fully on the tasks at hand without being sidetracked.\n\n6. **Review and Adjust Plans**: Regularly check your progress against your goals. If necessary, adjust your plans mid-way through the 30 minutes. Flexibility is key in ensuring that you make the best use of this limited time.\n\n7. **Use a Checklist**: Before starting, create a quick checklist of what needs to be done. This can help you stay organized and ensure you cover all important points without wasting time.\n\n8. **Summarize and Conclude**: If possible, take a few moments at the end to summarize your progress or thoughts. This can provide closure and also serve as a learning point for future similar situations.\n\nBy implementing these strategies, you can make the most out of those 30 minutes, whether in a professional setting, studying, or completing personal tasks.",
+      "answer_tokens": {
+        "in": 55,
+        "out": 420
+      },
+      "recovered_intent": "The questioner likely wanted to know how to effectively manage their time when they only have 30 minutes remaining. They were probably looking for practical strategies and tips on prioritizing tasks, breaking down work into manageable chunks, minimizing distractions, and maximizing productivity within that short timeframe.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6588,
+        "cos_intent_prompt": 0.7246,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.062,
+          "eli5": 0.375,
+          "social": 0.562
+        },
+        "overlap_vs_A": 0.375,
+        "top3": [
+          {
+            "source": "social",
+            "text": "We only get 1,440 minutes in a day, and once they are gone, that's it."
+          },
+          {
+            "source": "social",
+            "text": "I'm trying to figure out optimal meal time. 9 hours is too far away, 30 minutes is too close."
+          },
+          {
+            "source": "social",
+            "text": "I work in a kitchen that is often quite slow. I often find myself with hours where I have absolutely"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "What are some ways to productively use the remaining 30 minutes at work without unnecessary coding or context switching, while maintaining professionalism?",
+      "noop": false,
+      "overhead_tokens": 75,
+      "answer": "To make productive use of the last 30 minutes of your workday without resorting to unnecessary coding or context switching, consider these professional and efficient activities:\n\n1. **Review and Plan**: Spend a few minutes reviewing today's tasks and planning tomorrow’s agenda. This helps in wrapping up current projects smoothly and setting clear goals for the next day.\n\n2. **Feedback Request**: If you've completed a significant task or project, request feedback from your manager or peers. Constructive feedback can be invaluable for both personal growth and team improvement.\n\n3. **Document Updates**: Update documentation related to your projects or areas of responsibility. Well-maintained documentation not only aids in knowledge sharing but also ensures that others (and future you) can understand the context and rationale behind decisions and processes.\n\n4. **Email Management**: Tackle any pending emails, responding thoughtfully to messages from colleagues, clients, or stakeholders. This helps maintain clear communication channels and reduces the risk of misunderstandings.\n\n5. **Skill Development**: Dedicate time to learning new skills relevant to your role through online courses, webinars, or reading industry-related content. Continuous skill enhancement is crucial for staying competitive in today’s fast-paced work environment.\n\n6. **Mental Check-in**: Take a brief moment to reflect on your day and assess your productivity and well-being. This mindfulness can help you manage stress better and maintain a healthy work-life balance.\n\n7. **Team Engagement**: Engage with your colleagues through non-work-related conversations or quick check-ins. Building positive relationships can foster a collaborative environment, making the workplace more enjoyable and productive.\n\n8. **Problem Solving**: If there are any ongoing issues that need addressing but don’t require immediate action from others, brainstorm potential solutions. This proactive approach can prevent problems from escalating and improve overall workflow efficiency.\n\nBy integrating these activities into your daily routine during those final 30 minutes of work, you can maintain professionalism while ensuring that the time is used effectively without unnecessary coding or context switching.",
+      "answer_tokens": {
+        "in": 63,
+        "out": 402
+      },
+      "recovered_intent": "The questioner likely wanted to know how to productively use the last 30 minutes of their workday without engaging in coding or switching between tasks. They were seeking specific, actionable suggestions for professional and efficient activities that could be completed within this timeframe. The desired outcome was to make the most of the remaining time while maintaining professionalism and avoiding unnecessary work disruptions.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7301,
+        "cos_intent_prompt": 0.8989,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.188,
+          "social": 0.812
+        },
+        "overlap_vs_A": 0.0,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I work in a kitchen that is often quite slow. I often find myself with hours where I have absolutely"
+          },
+          {
+            "source": "social",
+            "text": "Shut off your computer, get off your ass and GO DO SOMETHING! Stop telling yourself you're going to "
+          },
+          {
+            "source": "social",
+            "text": "I'm always curious as to what people do, if anything, during the day at work."
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.4,
+    "severity": 2.8,
+    "mirror": 2.6,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.4,
+    "revise_c": 2.6,
+    "answers": 17.5,
+    "deduce": 9.7,
+    "judge_answers": 8.7,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

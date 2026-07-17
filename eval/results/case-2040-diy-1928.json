@@ -1,0 +1,382 @@
+{
+  "case_id": "case-2040-diy-1928",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How do I make a height adjustable desk?",
+  "intent": "Create a cost-effective, DIY height adjustable desk that can support multiple monitors and devices, with an easy-to-use lift mechanism, suitable for standing or sitting, considering local manufacturing constraints.",
+  "facets": [
+    "Describes a feasible DIY method to create a height adjustable desk using available materials and welding expertise",
+    "Explains how the recommended design accommodates two 22\" LCD monitors and other equipment",
+    "Mentions the inclusion of an electric or mechanical lift mechanism that is easy to use",
+    "Provides a detailed plan for building the desk, including any necessary calculations or measurements",
+    "Names a realistic cost estimate for materials and labor, considering local prices in Australia"
+  ],
+  "severity": 1.0,
+  "prompt_conveys": {
+    "per_facet": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.0,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "no"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      },
+      {
+        "facet": 5,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for instructions on how to construct a desk that can be modified in height.",
+    "foreclosed": "",
+    "tokens_out": 32
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How do I make a height adjustable desk?",
+      "overhead_tokens": 0,
+      "answer": "To create a height-adjustable desk, you can follow these steps:\n\n1. **Materials Needed**: You will need a sturdy work surface (such as a wooden or metal top), an electric lift mechanism, and possibly additional hardware like brackets and screws. For a DIY approach, consider using an adjustable hydraulic lift system or a motorized linear actuator.\n\n2. **Design Your Desk Frame**: Start by building the frame of your desk. Ensure it is robust to support both standing and sitting positions. This involves cutting and assembling wood or metal pieces according to your design specifications.\n\n3. **Install the Lift Mechanism**:\n   - For hydraulic systems, attach the lift cylinder between the base and the desk top. Securely mount a handle or control knob on the frame for easy operation.\n   - With an electric motorized system, install the actuator at one end of the desk, ensuring it is securely anchored to prevent wobbling.\n\n4. **Electrical Wiring (if applicable)**: If using an electric lift mechanism, you will need to run power cables from a nearby outlet. Ensure that all electrical components are properly grounded and comply with local safety regulations.\n\n5. **Testing**: Once everything is assembled, test the desk for stability and functionality. Adjust the settings as necessary to ensure smooth operation between sitting and standing heights.\n\n6. **Safety Measures**: Install a safety switch or limit switches on the lift mechanism to prevent overtraveling. Also, consider adding anti-tip devices to keep the desk from tipping over when adjusted to a low height.\n\n7. **Final Assembly and Finishing Touches**: Attach any additional hardware like casters for mobility if desired, and apply finishing touches such as paint or varnish to protect the wood surface.\n\n8. **User Instructions**: Include clear instructions on how to use the lift mechanism safely. This can be helpful especially if you are gifting the desk or using it in a shared space.\n\nBy following these steps, you can create a functional and versatile height-adjustable desk that suits your needs for both standing and sitting work.",
+      "answer_tokens": {
+        "in": 45,
+        "out": 415
+      },
+      "recovered_intent": "The questioner wanted to know how to build a height-adjustable desk. They were interested in the specific materials needed, the design process for the desk frame, the installation of different types of lift mechanisms (hydraulic vs. electric), any necessary electrical wiring considerations, safety precautions to take during assembly and use, and finally, how to provide clear instructions for using the finished desk.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.3,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          },
+          {
+            "facet": 5,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5,
+          0.0,
+          0.0
+        ],
+        "score": 0.3,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          },
+          {
+            "facet": 5,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7072,
+        "cos_intent_prompt": 0.7851,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.125,
+          "social": 0.875
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "social",
+            "text": "Since my motivation to try a stand up desk are all fitness related (trying to get a better posture, "
+          },
+          {
+            "source": "eli5",
+            "text": "Most coffee tables are level with the sitting height of a couch or love seat."
+          },
+          {
+            "source": "social",
+            "text": "Anyone found a good pedal exerciser to use under a normal cubicle desk? It'd have to be pretty low p"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "Describe steps to construct a desk with adjustable height",
+      "overhead_tokens": 18,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask for the same information, just phrased slightly differently.",
+        "cos_prompts": 0.8818
+      },
+      "answer": "To construct an adjustable-height desk, you'll need to follow these detailed steps:\n\n1. **Materials and Tools**:\n   - Wood for the desktop (e.g., plywood or MDF)\n   - Adjustable legs (such as gas piston legs that can be locked into place at different heights)\n   - Screws and hardware\n   - Measuring tape, square, drill, screwdriver, saw, sandpaper, paint or stain (optional)\n\n2. **Design**:\n   - Measure your workspace to determine the dimensions needed for the desk.\n   - Sketch a design including the height range you want, typically 28-42 inches (71-107 cm) depending on user preference and space availability.\n\n3. **Cutting Wood**:\n   - Cut the wood pieces according to your design specifications using a saw.\n   - Ensure all edges are smooth by sanding them down.\n\n4. **Attaching Legs**:\n   - Attach the adjustable legs to one or more corners of the desk frame, depending on its size and stability requirements.\n   - Follow the manufacturer's instructions for attaching the legs securely; typically this involves drilling holes through the leg bracket into the wood and securing with screws.\n\n5. **Assembling the Frame**:\n   - Assemble the rest of the desk frame using screws or nails to attach the side, top, and bottom pieces together.\n   - Ensure all connections are tight and secure.\n\n6. **Finishing Touches**:\n   - Sand any rough edges or surfaces that may need smoothing.\n   - Apply a protective finish like paint or stain if desired; allow it to dry thoroughly according to instructions.\n\n7. **Testing the Height Adjustment Mechanism**:\n   - Test the adjustable legs to ensure they can be locked into place at various heights without wobbling or instability.\n   - Make any necessary adjustments or tightenings for stability and comfort.\n\n8. **Final Inspection**:\n   - Inspect your desk for any loose parts or structural weaknesses.\n   - Ensure all screws are tight, and the surface is smooth and clean.\n\nBy following these steps, you can create a functional adjustable-height desk tailored to your needs. Adjusting the height can be particularly beneficial for ergonomic workstations that accommodate users of different heights or those who wish to change their working position throughout the day.",
+      "answer_tokens": {
+        "in": 45,
+        "out": 470
+      },
+      "recovered_intent": "The text's asker likely wanted a comprehensive guide on how to build an adjustable-height desk. This includes a list of necessary materials and tools, detailed instructions for each step of the construction process (from design and cutting wood to attaching legs and finishing touches), and tips for testing and inspecting the finished product. The asker was presumably interested in creating a functional and ergonomic desk that could be adjusted to different heights.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0,
+          0.0
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          },
+          {
+            "facet": 5,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.3,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          },
+          {
+            "facet": 5,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5768,
+        "cos_intent_prompt": 0.7564,
+        "source_mix": {
+          "arxiv": 0.125,
+          "wikipedia": 0.0,
+          "eli5": 0.25,
+          "social": 0.625
+        },
+        "overlap_vs_A": 0.625,
+        "top3": [
+          {
+            "source": "social",
+            "text": "Since my motivation to try a stand up desk are all fitness related (trying to get a better posture, "
+          },
+          {
+            "source": "eli5",
+            "text": "Most coffee tables are level with the sitting height of a couch or love seat."
+          },
+          {
+            "source": "social",
+            "text": "First of all, for the purposes of clarification, Let's call this a squat rack: The Gym I go to has a"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "Create a cost-effective, DIY height adjustable desk that can support multiple monitors and devices, with an easy-to-use lift mechanism, suitable for standing or sitting, considering local manufacturing constraints.",
+      "noop": false,
+      "overhead_tokens": 79,
+      "answer": "A cost-effective, DIY height-adjustable desk that supports multiple monitors and devices can be constructed using readily available materials and simple tools. The design should prioritize ease of use and adaptability between standing and sitting positions while considering the specific requirements in your area.\n\n### Materials Needed:\n1. **Wooden Frame**: A 4' x 8' sheet of plywood or MDF is ideal for the desk top, with enough material to cut a single large piece.\n2. **Metal Supports**: Two sturdy metal posts (at least 6 feet tall) for lifting mechanisms.\n3. **Lifting Mechanism**: Gas springs or hydraulic lift system from hardware stores; consider local availability and cost.\n4. **Mounting Brackets**: For attaching monitors, keyboards, and other devices to the desk top.\n5. **Adjustable Legs**: Casters with locking mechanisms to allow easy conversion between standing and sitting positions.\n6. **Tools**: Drill, saw, screwdriver, measuring tape.\n\n### Step-by-Step Construction:\n\n1. **Cutting the Desk Top**: Measure and cut the plywood or MDF to size for your desk top. Ensure it is large enough to fit all monitors comfortably (e.g., 32\" x 48\").\n\n2. **Attaching Monitors and Devices**:\n   - Use VESA mount brackets compatible with your monitor models.\n   - Secure each bracket to the desktop surface, leaving space between them for a keyboard, mouse, or additional peripherals.\n\n3. **Lifting Mechanism Installation**:\n   - Mount gas springs or hydraulic lift systems to both metal posts. Attach these securely to the underside of the desk top and the base of the support posts.\n   - Ensure that the mechanism allows smooth vertical movement without excessive resistance.\n\n4. **Casters Setup**: Install casters on the bottom edges of the desk frame, ensuring they are evenly spaced and can lock in place when needed for sitting or standing positions.\n\n5. **Final Assembly**:\n   - Assemble the metal posts vertically with the lifting mechanisms attached.\n   - Attach the cut plywood to these supports using screws or brackets.\n   - Secure all mounting points for monitors and devices firmly.\n\n### Adjustability and Usability:\n- The desk should be able to lower to a comfortable sitting height (about 29 inches) and raise up to a standing position (around 36-40 inches).\n- Gas springs provide natural resistance, making the lift mechanism user-friendly.\n- Monitor arms can be adjusted independently for optimal viewing angles.\n\n### Local Manufacturing Constraints:\n- Consider local availability of materials like wood, metal supports, and lifting mechanisms. Some regions may have specific regulations or preferences for certain types of hardware.\n- For casters, ensure they are rated to support the weight of your desk setup (typically over 100 pounds).\n- Consult with local hardware stores or online suppliers to find products that meet your budget and quality standards.\n\nThis DIY project should yield a versatile, functional workspace capable of supporting multiple monitors and devices, suitable for both standing and sitting work styles.",
+      "answer_tokens": {
+        "in": 72,
+        "out": 618
+      },
+      "recovered_intent": "The asker wanted instructions on how to build a cost-effective, DIY height-adjustable desk that could support multiple monitors and devices. They were interested in the specific materials needed, step-by-step construction process, adjustability features (both height and monitor angle), and considerations for local manufacturing constraints like material availability and weight capacity.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          },
+          {
+            "facet": 5,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.4,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          },
+          {
+            "facet": 5,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.8791,
+        "cos_intent_prompt": 1.0,
+        "source_mix": {
+          "arxiv": 0.188,
+          "wikipedia": 0.0,
+          "eli5": 0.188,
+          "social": 0.625
+        },
+        "overlap_vs_A": 0.5,
+        "top3": [
+          {
+            "source": "social",
+            "text": "Since my motivation to try a stand up desk are all fitness related (trying to get a better posture, "
+          },
+          {
+            "source": "social",
+            "text": "Anyone found a good pedal exerciser to use under a normal cubicle desk? It'd have to be pretty low p"
+          },
+          {
+            "source": "eli5",
+            "text": "Most coffee tables are level with the sitting height of a couch or love seat."
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.6,
+    "severity": 2.9,
+    "mirror": 2.6,
+    "rewrite_b": 2.2,
+    "fidelity_b": 2.5,
+    "revise_c": 2.7,
+    "answers": 20.9,
+    "deduce": 10.3,
+    "judge_answers": 8.9,
+    "judge_recovered": 8.6,
+    "geometry": 0.1
+  }
+}

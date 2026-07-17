@@ -1,0 +1,14 @@
+{
+  "id": "case-1009-superuser-1728555",
+  "source": "stackexchange-xy",
+  "tags": [
+    "xy-labeled"
+  ],
+  "prompt": "How can I change the text cursor speed in Microsoft Windows 10?",
+  "evidence": "When I hold → or ← in a text, the cursor moves to the right of the left. I'd like to change that speed, especially the speed it takes to move beyond the first character (which is much slower than the other characters). Everything I could find so far pertain to the mouse pointer speed: The following setting shows cursor speed, but instead affects the mouse pointer speed:",
+  "attribution": {
+    "url": "https://superuser.com/questions/1728555/how-can-i-change-the-text-cursor-speed-in-microsoft-windows-10",
+    "author": "Franck Dernoncourt",
+    "license": "CC BY-SA 4.0"
+  }
+}

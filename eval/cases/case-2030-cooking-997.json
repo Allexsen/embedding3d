@@ -1,0 +1,14 @@
+{
+  "id": "case-2030-cooking-997",
+  "source": "stackexchange-cooking",
+  "tags": [
+    "general"
+  ],
+  "prompt": "Why use milk in scrambled eggs?",
+  "evidence": "I've seen many recipes for scrambled eggs with and without milk / cream / half and half So what does the milk do? The only difference I can see is color - without the milk the eggs are a brighter yellow. What am I missing?",
+  "attribution": {
+    "url": "https://cooking.stackexchange.com/questions/997/why-use-milk-in-scrambled-eggs",
+    "author": "Christian Payne",
+    "license": "CC BY-SA 4.0"
+  }
+}

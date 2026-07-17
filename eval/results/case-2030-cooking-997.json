@@ -1,0 +1,346 @@
+{
+  "case_id": "case-2030-cooking-997",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "Why use milk in scrambled eggs?",
+  "intent": "Understand the role of adding milk to scrambled eggs, considering its effect on texture, flavor, and appearance.",
+  "facets": [
+    "Explains how milk affects the moisture content and creaminess of scrambled eggs",
+    "Describes the impact of milk on the overall flavor profile of scrambled eggs",
+    "Addresses why the addition of milk changes the color of the eggs from a brighter yellow to a paler shade",
+    "Provides a recommendation or guidance on whether to use milk in scrambled eggs, considering its benefits and drawbacks"
+  ],
+  "severity": 0.625,
+  "prompt_conveys": {
+    "per_facet": [
+      0.0,
+      0.5,
+      0.0,
+      1.0
+    ],
+    "score": 0.375,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "no"
+      },
+      {
+        "facet": 2,
+        "verdict": "partial"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "yes"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question seeks an explanation for the practice of adding milk to scrambled eggs.",
+    "foreclosed": "",
+    "tokens_out": 29
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "Why use milk in scrambled eggs?",
+      "overhead_tokens": 0,
+      "answer": "Using milk in scrambled eggs serves several purposes, primarily enhancing flavor, moisture content, and texture. Milk acts as an emulsifier, gently curdling the egg proteins to create a smoother, richer consistency that is more luxurious than scrambled eggs made with just whole or even lightly beaten eggs. The addition of milk also helps keep the eggs moist and prevents them from becoming dry or tough during cooking.\n\nMilk can be added in various forms—dairy (such as whole milk), non-dairy alternatives like almond milk, soy milk, or oat milk—to suit dietary preferences or restrictions. A small amount (about 1 tablespoon per egg) of milk significantly improves the texture and taste without overloading the dish with liquid.\n\nAdditionally, milk can help to slightly reduce the cooking time needed for scrambled eggs by reducing their overall volume, making them easier to cook evenly and thoroughly. This technique is particularly useful when preparing large quantities or when using older eggs that may be less firm.",
+      "answer_tokens": {
+        "in": 43,
+        "out": 194
+      },
+      "recovered_intent": "The text aims to answer questions about the benefits of adding milk to scrambled eggs. Specifically, it explains how milk improves flavor, moisture content, and texture by acting as an emulsifier and curdling egg proteins. It also discusses different types of milk that can be used (dairy and non-dairy alternatives) and suggests the appropriate amount to add for optimal results. Finally, it mentions that milk can slightly reduce cooking time due to its volume-reducing effect.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7758,
+        "cos_intent_prompt": 0.579,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.25,
+          "social": 0.75
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "social",
+            "text": "Eggs take too long to make and require too much cleanup. I don't want a protein shake in the morning"
+          },
+          {
+            "source": "social",
+            "text": "So I've seen in quite a few threads that people are eating lots of eggs for breakfast."
+          },
+          {
+            "source": "social",
+            "text": "I grew up with my dads crappy scrambled eggs which were miraculously dry and soggy at the same time."
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What is the purpose of adding milk to scrambled eggs?",
+      "overhead_tokens": 21,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask for the underlying reason or function of adding milk to scrambled eggs.",
+        "cos_prompts": 0.9267
+      },
+      "answer": "Adding milk to scrambled eggs serves several purposes that enhance both the texture and flavor of the dish:\n\n1. **Moisture and Fluffiness**: Milk increases the liquid content in the eggs, which helps in creating a more moist and fluffy texture for the scrambled eggs. This is because the added moisture prevents the eggs from drying out during cooking.\n\n2. **Flavor Enhancement**: The addition of milk can subtly enhance the flavor of the eggs by providing a slight richness that complements their natural taste. The mild flavor of milk also allows other seasonings to be more noticeable in the final dish.\n\n3. **Cooking Time and Consistency**: Milk helps to slow down the cooking process, giving the eggs time to fully set while maintaining a softer consistency. This is particularly useful for those who prefer scrambled eggs that are not overly firm but still well-cooked.\n\n4. **Nutritional Value**: While milk alone does not significantly increase the nutritional value of the dish, combining it with eggs can boost the overall protein and calcium content. Eggs already contain high-quality protein, and milk adds additional nutrients like vitamins B12 and D, as well as minerals such as phosphorus and potassium.\n\nBy incorporating a small amount of milk (typically 1-2 tablespoons per two eggs), you can achieve these effects without drastically altering the basic structure or taste of scrambled eggs.",
+      "answer_tokens": {
+        "in": 47,
+        "out": 273
+      },
+      "recovered_intent": "The text aims to explain the various benefits of adding milk to scrambled eggs. The asker likely wanted to understand how milk affects the texture, flavor, cooking process, and nutritional value of scrambled eggs. They probably also sought guidance on the optimal amount of milk to use for achieving these desired effects without significantly changing the taste of the dish.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.5,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "partial"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.8049,
+        "cos_intent_prompt": 0.6317,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.25,
+          "social": 0.75
+        },
+        "overlap_vs_A": 0.875,
+        "top3": [
+          {
+            "source": "social",
+            "text": "So I've seen in quite a few threads that people are eating lots of eggs for breakfast."
+          },
+          {
+            "source": "social",
+            "text": "Eggs take too long to make and require too much cleanup. I don't want a protein shake in the morning"
+          },
+          {
+            "source": "eli5",
+            "text": "In a cake, eggs act as a leavening agent, thus making cake light and fluffy."
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "What is the effect of adding milk to scrambled eggs in terms of texture, flavor, and appearance?",
+      "noop": false,
+      "overhead_tokens": 60,
+      "answer": "Adding milk to scrambled eggs can significantly alter their texture, flavor, and appearance compared to using only eggs. When milk is incorporated into the mixture, it creates a custard-like consistency that is richer and creamier than regular scrambled eggs. The milk proteins coagulate along with the egg proteins at lower temperatures, which allows for a more delicate and tender texture.\n\nIn terms of flavor, adding milk can enhance the overall taste by making the eggs milder and slightly less assertive. This subtle flavor profile can be particularly beneficial when serving eggs to those who prefer a milder taste or when incorporating them into other dishes that need a balanced flavor base. However, using too much milk can make the scrambled eggs appear and taste more like custard rather than traditional scrambled eggs.\n\nAppearance-wise, milk-infused scrambled eggs will have a slightly lighter color due to the whitening effect of the added liquid. The whites in the eggs will also be more evenly distributed throughout the mixture, leading to a smoother appearance with less visible white specks. Overall, adding milk can provide a richer mouthfeel and a softer texture while subtly altering the flavor profile and visual appeal of scrambled eggs.",
+      "answer_tokens": {
+        "in": 56,
+        "out": 233
+      },
+      "recovered_intent": "The text aims to explain how adding milk to scrambled eggs affects their texture, flavor, and appearance compared to using only eggs. It delves into the mechanisms behind these changes, such as the coagulation of milk proteins with egg proteins at lower temperatures, leading to a creamier consistency and milder taste. Additionally, it discusses the visual impact of milk, noting its effect on color and the distribution of whites within the mixture.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7661,
+        "cos_intent_prompt": 0.6874,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.188,
+          "social": 0.812
+        },
+        "overlap_vs_A": 0.688,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I'm trying to gain weight so here is my current morning shake: 1.5 cups of vitamin D milk 1 scoop pr"
+          },
+          {
+            "source": "social",
+            "text": "I'm currently building a stack, and need some input... I intend to ingest in the mornings: 1 egg, ra"
+          },
+          {
+            "source": "social",
+            "text": "I was wondering about the drawbacks/benefits of different kinds of milks especially almond milk. Any"
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.3,
+    "severity": 2.7,
+    "mirror": 2.6,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.5,
+    "revise_c": 2.5,
+    "answers": 13.0,
+    "deduce": 10.3,
+    "judge_answers": 8.3,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

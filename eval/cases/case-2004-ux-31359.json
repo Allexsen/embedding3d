@@ -1,0 +1,14 @@
+{
+  "id": "case-2004-ux-31359",
+  "source": "stackexchange-ux",
+  "tags": [
+    "general"
+  ],
+  "prompt": "Should error messages apologize?",
+  "evidence": "We are having a discussion on our team about an error message that says \"Sorry, you do not have permission to access this feature. Please contact your administrator for assistance.\" Is it appropriate to use language of \"apology\" in this instance? The rationale against it is that it would be more appropriate to \"apologize\" for something that would be considered solely the \"fault\" of the application such as downtime. (\"Sorry but our site is currently unavailable...please try again later.\")",
+  "attribution": {
+    "url": "https://ux.stackexchange.com/questions/31359/should-error-messages-apologize",
+    "author": "JoelFan",
+    "license": "CC BY-SA 4.0"
+  }
+}

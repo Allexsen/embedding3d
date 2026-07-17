@@ -1,0 +1,346 @@
+{
+  "case_id": "case-2002-ux-52336",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "Why is the mouse cursor slightly tilted and not straight?",
+  "intent": "Understand the purpose and functionality of a tilted mouse cursor, including its potential benefits beyond providing a vertical left edge when highlighting text.",
+  "facets": [
+    "Addresses how the tilted cursor's angle provides an advantage in text selection or other tasks",
+    "Explains why the cursor is tilted by default, whether it's a legacy feature or serves a specific purpose",
+    "Describes the difference in tilt angle between the regular and hand cursors, and what this implies about their design goals",
+    "Names any other potential benefits of a tilted cursor that aren't related to text selection"
+  ],
+  "severity": 0.75,
+  "prompt_conveys": {
+    "per_facet": [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.25,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "no"
+      },
+      {
+        "facet": 2,
+        "verdict": "yes"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for an explanation of why a computer mouse cursor appears to be tilted rather than perfectly straight.",
+    "foreclosed": "",
+    "tokens_out": 35
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "Why is the mouse cursor slightly tilted and not straight?",
+      "overhead_tokens": 0,
+      "answer": "The appearance of a slightly tilted or off-center mouse cursor can be due to several factors, primarily related to display settings and hardware issues:\n\n1. **Display Settings**: Modern operating systems often use advanced graphical rendering techniques that may cause slight distortions in the cursor's appearance. For instance, anti-aliasing or sub-pixel rendering can make the cursor appear slightly tilted or misaligned, especially on high-resolution screens.\n\n2. **Cursor Themes and Customizations**: If you have a customized cursor theme installed, it might not be perfectly aligned with your display settings. This is particularly true for custom cursors that are designed to look good on certain themes but may not fit the default system settings.\n\n3. **Display Calibration Issues**: Improper calibration of your monitor or screen could cause visual distortions, including a tilted cursor. Ensuring that your screen is properly calibrated can help correct this issue.\n\n4. **Graphics Driver Problems**: Outdated or malfunctioning graphics drivers can lead to various display issues, including misaligned cursors. Updating your graphics driver to the latest version from the manufacturer's website can often resolve these problems.\n\n5. **OS-Specific Quirks**: Some operating systems have known quirks that cause visual artifacts like a tilted cursor. For example, on Windows, certain themes or configurations might display the cursor in an unusual way. Checking if there are any updates available for your operating system could help address this issue.\n\n6. **Screen Warping or Physical Issues**: In rare cases, physical damage to the screen or bending of the monitor could cause visual distortions that include a tilted cursor. However, these issues are less common and usually accompanied by other hardware problems.\n\nTo resolve a tilted cursor, you can try adjusting display settings, ensuring proper calibration, updating graphics drivers, or switching back to default system themes. If the issue persists, there might be underlying hardware problems that would require professional diagnosis.",
+      "answer_tokens": {
+        "in": 47,
+        "out": 383
+      },
+      "recovered_intent": "The questioner wanted to understand why their mouse cursor appears tilted or off-center. They likely sought a comprehensive explanation encompassing potential causes related to display settings (like anti-aliasing, themes, calibration), hardware issues (graphics drivers, screen warping), and operating system specific quirks.  They were also interested in solutions to fix this issue, including adjusting settings, updating drivers, and reverting to default themes. Finally, they seemed aware of the possibility of underlying hardware problems requiring professional attention.",
+      "answer_coverage": {
+        "per_facet": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.0,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.25,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5083,
+        "cos_intent_prompt": 0.5713,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.938,
+          "social": 0.062
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "because its only the very point that's your actual cursor. the rest is just a graphical representati"
+          },
+          {
+            "source": "eli5",
+            "text": "Because with a computer mouse you move it exactly X distance on the table so the cursor moves Y dist"
+          },
+          {
+            "source": "eli5",
+            "text": "I'm no expert on this but having to, what I'm assuming you're doing, tilt your head on an angle to s"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What causes a mouse cursor to appear slightly tilted instead of being straight?",
+      "overhead_tokens": 23,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask about the reason for the tilt of the mouse cursor.",
+        "cos_prompts": 0.9451
+      },
+      "answer": "A tilting or skewing of the mouse cursor can be caused by several factors, primarily related to hardware issues, display settings, or system malfunctions:\n\n1. **Hardware Issues**: If your mouse's sensor is dirty or malfunctioning, it might not track movements accurately. This could result in a skewed cursor appearance. Similarly, if there are physical obstructions under the mouse, like dust or debris, this can also affect tracking accuracy.\n\n2. **Driver Problems**: Outdated, corrupted, or incorrect drivers for your mouse can cause various issues, including cursor misalignment. Ensure that you have the latest and compatible drivers installed for optimal performance.\n\n3. **Display Settings**: In some cases, display settings like rotation, scaling, or resolution might be incorrectly configured, leading to a skewed cursor appearance. Check these settings in Display or Screen Display options within your operating system's control panel.\n\n4. **System Malfunctions**: Software conflicts, especially with graphics drivers or windowing systems, can sometimes cause graphical glitches that affect the cursor display. Running a system check and update might help resolve such issues.\n\n5. **Operating System Bugs**: Rarely, bugs in the operating system itself could be responsible for this issue. Ensuring your OS is up to date might fix these problems.\n\nTo diagnose and potentially fix the issue, start by cleaning the mouse thoroughly, updating drivers, checking display settings, and ensuring a clean boot (starting with just core services) or even reinstalling the graphics driver. If the problem persists, consulting technical support or a professional can help identify more complex issues that might require specific troubleshooting steps.",
+      "answer_tokens": {
+        "in": 50,
+        "out": 322
+      },
+      "recovered_intent": "The questioner wanted to understand why their mouse cursor was tilting or skewing and sought solutions to fix this issue. They were interested in learning about potential causes related to hardware problems (like a dirty sensor or physical obstructions), software issues (such as outdated drivers, display settings, system malfunctions, or operating system bugs), and steps to diagnose and resolve the problem, including cleaning the mouse, updating drivers, checking display settings, performing a clean boot, or reinstalling the graphics driver. They also implied a willingness to seek professional help if the issue persisted.",
+      "answer_coverage": {
+        "per_facet": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.0,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.0,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5067,
+        "cos_intent_prompt": 0.5979,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 1.0,
+          "social": 0.0
+        },
+        "overlap_vs_A": 0.688,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "because its only the very point that's your actual cursor. the rest is just a graphical representati"
+          },
+          {
+            "source": "eli5",
+            "text": "Because with a computer mouse you move it exactly X distance on the table so the cursor moves Y dist"
+          },
+          {
+            "source": "eli5",
+            "text": "Light coming at a flat angle from the screen has passed through a thicker layer of liquid crystal th"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "What is the purpose and functionality of a tilted mouse cursor, including any potential benefits it provides beyond indicating the vertical left edge when highlighting text?",
+      "noop": false,
+      "overhead_tokens": 74,
+      "answer": "A tilted or slanted mouse cursor, often seen in certain applications like web browsers, development environments, and some text editors, serves specific purposes beyond simply indicating a vertical left edge during text selection. Its primary purpose is to provide visual cues about the content or action that can be performed when hovering over different elements on a screen.\n\n### Purpose and Functionality\n\n1. **Identifying Interactive Elements**: The tilted cursor designates interactive areas in web pages, such as links or buttons, making it easier for users to identify clickable elements without needing to rely solely on color coding or additional icons.\n   \n2. **Contextual Information**: In text editors and development tools, the tilt often indicates that the element can be edited or modified, providing immediate feedback to the user about their cursor position relative to editable content.\n\n3. **Differentiating Between Elements**: The tilted cursor is used in some interfaces to differentiate between various types of interactive elements. For example, a link might have a standard arrow cursor, while an image that can be zoomed might show a magnifying glass-like tilt.\n\n4. **Accessibility Enhancements**: By providing visual cues, the tilted cursor can aid users with certain types of disabilities or preferences who rely on subtle changes in cursor appearance to navigate and interact with interfaces more effectively.\n\n### Benefits Beyond Text Highlighting\n\n- **Enhanced User Experience**: By offering clear and intuitive feedback, the tilted cursor improves usability by reducing cognitive load and enhancing overall user satisfaction.\n  \n- **Consistency Across Platforms**: Standardizing cursor styles helps maintain consistency across different applications and platforms, making it easier for users to predict how elements will behave.\n\n- **Customization Opportunities**: Modern operating systems allow users to customize cursor appearances, including tilting certain cursors. This can be used to create unique and personalized user interfaces that cater to individual preferences or specific work environments.\n\nIn summary, the tilted mouse cursor serves as a versatile tool for providing contextual information and enhancing interaction with digital content, offering benefits beyond its primary function of indicating vertical left edges during text selection.",
+      "answer_tokens": {
+        "in": 64,
+        "out": 408
+      },
+      "recovered_intent": "The questioner likely wanted to understand the purpose and functionality of the tilted mouse cursor, going beyond its basic role in text selection. They were interested in how this cursor type is used to identify interactive elements, provide contextual information, differentiate between element types, and potentially enhance accessibility. Additionally, they probably sought to learn about the benefits of using a tilted cursor, such as improving user experience, ensuring consistency across platforms, and allowing for customization options.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7308,
+        "cos_intent_prompt": 0.8138,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 1.0,
+          "social": 0.0
+        },
+        "overlap_vs_A": 0.312,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "because its only the very point that's your actual cursor. the rest is just a graphical representati"
+          },
+          {
+            "source": "eli5",
+            "text": "Because with a computer mouse you move it exactly X distance on the table so the cursor moves Y dist"
+          },
+          {
+            "source": "eli5",
+            "text": "The tilt is the angle between earths rotational axis and the orbital axis (the plane of the orbit ar"
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.3,
+    "severity": 2.8,
+    "mirror": 2.6,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.4,
+    "revise_c": 2.6,
+    "answers": 18.7,
+    "deduce": 10.8,
+    "judge_answers": 8.6,
+    "judge_recovered": 8.3,
+    "geometry": 0.1
+  }
+}

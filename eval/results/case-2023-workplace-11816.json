@@ -1,0 +1,343 @@
+{
+  "case_id": "case-2023-workplace-11816",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "Why is it important to gain \"visibility\" in the workplace?",
+  "intent": "Understand why having visibility in the workplace is important, beyond just getting a good performance review or appraisal, and whether it's worth potentially introducing politics into the work environment.",
+  "facets": [
+    "Explains how gaining visibility affects one's career advancement or professional reputation",
+    "Addresses potential motivations behind a manager's push for employees to gain visibility, beyond just performance reviews",
+    "Discusses the impact of focusing on gaining visibility on the work environment and team dynamics",
+    "Mentions any concrete benefits or outcomes that come from having visibility in the workplace"
+  ],
+  "severity": 0.75,
+  "prompt_conveys": {
+    "per_facet": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.25,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "yes"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for an explanation of the significance or importance of achieving 'visibility' within a professional work environment.",
+    "foreclosed": "",
+    "tokens_out": 36
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "Why is it important to gain \"visibility\" in the workplace?",
+      "overhead_tokens": 0,
+      "answer": "Gaining visibility in the workplace is crucial for professional growth, career advancement, and overall success. Visibility refers to being noticed or recognized by others within one's organization, particularly superiors, colleagues, and key decision-makers. Here are several reasons why it is important:\n\n1. **Career Advancement**: When managers and higher-ups have a clear understanding of your capabilities and contributions, they are more likely to consider you for promotions or new opportunities. Visibility can open doors to leadership roles, specialized projects, and expanded responsibilities.\n\n2. **Recognition and Reward**: Being visible often leads to increased recognition from peers and superiors. This can result in positive feedback, awards, bonuses, or other forms of professional appreciation that contribute to a sense of achievement and job satisfaction.\n\n3. **Networking Opportunities**: A higher profile within the organization provides more opportunities for networking with influential colleagues, mentors, and potential clients. These connections can be invaluable in expanding your knowledge base, learning new skills, and opening up career pathways.\n\n4. **Influence and Impact**: Visibility allows you to have a greater influence on projects, processes, and policies. When others see the value of your ideas or work, they are more likely to support you and implement your suggestions, thereby enhancing your impact within the organization.\n\n5. **Mentorship and Guidance**: Being visible can attract mentorship from experienced professionals who may offer guidance, advice, and valuable insights that accelerate your career development. Mentors can provide crucial support in navigating organizational politics and maximizing your potential.\n\n6. **Employee Retention and Loyalty**: Employees who feel recognized and valued are more likely to remain with their organizations long-term. Visibility can boost employee morale and loyalty, contributing positively to the overall workplace culture.\n\nTo gain visibility effectively, it is important to actively engage with colleagues, contribute meaningfully to projects, seek feedback, and demonstrate a willingness to learn and adapt. Additionally, maintaining open communication with superiors about your goals and aspirations can help ensure that you are on their radar for opportunities and recognition.",
+      "answer_tokens": {
+        "in": 49,
+        "out": 407
+      },
+      "recovered_intent": "The questioner likely wanted to understand the importance of gaining visibility in the workplace and the various benefits it offers. They were probably interested in learning how visibility contributes to career advancement, recognition, networking opportunities, influence, mentorship, and employee retention. Additionally, they may have been seeking advice on effective strategies for increasing visibility within an organization.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6878,
+        "cos_intent_prompt": 0.7378,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.0,
+          "eli5": 0.875,
+          "social": 0.062
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Especially in high profile cases people want to know what's going on. Nowadays if become more common"
+          },
+          {
+            "source": "eli5",
+            "text": "Lets say you get hired to do a job. This job involves taking papers and holding it up for people to "
+          },
+          {
+            "source": "eli5",
+            "text": "There is a common and frequently studied thing called the \"bystander effect\". Basically it states th"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What is the significance of having 'workplace visibility'?",
+      "overhead_tokens": 20,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask about the importance or meaning of gaining visibility in the workplace, with minor differences in wording.",
+        "cos_prompts": 0.8088
+      },
+      "answer": "Workplace visibility refers to the degree to which employees can see, understand, and engage with the overall goals, progress, and operations of their organization or team. This concept is significant for several reasons:\n\n1. **Enhanced Communication**: High workplace visibility fosters open lines of communication among team members and between management and staff. Clear communication ensures that everyone understands their roles and responsibilities, which can lead to more effective collaboration.\n\n2. **Improved Transparency**: Visibility promotes transparency within the organization by making information accessible and understandable to all levels of employees. This reduces misunderstandings and miscommunications, leading to a more cohesive work environment.\n\n3. **Increased Engagement**: When employees feel that they are part of a larger organizational effort and understand how their contributions fit into the overall strategy, they tend to be more engaged. Workplace visibility can boost morale and job satisfaction by making employees feel valued and informed.\n\n4. **Better Decision-Making**: With increased visibility comes better data-driven decision-making. Managers and leaders who have access to real-time information can make more informed decisions that align with organizational goals and objectives.\n\n5. **Enhanced Accountability**: Visibility ensures that everyone is accountable for their actions and contributions. This can lead to greater responsibility and a culture of ownership among employees, which in turn can improve productivity and performance.\n\n6. **Supports Organizational Agility**: In today’s fast-paced business environment, organizations need to be agile and responsive to change. High workplace visibility supports this agility by ensuring that information flows freely throughout the organization, allowing for quicker adaptation to new challenges or opportunities.\n\n7. **Boosts Innovation**: When employees understand how their work contributes to larger goals, they are more likely to generate ideas and innovative solutions. This is because they see the bigger picture and are motivated to contribute positively to organizational success.\n\nIn summary, workplace visibility is crucial for creating a collaborative, transparent, and engaged workforce that can effectively align individual efforts with organizational objectives. It supports better communication, decision-making, accountability, and overall performance in the workplace.",
+      "answer_tokens": {
+        "in": 47,
+        "out": 404
+      },
+      "recovered_intent": "The questioner likely wanted to understand the concept of 'workplace visibility', including its definition and significance. They were interested in learning about the various benefits of high workplace visibility, such as improved communication, transparency, employee engagement, decision-making, accountability, organizational agility, and innovation. Essentially, they sought a comprehensive explanation of how workplace visibility positively impacts individuals, teams, and the overall organization.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "no verdict yet... actually: ": {},
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7052,
+        "cos_intent_prompt": 0.6163,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 1.0,
+          "social": 0.0
+        },
+        "overlap_vs_A": 0.375,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "I would assume it has to do with Health & Safety regulations and legislation, I'm not sure about Sou"
+          },
+          {
+            "source": "eli5",
+            "text": "Areas like that have \"clean desk\" policies where everything has to be secured in locked drawers when"
+          },
+          {
+            "source": "eli5",
+            "text": "Let's say you hire two security guards to guard your bank - without telling each other."
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "Is gaining visibility in the workplace truly beneficial, beyond just improving performance reviews and appraisals, and are there potential downsides to prioritizing it?",
+      "noop": false,
+      "overhead_tokens": 77,
+      "answer": "Gaining visibility in the workplace can indeed be highly beneficial beyond mere improvements in performance reviews and appraisals. Increased visibility often leads to more networking opportunities, potentially greater access to mentors or sponsors who can offer guidance and support, as well as increased recognition from upper management. This heightened visibility can also open doors for new projects, responsibilities, and career advancement opportunities.\n\nHowever, there are potential downsides to prioritizing visibility that should not be overlooked. For instance, overly pursuing visibility might lead to micromanagement or a perception of being self-promotional, which could negatively impact team dynamics and relationships with colleagues. Moreover, it can sometimes create an imbalance in the workplace where other valuable contributions go unnoticed if the focus is too heavily on highlighting one's own achievements.\n\nAdditionally, there may be instances where seeking visibility for personal gain conflicts with organizational goals or values, potentially causing friction within the organization. It’s crucial to balance self-promotion with genuine collaboration and support of others' efforts to maintain a positive work environment.\n\nIn summary, while gaining visibility can offer significant professional advantages, it is essential to approach this pursuit thoughtfully and ethically to avoid potential drawbacks.",
+      "answer_tokens": {
+        "in": 66,
+        "out": 231
+      },
+      "recovered_intent": "The questioner likely wanted to understand the pros and cons of seeking increased visibility in the workplace. They were interested in learning about the potential benefits, such as networking opportunities, mentorship access, and career advancement, as well as the potential downsides, including micromanagement perceptions, strained team dynamics, and conflicts with organizational goals.  Essentially, they sought a balanced perspective on how to navigate the pursuit of visibility ethically and effectively.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7272,
+        "cos_intent_prompt": 0.6953,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.0,
+          "eli5": 0.625,
+          "social": 0.312
+        },
+        "overlap_vs_A": 0.312,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Especially in high profile cases people want to know what's going on. Nowadays if become more common"
+          },
+          {
+            "source": "eli5",
+            "text": "I'm certainly no voice on the matter, but I'd venture to say in those cases that tunnel vision is th"
+          },
+          {
+            "source": "arxiv",
+            "text": "The subject of collective attention is central to an information age where millions of people are in"
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.3,
+    "severity": 2.8,
+    "mirror": 2.7,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.5,
+    "revise_c": 2.7,
+    "answers": 16.2,
+    "deduce": 10.4,
+    "judge_answers": 8.8,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

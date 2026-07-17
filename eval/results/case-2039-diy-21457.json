@@ -1,0 +1,310 @@
+{
+  "case_id": "case-2039-diy-21457",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "Should a washer go on nut side, or the bolt side?",
+  "intent": "I want to know how to consistently assemble parts with a single washer by remembering whether it goes on the nut side or the bolt side so I can easily reassemble things.",
+  "facets": [
+    "Describes which side of the assembly a single washer is typically placed (nut side or bolt side)",
+    "Provides a method for remembering this placement for future reference",
+    "Mentions any specific considerations for assemblies with only one washer"
+  ],
+  "severity": 0.6667,
+  "prompt_conveys": {
+    "per_facet": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.3333,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "yes"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question seeks clarification on the proper placement of a washer during the assembly of a fastener, specifically whether it should be placed on the nut or the bolt.",
+    "foreclosed": "",
+    "tokens_out": 45
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "Should a washer go on nut side, or the bolt side?",
+      "overhead_tokens": 0,
+      "answer": "A washer should generally be placed on the bolt side when installing hardware, not on the nut side. This arrangement helps distribute the load of the fastener more evenly across the surfaces being joined and can significantly reduce the risk of stripping the nut or hole, as well as providing a surface for the bolt to bear against, which can improve the overall strength and durability of the joint.\n\nThe primary functions of placing a washer on the bolt side include:\n1. **Reducing Bending Stress**: The washer acts as a buffer between the bolt head and the workpiece, reducing bending stress on the bolt.\n2. **Improving Clamping Force Distribution**: A flat washer can help distribute the clamping force more evenly across the fastener.\n3. **Protecting Finishes**: It prevents direct contact with metal surfaces that might be painted or plated, avoiding potential corrosion issues.\n4. **Enhancing Grip and Tension**: In some cases, such as with spring washers or locking washers, they can provide additional grip to prevent loosening.\n\nHowever, there are exceptions where a washer is placed on the nut side:\n- **Double Washers**: Sometimes a second flat washer is used on the nut side for added protection or to increase the overall thickness of the fastener.\n- **Specialty Washers**: Certain applications might require washers on both sides, such as using Belleville washers in certain tensioning scenarios.\n\nIn summary, unless specifically required by design requirements, always place a standard flat washer on the bolt side.",
+      "answer_tokens": {
+        "in": 49,
+        "out": 306
+      },
+      "recovered_intent": "The text aims to answer the question of where a washer should be placed when installing hardware (on the bolt side or nut side). It explains the reasons behind this general rule, highlighting the benefits of placing washers on the bolt side such as reducing bending stress, distributing clamping force evenly, protecting finishes, and enhancing grip. The text also acknowledges exceptions to this rule, including using double washers or specialty washers that might require placement on the nut side.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.6667,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.6667,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6352,
+        "cos_intent_prompt": 0.7412,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.062,
+          "eli5": 0.562,
+          "social": 0.312
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "I go for the side of the bowl (the inside) on the right side. This way the stream is a \"glancing blo"
+          },
+          {
+            "source": "eli5",
+            "text": "Straight in, stick to the top, two o clock (yes always) until about the second bend in your fingers,"
+          },
+          {
+            "source": "eli5",
+            "text": "The wiper is vertical when it reaches the driver's side, getting more water off than the passenger s"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What is the correct placement for a washer, on the nut side or the bolt side?",
+      "overhead_tokens": 27,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask about the same specific detail of washer placement.",
+        "cos_prompts": 0.9623
+      },
+      "answer": "The correct placement of a washer depends on whether you are using a flat washer to distribute load, prevent rusting, or increase thickness. Typically, in standard assembly practices:\n\n1. **Flat Washer on Nut Side (Tight Side)**: The most common and recommended practice is to place the washer between the nut and the surface being fastened. This placement helps distribute the clamping force more evenly across a larger area, reducing stress points that could lead to premature failure or loosening over time.\n\n2. **Flat Washer on Bolt Side (Loose Side)**: In some specific applications, such as when using spring washers, this practice is reversed. However, for standard flat washers, the washer should always be placed on the side of the nut that contacts the surface being fastened.\n\n3. **Material Considerations**: For certain materials like aluminum or thin surfaces, it might be necessary to place the washer on the bolt side to avoid premature wear or damage. Always refer to specific application guidelines if you are working with unusual materials or specialized equipment.\n\nIn summary, for standard applications, the washer should generally be placed between the nut and the fastened surface (nut side).",
+      "answer_tokens": {
+        "in": 54,
+        "out": 237
+      },
+      "recovered_intent": "The text aims to answer the question of where to place a flat washer during assembly, specifically addressing the factors influencing its placement such as load distribution, rust prevention, thickness increase, and material considerations. It outlines the typical practice of placing the washer on the nut side for standard applications while acknowledging exceptions like using spring washers or working with specific materials that might require placement on the bolt side.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.6667,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.3333,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6237,
+        "cos_intent_prompt": 0.7265,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.125,
+          "eli5": 0.625,
+          "social": 0.188
+        },
+        "overlap_vs_A": 0.688,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "I go for the side of the bowl (the inside) on the right side. This way the stream is a \"glancing blo"
+          },
+          {
+            "source": "eli5",
+            "text": "Straight in, stick to the top, two o clock (yes always) until about the second bend in your fingers,"
+          },
+          {
+            "source": "social",
+            "text": "For the first time, I find myself in need of my own washer and dryer."
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "How do I consistently assemble parts with a single washer by remembering which side it goes on so I can easily reassemble things?",
+      "noop": false,
+      "overhead_tokens": 81,
+      "answer": "Consistently assembling parts with a single washer involves creating a clear, memorable system to ensure you always place the washer correctly during assembly and disassembly. Here are some effective strategies:\n\n1. **Marking the Washer:**\n   - Use a permanent marker or paint on one side of the washer to create a distinct mark. This visual cue can help you remember which way it should go.\n   - Alternatively, use a contrasting color on one side for easier identification.\n\n2. **Using Stickers:**\n   - Apply a sticker to one specific side of the washer. Choose a design or text that is easy to recognize and associate with the correct position.\n\n3. **Creating a Systematic Process:**\n   - Develop a consistent order for assembly and disassembly. For example, always put on the washer first before adding other components.\n   - When reassembling, start by placing all washers in their designated positions according to your established system.\n\n4. **Storage Solutions:**\n   - Store parts with their corresponding washers in separate compartments or containers labeled for easy identification.\n   - Use small bins or trays specifically designed to hold and organize various components.\n\n5. **Educational Tools:**\n   - Create a diagram or label detailing the correct placement of each component, including the washer. This can be particularly helpful when working with unfamiliar parts.\n   - Share this information with team members if you are working on group projects.\n\n6. **Visual Aids and Reminders:**\n   - Place visual reminders in your workspace, such as a poster or note that reminds you of the correct assembly steps involving the washer.\n   - Use mnemonic devices to help recall the proper placement of components during disassembly.\n\nBy implementing these strategies, you can significantly reduce errors associated with misplacing washers and ensure efficient, accurate reassembly.",
+      "answer_tokens": {
+        "in": 61,
+        "out": 366
+      },
+      "recovered_intent": "The questioner wanted to know how to consistently assemble parts that use a single washer correctly, aiming to prevent errors during both assembly and disassembly. They sought specific strategies and techniques for remembering the correct placement of the washer, including marking it, using stickers, establishing systematic processes, organizing storage, utilizing educational tools, and employing visual aids as reminders.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.6667,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.6667,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7312,
+        "cos_intent_prompt": 0.8907,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.062,
+          "eli5": 0.5,
+          "social": 0.438
+        },
+        "overlap_vs_A": 0.375,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "It's just muscle memory. I can spin things both directions pretty easily. I just do it a lot."
+          },
+          {
+            "source": "social",
+            "text": "For the first time, I find myself in need of my own washer and dryer."
+          },
+          {
+            "source": "eli5",
+            "text": "That was beautiful work with a CNC lathe. The CNC calculated how to spin both the parts to make the "
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.1,
+    "severity": 2.6,
+    "mirror": 2.8,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.4,
+    "revise_c": 2.6,
+    "answers": 15.2,
+    "deduce": 10.3,
+    "judge_answers": 7.9,
+    "judge_recovered": 7.8,
+    "geometry": 0.1
+  }
+}

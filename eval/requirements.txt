@@ -1,0 +1,7 @@
+# The repo's precompute/.venv already satisfies all of these — reuse it.
+# For a fresh clone: python -m venv .venv && .venv/Scripts/pip install -r requirements.txt
+numpy
+pandas
+scipy
+requests
+sentence-transformers

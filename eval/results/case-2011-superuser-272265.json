@@ -1,0 +1,346 @@
+{
+  "case_id": "case-2011-superuser-272265",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "Getting curl to output HTTP status code?",
+  "intent": "I'm trying to use curl at the command line on Linux to issue HTTP requests and view their HTTP status codes in the output.",
+  "facets": [
+    "Prints the HTTP status code for each request in the standard output",
+    "Does not require modifying the default behavior of printing response bodies to standard out",
+    "Provides a way to access the HTTP status code without relying on external tools or scripts",
+    "Includes an example of how to use curl's command-line options to achieve this"
+  ],
+  "severity": 0.5,
+  "prompt_conveys": {
+    "per_facet": [
+      1.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    "score": 0.5,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "yes"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "yes"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for instructions on how to make the `curl` command display the HTTP status code returned by a server.",
+    "foreclosed": "",
+    "tokens_out": 38
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "Getting curl to output HTTP status code?",
+      "overhead_tokens": 0,
+      "answer": "To get `curl` to output the HTTP status code, you can use the `-w` or `--write-out` option in combination with `%{http_code}`. This will allow you to specify what information, including the HTTP status code, should be printed out after the transfer is complete.\n\nHere's a basic example:\n\n```sh\ncurl -o /dev/null -w \"%{http_code}\\n\" http://example.com\n```\n\nIn this command:\n- `-o /dev/null` tells `curl` to not save the body of the response, which helps in focusing on just the headers and status code.\n- `-w \"%{http_code}\\n\"` specifies that the HTTP status code should be written out. The `\\n` adds a newline after the status code for better readability.\n\nYou can use this format with any URL you want to check:\n\n```sh\ncurl -o /dev/null -w \"%{http_code}\\n\" https://www.example.com/api/data\n```\n\nThis will return only the HTTP status code, which is useful for quick checks or scripting purposes.",
+      "answer_tokens": {
+        "in": 44,
+        "out": 224
+      },
+      "recovered_intent": "The text aims to explain how to use the `curl` command-line tool to retrieve and display only the HTTP status code of a given URL. It details the specific options (`-w` or `--write-out` with `%{http_code}`) and their usage, including an example demonstrating how to suppress the response body and focus solely on the status code output. Additionally, it clarifies the purpose of using `/dev/null` for discarding the response body and emphasizes the versatility of this method for various URLs and applications like quick checks or scripting.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7577,
+        "cos_intent_prompt": 0.8723,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.062,
+          "eli5": 0.5,
+          "social": 0.438
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "URL 0 gives you the results in bits per seconds, while it's generally presented in bytes per second "
+          },
+          {
+            "source": "social",
+            "text": "So, I'm waiting on results that will hopefully confirm that I have gallstones and that I need my gal"
+          },
+          {
+            "source": "eli5",
+            "text": "When you make an HTTP connection, there are a bunch of pieces of metadata that are sent before the d"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "How can I make curl display the HTTP status code?",
+      "overhead_tokens": 19,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask for the same information and are just rephrased.",
+        "cos_prompts": 0.95
+      },
+      "answer": "To have `curl` display the HTTP status code, you can use the `-w` or `--write-out` option along with `%{http_code}`. This will output the HTTP status code at the end of the request.\n\nHere is an example command:\n\n```sh\ncurl -w \"%{http_code}\" -o /dev/null -s http://example.com\n```\n\nIn this command:\n- `-w \"%{http_code}\"` specifies that `curl` should write out the HTTP status code.\n- `-o /dev/null` tells `curl` not to save the body of the response, which is useful if you are only interested in the status code and headers.\n- `-s` makes `curl` run silently (without progress meter or error messages).\n\nIf you want to see all headers as well as the HTTP status code, you can omit the `-o /dev/null` part:\n\n```sh\ncurl -w \"%{http_code}\" -I http://example.com\n```\n\nThe `-I` option tells `curl` to just fetch the headers, which includes the HTTP status code.\n\nThese commands will output something like this for a successful request:\n\n```\n200\n```\n\nOr in case of an error:\n\n```\n404\n```",
+      "answer_tokens": {
+        "in": 47,
+        "out": 261
+      },
+      "recovered_intent": "The asker wanted to know how to use the `curl` command-line tool to display the HTTP status code returned by a web server. They were specifically interested in learning about the options and flags (`-w`, `--write-out`, `-o`, `-s`, `-I`) that can be used to achieve this, as well as how to interpret the output (e.g., '200' for success, '404' for error).",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          0.5
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7657,
+        "cos_intent_prompt": 0.8467,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.062,
+          "eli5": 0.688,
+          "social": 0.25
+        },
+        "overlap_vs_A": 0.625,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "URL 0 gives you the results in bits per seconds, while it's generally presented in bytes per second "
+          },
+          {
+            "source": "eli5",
+            "text": "When you make an HTTP connection, there are a bunch of pieces of metadata that are sent before the d"
+          },
+          {
+            "source": "eli5",
+            "text": "\"something://\" indicates the protocol being used. The protocol is the system/rules by which your com"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "How can I use curl at the Linux command line to issue HTTP requests and view their corresponding HTTP status codes in the output?",
+      "noop": false,
+      "overhead_tokens": 74,
+      "answer": "To use `curl` at the Linux command line for issuing HTTP requests and viewing their corresponding HTTP status codes, you can follow these steps:\n\n1. **Install Curl**: If `curl` is not already installed on your system, you can install it using package managers like apt (for Debian-based systems) or yum/dnf (for Red Hat-based systems). For example:\n   ```sh\n   sudo apt-get update && sudo apt-get install curl  # Debian/Ubuntu\n   sudo yum install curl  # CentOS/RHEL\n   ```\n\n2. **Use Curl to Issue HTTP Requests**: You can use `curl` with the `-I` option to retrieve only the headers, which include the status code. Alternatively, you can use the `-L` (follow) and `-i` (include) options together for more detailed output:\n   ```sh\n   curl -LI http://example.com\n   ```\n   This command will show you both the headers (including the HTTP status code) and follow any redirects.\n\n3. **View Only the Status Code**: If you only want to see the status code, you can use a combination of `curl` and `grep`:\n   ```sh\n   curl -I http://example.com | grep 'HTTP'\n   ```\n   This will filter the output to show only lines containing \"HTTP\", which typically includes the status code.\n\n4. **Detailed Output with Headers**: For more detailed information, including headers and the body of the response (if applicable), you can use:\n   ```sh\n   curl -X GET http://example.com\n   ```\n   This command will give you a full HTTP response, showing all headers and the content.\n\n5. **Advanced Options**: `curl` supports many other options for customization. For example, to add custom headers or set authentication, you can use:\n   ```sh\n   curl -H \"Custom-Header: Value\" -u username:password http://example.com\n   ```\n\nBy using these methods, you can effectively issue HTTP requests and examine the status codes in your Linux command-line environment.",
+      "answer_tokens": {
+        "in": 61,
+        "out": 425
+      },
+      "recovered_intent": "The text's asker wanted to know how to use the `curl` command in a Linux terminal to send HTTP requests and view their corresponding HTTP status codes. They likely wanted to understand different methods for retrieving status codes, including using options like `-I`, `-L`, `-i`, and `grep`, as well as how to obtain more detailed output with headers and the response body. The asker also seemed interested in learning about advanced `curl` options for customization, such as adding custom headers or setting authentication.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6461,
+        "cos_intent_prompt": 0.9553,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.062,
+          "eli5": 0.688,
+          "social": 0.25
+        },
+        "overlap_vs_A": 0.5,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "URL 0 gives you the results in bits per seconds, while it's generally presented in bytes per second "
+          },
+          {
+            "source": "eli5",
+            "text": "When you make an HTTP connection, there are a bunch of pieces of metadata that are sent before the d"
+          },
+          {
+            "source": "social",
+            "text": "So, I'm waiting on results that will hopefully confirm that I have gallstones and that I need my gal"
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.2,
+    "severity": 2.8,
+    "mirror": 2.6,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.5,
+    "revise_c": 2.6,
+    "answers": 15.0,
+    "deduce": 11.1,
+    "judge_answers": 8.5,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

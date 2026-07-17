@@ -1,0 +1,14 @@
+{
+  "id": "case-2009-superuser-792607",
+  "source": "stackexchange-superuser",
+  "tags": [
+    "general"
+  ],
+  "prompt": "Why does Windows think that my wireless keyboard is a toaster?",
+  "evidence": "I've inherited an old PC from my girlfriend's dad and when setting up the printer I got a bit of a surprise: Two questions spring to mind here: Why does Windows think my wireless keyboard is a toaster? Why does Windows even have an icon for a toaster in the devices menu?",
+  "attribution": {
+    "url": "https://superuser.com/questions/792607/why-does-windows-think-that-my-wireless-keyboard-is-a-toaster",
+    "author": "ydaetskcoR",
+    "license": "CC BY-SA 4.0"
+  }
+}

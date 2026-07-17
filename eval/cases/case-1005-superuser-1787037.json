@@ -1,0 +1,14 @@
+{
+  "id": "case-1005-superuser-1787037",
+  "source": "stackexchange-xy",
+  "tags": [
+    "xy-labeled"
+  ],
+  "prompt": "How to copy Files from One folder to another using third folder as a reference ? (Ubuntu/Linux/rsync)",
+  "evidence": "OS - Ubuntu Linux , Utility preferred - rsync Is it possible to copy all files from first folder (1/folder) to the third folder (3/folder) that are newer than or not existing in the second folder (2/folder) with the same directory structure ? I don't want any hard links in the third folder. I have tried the below but couldn't get it to work What I am doing now is copying the full folder and then delete duplicates from the third folder by comparing it with the second folder Obviously that takes double the space, double the bandwidth and double the time. Direct approach would be appreciated. I have tried some other scripts and tools like (rdiff-backup etc) but unable to get it to work. Thanks. Edit: I was also wondering if it is possible to use rsync to get the file list to copy between 1/ and 2/ into a text file, and then replace 2/ with 3/ in it and use it to copy manually ?",
+  "attribution": {
+    "url": "https://superuser.com/questions/1787037/how-to-copy-files-from-one-folder-to-another-using-third-folder-as-a-reference",
+    "author": "huz_akh",
+    "license": "CC BY-SA 4.0"
+  }
+}

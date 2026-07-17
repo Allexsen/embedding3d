@@ -1,0 +1,14 @@
+{
+  "id": "case-1019-superuser-1091209",
+  "source": "stackexchange-xy",
+  "tags": [
+    "xy-labeled"
+  ],
+  "prompt": "How do you make an bat file that talks to a server?",
+  "evidence": "Basically I have employees and I don't want them to know my powershell commands. So I would like to make my .BAT files into EXE files and everytime it is ran it will ask for a user name and password and send to the server a +1 that it was used to that account. I know php, but wasn't sure how to do this a standalone exe file for each of my scripts?",
+  "attribution": {
+    "url": "https://superuser.com/questions/1091209/how-do-you-make-an-bat-file-that-talks-to-a-server",
+    "author": "Sol",
+    "license": "CC BY-SA 4.0"
+  }
+}

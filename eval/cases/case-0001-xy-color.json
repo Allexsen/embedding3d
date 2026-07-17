@@ -1,0 +1,12 @@
+{
+  "id": "case-0001-xy-color",
+  "source": "aleksi-example",
+  "tags": [
+    "xy-problem",
+    "severe"
+  ],
+  "notes": "Aleksi's canonical framing-capture example: the question asks X (two colors) while the intent is Y (best UX color choice for the context).",
+  "prompt": "For my analytics dashboard's dark-themed sidebar icons, is light green or cyan better?",
+  "evidence": "I'm redesigning the sidebar of a dark-themed analytics dashboard and got stuck comparing light green and cyan for the icon accents. But I don't actually care about these two specific colors — that's just where my head got stuck. What I really want is whichever accent color choice gives the best UI/UX for this context: readable against the dark background, low eye strain over long monitoring sessions, distinguishable for color-blind users, and not clashing with the red/yellow alert colors the dashboard already uses. If some third color is objectively better than both of my candidates, I want to know that and pick it.",
+  "dev": true
+}

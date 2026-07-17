@@ -1,0 +1,346 @@
+{
+  "case_id": "case-1007-superuser-1676504",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How to execute WMI call from command line?",
+  "intent": "I want to execute a WMI (Windows Management Instrumentation) method from the command line to control my laptop's fans, specifically to set them to silent mode when I'm not actively using the laptop, and ideally find a solution that persists even after shutdown or sleep.",
+  "facets": [
+    "Provides step-by-step instructions for executing a WMI method in PowerShell or command prompt to achieve the same effect as navigating through namespaces, classes, and instances in WMI Explorer",
+    "Explains how to persistently set fan control settings across shutdowns or sleeps using WMI methods",
+    "Identifies alternative solutions that don't require manual intervention after each reboot or wake-up",
+    "Names a concrete method or command that can be used from the command line to execute the desired WMI action"
+  ],
+  "severity": 0.75,
+  "prompt_conveys": {
+    "per_facet": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "score": 0.25,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "no"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "yes"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for instructions on how to perform a Windows Management Instrumentation (WMI) call using the command line interface.",
+    "foreclosed": "",
+    "tokens_out": 38
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How to execute WMI call from command line?",
+      "overhead_tokens": 0,
+      "answer": "To execute a WMI (Windows Management Instrumentation) query from the command line in Windows, you can use the `wmic` command. Here’s how you can do it:\n\n1. **Open Command Prompt as Administrator**: Start by opening an elevated Command Prompt window. You can do this by searching for \"Command Prompt\" in the start menu, right-clicking on the Command Prompt icon, and selecting \"Run as administrator\".\n\n2. **Basic WMI Query Syntax**:\n   The basic syntax to query WMI using `wmic` is:\n   ```cmd\n   wmic <namespace> <query>\n   ```\n   - `<namespace>`: Specifies the WMI namespace you want to use. Common namespaces include `WINNT`, `CIMV2`, and `ROOT\\CIMV2`.\n   - `<query>`: A string or query expression that specifies what information you are looking for.\n\n3. **Examples**:\n   - To get a list of all running processes, you can use:\n     ```cmd\n     wmic process get Caption,ProcessId\n     ```\n   - To find out the installed operating system details, run:\n     ```cmd\n     wmic os get Caption,Version,BuildNumber\n     ```\n   - To check disk space on a specific drive (e.g., C:), use:\n     ```cmd\n     wmic logicaldisk where \"DeviceID='C:'\" get Size,Freespace\n     ```\n\n4. **Using WQL Queries**:\n   You can also use WMI Query Language (WQL) to construct more complex queries. For example, to list all hard drives with less than 10 GB of free space, you could run:\n   ```cmd\n   wmic logicaldisk get DeviceID,Freespace WHERE FreeSpace < 10737418240\n   ```\n\n5. **Output Redirection and Filtering**:\n   You can redirect the output to a file or pipe it through other commands for further processing, such as filtering with `findstr`:\n   ```cmd\n   wmic os get Caption,Version,BuildNumber > os_info.txt\n   ```\n   Or, using `findstr`:\n   ```cmd\n   wmic process where \"Name='explorer.exe'\" get ProcessId | findstr /v 4\n   ```\n\nThese commands provide a powerful way to retrieve system information and perform administrative tasks from the command line.",
+      "answer_tokens": {
+        "in": 46,
+        "out": 502
+      },
+      "recovered_intent": "The text's author apparently wanted to know how to execute WMI queries from the Windows command line using the `wmic` command.  This includes understanding the basic syntax, common namespaces, query examples for retrieving system information like running processes, operating system details, and disk space, as well as more advanced techniques like using WQL queries, output redirection, and filtering with commands like `findstr`. ",
+      "answer_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.4579,
+        "cos_intent_prompt": 0.6864,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.875,
+          "eli5": 0.125,
+          "social": 0.0
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "wikipedia",
+            "text": "Windows Media Connect (WMC) is a UPnP AV server from Microsoft for Windows XP and later Windows oper"
+          },
+          {
+            "source": "wikipedia",
+            "text": "Windows Image Acquisition (WIA; sometimes also called Windows Imaging Architecture) is a proprietary"
+          },
+          {
+            "source": "wikipedia",
+            "text": "Microsoft Management Console (MMC) is a component of Microsoft Windows that provides system administ"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "Describe the process of running a Windows Management Instrumentation (WMI) call from the command line.",
+      "overhead_tokens": 29,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask for the same information, just with different wording and level of detail.",
+        "cos_prompts": 0.8215
+      },
+      "answer": "To run a WMI (Windows Management Instrumentation) query from the command line in Windows, you can use the `wmic` command, which stands for \"Windows Management Instrumentation Command-line.\" Here’s a step-by-step guide on how to execute a WMI call using `wmic`:\n\n1. **Open Command Prompt**: You can open it by pressing `Win + R`, typing `cmd`, and then pressing Enter.\n\n2. **Run Basic Queries**:\n   - To list all available namespaces, type: \n     ```\n     wmic ns /list\n     ```\n   - For a basic query to get information about the operating system version:\n     ```\n     wmic os get Caption,Version,BuildNumber\n     ```\n\n3. **Using WMI Classes and Properties**:\n   - To retrieve properties of specific classes (e.g., `Win32_Process`), use the following format:\n     ```\n     wmic <classname> get <propertyname>\n     ```\n     For example, to list all running processes with their names:\n     ```\n     wmic process get Name\n     ```\n\n4. **Filtering and Sorting**:\n   - You can add filters to your query by using the `where` clause. For instance, to list all processes that have a name starting with \"explorer\":\n     ```\n     wmic process where Name=\"*explorer*\" get Caption,ProcessId\n     ```\n\n5. **Using Aliases and Properties**:\n   - WMI classes often include aliases and properties. You can use the `/format` option to specify output format or use specific alias names like `name`, `caption`, etc.\n   - Example with formatting in XML:\n     ```\n     wmic os get Caption,Version /format:xml\n     ```\n\n6. **Combining Queries**:\n   - For more complex queries, you can chain multiple commands using the pipe (`|`) operator to process or filter results further. This is particularly useful when combining output with other command-line tools.\n\n7. **Additional Options and Help**:\n   - To get help on available options for `wmic`, type:\n     ```\n     wmic /?\n     ```\n\nThese steps cover the basic usage of running WMI queries from the Windows Command Prompt using `wmic`. This tool is incredibly powerful for system administrators and developers who need to gather detailed information about their systems or perform management tasks directly through scripts.",
+      "answer_tokens": {
+        "in": 56,
+        "out": 493
+      },
+      "recovered_intent": "The asker wanted to learn how to execute WMI (Windows Management Instrumentation) queries from the command line in Windows using the `wmic` command. They likely desired a step-by-step guide covering basic query execution, filtering and sorting results, utilizing WMI classes and properties, specifying output formats, combining queries with pipes, and accessing available help options for the `wmic` command.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.25,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "no": "no"
+          },
+          {
+            "facet": 3,
+            "no": "no"
+          },
+          {
+            "facet": 4,
+            "yes": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "score": 0.25,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.4982,
+        "cos_intent_prompt": 0.6616,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.5,
+          "eli5": 0.5,
+          "social": 0.0
+        },
+        "overlap_vs_A": 0.5,
+        "top3": [
+          {
+            "source": "wikipedia",
+            "text": "Microsoft Management Console (MMC) is a component of Microsoft Windows that provides system administ"
+          },
+          {
+            "source": "wikipedia",
+            "text": "Windows Image Acquisition (WIA; sometimes also called Windows Imaging Architecture) is a proprietary"
+          },
+          {
+            "source": "wikipedia",
+            "text": "Windows Media Connect (WMC) is a UPnP AV server from Microsoft for Windows XP and later Windows oper"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "How can I use WMI from the command line to control my laptop's fans, specifically setting them to silent mode when not in active use, and ensure this solution persists even after shutdown or sleep?",
+      "noop": false,
+      "overhead_tokens": 89,
+      "answer": "To control your laptop's fans using WMI (Windows Management Instrumentation) from the command line, you can leverage PowerShell scripts due to its extensive capabilities for interacting with WMI. Here’s a step-by-step guide on how to achieve setting fan speed to silent mode when not in active use and ensure persistence after shutdown or sleep.\n\n### Step 1: Identify the Fan Control WMI Class\nFirst, identify the WMI class that controls your laptop's fans. This can be done using PowerShell with the following command:\n```powershell\nGet-WmiObject -Namespace root\\wmi -Class MsFbBatteryFanControl\n```\nThis command retrieves information about fan control settings. Note down the `DeviceID` of the fan you want to control, which is usually a hexadecimal string.\n\n### Step 2: Create a PowerShell Script for Fan Control\nCreate a PowerShell script that will set the fan speed based on usage state (idle or active). You can use the `Get-IdleTime` cmdlet from the `PSWindowsUpdate` module to determine if the system is idle. Here’s an example script:\n\n```powershell\n# Load necessary modules\nImport-Module PSWindowsUpdate\n\n# Define WMI namespace and class\n$namespace = \"root\\wmi\"\n$className = \"MsFbBatteryFanControl\"\n\n# Function to set fan speed based on idle time\nfunction Set-FanSpeed {\n    param (\n        [string]$deviceID,\n        [int]$idleTimeThreshold = 600, # 10 minutes in seconds\n        [int]$silentSpeed = 30,        # Example silent speed value\n        [int]$maxSpeed = 100           # Example maximum speed value\n    )\n\n    $fanControl = Get-WmiObject -Namespace $namespace -Class $className -Filter \"DeviceID='$deviceID'\"\n\n    if ($null -ne $fanControl) {\n        try {\n            $idleTime = (Get-IdleTime).IdleTime / 10000000 # Convert from 100 nanoseconds to seconds\n            if ($idleTime -gt $idleTimeThreshold) {\n                $fanControl.SetFanSpeed($silentSpeed, \"MIN\")\n            } else {\n                $fanControl.SetFanSpeed($maxSpeed, \"MAX\")\n            }\n        } catch {\n            Write-Warning \"Failed to set fan speed: $_\"\n        }\n    } else {\n        Write-Warning \"Device ID not found: $deviceID\"\n    }\n}\n\n# Example usage\nSet-FanSpeed -deviceID \"YourDeviceIDHere\" # Replace with your device ID\n\n# Schedule the script at startup or as a task\nRegister-ScheduledTask -Action (New-ScheduledTaskAction -Execute \"powershell.exe\" -Argument \"-File C:\\path\\to\\your\\script.ps1\") -Trigger (New-ScheduledTaskTrigger -AtStartup) -TaskName \"FanControl\"\n```\n\n### Step 3: Schedule the Script\nTo ensure this solution persists after shutdown or sleep, you can schedule the script to run at startup. Use the `Register-ScheduledTask` cmdlet as shown in the example above.\n\n### Step 4: Test and Adjust\nTest your setup by manually running the PowerShell script and observing fan behavior. Make necessary adjustments to thresholds and speeds based on performance and cooling needs.\n\nThis approach uses WMI through PowerShell",
+      "answer_tokens": {
+        "in": 76,
+        "out": 700
+      },
+      "recovered_intent": "The asker wanted to learn how to control their laptop's fan speed using Windows Management Instrumentation (WMI) and PowerShell scripting. Specifically, they were interested in setting the fan to silent mode when the system is idle and ensuring this configuration persists after shutdown or sleep. They likely wanted a step-by-step guide that includes identifying the relevant WMI class, creating a PowerShell script to manage fan speed based on system usage, scheduling the script for automatic execution at startup, and testing the setup.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.5,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "partial"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6378,
+        "cos_intent_prompt": 0.9178,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.188,
+          "eli5": 0.5,
+          "social": 0.312
+        },
+        "overlap_vs_A": 0.062,
+        "top3": [
+          {
+            "source": "social",
+            "text": "My boyfriend and I have been having a little disagreement about the use of a couple of window fans i"
+          },
+          {
+            "source": "wikipedia",
+            "text": "A computer fan is any fan inside, or attached to, a computer case used for active cooling."
+          },
+          {
+            "source": "eli5",
+            "text": "The wind or a fan doesn't actually cool anything. All it does is move air across surfaces faster."
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.7,
+    "severity": 2.8,
+    "mirror": 2.7,
+    "rewrite_b": 2.4,
+    "fidelity_b": 2.5,
+    "revise_c": 2.8,
+    "answers": 24.6,
+    "deduce": 12.9,
+    "judge_answers": 8.8,
+    "judge_recovered": 8.3,
+    "geometry": 0.1
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "case_id": "case-2031-cooking-7740",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "Why did my banana catch fire in the microwave?",
+  "intent": "I'm trying to understand why my attempt to thaw frozen bananas in the microwave caused the banana peel to catch fire, and I'd like a clear explanation for this unexpected outcome.",
+  "facets": [
+    "Explains why microwaving a frozen banana peel with the skin on can cause it to ignite",
+    "Describes the role of the thin end of the peel (where bunches connect) in the ignition process",
+    "Mentions any relevant factors that contributed to the fire, such as power level or time duration",
+    "Provides information on safe methods for thawing frozen bananas without risking a fire"
+  ],
+  "severity": 1.0,
+  "prompt_conveys": {
+    "per_facet": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.0,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "no"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The questioner wants to know the reason behind their banana igniting while being heated in a microwave.",
+    "foreclosed": "",
+    "tokens_out": 34
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "Why did my banana catch fire in the microwave?",
+      "overhead_tokens": 0,
+      "answer": "Bananas catching fire in a microwave is an unusual but possible occurrence, typically due to their high oil content or certain physical characteristics. Here are some common reasons this might happen:\n\n1. **Oil Content**: Bananas, especially ripe ones, contain natural oils. If a banana has a particularly large amount of oil (such as from a bruised spot), it can heat up and catch fire in the microwave. The microwaves interact with water molecules and fat or oil, generating heat that can reach temperatures high enough to ignite these substances.\n\n2. **Stickers**: Sometimes, bananas are wrapped in plastic stickers. If a sticker is placed near or inside the banana before microwaving, it can melt and catch fire. Ensure all stickers are removed from fruits before placing them in the microwave.\n\n3. **Impurities**: Any small impurities like metal fragments or other materials that might be embedded in the fruit could also cause sparking or a fire when exposed to the high-frequency electromagnetic waves of the microwave.\n\n4. **Physical Integrity**: If a banana has a cut or punctured area, it can create a pocket for moisture and air to mix in ways that might facilitate heating unevenly, leading to localized hot spots which can ignite.\n\n5. **Microwave Power Settings**: Higher power settings in microwaves can increase the risk of this happening due to increased heating rates. Lower power settings generally help distribute heat more evenly across the fruit, reducing the likelihood of localized overheating.\n\nTo avoid such incidents, always:\n- Remove any stickers or packaging from fruits before microwaving.\n- Cut bananas into smaller pieces if using them in a recipe that requires microwave cooking.\n- Use lower power settings and ensure even heating by rotating food items if necessary.",
+      "answer_tokens": {
+        "in": 46,
+        "out": 350
+      },
+      "recovered_intent": "The text aims to explain why bananas sometimes catch fire when placed in a microwave. It delves into the reasons behind this phenomenon, including the banana's oil content, the presence of stickers or impurities, physical characteristics like cuts or punctures, and the impact of microwave power settings. The response also provides safety tips to prevent such incidents, emphasizing the importance of removing stickers, cutting bananas into smaller pieces, and using lower power settings during microwaving.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "no": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7249,
+        "cos_intent_prompt": 0.7821,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.688,
+          "social": 0.312
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I was trying to heat up some already cooked carrots in the microwave oven, but they sparked and caug"
+          },
+          {
+            "source": "social",
+            "text": "The microwaves a few years old, and all of a sudden it has started sparking a ton whenever I put cer"
+          },
+          {
+            "source": "eli5",
+            "text": "Microwaves heat food mostly by exciting the water molecules in it. Water can only be heated to 100C "
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What causes a banana to ignite in a microwave?",
+      "overhead_tokens": 22,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask about the same phenomenon and seek an explanation for why a banana catches fire in a microwave.",
+        "cos_prompts": 0.8666
+      },
+      "answer": "A banana igniting in a microwave is an unusual but possible phenomenon, primarily due to the unique properties of some bananas and the way microwaves interact with certain materials. This can occur when a banana contains particularly high levels of potassium, which acts as a desiccant. As the banana dries out during cooking, it concentrates its remaining moisture into smaller pockets within the fruit. When this concentrated moisture is exposed to the microwaves, it rapidly heats up and vaporizes very quickly, creating steam under pressure.\n\nThe rapid expansion of steam can lead to a build-up of internal pressure inside the banana. If this pressure becomes too great for the skin or any weakened spots on the banana to contain, it may cause the banana to explode or even ignite. This is most likely to happen with bananas that have been cut open and are left in the microwave without being properly covered.\n\nIt's important to note that while a banana can catch fire under these conditions, it is not common for a whole unopened banana to ignite spontaneously. However, cutting a banana into thin slices or dicing it before microwaving can significantly reduce the risk of such incidents by allowing more even heating and preventing pressure buildup. Always exercise caution when using microwave ovens and ensure that any food is properly covered and does not contain metal parts.",
+      "answer_tokens": {
+        "in": 46,
+        "out": 263
+      },
+      "recovered_intent": "The text aims to explain why and how a banana might ignite in a microwave, focusing on the role of potassium, moisture concentration, steam pressure build-up, and the impact of cutting or dicing bananas before microwaving. It also emphasizes that while ignition is possible, it's not common with whole, unopened bananas and stresses the importance of safe microwave usage practices.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7532,
+        "cos_intent_prompt": 0.7215,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.875,
+          "social": 0.125
+        },
+        "overlap_vs_A": 0.438,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I was trying to heat up some already cooked carrots in the microwave oven, but they sparked and caug"
+          },
+          {
+            "source": "social",
+            "text": "The microwaves a few years old, and all of a sudden it has started sparking a ton whenever I put cer"
+          },
+          {
+            "source": "eli5",
+            "text": "a thin layer of water heats up very quickly. Take a wet sponge, put it in the microwave for 10 secon"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "I'm trying to thaw frozen bananas in the microwave, but the peel caught fire instead of just warming up. Can you explain why this happened and what I can do differently next time?",
+      "noop": false,
+      "overhead_tokens": 82,
+      "answer": "The issue you experienced with your bananas catching fire during microwaving is likely due to the water content imbalance within the banana. When a banana is frozen, ice crystals form in areas that contain more moisture, such as around the stem or where there are natural fissures in the peel. Upon thawing, these ice crystals can release their stored energy very quickly when heated by the microwave, leading to sudden heating and potentially causing sparking or even a small fire.\n\nTo avoid this issue next time:\n\n1. **Remove the Peel First**: Before microwaving, remove the banana peel as much as possible. This reduces the risk of hot spots caused by trapped moisture.\n\n2. **Use Shorter Heating Intervals with Rest Periods**: Instead of heating for long periods continuously, use shorter intervals (about 30 seconds to a minute) and allow the banana to cool slightly between sessions. This helps distribute the heat more evenly.\n\n3. **Add a Small Amount of Water or Liquid**: Placing a small amount of water in the microwave with the banana can help stabilize the temperature distribution and prevent sudden heating spikes.\n\n4. **Use a Microwave-Safe Container**: Place the banana on a microwave-safe dish to help dissipate the heat and reduce the risk of localized overheating.\n\n5. **Monitor Closely**: Always supervise the microwaving process, especially with frozen foods that have high water content like bananas, to catch any issues before they escalate into a fire.\n\nBy following these steps, you can safely thaw your bananas without the risk of catching them on fire.",
+      "answer_tokens": {
+        "in": 73,
+        "out": 315
+      },
+      "recovered_intent": "The questioner wanted to know why their frozen bananas caught fire in the microwave and how to prevent this from happening again. They were likely looking for an explanation of the scientific process behind the fire hazard, as well as practical tips and safety precautions to safely thaw frozen bananas in a microwave.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "no mention of specific role of thin end of peel in ignition process, so ": ", "
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          0.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.125,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7583,
+        "cos_intent_prompt": 0.9406,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.688,
+          "social": 0.312
+        },
+        "overlap_vs_A": 0.625,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I was trying to heat up some already cooked carrots in the microwave oven, but they sparked and caug"
+          },
+          {
+            "source": "eli5",
+            "text": "Microwaves heat food mostly by exciting the water molecules in it. Water can only be heated to 100C "
+          },
+          {
+            "source": "social",
+            "text": "After a small amount of scientific inquiry in the departmental tea room (Pharmacology and Toxicology"
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.5,
+    "severity": 2.8,
+    "mirror": 2.6,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.6,
+    "revise_c": 2.7,
+    "answers": 15.2,
+    "deduce": 10.1,
+    "judge_answers": 8.6,
+    "judge_recovered": 8.1,
+    "geometry": 0.1
+  }
+}

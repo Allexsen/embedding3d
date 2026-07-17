@@ -1,0 +1,346 @@
+{
+  "case_id": "case-2036-diy-6226",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "When should I not use WD-40?",
+  "intent": "Identify situations where using WD-40 could potentially damage or harm the items being lubricated, beyond its typical uses.",
+  "facets": [
+    "Lists materials that are damaged by WD-40's solvent properties",
+    "Explains how WD-40 can compromise electrical connections or components",
+    "Describes scenarios where WD-40's evaporation can leave residue or attract dust",
+    "Names specific types of coatings, finishes, or surfaces that are incompatible with WD-40"
+  ],
+  "severity": 0.875,
+  "prompt_conveys": {
+    "per_facet": [
+      0.0,
+      0.0,
+      0.5,
+      0.0
+    ],
+    "score": 0.125,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "no"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "partial"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question seeks a list of situations or circumstances in which using WD-40 is not recommended.",
+    "foreclosed": "",
+    "tokens_out": 34
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "When should I not use WD-40?",
+      "overhead_tokens": 0,
+      "answer": "WD-40 is generally useful for many maintenance tasks, but there are specific situations where it might not be appropriate or effective:\n\n1. **Electronics**: While WD-40 can sometimes help clean and lubricate electronic components to a limited extent, it contains oils that can interfere with sensitive electronics like computer keyboards, circuit boards, and other delicate parts. It's best to use specialized cleaning products designed for electronics.\n\n2. **Painted Surfaces**: Applying WD-40 directly to painted surfaces could potentially damage the paint or make it sticky over time. For maintenance on painted areas, consider using a silicone spray specifically formulated for this purpose.\n\n3. **Sealed Mechanisms**: On sealed mechanisms like water pumps, transmissions, and certain types of bearings, WD-40 can interfere with the intended lubrication system or sealant. It may also cause the seals to swell or degrade over time.\n\n4. **Fire Hazards**: WD-40 is flammable and should not be used in areas where there is a risk of fire or near open flames. Avoid using it around fuel lines, electrical components, or other sources that could ignite the spray.\n\n5. **Food Contact Areas**: For surfaces that come into contact with food, such as kitchen utensils or worktops, WD-40 should not be used due to its potentially harmful chemicals and residue. Use food-grade lubricants instead.\n\n6. **Non-Metallic Surfaces**: On plastic, rubber, or some types of wood, WD-40 may cause deterioration or discolouration. Always test on a small, inconspicuous area first when applying to non-metallic surfaces.\n\n7. **Piston Rings and Pistons in Vehicles**: Using WD-40 as a lubricant for piston rings can lead to engine damage by disrupting the oil film on the cylinders, potentially leading to excessive wear or even seizing of parts.\n\nIn these cases, it's advisable to choose products specifically designed for the type of maintenance task you are performing.",
+      "answer_tokens": {
+        "in": 46,
+        "out": 408
+      },
+      "recovered_intent": "The questioner likely wanted to know when WD-40 is NOT a suitable solution for various maintenance tasks and what alternatives they should use instead. They were interested in specific situations where WD-40 could be harmful, such as electronics, painted surfaces, sealed mechanisms, fire hazards, food contact areas, non-metallic surfaces, and vehicle engines. The text provides a detailed list of these situations and recommends appropriate substitutes for each case.",
+      "answer_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          1.0,
+          0.5
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.8166,
+        "cos_intent_prompt": 0.7142,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.625,
+          "social": 0.375
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "the rim of the paper is getting darker and also this disk is wearing of so fast that the paper is go"
+          },
+          {
+            "source": "eli5",
+            "text": "Rubber oxidized and can become more brittle, and the lubricant can slowly evaporate over time, both "
+          },
+          {
+            "source": "eli5",
+            "text": "When you see a W on a viscosity rating it means that this oil viscosity has been tested for winter u"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "Under what circumstances should WD-40 not be used?",
+      "overhead_tokens": 21,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask for the same information about when to avoid using WD-40.",
+        "cos_prompts": 0.9349
+      },
+      "answer": "WD-40, while effective for many applications, is not suitable in every situation due to its chemical composition and specific properties:\n\n1. **Electrical Components**: Applying WD-40 to electrical contacts or components can interfere with their conductivity, leading to potential malfunctions or fires. It should never be used on electronic devices without a clear understanding of the risks.\n\n2. **Sensitive Surfaces**: The solvent in WD-40 may damage certain finishes, plastics, and rubber components if applied directly. For instance, it could cause discoloration, swelling, or cracking in some materials, making it unsuitable for use around painted surfaces or sensitive polymers.\n\n3. **Food Contact Areas**: Due to its non-food-grade nature, WD-40 should not be used on areas that come into contact with food, as it may leave residue and is not approved for such uses.\n\n4. **Environmental Concerns**: WD-40 contains volatile organic compounds (VOCs) which can contribute to air pollution when used outdoors or in poorly ventilated spaces. In environments where VOC emissions are regulated, its use should be minimized or avoided.\n\n5. **Precision Instruments**: For delicate machinery like watches, precision instruments, or medical equipment, the use of WD-40 is discouraged as it may not provide a fine enough control over lubrication and could potentially introduce contaminants into the mechanism.\n\n6. **Flammable Areas**: In areas where there is a risk of ignition due to sparks or open flames, using WD-40 can be dangerous as it is flammable itself, making it unsuitable for such environments.\n\nIn summary, while versatile in many applications, WD-40's use should be carefully considered and avoided in specific contexts to prevent damage, improve safety, and comply with regulations.",
+      "answer_tokens": {
+        "in": 48,
+        "out": 362
+      },
+      "recovered_intent": "The questioner likely wanted to know what situations or applications WD-40 is NOT suitable for, as well as the reasons behind these limitations. They were interested in understanding the potential risks and drawbacks of using WD-40 on electrical components, sensitive surfaces, food contact areas, in the environment, with precision instruments, and in flammable areas. The questioner likely sought guidance on safe and appropriate alternatives to WD-40 in these specific contexts.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7286,
+        "cos_intent_prompt": 0.7531,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.812,
+          "social": 0.188
+        },
+        "overlap_vs_A": 0.5,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "It dries stuff out. It is apparently an irritant but I don't see anything super dangerous in the Mat"
+          },
+          {
+            "source": "social",
+            "text": "Comparative to other dosages and the damage possible, how harmful is a dose of 0.9 mR/hr?"
+          },
+          {
+            "source": "eli5",
+            "text": "Rubber oxidized and can become more brittle, and the lubricant can slowly evaporate over time, both "
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "What are the specific situations where using WD-40 could potentially damage or harm the items being lubricated, beyond its typical uses?",
+      "noop": false,
+      "overhead_tokens": 71,
+      "answer": "Using WD-40 inappropriately can indeed lead to potential damage or harm to certain materials and components, even though it is marketed primarily as a versatile lubricant. Here are some specific situations where using WD-40 could cause harm:\n\n1. **Electronics**: Applying WD-40 to electronics such as computers, smartphones, or other delicate electronic devices can introduce moisture into the circuits, potentially leading to corrosion and short circuits. The propellants in WD-40 can also break down plastic components over time.\n\n2. **Painted Surfaces**: Directly spraying WD-40 on painted surfaces could cause damage due to its solvent properties. It may dissolve paint or leave residues that can mar the finish, especially if it contains volatile organic compounds (VOCs).\n\n3. **Rubber and Plastics**: Although some types of rubber and plastic are compatible with WD-40, others can be adversely affected by its ingredients. The propellant in WD-40 can cause swelling or degradation of certain rubbers and plastics over time.\n\n4. **Metal Corrosion**: While WD-40 is designed to prevent rust, improper use could lead to corrosion if it's not fully evaporated before exposure to moisture. Using it in areas that are frequently exposed to water without proper drying might exacerbate the risk of rusting metals.\n\n5. **Fire Hazards**: The flammable components in WD-40 can pose a fire hazard when used near heat sources or open flames, especially if applied in large quantities or directly onto combustible materials like fabrics or wood.\n\n6. **Environmental Impact**: Improper disposal of WD-40 that has been sprayed into the environment can harm local flora and fauna, as it contains chemicals not biodegradable by all ecosystems.\n\nTo avoid these issues, always refer to the product's instructions, test a small, inconspicuous area first when applying it to sensitive materials, and ensure that any application is well-ventilated and free from potential ignition sources.",
+      "answer_tokens": {
+        "in": 63,
+        "out": 408
+      },
+      "recovered_intent": "The questioner likely wanted to know what potential dangers or harms can arise from using WD-40 inappropriately. They were interested in specific situations where WD-40 could cause damage, such as to electronics, painted surfaces, rubber and plastics, metals, and the environment. The asker probably also wanted to understand the mechanisms behind these potential harms, including corrosion, solvent properties, flammability, and environmental impact.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7327,
+        "cos_intent_prompt": 0.9701,
+        "source_mix": {
+          "arxiv": 0.188,
+          "wikipedia": 0.0,
+          "eli5": 0.562,
+          "social": 0.25
+        },
+        "overlap_vs_A": 0.438,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Rubber oxidized and can become more brittle, and the lubricant can slowly evaporate over time, both "
+          },
+          {
+            "source": "arxiv",
+            "text": "This paper describes the appearance of abnormal film thickness features formed in elastohydrodynamic"
+          },
+          {
+            "source": "eli5",
+            "text": "It dries stuff out. It is apparently an irritant but I don't see anything super dangerous in the Mat"
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.2,
+    "severity": 2.8,
+    "mirror": 2.7,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.5,
+    "revise_c": 2.6,
+    "answers": 17.8,
+    "deduce": 10.7,
+    "judge_answers": 8.4,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

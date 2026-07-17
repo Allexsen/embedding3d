@@ -1,0 +1,14 @@
+{
+  "id": "case-2011-superuser-272265",
+  "source": "stackexchange-superuser",
+  "tags": [
+    "general"
+  ],
+  "prompt": "Getting curl to output HTTP status code?",
+  "evidence": "I'm using at the command line on Linux to issue HTTP requests. The response bodies are printed to standard out, which is fine, but I can't see from the man page how to get curl to print the HTTP status code from the response (404, 403 etc). Is this possible?",
+  "attribution": {
+    "url": "https://superuser.com/questions/272265/getting-curl-to-output-http-status-code",
+    "author": "kdt",
+    "license": "CC BY-SA 4.0"
+  }
+}

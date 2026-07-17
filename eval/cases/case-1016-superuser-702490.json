@@ -1,0 +1,14 @@
+{
+  "id": "case-1016-superuser-702490",
+  "source": "stackexchange-xy",
+  "tags": [
+    "xy-labeled"
+  ],
+  "prompt": "How to schedule a task to run every weekday except on the 1st day of the month",
+  "evidence": "How to schedule a task to run every weekday except on the 1st day of the month? To avoid the XY problem: I'm building a backup system that makes backups on the 1st of every month and daily backups every weekday. I have three tasks running three programs: Monthly backup - 1st of every month Daily backup - mon-fri Clear old backups - every day I keep X monthly backups and Y daily backups. If the 1st happens on a weekday, I get two backups very close to each other and I want to avoid the hard drive cost Win 7, Win server 2008 and Win server 2012 platforms.",
+  "attribution": {
+    "url": "https://superuser.com/questions/702490/how-to-schedule-a-task-to-run-every-weekday-except-on-the-1st-day-of-the-month",
+    "author": "Joel Peltonen",
+    "license": "CC BY-SA 4.0"
+  }
+}

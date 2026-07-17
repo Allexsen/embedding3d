@@ -1,0 +1,346 @@
+{
+  "case_id": "case-2024-workplace-96212",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "Is it acceptable to ask a waiter to pay if a customer leaves without paying?",
+  "intent": "Understand if it's fair or legal for a restaurant in Virginia to hold waiters responsible for paying customers who leave without paying, and whether this policy is common among restaurants.",
+  "facets": [
+    "Explains how liability for dine-and-dash situations is typically handled in the U.S. food service industry",
+    "Names any specific laws or regulations in Virginia that address this issue",
+    "Determines if it's standard practice for restaurants to hold waiters responsible for unpaid tabs",
+    "Provides guidance on how to communicate concerns about unfair policies with management"
+  ],
+  "severity": 0.875,
+  "prompt_conveys": {
+    "per_facet": [
+      0.0,
+      0.0,
+      0.5,
+      0.0
+    ],
+    "score": 0.125,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "no"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "partial"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question seeks to determine whether it is permissible for a waiter to assume financial responsibility for a customer who departs before settling their bill.",
+    "foreclosed": "",
+    "tokens_out": 40
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "Is it acceptable to ask a waiter to pay if a customer leaves without paying?",
+      "overhead_tokens": 0,
+      "answer": "It is generally not acceptable or advisable for a customer to request that a waiter pay on their behalf when they leave a restaurant without settling the bill. The responsibility for payment lies with the individual who consumed the services, and asking someone else to compensate for unpaid charges can lead to misunderstandings, legal issues, and potential conflicts.\n\nRestaurants operate on a business model where customers are expected to pay for the food and service received. If you leave without paying, it is considered theft or shoplifting, which has serious legal consequences. The restaurant staff, including waiters, have no authority to demand payment from others as recompense.\n\nIf you find yourself in a situation where you cannot pay but wish to express appreciation for the service, consider leaving a generous tip or offering some form of compensation that is within your means. Alternatively, speaking with management about any financial difficulties might lead to an acceptable resolution without involving other customers.",
+      "answer_tokens": {
+        "in": 52,
+        "out": 183
+      },
+      "recovered_intent": "The text answers the question of whether it is appropriate for a customer to ask a waiter to pay their bill if they cannot afford to. It explains that this is unacceptable and potentially illegal, as the responsibility for payment lies with the individual who consumed the services. The text further details the legal consequences of leaving without paying and suggests alternative solutions for customers facing financial difficulties, such as leaving a tip or speaking with management.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          0.5
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          0.5
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6774,
+        "cos_intent_prompt": 0.6646,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.625,
+          "social": 0.375
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "It's not like it's against the law to give your leftovers to a beggar when you leave a restaurant."
+          },
+          {
+            "source": "eli5",
+            "text": "people either start a tab or they pay up front. it's part of a bartender's job to make sure they get"
+          },
+          {
+            "source": "eli5",
+            "text": "When you go to a restaurant, you pay for the service first, then for the actual food."
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "Can it be appropriate for a diner to request payment from a waiter when a customer fails to settle their bill?",
+      "overhead_tokens": 32,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions address the same scenario and issue of who should take responsibility for payment.",
+        "cos_prompts": 0.844
+      },
+      "answer": "In most restaurants, it is not typically appropriate or advisable for a diner to directly request payment from the waiter if they have failed to settle their bill. The standard practice in restaurants is that bills are presented at the end of a meal by a server. If a customer has forgotten to pay, it is usually the responsibility of the management or another staff member to follow up on settling the account.\n\nHowever, there can be special circumstances where such an action might be more appropriate. For instance, if a diner has explicitly stated they will not pay and a verbal agreement was made with the waiter or manager, then the situation changes. In this case, it could be reasonable for the diner to directly address payment, though it is still recommended to handle such matters calmly and respectfully.\n\nIn general, it's best to avoid confrontation and ensure that all parties are clear about financial obligations before leaving the establishment. If a customer consistently fails to pay their bills, it may indicate a need for communication with management or the restaurant owner to address the issue effectively.",
+      "answer_tokens": {
+        "in": 58,
+        "out": 207
+      },
+      "recovered_intent": "The text aims to answer the question of whether or not it is acceptable for a diner to directly request payment from a waiter if they have forgotten to settle their bill. It explores the typical protocol in restaurants regarding bill settlement, highlighting that it's usually the responsibility of management to follow up on unpaid bills. The text also considers exceptions to this rule, such as when a verbal agreement has been made with the waiter or manager about non-payment, and emphasizes the importance of handling payment issues calmly and respectfully. Finally, it suggests addressing persistent non-payment issues with restaurant management.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6402,
+        "cos_intent_prompt": 0.5966,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.625,
+          "social": 0.375
+        },
+        "overlap_vs_A": 0.562,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "It's not like it's against the law to give your leftovers to a beggar when you leave a restaurant."
+          },
+          {
+            "source": "eli5",
+            "text": "When you go to a restaurant, you pay for the service first, then for the actual food."
+          },
+          {
+            "source": "eli5",
+            "text": "people either start a tab or they pay up front. it's part of a bartender's job to make sure they get"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "Is it fair and legal in Virginia for restaurants to hold waiters responsible for paying customers who leave without paying, and how common is this policy among restaurants?",
+      "noop": false,
+      "overhead_tokens": 82,
+      "answer": "In Virginia, the practice of holding servers or waitstaff responsible for unpaid bills by customers they have waited on is not legally binding. According to Virginia Code § 8.01-429, employees are generally not required to pay for goods or services provided by their employer unless there is a specific agreement in place. Therefore, restaurants cannot hold waiters legally liable if a customer fails to pay.\n\nHowever, some Virginia restaurants may have internal policies that encourage or require servers to pursue payment from customers who leave without settling their bill. While such practices are not enforceable through legal means, they can be part of an employer's operational guidelines and employee expectations. These policies might vary widely among establishments; some may explicitly prohibit servers from collecting unpaid bills, while others might allow it.\n\nThe prevalence of this practice is difficult to quantify precisely, as it largely depends on individual restaurant management decisions and local industry norms. Some restaurants might have a policy against waitstaff collecting payments directly, instead relying on the manager or bouncer for such actions. Conversely, other establishments might expect servers to take a more proactive role in ensuring that all customers pay their bills.\n\nIn summary, while Virginia law does not allow restaurants to hold waiters responsible for unpaid bills by customers they have waited on, some businesses may still encourage this practice as part of internal policies and expectations.",
+      "answer_tokens": {
+        "in": 67,
+        "out": 269
+      },
+      "recovered_intent": "The questioner likely wanted to know the legal ramifications in Virginia regarding servers being held responsible for unpaid customer bills. Specifically, they were interested in whether Virginia law permits restaurants to legally hold waitstaff liable for such debts and if there are any regulations or codes governing this practice. Additionally, they probably wanted to understand if there are common internal policies within Virginia restaurants that encourage or require servers to pursue payment from customers who leave without paying, despite the legal limitations. Finally, they may have been curious about the prevalence of these internal policies and how they vary across different establishments in Virginia.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6964,
+        "cos_intent_prompt": 0.9158,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.875,
+          "social": 0.125
+        },
+        "overlap_vs_A": 0.5,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "It's not like it's against the law to give your leftovers to a beggar when you leave a restaurant."
+          },
+          {
+            "source": "eli5",
+            "text": "people either start a tab or they pay up front. it's part of a bartender's job to make sure they get"
+          },
+          {
+            "source": "eli5",
+            "text": "When you go to a restaurant, you pay for the service first, then for the actual food."
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.4,
+    "severity": 2.8,
+    "mirror": 2.7,
+    "rewrite_b": 2.4,
+    "fidelity_b": 2.5,
+    "revise_c": 2.7,
+    "answers": 12.6,
+    "deduce": 11.4,
+    "judge_answers": 8.4,
+    "judge_recovered": 8.3,
+    "geometry": 0.1
+  }
+}

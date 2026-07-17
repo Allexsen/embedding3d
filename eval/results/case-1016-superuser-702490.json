@@ -1,0 +1,382 @@
+{
+  "case_id": "case-1016-superuser-702490",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How to schedule a task to run every weekday except on the 1st day of the month",
+  "intent": "I need to schedule my backup system's tasks so that daily backups run every weekday except when it's also the first day of the month, which is a special case for monthly backups. I want to avoid having two consecutive backups on the same day when the 1st falls on a weekday, as this would be costly in terms of hard drive space. The solution should work across different Windows platforms (Win 7, Win Server 2008, and Win Server 2012).",
+  "facets": [
+    "Provides a scheduling mechanism that skips daily backups on weekdays when it's also the first day of the month",
+    "Ensures that monthly backups run as scheduled on the 1st day of every month",
+    "Prevents consecutive backups from occurring on the same day when the 1st falls on a weekday",
+    "Is compatible with Windows platforms (Win 7, Win Server 2008, and Win Server 2012)",
+    "Specifies how to handle the Clear old backups task in relation to this new scheduling requirement"
+  ],
+  "severity": 0.8,
+  "prompt_conveys": {
+    "per_facet": [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.2,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "yes"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      },
+      {
+        "facet": 5,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for instructions on setting up a scheduled task that executes daily from Monday to Friday, but not on the first day of each month.",
+    "foreclosed": "",
+    "tokens_out": 43
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How to schedule a task to run every weekday except on the 1st day of the month",
+      "overhead_tokens": 0,
+      "answer": "To schedule a task to run every weekday except on the 1st day of the month, you can use various tools depending on your operating system. Below are instructions for both Windows and Unix-based systems (such as Linux or macOS).\n\n### For Windows:\nYou can use the Task Scheduler in Windows.\n\n1. **Open Task Scheduler:**\n   - Press `Win + S`, type \"Task Scheduler\", and press Enter.\n2. **Create a New Task:**\n   - In the right pane, click on \"Create Basic Task...\".\n   - Name your task and provide a description if desired.\n3. **Set the Trigger:**\n   - Click on \"Next\" and select \"Weekly\".\n4. **Configure the Weekly Schedule:**\n   - Click \"Next\". Under \"Days to run\", check all days from Monday to Friday.\n5. **Edit the Action:**\n   - Click \"Next\" and then click \"Next\" again when prompted about the start date.\n6. **Advanced Settings:**\n   - After clicking \"Finish,\" your task will be created with default settings. To exclude the 1st day of each month, you'll need to use a more advanced trigger:\n     - Right-click on the task and select \"Properties\".\n     - Go to the \"Triggers\" tab.\n     - Click \"New...\".\n     - Set the frequency as needed (e.g., daily).\n     - In the \"Advanced settings,\" adjust the \"Repeat task every\" value to a small number, such as 1 minute.\n     - Uncheck \"Start only if the computer is on AC power\".\n     - Under \"Settings\", check \"Disabled\".\n     - Click OK.\n\nThis advanced trigger will run your task daily but will be disabled for the day you want it skipped (the 1st of each month). You can use a batch file or script to handle this conditionally, checking if the date is the 1st and exiting early if so.\n\n### For Unix-based Systems:\nYou can use cron jobs along with conditional statements in shell scripts.\n\n1. **Open crontab:**\n   - Open a terminal and type `crontab -e` to edit your crontab file.\n2. **Add the Cron Job:**\n   - Add the following line at the end of your crontab:\n     ```\n     0 * * * * if [ \"$(date +\\%d)\" != \"01\" ]; then /path/to/your/script.sh; fi\n     ```\n   - This cron job runs every hour. The `if` statement checks if the current day is not the 1st of the month, and if true, it executes your script.\n\n3. **Script Example:**\n   - Your script could be as simple as:\n     ```bash\n     #!/bin/bash\n     if [ \"$(date +\\%d)\" != \"01\" ]; then\n       echo \"Running task on $(date)\"\n       # Add the commands or scripts you want to run here.\n     fi\n     ```\n\nThese methods ensure that your task runs every weekday except for the 1st day of each month.",
+      "answer_tokens": {
+        "in": 55,
+        "out": 642
+      },
+      "recovered_intent": "The asker wanted to know how to schedule a recurring task to run on weekdays but exclude the first day of each month, and they were looking for instructions specific to both Windows operating systems (like Task Scheduler) and Unix-based systems (like Linux or macOS using cron jobs). They likely desired detailed steps, including any necessary configuration options or scripts, to achieve this scheduling behavior.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0,
+          0.5
+        ],
+        "score": 0.6,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "no": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          },
+          {
+            "facet": 5,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0,
+          0.0
+        ],
+        "score": 0.3,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          },
+          {
+            "facet": 5,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.4866,
+        "cos_intent_prompt": 0.735,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.062,
+          "eli5": 0.312,
+          "social": 0.625
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "I think you have to manually adjust it every time the month changes, but not sure, sure someone will"
+          },
+          {
+            "source": "social",
+            "text": "Edit: THIS IS AN OLD POST. Follow-up here. It's a lovely and arbitrary day for setting a 1 month fit"
+          },
+          {
+            "source": "social",
+            "text": "After discussing it, the point was made that perhaps weekly goals might be better because a month pr"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "Describe steps for setting up a recurring task to execute from Monday through Friday, excluding the first day of each month",
+      "overhead_tokens": 32,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask for the same scheduling rule with slight variations in wording.",
+        "cos_prompts": 0.8314
+      },
+      "answer": "To set up a recurring task that runs from Monday through Friday, excluding the first day of each month, you can follow these steps using a common scheduling tool like Microsoft Outlook:\n\n1. **Open Your Calendar:** Launch Microsoft Outlook and navigate to your calendar.\n\n2. **Create a New Task:** Click on \"New Task\" or press `Ctrl + Shift + T` to create a new task.\n\n3. **Set the Recurrence Pattern:**\n   - In the task window, go to the \"Recurrence\" tab.\n   - Under \"Recurrence,\" select \"Weekly.\"\n   - Set the frequency to \"Every 1 week(s).\"\n   - Set the start date and end date according to your needs.\n\n4. **Configure Days of the Week:**\n   - In the \"Days\" section, check off Monday through Friday.\n\n5. **Exclude Specific Dates:** To exclude the first day of each month:\n   - Go to the \"Exceptions\" tab.\n   - Click on \"Edit Exceptions.\"\n   - In the \"Date(s) or Day(s)\" field, enter `D1` in the \"Occur on\" box and select \"Monthly\" from the dropdown menu. This will exclude the first day of each month.\n\n6. **Set Task Details:**\n   - Fill in the task details such as title, due date, priority, status, etc., according to your requirements.\n   - You can also add any additional notes or reminders if necessary.\n\n7. **Save and Schedule:** Click \"OK\" to save your changes and then click \"Save & Close\" to finalize the task setup.\n\nBy following these steps in Microsoft Outlook (or a similar tool), you can effectively set up a recurring task that runs from Monday through Friday, excluding the first day of each month.",
+      "answer_tokens": {
+        "in": 58,
+        "out": 364
+      },
+      "recovered_intent": "The asker wanted to know how to create a recurring task in Microsoft Outlook that runs from Monday to Friday every week, but excludes the first day of each month. They likely needed specific instructions on navigating the Outlook interface, setting up the recurrence pattern, configuring days of the week, and excluding specific dates (the first day of each month).",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0,
+          0.0
+        ],
+        "score": 0.3,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          },
+          {
+            "facet": 5,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0,
+          0.0
+        ],
+        "score": 0.3,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          },
+          {
+            "facet": 5,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.3619,
+        "cos_intent_prompt": 0.6165,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.25,
+          "social": 0.75
+        },
+        "overlap_vs_A": 0.5,
+        "top3": [
+          {
+            "source": "social",
+            "text": "After discussing it, the point was made that perhaps weekly goals might be better because a month pr"
+          },
+          {
+            "source": "eli5",
+            "text": "I think you have to manually adjust it every time the month changes, but not sure, sure someone will"
+          },
+          {
+            "source": "social",
+            "text": "Edit: THIS IS AN OLD POST. Follow-up here. It's a lovely and arbitrary day for setting a 1 month fit"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "How can I schedule my backup system's tasks so that they run every weekday except when it's also the 1st day of the month, ensuring no consecutive backups on a single day and working across Windows platforms (Win 7, Win Server 2008, and Win Server 2012)?",
+      "noop": false,
+      "overhead_tokens": 115,
+      "answer": "To schedule your backup tasks so that they run every weekday except when it's also the 1st day of the month, ensuring no consecutive backups on a single day, you can use Task Scheduler in Windows environments (Windows 7, Windows Server 2008, and Windows Server 2012). Here’s how to set this up:\n\n### Step-by-Step Instructions\n\n#### 1. **Open Task Scheduler**\n   - Press `Win + R`, type `taskschd.msc`, and press Enter to open the Task Scheduler.\n\n#### 2. **Create a New Basic Task**\n   - In the right-hand Actions pane, click on \"Create Basic Task...\"\n   - Name your task (e.g., \"Daily Backup\") and give it a description if needed.\n   - Click Next.\n\n#### 3. **Set Trigger**\n   - Choose when you want this task to start (e.g., \"Weekly\").\n   - Under \"Start the task\", select \"On weekdays\".\n   - Uncheck \"Every week\" to avoid setting up other weekly tasks that might conflict with your needs.\n   - Click Next.\n\n#### 4. **Define Conditions**\n   - Go to the \"Conditions\" tab.\n   - Check \"Wake the computer to run this task\" if you want the backup to occur even when the system is asleep.\n   - Check \"Start only if the following network connection(s) are available\" and select your preferred network, or leave it unchecked for local backups.\n   - Click Next.\n\n#### 5. **Define Settings**\n   - Go to the \"Settings\" tab.\n   - Under \"Allow task to be run even if user is not interactively logged on\", check this box if you want the backup to run regardless of whether a user is logged in or not.\n   - Ensure \"If the running instance fails, restart every\" is set to an appropriate interval (e.g., 5 minutes) and specify how many times it should retry before giving up.\n   - Click Next.\n\n#### 6. **Specify Action**\n   - Go to the \"Triggers\" section under Actions tab.\n   - Click on “New” to create a new trigger for weekdays excluding the first day of the month. You can do this by:\n     - Adding multiple triggers: One for each weekday except Monday (since it's also 1st on Jan, Mar, May, Jul, Sep, Nov) and one for Tuesday to Friday.\n     - For each weekday trigger, set the start date to exclude the first day of the month. This can be done by creating a custom script or VBS file that checks if the current day is not the 1st before running the backup task.\n\n#### 7. **Create Custom Script or VBScript**\n   - You might need a custom script (e.g., PowerShell, batch) to filter out backups on the first of the month.\n     ```powershell\n     $day = Get-Date -Format \"dd\"\n     if ($day -ne '01') {\n         # Run your backup command here\n         & \"C:\\path\\to\\your\\backup.exe\" \n     }\n     ```\n   - Save this script and use it as the action in your task.\n\n#### 8. **Set Action**\n   - In the “Action” section, set the program/script to the path of your backup executable or command line tool.\n   - Ensure that any",
+      "answer_tokens": {
+        "in": 100,
+        "out": 700
+      },
+      "recovered_intent": "The asker wanted to know how to set up a scheduled backup task in Windows that runs every weekday except for the 1st day of the month, ensuring no consecutive backups on a single day. They likely needed specific instructions on using Task Scheduler to achieve this, including details about setting triggers, conditions, actions, and potentially using custom scripts or VBS files to filter out backups on the first of the month.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0,
+          1.0
+        ],
+        "score": 0.7,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          },
+          {
+            "facet": 5,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          0.5,
+          0.5
+        ],
+        "score": 0.6,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "no": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          },
+          {
+            "facet": 5,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6683,
+        "cos_intent_prompt": 0.9386,
+        "source_mix": {
+          "arxiv": 0.125,
+          "wikipedia": 0.0,
+          "eli5": 0.25,
+          "social": 0.625
+        },
+        "overlap_vs_A": 0.438,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I alternate between two routines on Monday/Wednesday/Friday. Day \"A\" is Bench/Squat/Deadlifts/Pullup"
+          },
+          {
+            "source": "eli5",
+            "text": "I think you have to manually adjust it every time the month changes, but not sure, sure someone will"
+          },
+          {
+            "source": "eli5",
+            "text": "I don't know about Monday being the first day of the week. It's moreso the first day of the workweek"
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 4.2,
+    "severity": 2.9,
+    "mirror": 2.7,
+    "rewrite_b": 2.4,
+    "fidelity_b": 2.4,
+    "revise_c": 3.0,
+    "answers": 25.1,
+    "deduce": 10.1,
+    "judge_answers": 9.0,
+    "judge_recovered": 8.6,
+    "geometry": 0.1
+  }
+}

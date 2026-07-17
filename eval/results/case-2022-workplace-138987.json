@@ -1,0 +1,346 @@
+{
+  "case_id": "case-2022-workplace-138987",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "Was it really unprofessional of me to leave without asking for a raise first?",
+  "intent": "I'm wondering if it's truly unprofessional to leave a job without asking for a raise first, especially considering my previous experience as a felon and the significant salary increase offered by my new position.",
+  "facets": [
+    "Was I obligated to ask for a raise before leaving the company",
+    "Does corporate culture generally expect employees to request raises before looking elsewhere",
+    "Would it have been possible to negotiate a higher salary without leaving the job",
+    "Will my manager's negative reference impact my future job prospects significantly"
+  ],
+  "severity": 0.75,
+  "prompt_conveys": {
+    "per_facet": [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.25,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "no"
+      },
+      {
+        "facet": 2,
+        "verdict": "yes"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The questioner wants to know if their decision to leave their job without first requesting a raise was considered unprofessional.",
+    "foreclosed": "",
+    "tokens_out": 36
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "Was it really unprofessional of me to leave without asking for a raise first?",
+      "overhead_tokens": 0,
+      "answer": "Leaving your job without first asking for a raise can be seen as unprofessional, but the situation is context-dependent. Employers often expect regular performance reviews and may not always initiate salary discussions themselves. If you have been performing well, contributing significantly to the company's success, or taking on additional responsibilities, it might have been worth discussing your compensation before leaving.\n\nHowever, if you felt your contributions were not adequately recognized and there was no clear opportunity for negotiation, leaving could be a strategic move to seek better opportunities elsewhere. In such cases, your decision can be seen as proactive and motivated by personal career growth rather than simply wanting more money.\n\nTo balance both approaches, consider discussing your compensation during the final performance review or after addressing your contributions in a formal resignation letter. This way, you can provide evidence of your value to the company while respecting professional norms.",
+      "answer_tokens": {
+        "in": 52,
+        "out": 172
+      },
+      "recovered_intent": "The text aims to clarify the best course of action when leaving a job without first requesting a raise. It explores whether it's considered unprofessional to depart without discussing compensation and provides context-dependent advice based on factors like performance, contributions, and opportunities for negotiation.  It also suggests strategies for addressing compensation during the final performance review or resignation process to balance professional norms with personal career growth.",
+      "answer_coverage": {
+        "per_facet": [
+          0.5,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "partial"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          0.0,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6189,
+        "cos_intent_prompt": 0.7255,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.438,
+          "social": 0.562
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I recently started a job as a server in a moderately upscale restaurant. Although I get an hourly wa"
+          },
+          {
+            "source": "eli5",
+            "text": "Lets say you work for a company and you feel like you deserve a raise."
+          },
+          {
+            "source": "social",
+            "text": "I don't feel I am taking the easy way out. I have been busting my @ss for 2 years."
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "Is it considered unprofessional to depart from a job without requesting a raise prior?",
+      "overhead_tokens": 27,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask about the same issue of leaving a job without asking for a raise.",
+        "cos_prompts": 0.8445
+      },
+      "answer": "Leaving a job without first asking for a raise is generally not seen as unprofessional, but the perception can depend on several factors, including the company culture and your relationship with your employer. In some professional settings, particularly those in larger organizations or more formal business environments, it might be perceived as slightly impolite or disrespectful to leave without discussing compensation first. However, in smaller companies, startups, or more casual work cultures, this practice is often less of an issue.\n\nThat said, there are several reasons why requesting a raise before leaving can be beneficial:\n\n1. **Communication**: Discussing your needs openly with your employer allows for transparent communication and can sometimes lead to successful negotiation.\n2. **Employer's Perspective**: Employers might not always be aware of their employees' dissatisfaction or the market value unless explicitly brought to their attention.\n3. **Negotiation Power**: If you do plan to leave, having a prior discussion about compensation can strengthen your position in negotiations for better terms.\n\nIf you decide to leave without requesting a raise, it's still advisable to approach the conversation professionally and respectfully. Express gratitude for the opportunities provided during your tenure and maintain a positive tone throughout the process. This approach helps preserve professional relationships and might open doors for future collaboration or recommendations.",
+      "answer_tokens": {
+        "in": 52,
+        "out": 256
+      },
+      "recovered_intent": "The text aims to answer the question of whether it is unprofessional to leave a job without requesting a raise first. It explores the varying perceptions of this practice across different company cultures and sizes, highlighting that while it might be considered slightly impolite in formal settings, it's less of an issue in more casual environments.  Furthermore, the text outlines several benefits of requesting a raise before leaving, such as fostering open communication, informing employers about employee dissatisfaction and market value, and strengthening negotiation power. Finally, it provides advice on how to professionally handle the departure conversation even without a prior raise request, emphasizing gratitude and maintaining positive relationships.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          0.0,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6667,
+        "cos_intent_prompt": 0.8244,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.5,
+          "social": 0.5
+        },
+        "overlap_vs_A": 0.625,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Lets say you work for a company and you feel like you deserve a raise."
+          },
+          {
+            "source": "social",
+            "text": "I am leaving my job next week and will have at least a month off work before I start a new job."
+          },
+          {
+            "source": "social",
+            "text": "I recently started a job as a server in a moderately upscale restaurant. Although I get an hourly wa"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "Considering my previous experience as a felon and the significant salary increase offered by my new position, is it truly unprofessional to leave a job without asking for a raise first?",
+      "noop": false,
+      "overhead_tokens": 81,
+      "answer": "Whether leaving a job without requesting a raise first can be considered unprofessional depends on several factors, including your specific circumstances and professional norms within your industry. Given that you have a significant salary increase offered in your new position, this is an opportunity to weigh the pros and cons of making a change.\n\nFirstly, it's important to consider the reasons behind your previous experience as a felon. If there were mitigating factors or rehabilitation efforts that led to your ability to secure better employment, emphasizing these aspects can highlight your growth and commitment to professional integrity. However, if you left due to dissatisfaction with your role or company culture, this might not be seen as unprofessional.\n\nIn terms of professionalism, it is generally advisable to exhaust all possible avenues for a raise before leaving an organization, especially when there are no immediate signs of improvement in your current position. Asking for a raise demonstrates initiative and can sometimes lead to positive outcomes within the same company. However, if you have already discussed this with your employer and there's no indication that a raise is forthcoming, it might be more practical to accept the new opportunity.\n\nMoreover, in industries where job mobility is common or where significant salary increases are typical when changing companies (such as tech or finance), leaving for a higher salary may align with professional expectations. It’s crucial to evaluate whether the value and opportunities offered by your new position genuinely exceed those of your current role.\n\nTo navigate this situation professionally:\n\n1. **Communicate Clearly:** If you decide to leave, provide clear reasons for your decision in your resignation letter or conversation.\n2. **Maintain Professionalism:** Ensure that your departure process is smooth; complete outstanding work and handover responsibilities properly.\n3. **Networking:** Use the opportunity to maintain good relationships with colleagues and supervisors, as they might be valuable contacts in the future.\n\nIn summary, while it's not inherently unprofessional to leave a job without first asking for a raise, especially given your situation of securing a significant salary increase elsewhere, it is still advisable to weigh all factors and consider whether you have fully explored internal opportunities.",
+      "answer_tokens": {
+        "in": 70,
+        "out": 416
+      },
+      "recovered_intent": "The questioner likely wanted to know if leaving their current job without requesting a raise first would be considered unprofessional, particularly given that they have been offered a significantly higher salary at a new position. They were interested in understanding the factors that influence this perception of professionalism, such as industry norms, personal circumstances (including past experiences as a felon), and the potential for growth within their current role. The questioner also sought advice on how to navigate this situation professionally, including tips on resignation etiquette, maintaining relationships with colleagues, and ensuring a smooth transition.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5961,
+        "cos_intent_prompt": 0.9535,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.25,
+          "social": 0.75
+        },
+        "overlap_vs_A": 0.438,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Lets say you work for a company and you feel like you deserve a raise."
+          },
+          {
+            "source": "social",
+            "text": "I recently started a job as a server in a moderately upscale restaurant. Although I get an hourly wa"
+          },
+          {
+            "source": "social",
+            "text": "I don't feel I am taking the easy way out. I have been busting my @ss for 2 years."
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.3,
+    "severity": 2.8,
+    "mirror": 2.7,
+    "rewrite_b": 2.4,
+    "fidelity_b": 2.5,
+    "revise_c": 2.7,
+    "answers": 14.2,
+    "deduce": 11.4,
+    "judge_answers": 8.6,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "case-2038-diy-126697",
+  "source": "stackexchange-diy",
+  "tags": [
+    "general"
+  ],
+  "prompt": "Why does my freezer get a little warmer every 14 hours?",
+  "evidence": "I equipped my fridge-freezer (Bosch KGN 33X48/13, bought around 2013) with a self-made temperature monitoring system to warn me whenever the internal temperature of the freezer rises above a certain level. Looking at the resulting curve I'd expect the temperature to more or less steadily swing around a target value. What I rather see is this: So the built-in thermostat switches on the cooling unit whenever the internal temperature rises above around 18 °F. However, quite consistently about every 14 hours the cooling unit appears to hold off a bit, allowing the temperature to rise up to 23 °F for a short time. After that the cycle continues normally again. These short temperature spikes look so equably and intentional that I assume a purpose. Why would the freezer designers arrange for this small temperature increase every 14 hours?",
+  "attribution": {
+    "url": "https://diy.stackexchange.com/questions/126697/why-does-my-freezer-get-a-little-warmer-every-14-hours",
+    "author": "tgal",
+    "license": "CC BY-SA 4.0"
+  }
+}

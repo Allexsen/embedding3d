@@ -1,0 +1,14 @@
+{
+  "id": "case-2007-ux-35576",
+  "source": "stackexchange-ux",
+  "tags": [
+    "general"
+  ],
+  "prompt": "What explains the current shift from glossy UIs to matte UIs?",
+  "evidence": "I've noticed an interesting phenomenon in the user interfaces of many famous applications, they're moving away from the glossy complex to a more dull and bare minimum design. Why the sudden change? It also appears that most of these companies have adopted this design around the same time, was that linked to some new study? Examples:",
+  "attribution": {
+    "url": "https://ux.stackexchange.com/questions/35576/what-explains-the-current-shift-from-glossy-uis-to-matte-uis",
+    "author": "Adi",
+    "license": "CC BY-SA 4.0"
+  }
+}

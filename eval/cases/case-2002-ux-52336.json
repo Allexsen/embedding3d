@@ -1,0 +1,14 @@
+{
+  "id": "case-2002-ux-52336",
+  "source": "stackexchange-ux",
+  "tags": [
+    "general"
+  ],
+  "prompt": "Why is the mouse cursor slightly tilted and not straight?",
+  "evidence": "Is this a legacy thing or does a tilted cursor serve a purpose? I can tell that the angle provides a totally vertical left edge which helps when highlighting text but what else apart from that? EDIT: When the cursor changes to the little hand cursor while hovering over buttons, the angle seems to be smaller. Why the difference?",
+  "attribution": {
+    "url": "https://ux.stackexchange.com/questions/52336/why-is-the-mouse-cursor-slightly-tilted-and-not-straight",
+    "author": "Thanos",
+    "license": "CC BY-SA 4.0"
+  }
+}

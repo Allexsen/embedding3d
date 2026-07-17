@@ -1,0 +1,14 @@
+{
+  "id": "case-2010-superuser-545329",
+  "source": "stackexchange-superuser",
+  "tags": [
+    "general"
+  ],
+  "prompt": "How do I make a machine \"blank screen\" for a period of time (as a penalty) if certain noise levels are reached?",
+  "evidence": "My kids (4 and 5) yell a lot when playing games on the computer. I found an effective cure for this. When I hear loud noises, I ssh into the game computer and do: This will turn off the screen for 15 seconds on Linux. I've told them that the computer doesn't like loud noises. They totally believe this and beg the computer for forgiveness. They became much quieter, but not to the level that I would be happy, and so I need to continue this educational process. However, I am not always around to do this manually. Is it possible to automate this? A microphone is attached to the box. If the level of loudness passes some threshold then I want to run a command.",
+  "attribution": {
+    "url": "https://superuser.com/questions/545329/how-do-i-make-a-machine-blank-screen-for-a-period-of-time-as-a-penalty-if-ce",
+    "author": "Leonid Volnitsky",
+    "license": "CC BY-SA 4.0"
+  }
+}

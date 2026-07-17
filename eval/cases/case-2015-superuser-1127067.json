@@ -1,0 +1,14 @@
+{
+  "id": "case-2015-superuser-1127067",
+  "source": "stackexchange-superuser",
+  "tags": [
+    "general"
+  ],
+  "prompt": "Why does macOS keep asking for my SSH passphrase ever since I updated to macOS Sierra (10.12)?",
+  "evidence": "It used to remember the passphrase, but now it's asking it to me each time. I've read that I need to regenerate the public key with this command, which I did: but it didn't fix anything. How can I make macOS remember my passphrase again?",
+  "attribution": {
+    "url": "https://superuser.com/questions/1127067/why-does-macos-keep-asking-for-my-ssh-passphrase-ever-since-i-updated-to-macos-s",
+    "author": "erwan",
+    "license": "CC BY-SA 4.0"
+  }
+}

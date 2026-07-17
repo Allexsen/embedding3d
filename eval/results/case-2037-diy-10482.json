@@ -1,0 +1,346 @@
+{
+  "case_id": "case-2037-diy-10482",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How can I add a \"C\" wire to my thermostat?",
+  "intent": "I need to modify my existing thermostat setup to accommodate a new wi-fi thermostat that requires power on the C wire, and I'm looking for the simplest solution to add 24-volt power to the thermostat location.",
+  "facets": [
+    "Describes how to safely identify and access the existing wiring at the thermostat location",
+    "Explains the process of adding a new 24-volt circuit or tapping into an existing one to provide power on the C wire",
+    "Addresses any necessary precautions for working with electrical systems, such as turning off power or using protective gear",
+    "Provides clear instructions for connecting the C wire to the new thermostat"
+  ],
+  "severity": 0.625,
+  "prompt_conveys": {
+    "per_facet": [
+      0.0,
+      0.5,
+      0.0,
+      1.0
+    ],
+    "score": 0.375,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "no"
+      },
+      {
+        "facet": 2,
+        "verdict": "partial"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "yes"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for instructions on how to physically install an additional 'C' wire into an existing thermostat.",
+    "foreclosed": "",
+    "tokens_out": 35
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How can I add a \"C\" wire to my thermostat?",
+      "overhead_tokens": 0,
+      "answer": "Adding a \"C\" wire to your thermostat is essential for using Wi-Fi thermostats or for programming the HVAC system more efficiently. Here’s how you can do it:\n\n1. **Check Your Current System**: First, ensure that your existing HVAC system has a C-wire. Most modern systems with programmable thermostats already have this wire. If your system is older and lacks a C-wire, you will need to either replace the system or add an additional transformer.\n\n2. **Locate the Thermostat and HVAC System**: Turn off power at your circuit breaker. Remove the thermostat from its mounting plate carefully. Identify the existing wires: typically, there are three wires (R, W, G) connected to the C-wire if it’s present. The R wire is usually red or white and connects to the transformer, while the W and G wires connect to the heating and cooling equipment respectively.\n\n3. **Add a C-Wire**: If your system has a C-wire but none is used by your current thermostat, you can use this wire for Wi-Fi connectivity. However, if your system does not have a C-wire at all, you may need to install one:\n   - For systems that lack a spare terminal: You might need to add a new transformer in parallel with the existing one and run an additional C-wire from it.\n   - If adding a new transformer is not feasible or preferred, consider using a C-Wire Converter. These devices can turn your existing 24V AC power into a compatible signal that Wi-Fi thermostats can use.\n\n4. **Connect the C-Wire**: Once you have identified and connected the C-wire to your thermostat (often labeled as \"C\" on the back of the device), reconnect the other wires to their respective terminals, ensuring they are securely fastened.\n\n5. **Install Your New Thermostat**: After connecting all necessary wires, mount the new thermostat in place and follow its instructions for setup and programming.\n\n6. **Test the Thermostat**: Turn power back on at your circuit breaker and test the thermostat to ensure it operates correctly with both heating and cooling functions as expected.\n\nBy following these steps, you can successfully add a C-wire to your existing HVAC system, allowing for more advanced features in your thermostat operation.",
+      "answer_tokens": {
+        "in": 49,
+        "out": 468
+      },
+      "recovered_intent": "The text aims to provide a step-by-step guide on how to add a 'C' wire to an HVAC system. It explains the importance of this wire for using Wi-Fi thermostats and programming the system efficiently. The guide covers identifying existing wires, determining if a C-wire is present, methods for adding a C-wire (including installing a new transformer or using a C-Wire Converter), connecting the C-wire to the thermostat, and testing the newly installed thermostat. It also emphasizes safety precautions like turning off power at the circuit breaker before working on the system.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5889,
+        "cos_intent_prompt": 0.6448,
+        "source_mix": {
+          "arxiv": 0.188,
+          "wikipedia": 0.188,
+          "eli5": 0.188,
+          "social": 0.438
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "social",
+            "text": "It is starting to get cold in Virginia and I want to keep my thermostat low to save on energy costs."
+          },
+          {
+            "source": "social",
+            "text": "This is only a little hypothetical. So, my apartment is cold and I have a thermostat set to, lets sa"
+          },
+          {
+            "source": "social",
+            "text": "So the winter months are approaching and my house is hovering at around 14 C and I'm refusing to tur"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What are the steps for connecting a 'C' wire to a thermostat?",
+      "overhead_tokens": 25,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask about the process of adding or connecting a 'C' wire to a thermostat, with only minor wording changes.",
+        "cos_prompts": 0.8595
+      },
+      "answer": "Connecting a \"C\" wire to your thermostat is essential for ensuring that your HVAC system operates efficiently by providing a constant power source. Here’s a step-by-step guide on how to connect it:\n\n1. **Identify Your System and Thermostat**: First, ensure your heating or cooling system has a \"C\" terminal (commonly called the C-wire) on its control board. Many newer systems have this wire as they require additional features such as Wi-Fi connectivity.\n\n2. **Prepare for Work**: Turn off power to your HVAC system at the circuit breaker. Use a voltage tester to ensure there is no electricity running through the wires before proceeding with any work that involves electrical connections.\n\n3. **Locate the \"C\" Wire**: The \"C\" wire, also known as the common wire or neutral wire, typically connects between the control board and the transformer in your HVAC system. It's usually a single black wire but can be another color depending on your system.\n\n4. **Connect the \"C\" Wire to the Thermostat**:\n   - Locate the \"C\" terminal on your thermostat. This is often marked.\n   - Strip about 3/8 inch of insulation from the end of the \"C\" wire using wire strippers.\n   - Insert the stripped end of the wire into the appropriate slot or screw terminal on the thermostat labeled “C” and secure it with a screw if necessary.\n\n5. **Connect to HVAC System**:\n   - Locate the \"C\" terminal in your HVAC system, typically found on the control board or near the transformer.\n   - Strip another small portion of insulation from the wire end.\n   - Attach one end of the \"C\" wire to this terminal by screwing it down securely.\n\n6. **Test and Restore Power**: Once both ends are connected, double-check all connections for tightness and correctness using your voltage tester. Restore power at the circuit breaker and test the thermostat to ensure proper operation and communication with your HVAC system.\n\nRemember, if you're unsure about any step or feel uncomfortable working with electrical components, it's best to consult a professional HVAC technician.",
+      "answer_tokens": {
+        "in": 51,
+        "out": 429
+      },
+      "recovered_intent": "The questioner wanted to know how to connect a 'C' wire to their thermostat for efficient HVAC system operation. They specifically sought a step-by-step guide that included identifying the 'C' terminal on both the thermostat and HVAC system, preparing for work by turning off power and using a voltage tester, stripping insulation from the wire, connecting it securely to both terminals, testing the connections, and restoring power. The text also mentions that newer systems often have a 'C' wire due to features like Wi-Fi connectivity.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "no": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.4254,
+        "cos_intent_prompt": 0.5355,
+        "source_mix": {
+          "arxiv": 0.188,
+          "wikipedia": 0.0,
+          "eli5": 0.562,
+          "social": 0.25
+        },
+        "overlap_vs_A": 0.5,
+        "top3": [
+          {
+            "source": "social",
+            "text": "It is starting to get cold in Virginia and I want to keep my thermostat low to save on energy costs."
+          },
+          {
+            "source": "eli5",
+            "text": "What is really being asked is how the thermoelectric effect works, so I'll try and explain that."
+          },
+          {
+            "source": "eli5",
+            "text": "Air condition works by exploiting how high and low pressure changes the temperature. They use a comp"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "What's the simplest way to modify my existing thermostat setup to accommodate a new wi-fi thermostat that requires power on the C wire, and can I do it without rewiring the entire system?",
+      "noop": false,
+      "overhead_tokens": 84,
+      "answer": "To modify your existing thermostat setup for a Wi-Fi thermostat that requires a C-wire, you typically need to ensure there's a continuous power supply from the transformer to the thermostat. If your current thermostat does not have a C-wire but the new one requires it, here’s a simplified approach:\n\n1. **Check Existing Wiring**: First, identify if your existing system already has a C-wire or an unused wire that can be repurposed as a C-wire. Common colors for C-wires include white or blue.\n\n2. **Install a C-Wire Relay (Optional)**: If you find no available wires and the HVAC system allows it, installing a C-wire relay module might be necessary. This device converts an existing 24VAC transformer to a C-wire signal. It can be installed on-site without requiring extensive rewiring.\n\n3. **Run a New Wire**: The simplest solution is to run a new wire from the thermostat location back to your HVAC system’s control board or transformer. This wire should connect between the common terminal (labeled COM) and the C-terminal of the transformer/thermostat control board. Ensure this connection is made correctly; otherwise, it could lead to poor functionality.\n\n4. **Consult a Professional**: If you are uncomfortable with electrical work or unsure about your system’s configuration, consulting a HVAC technician is highly recommended. They can ensure proper installation that complies with local safety and building codes.\n\nBy following these steps, you should be able to adapt your existing thermostat setup for a new Wi-Fi model without the need for extensive rewiring of your entire heating and cooling system.",
+      "answer_tokens": {
+        "in": 74,
+        "out": 330
+      },
+      "recovered_intent": "The text's asker wanted to know how to modify an existing non-Wi-Fi thermostat setup to accommodate a new Wi-Fi thermostat that requires a C-wire. They likely wanted to understand the different options available, including checking existing wiring, using a C-wire relay, running a new wire, and when it might be necessary to consult a professional for assistance. The asker was presumably interested in a simplified approach that didn't involve extensive rewiring of their entire heating and cooling system.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "no": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.5,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "partial"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.543,
+        "cos_intent_prompt": 0.7826,
+        "source_mix": {
+          "arxiv": 0.375,
+          "wikipedia": 0.0,
+          "eli5": 0.188,
+          "social": 0.438
+        },
+        "overlap_vs_A": 0.25,
+        "top3": [
+          {
+            "source": "social",
+            "text": "It is starting to get cold in Virginia and I want to keep my thermostat low to save on energy costs."
+          },
+          {
+            "source": "social",
+            "text": "This is only a little hypothetical. So, my apartment is cold and I have a thermostat set to, lets sa"
+          },
+          {
+            "source": "arxiv",
+            "text": "Wireless sensor networks (WSN) have recently received an increasing interest. They are now expected "
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.5,
+    "severity": 2.8,
+    "mirror": 2.6,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.6,
+    "revise_c": 2.7,
+    "answers": 18.8,
+    "deduce": 11.6,
+    "judge_answers": 8.4,
+    "judge_recovered": 8.1,
+    "geometry": 0.1
+  }
+}

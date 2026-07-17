@@ -1,0 +1,382 @@
+{
+  "case_id": "case-2026-cooking-84310",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "Why would boiling milk in an electric kettle break the kettle?",
+  "intent": "I want to know if using an electric kettle to boil non-water liquids like milk is safe for the kettle's integrity and overall functionality.",
+  "facets": [
+    "Addresses why boiling milk in an electric kettle can cause it to stop working",
+    "Explains how the kettle's design or materials are affected by heating a non-water liquid",
+    "Mentions any potential damage to the kettle's internal components or heating element",
+    "Names a specific reason why using an electric kettle for non-water liquids is not recommended",
+    "Provides guidance on whether it's safe to use an electric kettle for boiling milk in general"
+  ],
+  "severity": 0.5,
+  "prompt_conveys": {
+    "per_facet": [
+      1.0,
+      0.0,
+      0.5,
+      0.0,
+      1.0
+    ],
+    "score": 0.5,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "yes"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "partial"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      },
+      {
+        "facet": 5,
+        "verdict": "yes"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for explanations of how the act of boiling milk in an electric kettle could lead to damage or breakage of the kettle.",
+    "foreclosed": "",
+    "tokens_out": 40
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "Why would boiling milk in an electric kettle break the kettle?",
+      "overhead_tokens": 0,
+      "answer": "Boiling milk in an electric kettle can potentially damage or break it due to several factors:\n\n1. **Thermal Shock**: Electric kettles are designed to withstand heat but not extreme temperature changes. When you pour cold milk into a very hot kettle and then boil it, the rapid change in temperature (thermal shock) can cause cracks or breakage in the kettle's components.\n\n2. **Metal Fatigue**: The repeated heating and cooling cycles, especially with significant temperature differences, can weaken the metal structure of the kettle over time. This can lead to structural failures such as cracking or bending of parts that are not designed for such stresses.\n\n3. **Contamination**: Pouring milk directly into an electric kettle without cleaning it first might introduce contaminants like dairy products that could interact poorly with the materials used in the kettle, potentially leading to corrosion or other forms of degradation.\n\n4. **Insulation Compromise**: Electric kettles have insulated heating elements designed for direct water contact only. Introducing milk can compromise this insulation, exposing the heating element to moisture and causing electrical faults or failure.\n\n5. **Material Incompatibility**: Some materials used in electric kettles might not be compatible with certain types of milk (e.g., cream-based products). This could lead to chemical reactions that weaken the kettle's structure over time.\n\nFor these reasons, it is generally recommended to avoid pouring anything other than water into an electric kettle. Always ensure the kettle is thoroughly cleaned and completely dry before use.",
+      "answer_tokens": {
+        "in": 48,
+        "out": 300
+      },
+      "recovered_intent": "The text aims to explain why boiling milk in an electric kettle can be harmful and potentially damage the appliance. It outlines five specific reasons: thermal shock from temperature fluctuations, metal fatigue caused by repeated heating and cooling cycles, contamination from dairy residue, insulation compromise due to milk exposure, and material incompatibility between certain types of milk and kettle components. The text emphasizes that using water is recommended for electric kettles and stresses the importance of cleaning and drying them thoroughly before each use.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "score": 0.8,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          },
+          {
+            "facet": 5,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "score": 0.8,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          },
+          {
+            "facet": 5,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7769,
+        "cos_intent_prompt": 0.6465,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.0,
+          "eli5": 0.562,
+          "social": 0.375
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "social",
+            "text": "Bringing water to the boil on an electric stove, or boiling it in an electric kettle first and then "
+          },
+          {
+            "source": "eli5",
+            "text": "Because you are doing it wrong! You are supposed to put tea into boiling water all at once, not slow"
+          },
+          {
+            "source": "eli5",
+            "text": "Cavitation. Basically, the heating element heats the water just above it. This causes that water to "
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What causes an electric kettle to potentially malfunction or break when heating milk?",
+      "overhead_tokens": 25,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask about the same potential issue with using an electric kettle to heat milk.",
+        "cos_prompts": 0.8856
+      },
+      "answer": "Electric kettles can experience issues when heating milk due to several factors, primarily related to the properties of milk itself:\n\n1. **Fat Content and Foam Formation**: Milk contains fat, which can lead to the formation of foam on the surface as it heats up. This foam can clog the kettle's spout or even get into the heating element, causing malfunction. Overheating due to trapped foam can also damage the kettle.\n\n2. **Boiling Point Variance**: Milk boils at a higher temperature than water (100°C for water vs. approximately 94-96°C for milk). If the kettle is designed primarily for boiling water and not specifically for milk, it might overheat or malfunction when subjected to milk's higher boiling point.\n\n3. **Calcium Build-Up**: Milk contains calcium which can leave residue on heating elements and other parts of the kettle, leading to poor heat transfer and potential damage if the buildup gets severe enough to interfere with electrical components.\n\n4. **Overheating Protection Circuits**: Some kettles have thermal cut-off switches designed to prevent overheating. If milk is left in for too long after boiling or if it forms a thick layer on the heating element, these switches may activate unnecessarily, potentially causing the kettle to shut down or malfunction.\n\n5. **Insulation Issues**: The insulation between the heating element and other parts of the kettle can be compromised by milk splashing or spilling over, leading to potential electrical hazards or component failure.\n\n6. **Temperature Control Sensing Issues**: Milk’s interaction with temperature sensors might affect their accuracy and reliability, potentially causing the kettle to either heat too much or not enough, resulting in suboptimal performance or damage.\n\nTo minimize these risks, it's recommended to use dedicated milk kettles designed specifically for heating liquids like milk, which typically have features such as anti-foam designs and specialized temperature controls.",
+      "answer_tokens": {
+        "in": 50,
+        "out": 386
+      },
+      "recovered_intent": "The text aims to explain why electric kettles often encounter problems when used to heat milk. It delves into the specific properties of milk that contribute to these issues, including its fat content leading to foam formation, its higher boiling point compared to water, and the calcium it contains which can cause build-up.  Furthermore, it discusses how these factors can interact with various components within a kettle, such as heating elements, thermal cut-off switches, insulation, and temperature sensors, potentially causing malfunctions or damage. Finally, the text suggests using dedicated milk kettles as a solution to mitigate these risks.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "score": 0.7,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          },
+          {
+            "facet": 5,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "score": 0.7,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          },
+          {
+            "facet": 5,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6468,
+        "cos_intent_prompt": 0.6404,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.0,
+          "eli5": 0.5,
+          "social": 0.438
+        },
+        "overlap_vs_A": 0.562,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Cavitation. Basically, the heating element heats the water just above it. This causes that water to "
+          },
+          {
+            "source": "social",
+            "text": "Bringing water to the boil on an electric stove, or boiling it in an electric kettle first and then "
+          },
+          {
+            "source": "social",
+            "text": "I left my stainless steel / copper bottom teakettle in the grad student lounge unattended for a bit "
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "Is it safe to use an electric kettle to boil non-water liquids like milk, and won't this affect the kettle's integrity or functionality?",
+      "noop": false,
+      "overhead_tokens": 79,
+      "answer": "Using an electric kettle for boiling non-water liquids such as milk can be generally safe but comes with certain considerations. Electric kettles are designed primarily for water, but they can handle other liquids if used under specific conditions.\n\n1. **Boiling Milk and Other Non-Water Liquids:**\n   - For short periods, it is relatively safe to use an electric kettle for boiling milk or other non-water liquids. However, prolonged exposure might lead to changes in the taste of the liquid due to the presence of minerals from the heating elements.\n   - It's important to note that some kettles may have a \"milk boil\" setting or indicator light, which is specifically designed for this purpose.\n\n2. **Impact on Kettle Integritiy and Functionality:**\n   - Using an electric kettle with non-water liquids can affect its functionality over time. The minerals in milk (and other substances) can leave deposits inside the kettle, potentially clogging the heating element or reducing heat conductivity.\n   - These mineral deposits might also alter the taste of subsequent water boiled in the kettle. For this reason, it's recommended to clean the kettle thoroughly after using it with non-water liquids.\n   - Some kettles may not be designed for prolonged use with milk or other viscous substances, so always check the manufacturer’s guidelines.\n\n3. **Recommendations:**\n   - If you frequently need to boil milk, consider using a dedicated pan on your stove rather than an electric kettle.\n   - Regularly clean your electric kettle by descaling and cleaning it thoroughly after each use.\n   - Always refer to the user manual of your specific kettle model for any special instructions regarding boiling non-water liquids.\n\nIn summary, while it is possible and generally safe to use an electric kettle for boiling milk or other non-water liquids, doing so may affect the kettle's performance over time. Regular maintenance and proper cleaning are key to maintaining both safety and functionality.",
+      "answer_tokens": {
+        "in": 64,
+        "out": 391
+      },
+      "recovered_intent": "The questioner wanted to know if it was safe and practical to use an electric kettle for boiling liquids other than water, specifically focusing on milk. They were interested in the potential risks and benefits, including any impact on the taste of the liquid and the kettle itself.  They also likely wanted recommendations on how to safely use a kettle for this purpose, such as cleaning procedures and whether a dedicated pan might be a better option.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0,
+          1.0
+        ],
+        "score": 0.7,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          },
+          {
+            "facet": 5,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          0.5,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "score": 0.3,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          },
+          {
+            "facet": 5,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7565,
+        "cos_intent_prompt": 0.9707,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.062,
+          "eli5": 0.375,
+          "social": 0.562
+        },
+        "overlap_vs_A": 0.312,
+        "top3": [
+          {
+            "source": "social",
+            "text": "Bringing water to the boil on an electric stove, or boiling it in an electric kettle first and then "
+          },
+          {
+            "source": "social",
+            "text": "What I mean, is, that if I were to suspend a pot of water into a larger, heated pot containing boili"
+          },
+          {
+            "source": "social",
+            "text": "I usually go the former route and boil as quickly as I can. It's faster, meaning the electricity is "
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.5,
+    "severity": 3.0,
+    "mirror": 2.7,
+    "rewrite_b": 2.4,
+    "fidelity_b": 2.4,
+    "revise_c": 2.6,
+    "answers": 16.5,
+    "deduce": 11.4,
+    "judge_answers": 8.8,
+    "judge_recovered": 8.5,
+    "geometry": 0.1
+  }
+}

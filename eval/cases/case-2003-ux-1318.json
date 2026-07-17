@@ -1,0 +1,14 @@
+{
+  "id": "case-2003-ux-1318",
+  "source": "stackexchange-ux",
+  "tags": [
+    "general"
+  ],
+  "prompt": "Should a toggle button show its current state or the state to which it will change?",
+  "evidence": "I have a quick question about buttons that toggle between two states. (Think Play/Pause, or Shuffle/Regular Play.) As the title says, should the toggle show it's current state or the state to which it will transition? I think people are used to the Play/Pause convention. But the Shuffle/Regular play might be more confusing if you show the transition state instead of current. For example, the built-in music player on the Xbox 360 does it this way: when it's in shuffle mode, it shows the icon for direct play and vice versa and it always confuses me (am I in shuffle mode or straight play). I see it this way: Play/Pause is more like action as in begin playing or pause playing. Yes behind the scenes it is a state transition but to the user, there is an action. Whereas Shuffle/Straight Play is an option and it's best to show the current state (and possibly have only one icon and change button to show that the option is enabled/disabled). Thoughts?",
+  "attribution": {
+    "url": "https://ux.stackexchange.com/questions/1318/should-a-toggle-button-show-its-current-state-or-the-state-to-which-it-will-chan",
+    "author": "Michael Brown",
+    "license": "CC BY-SA 4.0"
+  }
+}

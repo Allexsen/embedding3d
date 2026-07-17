@@ -1,0 +1,12 @@
+{
+  "started": "2026-07-14T15:24:33",
+  "config_hash": "bd36bd00ae9f8e8c",
+  "cases": [
+    "case-0001-xy-color",
+    "case-0002-ai-answer",
+    "case-0003-control"
+  ],
+  "finished": "2026-07-14T15:27:47",
+  "seconds": 194.1,
+  "failures": []
+}

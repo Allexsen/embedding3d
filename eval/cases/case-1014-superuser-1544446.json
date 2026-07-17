@@ -1,0 +1,14 @@
+{
+  "id": "case-1014-superuser-1544446",
+  "source": "stackexchange-xy",
+  "tags": [
+    "xy-labeled"
+  ],
+  "prompt": "How to keep language bar / keyboard layout select always active?",
+  "evidence": "Maybe this is a XY problem, let me start with the real issue: When I do some stuff on my Windows machine, I often tend to use the tray icons (click them). Sometimes they jump around. I want to stop the icons from jumping to the left when I click the tray area. I have identified the cause of jumping around to be the keyboard layout / language selector tool. Here you can see it's not present (when I use snip tool or RDP): But when I click on the tray area, the keyboard layout changer appears: this gets me every time . I just want to change my sound volume. When I need to click other icons, the \"jump\" causes me to move icons around, which is annoying because that works against my muscle reflexes. Is there any solution to either: Not let the tray icons jump around? Keep the keyboard layout option always enabled? P.S. I have another work machine that I access via RDP, the keyboard layout changer is always enabled there - which means this is possible to fix?",
+  "attribution": {
+    "url": "https://superuser.com/questions/1544446/how-to-keep-language-bar-keyboard-layout-select-always-active",
+    "author": "Gizmo",
+    "license": "CC BY-SA 4.0"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "case-1012-superuser-1607967",
+  "source": "stackexchange-xy",
+  "tags": [
+    "xy-labeled"
+  ],
+  "prompt": "How to stream 1 source to multiple sinks",
+  "evidence": "In picture below, which is sound panel/applet, there are listed all my possible links and HDMI, no idea how that end up there. I'm interested in \"Analog Output\". There are 3 output profiles: \"stereo output\", \"surround sound 4.0\" \"surround sound 5.1\" My soundcard has aside of other outputs 6 mono outputs, 1-6. So what I'd like to have is following profiles: analog stereo output, which plays stereo audio to outputs 1 and 2. This one is seleted on screenshot. I'd like to have same for outputs 3,4 and 5,6. Motivation : I would like to attach headphones, small loudspeakers and bigger loudspeakers and be able to select between them using this profiles. CLI-only alternative works for me as well, I don't insist on this UI, however it will most surely read the data from some pulseaudio backend. some combination of these, ie. play same signal to 1,2 and 5,6. Optional extra, I don't have usecase for that, but I'd like to know how to do that if I need to do so. Thanks!",
+  "attribution": {
+    "url": "https://superuser.com/questions/1607967/how-to-stream-1-source-to-multiple-sinks",
+    "author": "Martin Mucha",
+    "license": "CC BY-SA 4.0"
+  }
+}

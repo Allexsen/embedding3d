@@ -17,6 +17,11 @@ Two apps, three demos, cross-linked in the top bars:
 useful for — lives in [sentences/README.md](sentences/README.md).**
 Engineering details: [sentences/engdoc.md](sentences/engdoc.md).
 
+There's also **[eval/](eval/README.md)** — a completed offline study behind the
+thesis: on 65 real questions, showing askers what their prompt actually conveys
+beat blind prompt rewriting (p = 0.001); results, full transcripts, and an
+honest account of why the research branch stopped there.
+
 ---
 
 ## Words — the root app

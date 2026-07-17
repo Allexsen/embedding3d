@@ -1,0 +1,346 @@
+{
+  "case_id": "case-2032-cooking-1260",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "Is it safe to eat potatoes that have sprouted?",
+  "intent": "Determine if it is safe to eat potatoes that have developed soft spots and short shoots, considering general guidelines and common practices.",
+  "facets": [
+    "Provides information on the safety of consuming potatoes with visible sprouts and soft spots",
+    "Explains how long the sprouts can be before they become unsafe to eat",
+    "Mentions any necessary precautions or preparation methods for eating sprouted potatoes",
+    "Names a reliable source confirming that it is safe to eat soft sprouty spuds, as suggested by online discussions"
+  ],
+  "severity": 0.75,
+  "prompt_conveys": {
+    "per_facet": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.25,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "yes"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks whether or not consuming potatoes that have developed sprouts is a safe practice.",
+    "foreclosed": "",
+    "tokens_out": 31
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "Is it safe to eat potatoes that have sprouted?",
+      "overhead_tokens": 0,
+      "answer": "Potatoes that have sprouted can still be eaten safely, but with some precautions. When a potato develops green skin or sprouts, it's because of increased levels of solanine, a toxic alkaloid compound also found in tomatoes and eggplants. While not typically harmful in small amounts, consuming large quantities of solanine can cause symptoms such as nausea, vomiting, diarrhea, abdominal pain, fever, headache, muscle aches, and in severe cases, paralysis or convulsions.\n\nTo safely eat sprouted potatoes, first remove the green skin and any sprouts, then cut off and discard the affected parts. The remaining potato flesh should be thoroughly cooked to further reduce solanine content. Cooking also enhances the overall digestibility of the potato. For best results, it's advisable to peel and chop the potatoes before cooking them until they are soft.\n\nIf you notice significant greenness or a strong bitter taste in the potato, it is better to discard it as these signs indicate higher levels of solanine. Always prioritize food safety by ensuring that sprouted potatoes do not have extensive discoloration or a sour smell, which could suggest spoilage.",
+      "answer_tokens": {
+        "in": 47,
+        "out": 230
+      },
+      "recovered_intent": "The text aims to answer questions about the safety and handling of sprouted potatoes. Specifically, it addresses whether sprouted potatoes are edible, the potential health risks associated with consuming solanine (a toxin present in sprouted potatoes), and safe practices for preparing and consuming sprouted potatoes to minimize these risks. It also provides guidance on identifying potentially unsafe sprouted potatoes based on visual cues like greenness or discoloration and taste.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.744,
+        "cos_intent_prompt": 0.5985,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.25,
+          "social": 0.75
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Though botanically classified as vegetables, potatoes are nutritionally classified as starchy foods "
+          },
+          {
+            "source": "social",
+            "text": "I have like 2-ish left over sweet potatoes from dinner the other night. My mom warmed them up tonigh"
+          },
+          {
+            "source": "eli5",
+            "text": "You probably do, but you don't recognise them. Vegetables look like they do because they have been b"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "Are sprouted potatoes still edible?",
+      "overhead_tokens": 17,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask about the edibility of sprouted potatoes.",
+        "cos_prompts": 0.8777
+      },
+      "answer": "Yes, sprouted potatoes are generally still safe to eat as long as you remove the sprouts and any green parts. When a potato sprouts, it produces solanine, a toxic alkaloid that can cause digestive issues such as nausea, vomiting, or stomach cramps if consumed in large quantities. However, only the affected areas need to be removed; the rest of the potato remains safe for consumption.\n\nTo safely use sprouted potatoes:\n1. Cut away any green patches and the sprouts.\n2. Wash the remaining potato thoroughly.\n3. Cook it as you would a regular potato—boiling, baking, or frying are all acceptable methods.\n\nIt's important to note that excessively green potatoes or those with a significant amount of sprouting should be discarded, as they contain higher levels of solanine. If your potatoes have turned green but no visible sprouts, peeling them before cooking can help reduce any potential toxins.",
+      "answer_tokens": {
+        "in": 43,
+        "out": 187
+      },
+      "recovered_intent": "The text answers the question of whether or not it is safe to eat sprouted potatoes. It explains that while sprouting produces a toxin called solanine which can cause digestive issues, only the sprouted and green parts need to be removed for the rest of the potato to be safe to eat. The text also provides instructions on how to safely prepare sprouted potatoes, including cutting away the sprouts and green parts, washing the remaining potato, and cooking it as usual. Finally, it advises against consuming excessively green or heavily sprouted potatoes and suggests peeling them if they have turned green but no visible sprouts.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6335,
+        "cos_intent_prompt": 0.5528,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.5,
+          "social": 0.5
+        },
+        "overlap_vs_A": 0.688,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Though botanically classified as vegetables, potatoes are nutritionally classified as starchy foods "
+          },
+          {
+            "source": "social",
+            "text": "I have like 2-ish left over sweet potatoes from dinner the other night. My mom warmed them up tonigh"
+          },
+          {
+            "source": "eli5",
+            "text": "You probably do, but you don't recognise them. Vegetables look like they do because they have been b"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "What are the general guidelines for determining if it's safe to eat potatoes with soft spots and short shoots?",
+      "noop": false,
+      "overhead_tokens": 63,
+      "answer": "When assessing whether potatoes with soft spots or sprouts (commonly known as \"short shoots\") are still safe to consume, follow these general guidelines:\n\n1. **Soft Spots:** Soft spots on a potato can indicate that the tuber is beginning to rot or has become too ripe. While not all softness indicates spoilage, it's best to remove any noticeably soft areas before cooking and eating. If the entire potato feels mushy and lacks firmness, it might be best to discard it.\n\n2. **Sprouts (Eyes):** Small sprouts are generally safe to eat but should be removed. Larger sprouts contain higher levels of solanine, a natural toxin that can cause digestive issues if consumed in large quantities. When cutting out the sprout, remove at least 1/4 inch around it to ensure you've eliminated any potentially toxic parts.\n\n3. **Taste and Texture:** If the potato tastes bitter or has an off smell, it should be discarded as these are signs of spoilage. Bitterness can also indicate higher solanine levels due to exposure to light or age.\n\n4. **Cooking:** When cooking potatoes, ensure they are thoroughly heated throughout. This helps reduce any potential risks from harmful compounds present in sprouts and soft spots.\n\n5. **Storage:** Proper storage is crucial for maintaining potato quality. Keep them in a cool, dark place with good ventilation to prevent sprouting and spoilage.\n\n6. **Health Risks:** While small amounts of sprout or slightly soft potatoes are generally safe, consuming large quantities of green-skinned potatoes (which contain more solanine) can lead to symptoms such as nausea, diarrhea, vomiting, and headaches. In severe cases, it can cause fever and paralysis.\n\nAlways prioritize the safety and quality of your food by closely inspecting each potato before consumption or cooking, especially if they show signs of decay or excessive sprouting.",
+      "answer_tokens": {
+        "in": 57,
+        "out": 386
+      },
+      "recovered_intent": "The questioner wanted to know how to determine if potatoes with soft spots or sprouts are still safe to eat. They were interested in specific guidelines for assessing the safety of these potatoes, including what to look for visually and through taste and smell, as well as information about potential health risks associated with consuming spoiled or sprouted potatoes. The questioner also likely wanted to know how to properly store potatoes to prevent sprouting and spoilage, and if there were any cooking methods that could reduce the risk of harm from potentially harmful compounds in potatoes.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "no mention found for this facet, so it is 'no'.": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.8046,
+        "cos_intent_prompt": 0.8293,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.375,
+          "social": 0.625
+        },
+        "overlap_vs_A": 0.562,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Though botanically classified as vegetables, potatoes are nutritionally classified as starchy foods "
+          },
+          {
+            "source": "social",
+            "text": "I make sweet potato hash browns a few times a week. The most important thing (IMO) is after you shre"
+          },
+          {
+            "source": "social",
+            "text": "I have like 2-ish left over sweet potatoes from dinner the other night. My mom warmed them up tonigh"
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.3,
+    "severity": 2.8,
+    "mirror": 2.6,
+    "rewrite_b": 2.2,
+    "fidelity_b": 2.4,
+    "revise_c": 2.5,
+    "answers": 14.1,
+    "deduce": 11.2,
+    "judge_answers": 8.5,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

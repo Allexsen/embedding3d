@@ -1,0 +1,346 @@
+{
+  "case_id": "case-2043-gardening-81",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "What are the best conditions for basil?",
+  "intent": "Identify optimal growing conditions for basil in a UK climate, considering factors that contribute to its longevity.",
+  "facets": [
+    "Describes how much sunlight is required for healthy basil growth",
+    "Explains the ideal temperature range for basil cultivation in the UK",
+    "Mentions the importance of watering frequency and method for maintaining healthy roots",
+    "Addresses strategies for extending the lifespan of basil plants beyond a few weeks"
+  ],
+  "severity": 1.0,
+  "prompt_conveys": {
+    "per_facet": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.0,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "no"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for a description of the optimal environmental factors, such as light, temperature, and soil, that promote healthy basil growth.",
+    "foreclosed": "",
+    "tokens_out": 41
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "What are the best conditions for basil?",
+      "overhead_tokens": 0,
+      "answer": "Basil thrives in warm, sunny climates with well-drained soil. The ideal temperature range for basil is between 70°F to 85°F (21°C to 29°C), making it sensitive to cold temperatures which can cause its leaves to turn yellow and drop. It requires at least six to eight hours of direct sunlight per day, although partial shade during the hottest parts of summer can help prevent leaf scorch.\n\nSoil conditions are crucial for basil's growth; it prefers a rich, well-drained soil with a pH range of 6.0 to 7.5. Regular watering is necessary but be careful not to overwater as this can lead to root rot in poorly drained soils. A consistent moisture level is important, especially during the growing season.\n\nIn terms of maintenance, basil benefits from regular pruning or harvesting which encourages bushier growth and a longer harvest period. It's also advisable to pinch off any flowers that appear early on to keep the plant focused on leaf production rather than flowering.\n\nOverall, by providing these optimal conditions, you can ensure your basil plants remain healthy and produce a bountiful yield of fragrant leaves throughout the growing season.",
+      "answer_tokens": {
+        "in": 44,
+        "out": 240
+      },
+      "recovered_intent": "The text provides information about the ideal growing conditions for basil plants. The asker likely wanted to know the temperature range, sunlight requirements, preferred soil type and pH, watering needs, and maintenance practices (including pruning and harvesting) necessary for successful basil cultivation.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7075,
+        "cos_intent_prompt": 0.7436,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.188,
+          "social": 0.812
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "social",
+            "text": "So I'll be drying fresh herbs for the first time this weekend and want to avoid wrecking things if a"
+          },
+          {
+            "source": "social",
+            "text": "My apartment has a small, sunny balconey on which I'm growing tomatoes, cilantro, thyme, and oregano"
+          },
+          {
+            "source": "social",
+            "text": "The Basilcello ( is a grain alcohol and basil infusion. Usually it takes 15-20 days mixing and turni"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "Provide information about optimal growth conditions for basil",
+      "overhead_tokens": 18,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask for the same type of information, just with slightly different wording.",
+        "cos_prompts": 0.8148
+      },
+      "answer": "Basil thrives in warm, sunny environments with well-draining soil. For optimal growth, basil requires temperatures between 65°F (18°C) and 75°F (24°C). It prefers full sun exposure, receiving at least six to eight hours of direct sunlight daily. However, some afternoon shade can help prevent the leaves from scorching.\n\nThe soil should be rich in organic matter with a pH range of 6.0 to 7.5. Basil prefers well-draining soil to avoid root rot; excess moisture can quickly harm its roots. Regular watering is essential but should be done carefully to ensure the soil remains moist without becoming waterlogged.\n\nBasil also benefits from regular feeding, particularly during the growing season (spring and summer). A balanced fertilizer or a mix of composted manure and seaweed extract can provide necessary nutrients. Pruning basil plants regularly encourages bushier growth and prevents them from getting too leggy. Pinching off the top leaves as needed helps promote new leaf growth.\n\nIn terms of climate, basil is not cold-hardy and should be protected during frost periods. In regions with mild winters, basil can sometimes survive outdoors but generally performs best when grown in containers that can be moved indoors or protected from harsh weather conditions. Proper care will result in a healthy basil plant that produces fragrant leaves ideal for culinary use.",
+      "answer_tokens": {
+        "in": 44,
+        "out": 277
+      },
+      "recovered_intent": "The text provides information about the optimal growing conditions for basil plants, covering aspects such as temperature preferences, sunlight requirements, soil type and pH, watering practices, fertilization needs, pruning techniques, and cold-hardiness considerations. It aims to guide individuals on how to cultivate healthy basil plants that yield flavorful leaves suitable for culinary purposes.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.7881,
+        "cos_intent_prompt": 0.8201,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.0,
+          "eli5": 0.375,
+          "social": 0.562
+        },
+        "overlap_vs_A": 0.562,
+        "top3": [
+          {
+            "source": "social",
+            "text": "The Basilcello ( is a grain alcohol and basil infusion. Usually it takes 15-20 days mixing and turni"
+          },
+          {
+            "source": "eli5",
+            "text": "It grows like it would any other place, with a dark and damp environment generally."
+          },
+          {
+            "source": "eli5",
+            "text": "The thing about fast growing plants is that they usually have very little biomass compared to slower"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "What are the ideal growing conditions for basil in the UK climate, including factors that contribute to its longevity?",
+      "noop": false,
+      "overhead_tokens": 73,
+      "answer": "Basil thrives best under warm, sunny conditions with well-draining soil, making it challenging to grow outdoors year-round in the UK's cooler climate. However, with some care and attention, basil can be grown successfully even in the British Isles.\n\nFor optimal growth, basil requires full sun exposure for at least 6-8 hours a day. In the UK, planting basil in a sunny south-facing window sill or outside in a heated greenhouse or conservatory is ideal. If growing outdoors, choose a sheltered spot that offers protection from cold winds and frost, which can damage the plant.\n\nSoil preparation involves ensuring the ground is rich in organic matter with good drainage. Basil prefers a slightly acidic to neutral soil pH of 6.0 to 7.5. Incorporating compost or well-rotted manure into the soil before planting helps maintain fertility and structure.\n\nWatering basil regularly, especially during dry spells, is crucial but be careful not to overwater as basil dislikes wet feet. Aim for moist yet well-draining soil conditions. Water in the morning to allow leaves to dry out by nightfall, reducing disease risk.\n\nIn terms of temperature, basil grows best between 20°C and 30°C (68°F - 86°F), which is warmer than most areas in the UK experience during winter months. Starting seeds indoors about four to six weeks before the last frost can help ensure a head start on outdoor planting. Transplanting basil outdoors when nighttime temperatures consistently stay above 10°C (50°F) and after all danger of frost has passed.\n\nFor longevity, pinch back the tips of the plant regularly throughout the growing season to encourage bushy growth rather than leggy stems. This also helps prevent flowering too early in the season which can reduce overall yield and longevity.\n\nIn cooler UK climates, consider using a cloche or cold frame for additional protection during colder months when basil might struggle. With these conditions met, basil can be grown successfully even if it needs to be brought indoors before frosts set in to ensure its survival through winter as cuttings or overwintering plants in a cool, frost-free environment.",
+      "answer_tokens": {
+        "in": 57,
+        "out": 436
+      },
+      "recovered_intent": "The text aims to answer the question of how to successfully grow basil in the UK's climate, which is known for being cooler than ideal for this plant.  It covers various aspects of basil cultivation, including optimal sunlight exposure (6-8 hours daily), suitable soil conditions (well-draining, slightly acidic to neutral pH), watering practices (regular but not excessive), temperature requirements (20°C - 30°C), starting seeds indoors, transplanting outdoors after the last frost, and techniques for promoting bushy growth and preventing early flowering. Additionally, it suggests using protective measures like cloches or cold frames during colder months and overwintering options to ensure basil's survival in the UK climate.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          1.0,
+          0.5
+        ],
+        "score": 0.875,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.875,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.8578,
+        "cos_intent_prompt": 0.9277,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.438,
+          "social": 0.562
+        },
+        "overlap_vs_A": 0.625,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "It grows like it would any other place, with a dark and damp environment generally."
+          },
+          {
+            "source": "social",
+            "text": "My apartment has a small, sunny balconey on which I'm growing tomatoes, cilantro, thyme, and oregano"
+          },
+          {
+            "source": "social",
+            "text": "The Basilcello ( is a grain alcohol and basil infusion. Usually it takes 15-20 days mixing and turni"
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.1,
+    "severity": 2.8,
+    "mirror": 2.7,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.4,
+    "revise_c": 2.5,
+    "answers": 15.6,
+    "deduce": 10.6,
+    "judge_answers": 8.4,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

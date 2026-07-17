@@ -1,0 +1,14 @@
+{
+  "id": "case-1013-superuser-1571556",
+  "source": "stackexchange-xy",
+  "tags": [
+    "xy-labeled"
+  ],
+  "prompt": "Can updating Dell Firmware 'unlock' BIOS booting?",
+  "evidence": "The firmware shows that the Legacy boot mode is not selectable (greyed-out) for some reason: I suspect that it was somehow configured this way by the previous owner. I have identical machines: it is possible to choose between the legacy & UEFI : one of the two must be selected. The goal is to enable said Dell Optiplex 7010 to boot via BIOS. I have traversed the Dell firmware boot menus and have not seen an option to enable BIOS. If I simply missed this any guidance (steps) to navigate is appreciated. QUESTIONS At this point, I have only been able to install Ubuntu to the PC: Dell Boot Firmware If this posting belongs in another forum please migrate to the appropriate venue",
+  "attribution": {
+    "url": "https://superuser.com/questions/1571556/can-updating-dell-firmware-unlock-bios-booting",
+    "author": "gatorback",
+    "license": "CC BY-SA 4.0"
+  }
+}

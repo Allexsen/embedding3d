@@ -1,0 +1,14 @@
+{
+  "id": "case-1020-superuser-947255",
+  "source": "stackexchange-xy",
+  "tags": [
+    "xy-labeled"
+  ],
+  "prompt": "How do I activate Win+Tab keys with a VBScript in an effort to launch Task View in Windows 10?",
+  "evidence": "I am trying to set my mouse's middle button to launch Task View in Windows 10 (the replacement for Aero Flip 3D in prior Windows versions). I'm using Logitech SetPoint software, which is capable of running an external command when I press the middle mouse button. So my idea to use SendKeys to simuluate hitting the Windows Key + Tab. Here's my .vbs script: However, this doesn't work. It appears to \"press\" the Windows key followed by the tab key instead of pressing them simultaneously. How can I get them to press at the same time and thus activate Task View? And I don't want to ask an XY Problem , so is there another way I might go about activating Task View by pressing the middle mouse button in case I'm going about this all wrong? I saw the one alternate way of activating Aero Flip 3D was to run the command at the command prompt. But that doesn't seem to activate Task View. Is there another code for Task View?",
+  "attribution": {
+    "url": "https://superuser.com/questions/947255/how-do-i-activate-wintab-keys-with-a-vbscript-in-an-effort-to-launch-task-view",
+    "author": "mason",
+    "license": "CC BY-SA 4.0"
+  }
+}

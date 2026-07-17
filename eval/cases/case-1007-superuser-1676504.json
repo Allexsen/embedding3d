@@ -1,0 +1,14 @@
+{
+  "id": "case-1007-superuser-1676504",
+  "source": "stackexchange-xy",
+  "tags": [
+    "xy-labeled"
+  ],
+  "prompt": "How to execute WMI call from command line?",
+  "evidence": "I've been using the following instructions to successfully turn my fans to silent mode: Fan Overboost stuck on Balanced mode in Rog Gaming Center The relevant parts are: Download and extract WMI Explorer. Right click WmiExplorer.exe and select run as administrator. In WMI Explorer, click Connect at top left. In namespaces box, double click ROOT/WMI. In classes box, find Asus ATK class and double click it (note on my laptop the class is called 'WMI:AsusAtkWmi_WMNB In instances box, right click the Asus ATK instance, then in the first drop down menu which appears, hover over Execute Method, then left click DEVS in the second drop down menu. In Control Status enter 2, in Device ID enter 1114136 However, how can I achieve the same effect but in command prompt/Powershell? I've tried reading the WMIC documentation by Microsoft, but couldn't figure out how to navigate through the namespaces, classes, then instances. This may be a XY problem, as the reason I am doing this is the call does not persist after the laptop wakes from shutdown or sleep, so any suggestions for the real problem itself is also welcome.",
+  "attribution": {
+    "url": "https://superuser.com/questions/1676504/how-to-execute-wmi-call-from-command-line",
+    "author": "George Tian",
+    "license": "CC BY-SA 4.0"
+  }
+}

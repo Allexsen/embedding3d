@@ -1,0 +1,346 @@
+{
+  "case_id": "case-1018-superuser-1178122",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How can you get an SD card to work with Android apps on Chromebook?",
+  "intent": "I need a solution to allow my Android apps on the Samsung Chromebook Plus to access and use a 64gb micro SD card that has been formatted for the Chrome OS side, so I can store data like Spotify music files on it.",
+  "facets": [
+    "Explains how to make the SD card accessible to Android apps",
+    "Describes how to enable formatting or management of the SD card from within Android",
+    "Ensures that the SD card is visible and usable by Android for storing data",
+    "Provides a concrete solution to this specific issue, considering the Chromebook's unique setup"
+  ],
+  "severity": 0.25,
+  "prompt_conveys": {
+    "per_facet": [
+      0.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "score": 0.75,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "no"
+      },
+      {
+        "facet": 2,
+        "verdict": "yes"
+      },
+      {
+        "facet": 3,
+        "verdict": "yes"
+      },
+      {
+        "facet": 4,
+        "verdict": "yes"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for instructions or methods on how to make a Secure Digital (SD) card functional for use with Android applications within the environment of a Chromebook.",
+    "foreclosed": "",
+    "tokens_out": 45
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How can you get an SD card to work with Android apps on Chromebook?",
+      "overhead_tokens": 0,
+      "answer": "To use an SD card with Android apps on a Chromebook, follow these steps:\n\n1. **Enable Android Apps**: First, ensure that the Android feature is enabled on your Chromebook. Go to `Settings` > `Advanced` and then enable \"Allow apps from untrusted sources.\" Next, select `More options` > `Enable Android apps`.\n\n2. **Insert SD Card**: Insert the SD card into a compatible reader or directly if your Chromebook supports it.\n\n3. **Install SD Card Manager App**:\n   - Open the Google Play Store on your Chromebook.\n   - Search for \"SD Card Manager\" and install an appropriate app that can manage SD cards, such as \"SD Card File Explorer,\" which allows you to mount and use external storage like an SD card.\n\n4. **Mount SD Card**: Launch the SD Card Manager app and follow its instructions to detect and mount your SD card. This step may vary depending on the app used.\n\n5. **Use SD Card with Android Apps**:\n   - Once the SD card is mounted, you can copy files or apps from it.\n   - Some Android apps might recognize the SD card as an external storage option; however, not all apps support this feature directly. For those that do, you may need to manually configure them through their settings to use the SD card.\n\n6. **Considerations**:\n   - Not all Chromebooks support using SD cards for Android app storage or data.\n   - The performance and reliability of storing Android apps on an SD card can vary, so it’s advisable to keep a backup of important files.\n   - Ensure that your SD card has sufficient space to avoid running out when installing new apps.\n\nBy following these steps, you should be able to utilize your SD card with Android apps on your Chromebook. Always ensure the safety and integrity of data while handling external storage devices.",
+      "answer_tokens": {
+        "in": 52,
+        "out": 379
+      },
+      "recovered_intent": "The text's asker wanted to know how to use an SD card for storing Android apps on a Chromebook.  Specifically, they likely wanted to know the step-by-step process, including enabling the necessary features, inserting and managing the SD card, and using it with specific Android apps. They also probably wanted to be aware of any limitations or considerations regarding performance, reliability, and compatibility between Chromebooks and SD cards for this purpose.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.5,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "partial"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5622,
+        "cos_intent_prompt": 0.7688,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.75,
+          "social": 0.25
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Chrome is a browser created by Google. Chromium is an open source browser based on Chrome."
+          },
+          {
+            "source": "social",
+            "text": "I've been using FatSecret's Android app for a while now, but even after the recent update I'm still "
+          },
+          {
+            "source": "eli5",
+            "text": "Samsung pay can use magnetic secure transmission, to basically send the information to the magnetic "
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What are the steps to use an SD card for running Android apps on a Chromebook?",
+      "overhead_tokens": 27,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask for the same information, just phrased slightly differently.",
+        "cos_prompts": 0.9069
+      },
+      "answer": "To use an SD card for running Android apps on a Chromebook, follow these steps:\n\n1. **Ensure Compatibility**: First, confirm that your Chromebook supports using an SD card with Android. Most newer models do support this feature through Google's Android x86 or CrOS (Chrome OS) environments.\n\n2. **Install the Necessary Software**:\n   - For Android apps via CrOS: Ensure you have the latest version of Chrome OS installed on your device.\n   - For Android via Android x86: Download and install the Android x86 operating system using a tool like UNetbootin or Etcher to create a bootable USB drive.\n\n3. **Prepare the SD Card**:\n   - Format the SD card as FAT32, which is compatible with both Chrome OS and Android.\n   - Ensure you have at least 16GB of free space on the SD card for Android apps and data.\n\n4. **Mount the SD Card**:\n   - In CrOS: Insert the SD card into your Chromebook's SD card slot if available, or connect it via a USB adapter.\n   - Mount the SD card by going to Settings > Advanced > Storage and selecting \"Use SD card as additional storage.\"\n\n5. **Install Android Apps**:\n   - For CrOS: Open the Google Play Store on your Chromebook and download apps directly onto the SD card.\n   - For Android x86: Boot from USB, then install apps through the Google Play Store or other app stores available in the Android environment.\n\n6. **Set Up USB OTG (Optional)**:\n   - If you prefer to use a microSD to USB adapter for easier app management, plug it into your Chromebook's USB port and follow the same steps as with a physical SD card slot.\n\n7. **Manage Permissions and Settings**:\n   - Ensure that any permissions required by the apps are granted.\n   - Configure the Android environment settings according to your preferences (e.g., screen resolution, language).\n\n8. **Regular Updates and Maintenance**:\n   - Keep both Chrome OS and Android on the SD card updated for optimal performance and security.\n   - Regularly back up important data from the SD card.\n\nBy following these steps, you can successfully use an SD card to run Android apps on your Chromebook using either CrOS or Android x86.",
+      "answer_tokens": {
+        "in": 54,
+        "out": 477
+      },
+      "recovered_intent": "The text's asker wanted to know how to use an SD card to run Android apps on a Chromebook. Specifically, they likely wanted to know if their Chromebook model supported this feature, what software was required (both for Chrome OS and Android x86), how to prepare the SD card, how to mount it, how to install Android apps onto the SD card, whether USB OTG adapters could be used, how to manage permissions and settings within the Android environment, and how to keep both Chrome OS and Android on the SD card updated.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          1.0,
+          0.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5344,
+        "cos_intent_prompt": 0.7407,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.062,
+          "eli5": 0.5,
+          "social": 0.375
+        },
+        "overlap_vs_A": 0.5,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Chrome is a browser created by Google. Chromium is an open source browser based on Chrome."
+          },
+          {
+            "source": "social",
+            "text": "I've been using FatSecret's Android app for a while now, but even after the recent update I'm still "
+          },
+          {
+            "source": "eli5",
+            "text": "Pretty much any app needs to have folder access. That's how it stores its data."
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "How can I configure my Samsung Chromebook Plus to allow Android apps to access and store data on a 64gb micro SD card that's been formatted for Chrome OS, specifically so I can save Spotify music files on it?",
+      "noop": false,
+      "overhead_tokens": 101,
+      "answer": "To enable Android apps on your Samsung Chromebook Plus to access and store data on a 64GB microSD card formatted for Chrome OS, follow these steps:\n\n1. **Prepare the Micro SD Card**:\n   - Ensure that the microSD card is properly formatted in a computer or another device capable of formatting microSD cards. Use the Chrome OS format option if available to ensure compatibility with your Chromebook.\n\n2. **Insert the Micro SD Card into Your Chromebook**:\n   - Insert the microSD card into the microSD slot on your Samsung Chromebook Plus.\n   \n3. **Access the Storage Options in Settings**:\n   - Open the settings menu by clicking on the gear icon in the bottom-right corner of the screen.\n   - Navigate to \"About\" and then click on \"More about your device.\"\n   - Find and tap on \"Storage.\"\n\n4. **Add a New Storage Device**:\n   - In the storage section, you should see an option labeled \"SD Card.\" Tap on it.\n   - You may need to allow permission for Android apps to access this new storage space.\n\n5. **Configure Permissions for Apps**:\n   - Once the microSD card is recognized as additional storage, go back to the main settings menu and search for \"app permissions.\"\n   - Look for an option that allows you to choose which apps can use the SD card for storage.\n   - Select the Android apps you want to have access to your microSD card.\n\n6. **Configure Spotify or Other Apps**:\n   - Open the Spotify app (or any other app) and navigate through its settings or preferences menu.\n   - Look for an option that allows you to specify a location for music files, such as \"Local Music Folder\" or similar options.\n   - Choose the microSD card as the storage location.\n\n7. **Verify Access**:\n   - After configuring Spotify to use your microSD card, play some tracks and verify they are being saved on the SD card by viewing its contents through a file explorer app like Files, which comes pre-installed on Chromebooks.\n\nBy following these steps, you should be able to configure your Samsung Chromebook Plus so that Android apps, including Spotify, can access and store data on your 64GB microSD card formatted for Chrome OS.",
+      "answer_tokens": {
+        "in": 82,
+        "out": 466
+      },
+      "recovered_intent": "The questioner wanted to know how to enable Android apps on their Samsung Chromebook Plus to use a 64GB microSD card formatted for Chrome OS for storing data. Specifically, they likely wanted step-by-step instructions on formatting the microSD card, inserting it into the Chromebook, configuring storage settings, granting app permissions, and setting up specific apps like Spotify to utilize the microSD card as storage. They also probably wanted confirmation on how to verify that data is being stored on the microSD card.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          1.0,
+          1.0
+        ],
+        "score": 0.75,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.639,
+        "cos_intent_prompt": 0.9263,
+        "source_mix": {
+          "arxiv": 0.188,
+          "wikipedia": 0.062,
+          "eli5": 0.562,
+          "social": 0.188
+        },
+        "overlap_vs_A": 0.5,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Pretty much any app needs to have folder access. That's how it stores its data."
+          },
+          {
+            "source": "eli5",
+            "text": "Grooveshark is currently in a number of lawsuits over copyright infringement. Spotify has licensing "
+          },
+          {
+            "source": "eli5",
+            "text": "Samsung pay can use magnetic secure transmission, to basically send the information to the magnetic "
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.4,
+    "severity": 2.8,
+    "mirror": 2.8,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.4,
+    "revise_c": 2.8,
+    "answers": 20.8,
+    "deduce": 10.9,
+    "judge_answers": 8.6,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

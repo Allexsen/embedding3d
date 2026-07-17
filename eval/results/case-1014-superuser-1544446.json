@@ -1,0 +1,346 @@
+{
+  "case_id": "case-1014-superuser-1544446",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How to keep language bar / keyboard layout select always active?",
+  "intent": "Prevent the keyboard layout selector from appearing and causing tray icons to jump around when clicking on the tray area, allowing for smooth navigation and muscle reflexes.",
+  "facets": [
+    "Addresses why the keyboard layout selector appears in the tray area",
+    "Explains how to prevent the tray icons from jumping around when clicking on the tray area",
+    "Names a solution that keeps the keyboard layout option always enabled or prevents it from appearing unnecessarily",
+    "Compares and contrasts the behavior of the keyboard layout changer between the current machine and the RDP-accessible work machine"
+  ],
+  "severity": 0.5,
+  "prompt_conveys": {
+    "per_facet": [
+      0.0,
+      1.0,
+      1.0,
+      0.0
+    ],
+    "score": 0.5,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "no"
+      },
+      {
+        "facet": 2,
+        "verdict": "yes"
+      },
+      {
+        "facet": 3,
+        "verdict": "yes"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for instructions on how to make a setting related to language bars or keyboard layouts persistently active.",
+    "foreclosed": "",
+    "tokens_out": 35
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How to keep language bar / keyboard layout select always active?",
+      "overhead_tokens": 0,
+      "answer": "To ensure that the language bar or keyboard layout selector remains active and visible on your Windows system, you can follow these steps:\n\n1. **Using System Settings**:\n   - Open the Start menu and type \"Language\".\n   - Click on \"Language & region\" to open the Settings.\n   - Go to the \"Typing options\" section.\n   - Under \"Keyboards\", make sure that all the keyboards you want are checked. If not, check them and click \"OK\".\n   - You can also adjust when the language bar appears by clicking on \"Advanced keyboard settings\". Here, set \"Show text tip with context menu\" to always show the language bar.\n\n2. **Using Registry Editor (for advanced users)**:\n   - Press `Win + R`, type `regedit`, and press Enter.\n   - Navigate to `HKEY_CURRENT_USER\\Control Panel\\Keyboard`.\n   - Look for the value named `ShowInputLanguageByDefault` and set its data to `1`. This ensures that the language bar always appears.\n   - Alternatively, you can create a new DWORD (32-bit) value named `DisableHotKey` and set it to `0` if you want to keep the functionality of keyboard shortcuts but still have the language bar visible.\n\n3. **Using Third-Party Software**:\n   - There are third-party tools like \"Immersive Keyboard\" or \"Keyboard Layout Switcher\" that can help manage your keyboard layouts more flexibly and ensure they stay active.\n   - These tools often provide additional customization options, such as setting custom hotkeys to switch between layouts without needing to show the language bar.\n\nBy following these methods, you should be able to keep the language bar or keyboard layout selector always active according to your needs.",
+      "answer_tokens": {
+        "in": 48,
+        "out": 358
+      },
+      "recovered_intent": "The questioner wanted to know how to make the language bar or keyboard layout selector persistently visible on their Windows system. They were interested in learning about different methods to achieve this, including using system settings, registry editor (for advanced users), and third-party software.  They likely wanted to understand the specific steps involved in each method and any potential customization options available.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.25,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "no": null
+          },
+          {
+            "facet": 3,
+            "partial": "Immersive Keyboard"
+          },
+          {
+            "facet": 4,
+            "no": null
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.2717,
+        "cos_intent_prompt": 0.4769,
+        "source_mix": {
+          "arxiv": 0.062,
+          "wikipedia": 0.062,
+          "eli5": 0.875,
+          "social": 0.0
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "The hassle to change to a new keyboard layout would be too great for them to justify any new keyboar"
+          },
+          {
+            "source": "eli5",
+            "text": "i do this, switching languages after sentences/in the middle of a sentence/or whatever. the reason i"
+          },
+          {
+            "source": "eli5",
+            "text": "There are a few ways. There are rosetta stones, something written down that contains the same text i"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "Describe methods for maintaining the active status of a language bar or keyboard layout selector",
+      "overhead_tokens": 23,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask about keeping the language bar/keyboard layout selector active, just with slightly different wording.",
+        "cos_prompts": 0.7835
+      },
+      "answer": "To maintain the active status of a language bar or keyboard layout selector, several methods can be employed:\n\n1. **Regular Use**: The most straightforward way to keep the language bar active is to use it frequently. Each time you switch languages or change layouts, you reinforce their presence and ensure they remain functional.\n\n2. **System Settings Management**:\n   - In Windows, go to \"Settings\" > \"Time & Language\" > \"Language\". Ensure that your desired language pack is installed and selected.\n   - For macOS, navigate to \"System Preferences\" > \"Keyboard\" and make sure the correct input sources are checked under \"Input Sources\".\n\n3. **Hotkeys**: Utilize hotkeys for quick switching between different keyboard layouts. In Windows, you can use `Alt + Shift` or customize it in Settings > Time & Language > Keyboard Options. On macOS, press `Command + Space`, then select the desired language.\n\n4. **Language Services and Input Methods**:\n   - For more advanced users, enabling \"Text Services and Input Languages\" (Windows) allows you to configure additional input methods like Pinyin or other IMEs.\n   - In macOS, use \"System Preferences\" > \"Keyboard\" > \"Input Sources\" to add or remove input methods.\n\n5. **Browser Extensions**: Some browsers offer extensions that can help manage multiple keyboard layouts and languages within the same session, ensuring they remain active as needed.\n\n6. **Regular Updates**:\n   - Keep your operating system and all software up-to-date. Software updates often include improvements for language support.\n   - Update input method software to ensure compatibility with new systems or language packs.\n\n7. **Manual Reconfiguration**: If you find that a language bar has disappeared, you can manually enable it by going through the settings again (as mentioned in point 2) and ensuring all required components are installed and configured correctly.\n\n8. **Support Forums and Documentation**: For specific issues related to language bars or keyboard layouts, consulting official documentation, support forums, or community groups can provide tailored advice on how to maintain their active status.\n\nBy implementing these methods, you can effectively manage the active status of your language bar or keyboard layout selector, ensuring smooth multilingual use.",
+      "answer_tokens": {
+        "in": 51,
+        "out": 447
+      },
+      "recovered_intent": "The questioner wanted to know how to keep a language bar or keyboard layout selector active and functional. They were interested in various methods for achieving this, including regular usage, system settings management (specific steps for Windows and macOS), utilizing hotkeys, configuring language services and input methods, leveraging browser extensions, ensuring software updates, manually reconfiguring settings if necessary, and seeking support from forums or documentation when facing specific issues.",
+      "answer_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.3007,
+        "cos_intent_prompt": 0.3973,
+        "source_mix": {
+          "arxiv": 0.188,
+          "wikipedia": 0.188,
+          "eli5": 0.625,
+          "social": 0.0
+        },
+        "overlap_vs_A": 0.5,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "The hassle to change to a new keyboard layout would be too great for them to justify any new keyboar"
+          },
+          {
+            "source": "arxiv",
+            "text": "Intelligent Input Methods (IM) are essential for making text entries in many East Asian scripts, but"
+          },
+          {
+            "source": "eli5",
+            "text": "There are a few ways. There are rosetta stones, something written down that contains the same text i"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "How can I prevent the keyboard layout selector from appearing when clicking on the tray area, and keep my navigation smooth?",
+      "noop": false,
+      "overhead_tokens": 69,
+      "answer": "To prevent the keyboard layout selector from popping up when you click on the system tray area and to maintain smoother navigation, you can follow these steps:\n\n1. **Update Your Operating System**: Ensure that your operating system is up-to-date. Software updates often include bug fixes that address issues like unexpected popup windows.\n\n2. **Check for Conflicting Software**: Sometimes third-party software or extensions can interfere with the default behavior of your system tray. Disable any recently installed applications to see if they are causing the problem.\n\n3. **Adjust System Settings**:\n   - On Windows: Right-click on the system tray and uncheck \"Show notification icons\" (or a similar option, depending on your version). This may disable or reduce the appearance of popups.\n   - On macOS: Go to System Preferences > Notifications. For specific applications that might be causing issues, like Keyboard Viewer, you can disable notifications.\n\n4. **Configure Input Sources**:\n   - In Windows 10 and later versions, go to Settings > Time & Language > Region & Language > Keyboards. Here, you can manage your input languages and adjust settings to minimize the appearance of the keyboard layout selector.\n   - On macOS, open System Preferences > Keyboard > Input Sources. You might want to turn off \"Show input menu in menu bar\" if it's causing disruptions.\n\n5. **Use a Custom Theme or Launcher**: If the default system tray is problematic, consider using a custom theme or third-party launcher that offers more control over which icons are displayed and their behavior.\n\n6. **Contact Support**: If none of the above solutions work, contact Microsoft support for Windows or Apple's support for macOS. They may provide additional troubleshooting steps specific to your issue.\n\nBy following these steps, you should be able to prevent the keyboard layout selector from appearing unnecessarily when clicking on the tray area and maintain smoother navigation overall.",
+      "answer_tokens": {
+        "in": 59,
+        "out": 377
+      },
+      "recovered_intent": "The questioner wanted to know how to stop the keyboard layout selector from popping up when they click on the system tray area of their computer. They likely experienced this issue as disruptive to their workflow and sought solutions to prevent it. The text provides a step-by-step guide covering various methods, including updating the operating system, checking for conflicting software, adjusting system settings (like notification icons), configuring input sources, using custom themes or launchers, and contacting support if necessary.  ",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6336,
+        "cos_intent_prompt": 0.8623,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.125,
+          "eli5": 0.688,
+          "social": 0.188
+        },
+        "overlap_vs_A": 0.188,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "The hassle to change to a new keyboard layout would be too great for them to justify any new keyboar"
+          },
+          {
+            "source": "eli5",
+            "text": "Uh, it does? Last time I did it it wasn't uncomfortable. I always sit down in that case though, mayb"
+          },
+          {
+            "source": "social",
+            "text": "Like I said it's gotten much better over the years and I forget its there now but I'm scared of aggr"
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.4,
+    "severity": 2.8,
+    "mirror": 2.6,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.5,
+    "revise_c": 2.6,
+    "answers": 19.3,
+    "deduce": 10.6,
+    "judge_answers": 8.6,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

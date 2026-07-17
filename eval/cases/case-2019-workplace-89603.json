@@ -1,0 +1,14 @@
+{
+  "id": "case-2019-workplace-89603",
+  "source": "stackexchange-workplace",
+  "tags": [
+    "general"
+  ],
+  "prompt": "How do I deal with the \"30 minutes remaining\" problem?",
+  "evidence": "As a developer, I often get to this point where at the end of the day I finish a big task and still have approximately 30 minutes to go. The problem is that 30 minutes are not enough time for me to code anything, and if I start coding the very start of a task I know that I will struggle to continue it the next day while losing the context and will have to re-read the code, which will lead to me losing time. But to focus on the professional problem, I don't want to slack off at work for so much time and staying there doing nothing during 30 minutes just seems absurd. How do I deal with the \"30 minutes remaining\" issue? EDIT : To explain why it's not a duplicate, the trouble is not about \"what to do when the systems are down at work ? \" or \" what to do when I have nothing to do? \" but \"what to do when you arrive close to the end of the day and don't have the time to start a new task ?\"",
+  "attribution": {
+    "url": "https://workplace.stackexchange.com/questions/89603/how-do-i-deal-with-the-30-minutes-remaining-problem",
+    "author": "sh5164",
+    "license": "CC BY-SA 4.0"
+  }
+}

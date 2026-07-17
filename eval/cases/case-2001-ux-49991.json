@@ -1,0 +1,14 @@
+{
+  "id": "case-2001-ux-49991",
+  "source": "stackexchange-ux",
+  "tags": [
+    "general"
+  ],
+  "prompt": "Should \"Yes, delete it\" be red, or green?",
+  "evidence": "Designing an interface for a CMS (Content Management System), I stumbled upon a paradox and I'm a bit confused about what to do and why to do it.. Context Before deleting an album, the user is asked to confirm the action. Green \"Yes\" Red \"Yes\" Which option is more intuitive for the user?",
+  "attribution": {
+    "url": "https://ux.stackexchange.com/questions/49991/should-yes-delete-it-be-red-or-green",
+    "author": "Diéssica",
+    "license": "CC BY-SA 4.0"
+  }
+}

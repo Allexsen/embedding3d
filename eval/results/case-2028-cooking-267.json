@@ -1,0 +1,346 @@
+{
+  "case_id": "case-2028-cooking-267",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How do you properly cook a steak?",
+  "intent": "I want to learn how to cook a perfect steak at home in Italy so I can enjoy it whenever I want, and potentially move to the US for better access to high-quality steaks.",
+  "facets": [
+    "Describes how to achieve even cooking throughout the steak, preventing burning on the outside and undercooking on the inside",
+    "Explains how to cook a medium-well grade steak without overcooking or drying out the meat",
+    "Provides guidance on adjusting grill pan temperature for optimal steak cooking",
+    "Includes tips for achieving a tender and juicy texture in the cooked steak"
+  ],
+  "severity": 1.0,
+  "prompt_conveys": {
+    "per_facet": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.0,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "no"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for instructions on the correct method of preparing a steak for consumption.",
+    "foreclosed": "",
+    "tokens_out": 30
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How do you properly cook a steak?",
+      "overhead_tokens": 0,
+      "answer": "Cooking a steak properly involves several key steps to achieve the desired level of doneness, flavor, and texture. Here’s how to prepare and cook a perfect steak:\n\n1. **Choose the Right Steak**: Select a cut with good marbling (intramuscular fat), such as ribeye, New York strip, or filet mignon. The thickness should be about 1-1.5 inches for even cooking.\n\n2. **Bring the Steak to Room Temperature**: Take the steak out of the refrigerator at least 30 minutes before cooking to ensure it cooks evenly.\n\n3. **Seasoning**: Liberally season both sides with salt and pepper, or use a preferred rub. Let it sit for about 15-30 minutes to allow flavors to penetrate the meat.\n\n4. **Heat Your Pan**: Use a cast iron skillet or stainless steel pan over high heat (around 450°F to 500°F) on the stove. Ensure the pan is hot before adding any oil.\n\n5. **Add Oil and Steak**: Pour in a small amount of high-smoke-point oil, like avocado or grapeseed. Once it shimmers, add the steak.\n\n6. **Cooking Time**:\n   - For rare: 2-3 minutes per side.\n   - For medium-rare: 4-5 minutes per side.\n   - For medium: 5-7 minutes per side.\n   - For well-done: 8-10 minutes per side.\n\n7. **Rest the Steak**: After cooking, remove the steak from heat and let it rest for about 5 to 10 minutes before slicing or serving. This allows juices to redistribute throughout the meat.\n\n8. **Check Temperature**: Use a meat thermometer (inserted into the thickest part of the steak) to ensure accuracy:\n   - Rare: 120°F\n   - Medium-rare: 130°F\n   - Medium: 140°F\n\n9. **Serving Suggestions**: Serve with your choice of sides, such as roasted vegetables, mashed potatoes, or a simple green salad.\n\nFollowing these steps will help you achieve a delicious and perfectly cooked steak every time.",
+      "answer_tokens": {
+        "in": 44,
+        "out": 451
+      },
+      "recovered_intent": "The questioner wanted to know the process of cooking a steak to perfection, including selecting the right cut, preparing it, cooking times for different levels of doneness, resting time, recommended internal temperatures, and serving suggestions.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.25,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5798,
+        "cos_intent_prompt": 0.6176,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.125,
+          "social": 0.875
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "social",
+            "text": "Let me start off by saying: I'm a dummy when it comes to cooking steaks."
+          },
+          {
+            "source": "social",
+            "text": "So I impulse bought a small package of 'skillet steak' at the grocery store today, basically a lot o"
+          },
+          {
+            "source": "social",
+            "text": "I'm following the traditional AB way of cooking streak: - Sear on both sides for 30-60 seconds. - Pu"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What are the steps to prepare a well-cooked steak?",
+      "overhead_tokens": 22,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask for the same information on cooking a steak, just with slightly different wording.",
+        "cos_prompts": 0.8905
+      },
+      "answer": "Preparing a well-cooked steak involves several key steps that ensure you achieve the perfect texture and flavor. Here’s a detailed guide:\n\n1. **Choose the Right Cut**: The type of cut can significantly affect the taste and texture of your steak. Popular choices include ribeye, New York strip, sirloin, and filet mignon. Each has its own characteristics; for instance, ribeyes are marbled with fat which enhances flavor.\n\n2. **Bring to Room Temperature**: Remove the steak from the refrigerator about 30 minutes before cooking. This helps the steak cook more evenly.\n\n3. **Seasoning**: Liberally season both sides of your steak with salt and pepper or any other preferred seasoning. Let it sit for a few minutes so the flavors can penetrate the surface.\n\n4. **Heat Your Pan**: Use a heavy-bottomed pan, preferably cast iron, over high heat. This type of pan retains heat well and is ideal for searing. You want to get your pan very hot before adding the steak; this will create a nice crust on the outside while keeping the inside juicy.\n\n5. **Sear the Steak**: Once the pan is hot (you should see smoke), add a small amount of oil, enough to coat the bottom of the pan. Place the steak in the pan and let it cook undisturbed for about 2-3 minutes per side. The initial high heat helps form a flavorful crust.\n\n6. **Reduce Heat**: After searing, reduce the heat to medium or low. For a more controlled cooking process, you can cover the pan with a lid. This will help retain moisture and ensure even cooking throughout.\n\n7. **Check for Doneness**: Use a meat thermometer inserted into the thickest part of the steak (without touching bone if there is one) to check the internal temperature:\n   - Rare: 125°F (52°C)\n   - Medium-Rare: 135°F (57°C)\n   - Medium: 145°F (63°C)\n   - Well-Done: 160°F (71°C)\n\n8. **Rest the Steak**: Once it reaches your desired doneness, remove the steak from the pan and let it rest on a cutting board for about 5-10 minutes. This allows the juices to redistribute throughout the meat, making it more tender.\n\n9. **Serving**: Slice against the grain if necessary (this helps in breaking down the muscle fibers), garnish with your choice of herbs or condiments, and serve hot.\n\nBy following these steps, you can achieve a steak that is both delicious and perfectly cooked to your liking.",
+      "answer_tokens": {
+        "in": 48,
+        "out": 543
+      },
+      "recovered_intent": "The text aims to provide a comprehensive guide on how to cook a steak to perfection. It covers various aspects, including selecting the appropriate cut of meat, preparing it for cooking (bringing to room temperature and seasoning), heating the pan correctly, searing techniques, adjusting heat levels for even cooking, checking doneness using a meat thermometer with specific temperature ranges for different levels of doneness (rare, medium-rare, medium, well-done), resting the cooked steak, and finally, serving suggestions like slicing against the grain and garnishing.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6438,
+        "cos_intent_prompt": 0.6008,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.125,
+          "social": 0.875
+        },
+        "overlap_vs_A": 0.75,
+        "top3": [
+          {
+            "source": "social",
+            "text": "So I impulse bought a small package of 'skillet steak' at the grocery store today, basically a lot o"
+          },
+          {
+            "source": "social",
+            "text": "Let me start off by saying: I'm a dummy when it comes to cooking steaks."
+          },
+          {
+            "source": "social",
+            "text": "We just received 4 deer steaks from a friend, but I've never eaten or cooked the meat before."
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "What's the best way to cook a perfect steak at home in Italy, and are there any specific considerations I should be aware of if I plan to move to the US where high-quality steaks might be more readily available?",
+      "noop": false,
+      "overhead_tokens": 86,
+      "answer": "Cooking the perfect steak at home in Italy involves several key steps that can be adapted for use anywhere, including the U.S. Here’s a guide tailored to your needs:\n\n### Cooking Perfect Steak at Home in Italy\n\n1. **Select High-Quality Meat**: In Italy, you might choose from cuts like bistecca alla Fiorentina (a thick-cut T-bone steak from Chianina cattle) or scaloppine (thinly sliced veal). If moving to the U.S., look for Angus beef or other high-grade steaks. Ensure the meat is fresh and at room temperature before cooking.\n\n2. **Marinate Optionally**: Italian cooks sometimes marinate their steaks in olive oil, garlic, rosemary, and lemon juice, but this step can be skipped if you prefer a simple flavor profile.\n\n3. **Preheat Your Pan**: Use a cast-iron skillet or grill pan over high heat. Sear the steak for 2-3 minutes on each side to create a crust that seals in juices. For medium-rare, continue cooking until an internal temperature of about 130°F (54°C) is reached.\n\n4. **Resting**: Let the steak rest for 5-10 minutes before slicing or serving. This helps redistribute the juices and improves the texture.\n\n### Considerations Moving to the U.S.\n\n1. **Steak Quality and Cut**: High-quality steaks in the U.S. are more readily available, so you can experiment with various cuts like ribeye, filet mignon, or New York strip. These often come from Angus cattle which are known for their tender meat.\n\n2. **Marinades and Seasonings**: American steaks may not need as much marinade compared to Italian traditions. Instead, focus on quality salt (like Maldon) and a fresh cracked black pepper. Herbs like thyme or tarragon can add authentic flavors.\n\n3. **Grilling vs. Searing**: If you have a grill, grilling is excellent for searing the steak quickly and adding smoky flavor. However, if using a stovetop pan, ensure it's well-seasoned to prevent sticking and achieve a good crust.\n\n4. **Temperature Control**: Use an instant-read thermometer to check the internal temperature accurately. A digital thermometer can help you achieve that perfect medium-rare (135°F or 57°C) or well-done (145°F or 63°C).\n\nIn both Italy and the U.S., the key is in selecting high-quality, fresh meat and using simple techniques to enhance its natural flavors. Enjoy your culinary journey!",
+      "answer_tokens": {
+        "in": 81,
+        "out": 540
+      },
+      "recovered_intent": "The questioner wanted to know how to cook a perfect steak at home, specifically comparing and contrasting Italian and American methods. They were interested in the types of meat used in each region, recommended marinades and seasonings, preferred cooking techniques (searing vs. grilling), and ideal internal temperatures for different levels of doneness. The text aims to provide a comprehensive guide on achieving steak perfection in both Italy and the U.S.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.0,
+          0.5
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.804,
+        "cos_intent_prompt": 0.8638,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.125,
+          "social": 0.875
+        },
+        "overlap_vs_A": 0.625,
+        "top3": [
+          {
+            "source": "social",
+            "text": "So I impulse bought a small package of 'skillet steak' at the grocery store today, basically a lot o"
+          },
+          {
+            "source": "eli5",
+            "text": "Steak is relatively dense, so bacteria tend to be on the surface, which you will be subjecting to a "
+          },
+          {
+            "source": "social",
+            "text": "I'm following the traditional AB way of cooking streak: - Sear on both sides for 30-60 seconds. - Pu"
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.5,
+    "severity": 2.8,
+    "mirror": 2.6,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.5,
+    "revise_c": 2.8,
+    "answers": 20.9,
+    "deduce": 10.6,
+    "judge_answers": 8.5,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

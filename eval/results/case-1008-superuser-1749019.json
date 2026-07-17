@@ -1,0 +1,382 @@
+{
+  "case_id": "case-1008-superuser-1749019",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How to sync file trees on windows to a local hard drive with complex exclusions",
+  "intent": "One-way sync directory trees from multiple hard drives on Windows to an external hard drive for backup, excluding redundant files with minimal effort.",
+  "facets": [
+    "Names a tool or method that can perform one-way syncing of directory trees",
+    "Explains how the chosen solution handles complex exclusions of redundant files",
+    "Ensures the solution is compatible with Windows and does not require WSL",
+    "Provides instructions on how to set up and configure the syncing process for multiple source hard drives",
+    "Confirms the solution preserves file metadata and permissions during syncing"
+  ],
+  "severity": 0.7,
+  "prompt_conveys": {
+    "per_facet": [
+      1.0,
+      0.5,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.3,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "yes"
+      },
+      {
+        "facet": 2,
+        "verdict": "partial"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      },
+      {
+        "facet": 5,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for instructions on how to synchronize the contents of a directory structure (file tree) on a Windows operating system to a specific local hard drive, while also specifying which files and folders should be excluded from the synchronization process.",
+    "foreclosed": "",
+    "tokens_out": 60
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How to sync file trees on windows to a local hard drive with complex exclusions",
+      "overhead_tokens": 0,
+      "answer": "To sync file trees on Windows to a local hard drive with complex exclusions, you can use tools like Robocopy or Beyond Compare, which offer extensive options for controlling what gets copied and where. Here’s a step-by-step guide using both methods:\n\n### Using Robocopy\n\n1. **Open Command Prompt**: Press `Win + R`, type `cmd`, and press Enter.\n2. **Install Robocopy** (if not already installed): Robocopy is usually included with Windows, but you can download it from Microsoft's official site if necessary.\n3. **Run Robocopy Command**: Use a command like the following to sync your source directory (`C:\\Source`) to a destination directory (`D:\\Destination`), excluding certain files or folders:\n\n   ```cmd\n   robocopy \"C:\\Source\" \"D:\\Destination\" /MIR /XD \"ExcludedFolder1\" \"ExcludedFolder2\" /XF \"ExcludedFile.txt\"\n   ```\n\n   - `/MIR`: Mirrors the directory structure, deleting extra files from the destination.\n   - `/XD`: Excludes directories by name.\n   - `/XF`: Excludes specific files.\n\n### Using Beyond Compare\n\n1. **Install Beyond Compare**: Download and install Beyond Compare from its official website.\n2. **Open Beyond Compare** and select \"Compare Directories\" or \"Synchronize Directories\".\n3. **Set Up Synchronization**:\n   - In the left pane, navigate to your source directory (`C:\\Source`).\n   - In the right pane, navigate to your destination directory (`D:\\Destination`).\n4. **Configure Exclusions**:\n   - Click on `Options`, then `Advanced`.\n   - Go to the `Synchronize` tab and check \"Exclude\".\n   - Add specific files or folders by clicking the plus icon next to \"Patterns\".\n5. **Start Synchronization**: After setting up, click `Sync Now`.\n\n### Additional Tips\n\n- **Scheduling Syncs**: Both Robocopy and Beyond Compare allow scheduling syncs via Task Scheduler.\n- **Monitoring Changes**: Robocopy can generate logs with `/LOG` switch; Beyond Compare has real-time synchronization that updates as changes occur.\n\nBy following these steps, you can effectively manage complex file tree synchronizations while excluding unwanted files or directories.",
+      "answer_tokens": {
+        "in": 52,
+        "out": 473
+      },
+      "recovered_intent": "The questioner wanted to know how to synchronize file trees on a Windows system to a local hard drive, specifically focusing on methods for handling complex exclusions of files and folders during the synchronization process. They were likely interested in learning about tools like Robocopy and Beyond Compare, their respective functionalities, command-line syntax (for Robocopy), and graphical interface options (for Beyond Compare). Additionally, they may have been interested in tips for scheduling synchronizations and monitoring changes during the process.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "score": 0.7,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          },
+          {
+            "facet": 5,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.3,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          },
+          {
+            "facet": 5,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5876,
+        "cos_intent_prompt": 0.761,
+        "source_mix": {
+          "arxiv": 0.438,
+          "wikipedia": 0.125,
+          "eli5": 0.438,
+          "social": 0.0
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "The contents of the folders are 0 bytes of data (no contents). It's like saying a real-life box cont"
+          },
+          {
+            "source": "eli5",
+            "text": "Imagine your hard drive as a giant wall, like the Great Wall of China. Now imagine that your files a"
+          },
+          {
+            "source": "eli5",
+            "text": "Think of a hard drive as an encyclopedia, and the files as entries in that encyclopedia."
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "Describe methods for synchronizing Windows file trees to a local hard drive while implementing intricate exclusion rules",
+      "overhead_tokens": 28,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask about the same process of syncing file trees with exclusions, just with slightly different wording.",
+        "cos_prompts": 0.9177
+      },
+      "answer": "To synchronize Windows file trees with a local hard drive using intricate exclusion rules, you can utilize tools like Robocopy (built-in to Windows), or third-party software such as SyncBack, Beyond Compare, or GoodSync. Below are detailed steps for using each tool:\n\n### Using Robocopy\n\nRobocopy is included in the Windows Resource Kit and offers advanced options for file synchronization.\n\n1. **Open Command Prompt**: Press `Win + R`, type `cmd`, and press Enter.\n2. **Run Robocopy**:\n   ```shell\n   robocopy C:\\source D:\\destination /MIR /XD excluded_directory1 excluded_directory2 /XF filename1 filename2\n   ```\n   - `/MIR`: Mirrors the directory structure, creating missing directories as needed, and deletes files that are no longer present in the source.\n   - `/XD`: Excludes specific directories. You can include multiple paths by separating them with spaces.\n   - `/XF`: Excludes specific files. You can include multiple file names or patterns by separating them with spaces.\n\n### Using SyncBack\n\nSyncBack is a user-friendly, third-party software that supports intricate exclusion rules and more advanced features.\n\n1. **Install SyncBack**: Download and install the latest version from their official website.\n2. **Create a New Profile**:\n   - Launch SyncBack and click on \"New\" to create a new profile.\n3. **Configure Source and Destination**:\n   - Set the source directory as `C:\\source` and the destination as `D:\\destination`.\n4. **Set Synchronization Options**:\n   - Choose the type of synchronization (e.g., Mirror, Update).\n5. **Apply Exclusion Rules**:\n   - Navigate to the \"Exclusions\" tab.\n   - Use the \"Add\" button to add exclusion rules such as specific directories or files.\n   - You can use wildcards and patterns in your exclusions.\n\n### Using Beyond Compare\n\nBeyond Compare supports visual file synchronization with detailed filtering options.\n\n1. **Install Beyond Compare**: Download and install it from their official site.\n2. **Create a New Synchronization**:\n   - Launch the application and select \"Synchronize\".\n3. **Set Directories**:\n   - Set the left directory as `C:\\source` and the right directory as `D:\\destination`.\n4. **Apply Exclusion Rules**:\n   - Use the exclusion rules in the \"Exclusions\" section.\n   - You can define patterns to include or exclude files.\n\n### Using GoodSync\n\nGoodSync offers a visual interface for complex synchronization tasks including intricate exclusions.\n\n1. **Install GoodSync**: Download and install from their official website.\n2. **Create a New Job**:\n   - Launch GoodSync, click on \"New Job\", and choose the type of job (e.g., Synchronize).\n3. **Configure Directories**:\n   - Set the source directory as `C:\\source` and the destination as `D:\\destination`.\n4. **Apply Exclusion Rules**:\n   - Go to the \"Exclusions\" tab.\n   - Add patterns for files or directories you want to exclude.\n\nEach of these tools allows for robust configuration, enabling precise control over which files are synchronized while excluding others based on complex rules and patterns.",
+      "answer_tokens": {
+        "in": 54,
+        "out": 670
+      },
+      "recovered_intent": "The asker wanted to know how to synchronize Windows file trees with a local hard drive using intricate exclusion rules. They were likely interested in learning about different tools available for this task (both built-in like Robocopy and third-party options such as SyncBack, Beyond Compare, and GoodSync), the specific steps involved in using each tool, and the various options and parameters these tools offer for defining complex exclusion rules based on directories or file names. The asker likely desired a detailed guide covering the setup and configuration of each tool to achieve precise control over the synchronization process.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "score": 0.7,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          },
+          {
+            "facet": 5,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          },
+          {
+            "facet": 5,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5605,
+        "cos_intent_prompt": 0.7376,
+        "source_mix": {
+          "arxiv": 0.5,
+          "wikipedia": 0.062,
+          "eli5": 0.375,
+          "social": 0.062
+        },
+        "overlap_vs_A": 0.625,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Imagine your hard drive as a giant wall, like the Great Wall of China. Now imagine that your files a"
+          },
+          {
+            "source": "eli5",
+            "text": "Think of a hard drive as an encyclopedia, and the files as entries in that encyclopedia."
+          },
+          {
+            "source": "arxiv",
+            "text": "On-line chain partition is a two-player game between Spoiler and Algorithm. Spoiler presents a parti"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "One-way sync directory trees from multiple external hard drives on Windows to an internal external hard drive for backup, excluding redundant files with minimal effort.",
+      "noop": false,
+      "overhead_tokens": 99,
+      "answer": "To achieve one-way synchronization of directory trees from multiple external hard drives onto an internal external hard drive while minimizing redundancy and effort in a Windows environment, you can use tools like \"SyncToy\" by Microsoft or third-party software such as \"TeraCopy\" combined with custom scripting.\n\n### Using SyncToy:\n1. **Download and Install**: Download SyncToy from the official Microsoft website.\n2. **Create a Profile**:\n   - Open SyncToy and create a new profile for your backup task.\n   - Add the source directories (multiple external hard drives) as sources and set the destination to the internal external drive.\n3. **Configure One-Way Synchronization**:\n   - Ensure that \"One-way synchronization\" is selected in the profile settings to avoid overwriting files on the source.\n4. **Exclude Redundant Files**:\n   - Use the \"Exclude\" function in SyncToy to exclude specific file types or directories you do not want to back up.\n5. **Run the Profile**:\n   - Run the synchronization manually or set it as a scheduled task using Windows Task Scheduler.\n\n### Using TeraCopy and Custom Scripts:\n1. **Install TeraCopy**: Download and install TeraCopy from its official website.\n2. **Create Batch Files for Each External Drive**:\n   ```batch\n   @echo off\n   teracopy.exe \"C:\\Path\\To\\ExternalDrive\" \"D:\\Backup\\\" /q /r /e\n   ```\n3. **Exclude Redundant Files**:\n   - Use the `/x` parameter in TeraCopy to exclude files, e.g., `teracopy.exe \"source\" \"destination\" /x \"*.log\"`.\n\n4. **Set Up Scheduled Tasks**:\n   - Open Task Scheduler and create a new task for each batch file.\n   - Set the trigger (e.g., daily at night) and ensure it runs whether user is logged on or not.\n\n### Using Third-Party Software like Robocopy:\n1. **Install Robocopy**: It's already included in Windows, but ensure you have administrative rights to use its advanced features.\n2. **Run Command Prompt as Administrator**.\n3. **Execute the Following Command for Each External Drive**:\n   ```cmd\n   robocopy \"C:\\Path\\To\\ExternalDrive\" \"D:\\Backup\\\" /MIR /XD \"Path\\To\\ExcludedDir\" /XF \"*.log\"\n   ```\n4. **Set Up Scheduled Tasks**: Use Task Scheduler to automate the process.\n\nBy following these steps, you can efficiently manage one-way synchronization of multiple external hard drives onto an internal drive with minimal effort and redundancy management.",
+      "answer_tokens": {
+        "in": 64,
+        "out": 544
+      },
+      "recovered_intent": "The asker wanted to know how to synchronize data from multiple external hard drives to a single internal external hard drive in a Windows environment, specifically focusing on methods for achieving one-way synchronization to avoid overwriting files on the source drives. They were interested in tools and techniques that minimize redundancy by excluding specific file types or directories, and they desired information on scheduling these synchronization tasks using built-in Windows utilities like Task Scheduler.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "score": 0.7,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          },
+          {
+            "facet": 5,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.3,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          },
+          {
+            "facet": 5,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.737,
+        "cos_intent_prompt": 0.9896,
+        "source_mix": {
+          "arxiv": 0.125,
+          "wikipedia": 0.25,
+          "eli5": 0.562,
+          "social": 0.062
+        },
+        "overlap_vs_A": 0.562,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "Your computer can only create and allocate files on a device just so fast, so if you have lots of li"
+          },
+          {
+            "source": "eli5",
+            "text": "Think of a hard drive as an encyclopedia, and the files as entries in that encyclopedia."
+          },
+          {
+            "source": "eli5",
+            "text": "Imagine your hard drive as a giant wall, like the Great Wall of China. Now imagine that your files a"
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.3,
+    "severity": 3.0,
+    "mirror": 3.0,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.5,
+    "revise_c": 2.6,
+    "answers": 24.9,
+    "deduce": 11.4,
+    "judge_answers": 9.3,
+    "judge_recovered": 8.6,
+    "geometry": 0.1
+  }
+}

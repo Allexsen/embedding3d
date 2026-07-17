@@ -1,0 +1,310 @@
+{
+  "case_id": "case-2020-workplace-896",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How can I determine a reasonable salary to ask for?",
+  "intent": "I'm looking for a comprehensive answer to determine a reasonable salary to ask for, including various factors that affect the salary rate and how they can be considered.",
+  "facets": [
+    "Provides a method to calculate the average salary rate for my position",
+    "Explains which statistics (location, skillset, experience, education) impact the sort of salary I can ask for",
+    "Addresses whether employment benefits play a role in determining the salary amount I should ask for"
+  ],
+  "severity": 0.8333,
+  "prompt_conveys": {
+    "per_facet": [
+      0.0,
+      0.5,
+      0.0
+    ],
+    "score": 0.1667,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "no"
+      },
+      {
+        "facet": 2,
+        "verdict": "partial"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for advice on how to establish a suitable salary expectation during a negotiation or job application process.",
+    "foreclosed": "",
+    "tokens_out": 35
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How can I determine a reasonable salary to ask for?",
+      "overhead_tokens": 0,
+      "answer": "Determining a reasonable salary involves several key steps that help ensure you're asking for a fair wage aligned with industry standards, your experience, and the specific role:\n\n1. **Research Industry Standards**: Use resources like Glassdoor, LinkedIn Salary Insights, PayScale, and Bureau of Labor Statistics to gather data on salaries in your field or region. Look at job titles similar to the one you are applying for to see what range is typical.\n\n2. **Evaluate Your Experience and Skills**: Consider your education level, years of experience, specific skills, certifications, and any unique qualifications that set you apart from other candidates. More experienced professionals with specialized skills can often command higher salaries.\n\n3. **Assess the Company’s Financial Health**: Larger companies or those in growth phases are more likely to offer competitive salaries compared to smaller startups. Research the company's financial status, market position, and recent performance through their annual reports, press releases, and news articles.\n\n4. **Consider Location and Cost of Living**: Salaries can vary significantly based on where you live. A higher cost of living in urban areas may justify a higher salary than in rural or suburban locations. Use cost-of-living calculators to understand the true value of your requested salary.\n\n5. **Negotiate Based on Value**: During negotiations, focus on how you add value and contribute to the company's success. Prepare examples of achievements, projects, and results that demonstrate your worth. Highlight any unique skills or experiences that can benefit the employer beyond just a job description.\n\n6. **Set Realistic Expectations**: While it’s important to aim for what you believe is fair based on market research, setting unrealistic salary expectations can harm your negotiation process. Be prepared to discuss why you feel your requested amount is appropriate and be willing to compromise if necessary.\n\nBy carefully considering these factors, you can set a reasonable salary range that reflects both the value you bring and the current market standards for similar roles in your area.",
+      "answer_tokens": {
+        "in": 47,
+        "out": 394
+      },
+      "recovered_intent": "The questioner likely wanted to know how to determine a reasonable salary for themselves when applying for a job. They were interested in understanding the steps involved, including researching industry standards, evaluating their own experience and skills, considering the company's financial health, factoring in location and cost of living, negotiating based on value, and setting realistic expectations.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.1667,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5386,
+        "cos_intent_prompt": 0.7694,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.188,
+          "social": 0.812
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "social",
+            "text": "Having trouble coming up with a number for how much i should save every month."
+          },
+          {
+            "source": "social",
+            "text": "I was just wondering how much money I should be spending, saving, putting into retirement, etc."
+          },
+          {
+            "source": "social",
+            "text": "I recently started a job as a server in a moderately upscale restaurant. Although I get an hourly wa"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What are some methods to find an appropriate salary range when negotiating?",
+      "overhead_tokens": 22,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask about finding or determining a suitable salary, with minor rephrasing.",
+        "cos_prompts": 0.7505
+      },
+      "answer": "When negotiating for a salary, it's crucial to have a well-researched idea of the appropriate range based on industry standards, location, and job role. Here are several effective methods to determine this range:\n\n1. **Industry Standards**: Research average salaries for your specific job title within your sector. Websites like Glassdoor, Payscale, and Indeed offer salary data by position and location. Professional associations and networking platforms can also provide insights into typical compensation packages.\n\n2. **Job Description Analysis**: Look at the job listings you are interested in to understand what qualifications and experience levels are being sought. This helps set realistic expectations for your own value proposition.\n\n3. **Local Cost of Living Factors**: Salaries vary significantly based on geographic location due to differences in cost of living, local economies, and industry norms. Websites like Numbeo can provide a general idea of the cost of living in different cities or regions.\n\n4. **Previous Salary Information**: If you are currently employed, consider your current salary as a baseline. Research how much similar roles pay within your company to inform discussions with future employers.\n\n5. **Negotiation Skills and Leverage**: Understanding market conditions can give you leverage during negotiations. Highlighting in-demand skills or unique qualifications that make you stand out from other candidates can also support higher salary expectations.\n\n6. **Budget Considerations**: Determine your personal financial needs, including rent, utilities, transportation costs, and savings goals to set a minimum acceptable salary range.\n\n7. **Consult with Career Advisors**: Some career development centers or professional organizations offer advice on salary negotiation strategies and might have access to more detailed market data.\n\nBy combining these methods, you can establish a solid foundation for discussing your desired compensation package, ensuring it aligns with industry standards while considering personal financial goals.",
+      "answer_tokens": {
+        "in": 49,
+        "out": 359
+      },
+      "recovered_intent": "The asker wanted to know how to determine an appropriate salary range when negotiating for a job. They were interested in learning about various methods for researching industry standards, analyzing job descriptions, considering local cost of living factors, leveraging previous salary information, understanding negotiation skills and market conditions, and setting personal financial goals as part of the process. The text aims to provide a comprehensive guide on how to approach salary negotiations effectively.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.1667,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6973,
+        "cos_intent_prompt": 0.6015,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.312,
+          "social": 0.688
+        },
+        "overlap_vs_A": 0.688,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I am fairly new out of college and just starting my career and I don't know much about how to budget"
+          },
+          {
+            "source": "social",
+            "text": "Having trouble coming up with a number for how much i should save every month."
+          },
+          {
+            "source": "social",
+            "text": "I was looking online for some ideas on how to put together a budget and have come up empty handed."
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "What are all the key factors I should consider when determining a reasonable salary, and how can I weigh them to arrive at a specific number?",
+      "noop": false,
+      "overhead_tokens": 74,
+      "answer": "When determining a reasonable salary, several key factors must be considered to ensure that the compensation aligns with industry standards, job requirements, and the company's financial situation. Here are the primary considerations:\n\n1. **Job Description and Skills Required**: Analyze the specific duties, qualifications, and experience needed for the role. Salaries typically vary based on the complexity of tasks, level of responsibility, and required expertise.\n\n2. **Industry Standards**: Research salary benchmarks within your industry using resources like salary surveys from professional associations or services such as Glassdoor, Payscale, and LinkedIn Salary Insights. These provide average salaries by job title and location to ensure competitive pay.\n\n3. **Company Size and Financial Health**: Larger companies with more financial resources often offer higher salaries compared to smaller firms. Additionally, the company's overall financial health impacts its ability to offer competitive wages.\n\n4. **Location**: Geographic factors significantly influence salary levels. Urban areas generally command higher salaries due to cost of living differences. Consider local economic conditions, housing costs, and regional wage trends.\n\n5. **Experience and Education Level**: Higher education credentials and years of relevant experience can justify a higher salary. Evaluate the candidate’s educational background and career history against industry norms.\n\n6. **Market Conditions**: Economic climate influences overall salary levels. During boom periods, companies may be more willing to offer premium salaries compared to downturns.\n\n7. **Industry Growth Prospects**: Industries with high growth potential often offer competitive compensation packages to attract and retain talent.\n\n8. **Performance Metrics**: For roles where performance can directly impact financial outcomes (e.g., sales positions), consider setting salary based on achievable performance targets linked to company objectives.\n\nTo weigh these factors, start by identifying the most critical ones for your specific position. For example, in tech startups, market conditions and potential growth might be paramount, while in stable, mature industries like finance, job description and industry standards could carry more weight.\n\nOnce identified, assign relative importance based on how each factor impacts the overall value proposition of the role to both the employer and employee. Utilize tools like weighted scoring systems or matrix models to combine these factors into a final salary range that reflects market realities and aligns with organizational goals.\n\nBy carefully considering and balancing these key factors, you can determine a reasonable salary that is fair for all parties involved.",
+      "answer_tokens": {
+        "in": 64,
+        "out": 466
+      },
+      "recovered_intent": "The questioner wanted to understand how to determine a reasonable salary for a position. They sought information on the various factors to consider when setting compensation, including job requirements, industry standards, company size and financial health, location, experience level, market conditions, industry growth prospects, and performance metrics.  They also inquired about methods for weighing these factors and arriving at a final salary range that is both competitive and aligned with organizational goals.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.666,
+        "cos_intent_prompt": 0.8149,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.188,
+          "social": 0.812
+        },
+        "overlap_vs_A": 0.875,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I was just wondering how much money I should be spending, saving, putting into retirement, etc."
+          },
+          {
+            "source": "social",
+            "text": "I am fairly new out of college and just starting my career and I don't know much about how to budget"
+          },
+          {
+            "source": "social",
+            "text": "Having trouble coming up with a number for how much i should save every month."
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.2,
+    "severity": 2.6,
+    "mirror": 2.7,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.5,
+    "revise_c": 2.6,
+    "answers": 17.5,
+    "deduce": 10.3,
+    "judge_answers": 8.2,
+    "judge_recovered": 7.8,
+    "geometry": 0.1
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "case_id": "case-2027-cooking-56418",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How can I tell the difference between a rabbit and a cat?",
+  "intent": "I need to identify whether I'm handling rabbit or cat meat in my shipment, as they resemble each other after skinning and processing.",
+  "facets": [
+    "Provides a clear method for distinguishing between rabbit and cat anatomy post-processing",
+    "Mentions any relevant differences in skeletal structure that can be used for identification",
+    "Addresses the possibility of mislabeled or adulterated products",
+    "Names a concrete, practical step to verify the authenticity of my shipment"
+  ],
+  "severity": 1.0,
+  "prompt_conveys": {
+    "per_facet": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.0,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "no"
+      },
+      {
+        "facet": 2,
+        "no verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for information on how to distinguish visually between rabbits and cats.",
+    "foreclosed": "",
+    "tokens_out": 29
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How can I tell the difference between a rabbit and a cat?",
+      "overhead_tokens": 0,
+      "answer": "To distinguish between a rabbit and a cat, consider several key physical and behavioral characteristics:\n\n1. **Size**: Rabbits are generally larger than domestic cats, with an average adult rabbit weighing from 2 to 9 pounds (0.9-4 kg), while cats typically range from about 6 to 35 pounds (2.7-16 kg).\n\n2. **Body Shape and Ears**:\n   - **Rabbits**: Have long, floppy ears that can be several inches in length. Their body is more cylindrical with a long hind end.\n   - **Cats**: Generally have shorter, pointed ears that are less than 3 inches (7.6 cm) tall. The body is typically more streamlined and cat-like.\n\n3. **Legs**:\n   - **Rabbits**: Have longer back legs which help them hop and jump, often making their hindquarters appear higher than the front.\n   - **Cats**: Legs are usually of equal length with a balanced stance that allows for agile movement on all fours.\n\n4. **Tail**:\n   - **Rabbits**: Tails are short and round, often hidden under the body when sitting or standing.\n   - **Cats**: Tails can vary in shape but are typically longer relative to their body size and more visible.\n\n5. **Behavior**:\n   - **Rabbits**: Are herbivores, eating primarily hay, vegetables, and commercial rabbit food. They often exhibit behaviors like burrowing and thumping with their hind legs when alarmed.\n   - **Cats**: Carnivorous, they eat meat-based cat food or raw meats. Cats are known for grooming themselves extensively, hunting small prey, and purring.\n\n6. **Feeding Habit**:\n   - **Rabbits**: Often have a constant gnawing on hay to keep their teeth at the right length.\n   - **Cats**: Have more controlled eating habits, often sitting or lying down when eating.\n\nBy observing these differences in size, body shape, ears, legs, tail, and feeding behavior, you can easily identify whether an animal is a rabbit or a cat.",
+      "answer_tokens": {
+        "in": 49,
+        "out": 438
+      },
+      "recovered_intent": "The questioner wanted to know how to differentiate between rabbits and cats. They specifically sought information on physical characteristics like size, body shape, ears, legs, and tails, as well as behavioral differences such as diet, typical activities, and grooming habits.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          0.5,
+          0.0,
+          0.0
+        ],
+        "score": 0.125,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5915,
+        "cos_intent_prompt": 0.6899,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.062,
+          "eli5": 0.812,
+          "social": 0.125
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I've come across some rabbit I want to try cooking. I'm planning on doing it with a mustard sauce an"
+          },
+          {
+            "source": "eli5",
+            "text": "ELI5: Cats have really poor vision for details, everything they look at is fuzzy and doesn't have as"
+          },
+          {
+            "source": "eli5",
+            "text": "One huge difference is the type of color that you're seeing. Mammals mostly have pigmented colors - "
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What are distinguishing features between a rabbit and a cat?",
+      "overhead_tokens": 21,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask for the same information, just phrased slightly differently.",
+        "cos_prompts": 0.8654
+      },
+      "answer": "Rabbits and cats have several distinct physical and behavioral characteristics that set them apart:\n\n1. **Physical Appearance**:\n   - **Body Structure**: Rabbits generally have a long, slender body with large ears and powerful hind legs, which they use for hopping. Their tails are short or sometimes hidden beneath their fur. Cats, on the other hand, have a more compact, muscular build, with shorter legs compared to their bodies, allowing them to be agile climbers.\n   - **Size**: Rabbits can grow quite large, especially breeds like Flemish Giants, which can weigh up to 20 pounds or more. Domestic cats usually range from 5 to 15 pounds.\n   - **Ears and Tail**: Rabbit ears are large in proportion to their head and often stand upright. Their tails are small and round. Cats have smaller, tufted ears that can be perked up or flattened, and their tails vary in shape depending on the breed, from straight to curled.\n\n2. **Behavior**:\n   - **Diet**: Rabbits are herbivores, eating primarily hay, vegetables, and a small amount of pellets designed for rabbits. Cats are obligate carnivores, requiring animal-based protein as part of their diet.\n   - **Social Behavior**: Domesticated rabbits can be kept in pairs or groups if they get along, but many prefer to live alone due to their territorial nature. They are generally calm and docile when handled gently. Cats are often more independent; while some breeds form strong bonds with humans, others may be less attached.\n   - **Activity Level**: Rabbits require larger spaces for exercise and activity than cats do. They spend much of their time hopping around and burrowing. Cats are more active in short bursts, typically climbing or stalking toys or prey.\n\n3. **Health Considerations**:\n   - **Respiratory Health**: Some rabbit breeds can suffer from respiratory issues due to their long ears or small nasal passages.\n   - **Dental Care**: Rabbits have continuously growing teeth and require a diet rich in fiber to keep them at the correct length, which is crucial for overall health.\n\nThese differences highlight how rabbits and cats are adapted to different lifestyles and environments, reflecting their distinct evolutionary paths.",
+      "answer_tokens": {
+        "in": 47,
+        "out": 455
+      },
+      "recovered_intent": "The questioner wanted to understand the key distinctions between rabbits and cats, encompassing their physical attributes (body structure, size, ears, tail), behavioral patterns (diet, social interactions, activity levels), and health considerations specific to each species. They were likely interested in a comparative analysis that illuminates how these differences reflect the unique evolutionary adaptations of rabbits and cats for their respective lifestyles and environments.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "score": 0.25,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          0.5,
+          0.0,
+          0.0
+        ],
+        "score": 0.125,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5282,
+        "cos_intent_prompt": 0.6449,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.125,
+          "eli5": 0.688,
+          "social": 0.188
+        },
+        "overlap_vs_A": 0.625,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "ELI5: Cats have really poor vision for details, everything they look at is fuzzy and doesn't have as"
+          },
+          {
+            "source": "social",
+            "text": "I've come across some rabbit I want to try cooking. I'm planning on doing it with a mustard sauce an"
+          },
+          {
+            "source": "eli5",
+            "text": "One huge difference is the type of color that you're seeing. Mammals mostly have pigmented colors - "
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "How can I accurately identify whether a processed meat product is rabbit or cat, given their similar appearance?",
+      "noop": false,
+      "overhead_tokens": 60,
+      "answer": "Accurately identifying whether a processed meat product is made from rabbit or cat based on appearance alone is challenging due to the similarities in appearance between these animals. However, there are several methods and considerations that can aid in making an informed determination:\n\n1. **Protein Composition Analysis**: The most reliable way to determine the source of the meat is through laboratory analysis using mass spectrometry or DNA testing. These techniques can identify specific proteins or genetic markers unique to rabbit or cat, providing a definitive answer.\n\n2. **Production Origin and Regulations**: In some countries, there are regulations regarding the labeling of meat products. If the product is labeled as \"cat meat\" or \"rabbit meat,\" it should be accurate unless fraudulently labeled. Checking for proper labeling can provide an initial indication, though this may not always be reliable.\n\n3. **Sensory Evaluation**: Experienced food scientists and veterinarians might attempt to differentiate between rabbit and cat based on the texture, fat content, and other sensory characteristics of the meat. However, these methods are less accurate than chemical or genetic testing.\n\n4. **Packing Information**: Some products may include additional information about the ingredients or origin that could indicate whether the meat is from a rabbit or a cat. Carefully reading the label can provide some clues.\n\n5. **Ethical and Legal Considerations**: The use of cat meat in processed foods without proper labeling is ethically concerning and often illegal in many countries due to the risks associated with disease transmission, cruelty issues, and consumer protection laws. Reporting suspicious products to relevant authorities could help enforce these regulations.\n\nIn summary, while appearance can be a starting point for preliminary identification, accurate differentiation between rabbit and cat meat typically requires laboratory testing or strict adherence to regulatory labeling practices.",
+      "answer_tokens": {
+        "in": 56,
+        "out": 352
+      },
+      "recovered_intent": "The questioner likely wanted to know how to reliably distinguish between processed meat products made from rabbit and cat, given the visual similarities between these animals. They were interested in various methods of identification, including scientific analysis (protein composition, DNA testing), production origin and labeling regulations, sensory evaluation by experts, information on product packaging, and ethical/legal considerations surrounding the use of cat meat in food.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.5,
+          0.0,
+          0.5
+        ],
+        "score": 0.5,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "partial"
+          },
+          {
+            "facet": 3,
+            "verdict": "no"
+          },
+          {
+            "facet": 4,
+            "verdict": "partial"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.5,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "partial"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "yes"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6884,
+        "cos_intent_prompt": 0.8633,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.25,
+          "social": 0.75
+        },
+        "overlap_vs_A": 0.25,
+        "top3": [
+          {
+            "source": "social",
+            "text": "I've come across some rabbit I want to try cooking. I'm planning on doing it with a mustard sauce an"
+          },
+          {
+            "source": "eli5",
+            "text": "Let's say you have two pieces of chocolate. You know that one of them has caramel inside and one has"
+          },
+          {
+            "source": "social",
+            "text": "Okay so my mother gave me a rabbit her friend raised and I'm a little freaked out at the thought of "
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.2,
+    "severity": 2.9,
+    "mirror": 2.6,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.5,
+    "revise_c": 2.5,
+    "answers": 18.2,
+    "deduce": 10.0,
+    "judge_answers": 8.4,
+    "judge_recovered": 8.2,
+    "geometry": 0.1
+  }
+}

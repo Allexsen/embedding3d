@@ -1,0 +1,346 @@
+{
+  "case_id": "case-1001-superuser-1911349",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How to find a CLSID for an application to open it with AHK script?",
+  "intent": "Find the CLSID for a specific application (Discord) so it can be used in an AutoHotkey script to open the app.",
+  "facets": [
+    "Provides the location where CLSIDs are typically documented or listed for applications",
+    "Includes the steps to find the CLSID for Discord specifically",
+    "Names a concrete resource (e.g., official documentation, registry, database) that contains the CLSID",
+    "Includes how to use the found CLSID in an AutoHotkey script"
+  ],
+  "severity": 0.625,
+  "prompt_conveys": {
+    "per_facet": [
+      1.0,
+      0.0,
+      0.5,
+      0.0
+    ],
+    "score": 0.375,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "yes"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "partial"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for instructions on how to determine the CLSID (Class Identifier) associated with a specific application, so that this CLSID can be used in an AutoHotkey (AHK) script to open that application.",
+    "foreclosed": "",
+    "tokens_out": 59
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How to find a CLSID for an application to open it with AHK script?",
+      "overhead_tokens": 0,
+      "answer": "To find a CLSID (Class Identifier) for an application that you want to open using AutoHotkey (AHK), follow these steps:\n\n1. **Identify the Application**: Determine which specific program or feature of the application you need to launch.\n\n2. **Find the CLSID**:\n   - **Windows Registry**: CLSIDs are stored in the Windows registry. You can use a tool like Regedit to search for CLSIDs related to your application.\n     - Open `Regedit` (Run > regedit).\n     - Navigate through HKEY_CLASSES_ROOT, looking for entries that match or contain parts of your application's name.\n   - **Object Picker**: If you have the application installed and need a specific command or feature, you can use Windows' Object Picker to find its CLSID:\n     - Press `Win + R`, type `shell:AppsFolder`, then press Enter. This opens the Apps folder where many CLSIDs are available.\n     - Right-click on an app, select \"Properties\", and look at the \"Open with\" section for CLSIDs.\n\n3. **Using AutoHotkey**:\n   - Once you have the CLSID, you can use it in your AHK script to launch the application. Here's a basic example:\n     ```ahk\n     ; Example of launching an application using its CLSID\n     Run, {CLSID}, , \"C:\\path\\to\\your\\application.exe\"\n     ```\n   - Replace `{CLSID}` with the actual CLSID you found and adjust any paths or arguments as needed.\n\n4. **Alternative Methods**:\n   - **PowerShell**: You can also use PowerShell to find CLSIDs. For example:\n     ```powershell\n     Get-ChildItem \"HKCR:\\*\\\" | Where-Object { $_.Name -like \"*\\shell\\open\\command\" } | Select-Object Name, PSChildName\n     ```\n   - **Apps.exe**: Some applications provide their own utilities or methods to find CLSIDs.\n\nBy following these steps, you should be able to identify the correct CLSID for your application and integrate it into an AHK script effectively.",
+      "answer_tokens": {
+        "in": 53,
+        "out": 444
+      },
+      "recovered_intent": "The questioner wanted to know how to find a CLSID (Class Identifier) for an application so they could use it in their AutoHotkey (AHK) scripts to launch the application. They specifically asked about methods for finding CLSIDs using the Windows Registry, the Object Picker, and PowerShell, as well as alternative methods like using applications' own utilities. The text also provides a basic example of how to use a found CLSID in an AHK script.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6415,
+        "cos_intent_prompt": 0.7268,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.562,
+          "eli5": 0.438,
+          "social": 0.0
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "The.Exe just contains the compiled code, which is pretty hard to reverse engineer into source code."
+          },
+          {
+            "source": "eli5",
+            "text": "It depends. You can do it to Windows key or a GUID which is a bit more complex."
+          },
+          {
+            "source": "wikipedia",
+            "text": "The Academy for the Arts, Science and Technology (shortened as AAST or The Academy) is a branch scho"
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What is the process for discovering a CLSID for an application in order to open it using an AutoHotkey script?",
+      "overhead_tokens": 34,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask about finding a CLSID for opening an app with AHK script, just rephrased slightly.",
+        "cos_prompts": 0.8534
+      },
+      "answer": "To discover a CLSID (Class Identifier) for an application and use it within an AutoHotkey script, you need to follow these steps:\n\n1. **Identify the Application**: Determine which specific application's functionality you want to automate.\n\n2. **Locate the EXE File**: Find the executable file associated with the application. This is typically in the installation directory of the software or in a common system folder like `C:\\Program Files`.\n\n3. **Use Regedit to Find CLSID**:\n   - Open the Registry Editor by pressing `Win + R`, typing `regedit`, and hitting Enter.\n   - Navigate through the registry tree to find the appropriate CLSID under `HKEY_CLASSES_ROOT`. For example, for Microsoft Word, you would look at `HKEY_CLASSES_ROOT\\Word.Document.8`.\n\n4. **Use RegEx to Extract CLSID**:\n   - You can use a Registry Editor that supports search by value (like WinShell or Advanced REG) to find the EXE path associated with your application.\n   - Alternatively, you can manually navigate to the `shell` key under the appropriate CLSID and look for keys like `Open`, `EditInPlace`, etc., which often contain the `command` that executes the file.\n\n5. **Construct the AutoHotkey Command**:\n   - Once you have identified the command string (e.g., `\"C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE\" %1`), you can use this in your AutoHotkey script.\n   - Use the `Run` function in AutoHotkey to execute it. For example:\n     ```ahk\n     ; Example AutoHotkey command\n     Run, C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE %1\n     ```\n\n6. **Modify for Specific Tasks**: Depending on the application and your needs, you might want to add additional parameters or modify the script further. For example, if you want to open a specific document type, you can pass arguments like `C:\\path\\to\\yourfile.docx` as `%1`.\n\nBy following these steps, you can effectively discover and use CLSIDs in AutoHotkey scripts for automating applications.",
+      "answer_tokens": {
+        "in": 60,
+        "out": 462
+      },
+      "recovered_intent": "The questioner wanted to learn how to find a CLSID (Class Identifier) for an application and then incorporate it into an AutoHotkey script to automate tasks related to that application. They specifically sought guidance on identifying the application, locating its executable file, using Regedit to find the CLSID within the registry, extracting the command string associated with the application, constructing an AutoHotkey command using this string, and potentially modifying the script for specific tasks like opening particular document types.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5955,
+        "cos_intent_prompt": 0.7924,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.312,
+          "eli5": 0.688,
+          "social": 0.0
+        },
+        "overlap_vs_A": 0.5,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "It depends. You can do it to Windows key or a GUID which is a bit more complex."
+          },
+          {
+            "source": "eli5",
+            "text": "The.Exe just contains the compiled code, which is pretty hard to reverse engineer into source code."
+          },
+          {
+            "source": "eli5",
+            "text": "assembler, or machine code. simplified, you might have a 40 lines of code in assembler that only job"
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "What is the CLSID for Discord, and how do I use it in an AutoHotkey script to open the app?",
+      "noop": false,
+      "overhead_tokens": 95,
+      "answer": "The CLSID (Class Identifier) for Discord can be found by looking up its registry entry or using the `reg query` command in Command Prompt. However, for most practical purposes, you don't need to know the specific CLSID to use it with AutoHotkey.\n\nTo open Discord via an AutoHotkey script, you can directly call the Discord executable file path if you have it stored locally on your system or by using its application ID if you're running the version from Steam. Here’s how you can do it:\n\n1. **Using Executable Path:**\n   If you know where Discord is installed (e.g., `C:\\Program Files\\Discord\\app-1.0.9.57\\Discord.exe`), you can use:\n   ```autohotkey\n   Run, C:\\Program Files\\Discord\\app-1.0.9.57\\Discord.exe\n   ```\n\n2. **Using Steam App ID:**\n   If Discord is installed via Steam, you can use its application ID (447160 as of the latest versions) to open it:\n   ```autohotkey\n   Run, steam://rungame/447160\n   ```\n\n3. **Using CLSID with ShellExecute:**\n   While not typically necessary for simple launches, if you specifically need to use a CLSID (which is less common), you might construct something like this:\n   ```autohotkey\n   Run, shell:::{CLSID}, , Discord.exe\n   ```\n   Replace `{CLSID}` with the actual CLSID string value.\n\nHere's an example AutoHotkey script that uses Steam App ID to open Discord:\n\n```autohotkey\n; Open Discord using Steam App ID\nRun, steam://rungame/447160\n```\n\nTo use this script:\n1. Copy and paste the script into a text editor like Notepad.\n2. Save the file with a `.ahk` extension (e.g., `openDiscord.ahk`).\n3. Double-click the saved `.ahk` file to run it.\n\nThis will launch Discord if you have Steam installed and it is configured properly.",
+      "answer_tokens": {
+        "in": 61,
+        "out": 456
+      },
+      "recovered_intent": "The text's asker wanted to know how to open Discord using AutoHotkey scripts. They were specifically interested in different methods, including using the executable path, Steam App ID, and CLSID (though the text emphasizes that the latter is less common). The asker likely also wanted a basic example script demonstrating how to use the Steam App ID method.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          0.0,
+          1.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "no"
+          },
+          {
+            "facet": 2,
+            "verdict": "yes"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.5939,
+        "cos_intent_prompt": 0.9093,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.75,
+          "eli5": 0.25,
+          "social": 0.0
+        },
+        "overlap_vs_A": 0.188,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "It depends. You can do it to Windows key or a GUID which is a bit more complex."
+          },
+          {
+            "source": "wikipedia",
+            "text": "Dialog Control Language (DCL) is a high-level description language and interpreter within AutoCAD fo"
+          },
+          {
+            "source": "wikipedia",
+            "text": "Christian CND (CCND) is a 'Specialist Section' of CND, the Campaign for Nuclear Disarmament and has "
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 5.0,
+    "severity": 2.8,
+    "mirror": 7.7,
+    "rewrite_b": 5.8,
+    "fidelity_b": 6.8,
+    "revise_c": 2.6,
+    "answers": 24.2,
+    "deduce": 15.0,
+    "judge_answers": 11.7,
+    "judge_recovered": 8.2,
+    "geometry": 28.0
+  }
+}

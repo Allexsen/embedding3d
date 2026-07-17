@@ -1,0 +1,14 @@
+{
+  "id": "case-1015-superuser-1457335",
+  "source": "stackexchange-xy",
+  "tags": [
+    "xy-labeled"
+  ],
+  "prompt": "What is the hash for Utilman.exe",
+  "evidence": "I've a Windows 8.1 machine, and have accidentally deleted Utilman.exe. I would like to know the EXACT SHA-256 hash of this version of the file. (64-bit OS, x64 processor, Windows 8.1) If there's anymore information that you need to know, please ask. Thanks.",
+  "attribution": {
+    "url": "https://superuser.com/questions/1457335/what-is-the-hash-for-utilman-exe",
+    "author": "mekb",
+    "license": "CC BY-SA 4.0"
+  }
+}

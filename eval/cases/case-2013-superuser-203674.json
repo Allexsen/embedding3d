@@ -1,0 +1,14 @@
+{
+  "id": "case-2013-superuser-203674",
+  "source": "stackexchange-superuser",
+  "tags": [
+    "general"
+  ],
+  "prompt": "How to clear/flush the DNS cache in Google Chrome?",
+  "evidence": "As you probably know Google Chrome has its own internal DNS cache. Is there a way to clear it without having to wait for the time out or close the browser?",
+  "attribution": {
+    "url": "https://superuser.com/questions/203674/how-to-clear-flush-the-dns-cache-in-google-chrome",
+    "author": "Mee",
+    "license": "CC BY-SA 4.0"
+  }
+}

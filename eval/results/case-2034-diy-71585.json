@@ -1,0 +1,346 @@
+{
+  "case_id": "case-2034-diy-71585",
+  "config_hash": "a46c583fdf9c4384",
+  "typed_prompt": "How to prevent heavy rainwater from jumping the gutter?",
+  "intent": "Prevent heavy rainwater from overflowing gutters on a multi-story roof by addressing the concentrated flow from second floor downspouts, considering potential issues with gusher guards in snowy climates and aesthetic concerns for downspout extensions.",
+  "facets": [
+    "Addresses how to mitigate or prevent water 'jumping' over the gutter due to concentrated flow from second floor downspouts",
+    "Considers the impact of gusher guards on gutters during winter snow and ice conditions, specifically in a Michigan climate",
+    "Evaluates the aesthetic implications of extending the second floor downspout for improved water distribution",
+    "Names a standard or recommended solution for this specific issue with multi-story roof gutter management"
+  ],
+  "severity": 0.75,
+  "prompt_conveys": {
+    "per_facet": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "score": 0.25,
+    "raw": [
+      {
+        "facet": 1,
+        "verdict": "yes"
+      },
+      {
+        "facet": 2,
+        "verdict": "no"
+      },
+      {
+        "facet": 3,
+        "verdict": "no"
+      },
+      {
+        "facet": 4,
+        "verdict": "no"
+      }
+    ]
+  },
+  "mirror": {
+    "conveyed_intent": "The question asks for information or advice on methods to stop rainwater with a high volume from overflowing or flowing over the top of a gutter.",
+    "foreclosed": "",
+    "tokens_out": 41
+  },
+  "stages_done": [
+    "extract",
+    "severity",
+    "mirror",
+    "rewrite_b",
+    "fidelity_b",
+    "revise_c",
+    "answers",
+    "deduce",
+    "judge_answers",
+    "judge_recovered",
+    "geometry"
+  ],
+  "arms": {
+    "A": {
+      "prompt": "How to prevent heavy rainwater from jumping the gutter?",
+      "overhead_tokens": 0,
+      "answer": "To prevent heavy rainwater from \"jumping\" over the gutter, several effective measures can be implemented:\n\n1. **Ensure Proper Gutter Height**: Gutter systems should be installed with a slight slope (about 1/4 inch per linear foot) to ensure water flows towards the downspout without spilling over.\n\n2. **Install Downspout Extensions or Splash Blocks**: These devices direct water away from the foundation, reducing the risk of it spilling over the gutter edge during heavy rainfall. Downspout extensions can redirect water up to 10 feet away from your home, while splash blocks are typically placed closer and help break up water flow.\n\n3. **Regular Cleaning and Maintenance**: Accumulated debris in gutters can block water flow and lead to overflow. Regular cleaning every few months is essential to keep the system functioning properly.\n\n4. **Use Gutter Guards or Screen Covers**: These protect against leaves, twigs, and other debris that can clog your gutter system and impede drainage.\n\n5. **Adjust Gutters if Necessary**: If gutters are sagging due to age or improper installation, they may not be able to handle heavy water flow. Professional adjustments might be needed to ensure proper slope and attachment points.\n\n6. **Install Gutter Dividers or Baffles**: These are placed between downspouts to help distribute water more evenly across the gutter, reducing the chance of overflow.\n\n7. **Upgrade to a Larger Gutter Size**: If your home experiences frequent heavy rain and you notice consistent overflow issues, upgrading to a larger diameter gutter might be necessary.\n\n8. **Consider a Rainwater Diversion System**: For severe cases, integrating a rainwater diversion system can help manage water flow more effectively by diverting excess water away from vulnerable areas.\n\nImplementing these strategies can significantly reduce the risk of heavy rainwater jumping over your gutters and causing damage to your property.",
+      "answer_tokens": {
+        "in": 47,
+        "out": 384
+      },
+      "recovered_intent": "The questioner wanted to know how to prevent rainwater from overflowing gutters during heavy rainfall. They were interested in specific measures, such as adjusting gutter height, installing downspout extensions or splash blocks, cleaning gutters regularly, using gutter guards, adjusting sagging gutters, installing dividers or baffles, upgrading to larger gutters, and even considering a rainwater diversion system. The questioner likely sought practical solutions to protect their property from water damage caused by overflowing gutters.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.6772,
+        "cos_intent_prompt": 0.6708,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.875,
+          "social": 0.125
+        },
+        "overlap_vs_A": 1.0,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "The cloud moves. First, the cloud's (thinner) edge comes over you, and because it's thinner there's "
+          },
+          {
+            "source": "eli5",
+            "text": "Pick a spot on the ground. Imagine that a raindrop falls on that spot. Imagine that it doesn't soak "
+          },
+          {
+            "source": "eli5",
+            "text": "the water doesn't have anywhere to go. There aren't gaping holes for stuff to fall into."
+          }
+        ]
+      }
+    },
+    "B": {
+      "prompt": "What measures can be taken to keep heavy rainwater from leaping over gutters?",
+      "overhead_tokens": 25,
+      "fidelity": {
+        "same": true,
+        "note": "Both questions ask about preventing heavy rainwater from overflowing or bypassing gutters, with minor differences in wording.",
+        "cos_prompts": 0.9324
+      },
+      "answer": "To prevent heavy rainwater from leaping over gutters, several effective measures can be implemented:\n\n1. **Gutter Extension**: Installing extended gutter sections or adding downspouts closer to the edge of the roof can help manage water flow more effectively, reducing overflow.\n\n2. **Downspout Extensions and Diversion Systems**: Extending downspouts away from the foundation by at least 4-6 feet with splash blocks or using underground diversion systems can direct excess water away from your home's base, minimizing pooling and potential damage.\n\n3. **Proper Gutter Installation and Maintenance**: Ensuring that gutters are properly installed and regularly cleaned to maintain their functionality is crucial. Blocked or clogged gutters cannot efficiently carry water away from the roof edges, leading to overflow.\n\n4. **Downspout Guards and Covers**: Using guards or covers over downspouts can prevent leaves, twigs, and other debris from entering the system and causing blockages.\n\n5. **Increased Roof Overhangs**: Extending the overhang of your roof slightly can help direct water away from the gutters and towards the ground, reducing the load on them during heavy rains.\n\n6. **Water Barriers or Catch Basins**: Installing water barriers or catch basins near the base of the downspouts can temporarily hold excess water before it is slowly absorbed into the ground or directed to a more appropriate drainage system.\n\n7. **Professional Inspection and Repair Services**: Regular inspections by professionals can identify issues such as damaged gutters, loose connections, or blocked downspouts that need attention.\n\nBy implementing these strategies, you can significantly reduce the risk of heavy rainwater leaping over gutters, thereby protecting your home from potential water damage and erosion.",
+      "answer_tokens": {
+        "in": 53,
+        "out": 349
+      },
+      "recovered_intent": "The questioner wanted to know how to prevent rainwater from overflowing gutters during heavy rainfall. They were likely interested in specific solutions and techniques that could be implemented to manage water flow effectively, protect their home from damage, and ensure proper drainage during intense storms. The text provides a comprehensive list of measures, ranging from gutter extensions and downspout modifications to roof overhang adjustments and professional inspection services, demonstrating the asker's desire for practical and detailed advice on this topic.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.8565,
+        "cos_intent_prompt": 0.7115,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.0,
+          "eli5": 0.875,
+          "social": 0.125
+        },
+        "overlap_vs_A": 0.688,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "The cloud moves. First, the cloud's (thinner) edge comes over you, and because it's thinner there's "
+          },
+          {
+            "source": "eli5",
+            "text": "First they try to block off the route by which material was being eroded away (such as a hole at the"
+          },
+          {
+            "source": "eli5",
+            "text": "Pick a spot on the ground. Imagine that a raindrop falls on that spot. Imagine that it doesn't soak "
+          }
+        ]
+      }
+    },
+    "C": {
+      "prompt": "What are effective solutions to prevent heavy rainwater overflow at downspouts, particularly those located on second floors of multi-story roofs, taking into account potential issues with gusher guards in snowy climates and aesthetic considerations for downspout extensions?",
+      "noop": false,
+      "overhead_tokens": 99,
+      "answer": "To effectively manage heavy rainwater overflow at downspouts, especially those situated on second-floor multi-story roofs, several strategies can be employed to ensure proper drainage while addressing specific challenges like snowy climates and aesthetic concerns. \n\n1. **Proper Downspout Extensions**: Installing a 5-6 foot extension from the building's edge can help direct water away from the foundation. This is crucial for second-story downspouts where the roof overhang might not provide adequate protection from heavy rainfall or snowmelt. Ensure that extensions are securely fastened and consider materials like plastic, which can be less obtrusive than metal.\n\n2. **Gutter Guards and Screens**: While gusher guards (also known as rain diverter systems) are effective in preventing debris buildup, they can indeed create issues during snowy conditions. Consider using a combination of gutter screens or guards that also have built-in snow channels to allow water to flow through even when covered by snow. Alternatively, install a more robust system such as leaf shields which can handle heavy rainfall and moderate snowfall.\n\n3. **Downspout Diverters**: For areas where water may overflow onto walkways or cause pooling, downspout diverters can be installed at the base of the extensions. These devices direct water to other drainage systems like rain barrels or underground drains, ensuring that excess water is channeled away from potential problem zones.\n\n4. **Downspout Baffles and Snowmelt Systems**: Installing baffles near downspouts can help manage water flow more effectively during heavy rains. Additionally, integrating a snowmelt system under the roof eaves can prevent ice dams from forming, which in turn reduces the likelihood of water backing up into downspouts.\n\n5. **Regular Maintenance**: Regularly check and clean gutters and downspouts to ensure they remain clear of debris that could impede water flow. This maintenance is crucial for preventing overflow issues during heavy rains or snowmelt.\n\n6. **Aesthetic Considerations**: For those concerned with the appearance, consider using downspout guards made from aesthetically pleasing materials such as wood or decorative metal finishes. You can also plant low-growing groundcovers near the downspouts to mask them and improve the overall landscape aesthetics while still ensuring proper drainage functionality.\n\nBy implementing these strategies, you can effectively manage heavy rainwater overflow at second-floor downspouts, ensuring both functional performance and aesthetic appeal, even in challenging climates like snowy regions.",
+      "answer_tokens": {
+        "in": 83,
+        "out": 495
+      },
+      "recovered_intent": "The questioner wanted to know how to effectively manage heavy rainwater overflow from second-floor downspouts, particularly in areas with snow. They were interested in specific strategies, materials, and considerations for managing this issue, including solutions for preventing water damage to the foundation, handling snow buildup, directing excess water away from walkways, and maintaining both functionality and aesthetics.",
+      "answer_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          1.0
+        ],
+        "score": 0.625,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "yes"
+          }
+        ]
+      },
+      "recovered_coverage": {
+        "per_facet": [
+          1.0,
+          0.0,
+          0.5,
+          0.0
+        ],
+        "score": 0.375,
+        "raw": [
+          {
+            "facet": 1,
+            "verdict": "yes"
+          },
+          {
+            "facet": 2,
+            "verdict": "no"
+          },
+          {
+            "facet": 3,
+            "verdict": "partial"
+          },
+          {
+            "facet": 4,
+            "verdict": "no"
+          }
+        ]
+      },
+      "geometry": {
+        "cos_intent_recovered": 0.8394,
+        "cos_intent_prompt": 0.9035,
+        "source_mix": {
+          "arxiv": 0.0,
+          "wikipedia": 0.062,
+          "eli5": 0.875,
+          "social": 0.062
+        },
+        "overlap_vs_A": 0.625,
+        "top3": [
+          {
+            "source": "eli5",
+            "text": "In the old days roofing materials were not as great as they are now. Traditional materials need a go"
+          },
+          {
+            "source": "eli5",
+            "text": "Clouds are so large that generally one cloud covers the immediate vicinity around you. So it appears"
+          },
+          {
+            "source": "social",
+            "text": "So, I live in Tennessee, everything is flooded. My basement is not draining. I have buckets, garden "
+          }
+        ]
+      }
+    }
+  },
+  "stage_seconds": {
+    "extract": 3.6,
+    "severity": 2.8,
+    "mirror": 2.7,
+    "rewrite_b": 2.3,
+    "fidelity_b": 2.5,
+    "revise_c": 2.8,
+    "answers": 18.1,
+    "deduce": 10.5,
+    "judge_answers": 8.4,
+    "judge_recovered": 8.1,
+    "geometry": 0.1
+  }
+}

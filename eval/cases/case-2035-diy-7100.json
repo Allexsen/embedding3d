@@ -1,0 +1,14 @@
+{
+  "id": "case-2035-diy-7100",
+  "source": "stackexchange-diy",
+  "tags": [
+    "general"
+  ],
+  "prompt": "Is there an easy way to measure the height of a tree?",
+  "evidence": "I'm looking to get an antenna installed for Internet service that will need to clear some trees on my neighbor's property because it requires a clear line of sight to work. I really don't trust my estimating skills enough to plunk down money on a utility pole that might be too short or too tall. And climbing the tree with a tape measure (in my neighbors yard) is a bit intrusive and dangerous. Is there a clever way that I can get a reasonably close (within 5' or so) estimate of the height of the tree other than eyeballing it? I thought about putting together a bunch of 10' runs of PVC pipe and holding it up against the tree, but that is going to get pretty unwieldy by about 30' and the trees are at least that tall. My other thought is to break out my old Trig textbooks and use the angle/distance to tree, but it seems like it would be pretty hard to judge the angle correctly, maybe with a laser pointer or something? Any other ideas?",
+  "attribution": {
+    "url": "https://diy.stackexchange.com/questions/7100/is-there-an-easy-way-to-measure-the-height-of-a-tree",
+    "author": "JohnFx",
+    "license": "CC BY-SA 4.0"
+  }
+}

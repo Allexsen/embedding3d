@@ -1,0 +1,12 @@
+{
+  "id": "case-0002-ai-answer",
+  "source": "aleksi-example",
+  "tags": [
+    "under-specification",
+    "register"
+  ],
+  "notes": "Aleksi's under-specification example: wants the scientific mechanism but words it like a casual question.",
+  "prompt": "What determines the AI answer?",
+  "evidence": "I want the actual scientific/mechanistic explanation of how a large language model's output comes to be — how training data and learned weights shape the output distribution, the role of the prompt/context window, and how sampling parameters like temperature and top-p pick the concrete tokens. I want technical specifics, not a pop-science one-liner like 'it predicts the next word'.",
+  "dev": true
+}
